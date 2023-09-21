@@ -1,0 +1,20 @@
+﻿@model LogoutViewModel
+@inject IStringLocalizer Localizer
+<div class="wrapper w-100 h-100">
+    <div class="row text-center">
+        <div class="col-12">
+            <img src="~/images/error.png" class="w-50" />
+        </div>
+        <div class="col-12 mt-5">
+            <h3 class="text-warning">@Localizer["LogoutPrompt"]</h3>
+            @if (Model.PostLogoutRedirectUri != null)
+            {
+                <a class="PostLogoutRedirectUri h6" href="@Model.PostLogoutRedirectUri">@Localizer["LogoutClickPrompt"]</a>
+            }
+            @if (Model.SignOutIframeUrl != null)
+            {
+                <iframe width="0" height="0" class="signout" src="@Model.SignOutIframeUrl"></iframe>
+            }
+        </div>
+    </div>
+</div>

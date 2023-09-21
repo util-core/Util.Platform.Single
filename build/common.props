@@ -1,0 +1,11 @@
+<Project>
+    <Import Project="version.props" />
+    <PropertyGroup>
+        <NetTargetFramework>net7.0</NetTargetFramework>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Product>Util.Platform</Product>
+        <Authors>ncc;何镇汐</Authors>
+        <Copyright>ncc;何镇汐</Copyright>
+    </PropertyGroup>
+</Project>

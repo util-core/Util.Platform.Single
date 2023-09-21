@@ -1,0 +1,15 @@
+﻿{
+  "DuplicateApplicationCode": "Application code '{0}' is already taken.",
+  "DuplicateApplicationName": "Application name '{0}' is already taken.",
+  "DuplicateClaimName": "Claim name '{0}' is already taken.",
+  "DuplicateModuleName": "Module name '{0}' is already taken.",
+  "DuplicateRoleCode": "Role code '{0}' is already taken.",
+  "DuplicateIdentityResource": "Identity resource '{0}' is already taken.",
+  "DuplicateApiResourceName": "Api resource name '{0}' is already taken.",
+  "DuplicateApiResourceUri": "Api resource uri '{0}' is already taken.",
+  "DuplicateOperationName": "Operation resource name '{0}' is already taken.",
+  "DuplicateOperationUri": "Operation resource uri '{0}' is already taken.",
+  "UserIsDisabled": "Your account has been disabled.",
+  "InvalidAccountOrPassword": "Invalid account or incorrect password.",
+  "UserLockedOut": "User is locked out."
+}

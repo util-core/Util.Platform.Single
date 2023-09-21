@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(NetTargetFramework)</TargetFramework>
+		<RootNamespace>Util.Platform.Domain</RootNamespace>
+		<AssemblyName>Util.Platform.Domain.Identity</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Util.Platform.Share.Identity.Domain" Version="0.0.6" />
+	</ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+</Project>

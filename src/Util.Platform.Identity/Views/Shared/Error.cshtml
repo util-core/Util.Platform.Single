@@ -1,0 +1,30 @@
+@model ErrorViewModel
+
+@{
+    var error = Model?.Error?.Error;
+    var errorDescription = Model?.Error?.ErrorDescription;
+    var request_id = Model?.Error?.RequestId;
+}
+
+<div class="wrapper w-100 h-100">
+    <div class="row text-center">
+        <div class="col-12">
+            <img src="~/images/logout.png" class="w-50" />
+        </div>
+        <div class="col-12 mt-5">
+            <h1 class="text-primary">出错了</h1>
+            @if (error != null)
+            {
+                <strong>@error</strong>
+                if (errorDescription != null)
+                {
+                    <div class="">@errorDescription</div>
+                }
+            }
+            @if (request_id != null)
+            {
+                <div class="">Request Id: @request_id</div>
+            }
+        </div>
+    </div>
+</div>

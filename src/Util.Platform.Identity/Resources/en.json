@@ -1,0 +1,12 @@
+﻿{
+  "AuthenticationServerName": "Identity Server",
+  "SystemName": "Util Application Framework",
+  "SystemDescription": "Welcome to the Util Application Framework",
+  "Login": "Login",
+  "LoginTitle": "Account Login",
+  "UserNamePrompt": "Please enter user name",
+  "PasswordPrompt": "Please enter password",
+  "Remember": "Remember",
+  "LogoutPrompt": "You have successfully logged out",
+  "LogoutClickPrompt": "Click the link to return"
+}

@@ -1,0 +1,12 @@
+﻿global using System.Threading.Tasks;
+global using System.Collections.Generic;
+global using System.Linq;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Xunit;
+global using Xunit.DependencyInjection.Logging;
+global using Util.Data.EntityFrameworkCore;
+global using Util.Aop;
+global using Util.Platform.Domain.Repositories;
+global using Util.Platform.Tests.Share.Fakes.Identity;
+global using Util.Platform.Domain.Models;

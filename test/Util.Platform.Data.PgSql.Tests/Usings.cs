@@ -1,0 +1,13 @@
+﻿global using System.Threading.Tasks;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Xunit;
+global using Xunit.DependencyInjection.Logging;
+global using Util.Data.EntityFrameworkCore;
+global using Util.Aop;
+global using Util.Dates;
+global using Util.Platform.Data;
+global using Util.Platform.Data.PgSql;
+global using Util.Platform.Tests.Share.Fakes.Identity;
+global using Util.Platform.Domain.Models;
+global using Util.Platform.Domain.Repositories;

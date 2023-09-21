@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>$(NetTargetFramework)</TargetFramework>
+	    <RootNamespace>Util.Platform.Data.SqlServer</RootNamespace>
+	    <AssemblyName>Util.Platform.Data.SqlServer</AssemblyName>
+    </PropertyGroup>
+    <ItemGroup>
+		<PackageReference Include="Util.Data.EntityFrameworkCore.SqlServer" Version="7.1.29" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Util.Platform.Data\01-Util.Platform.Data.csproj" />
+    </ItemGroup>
+</Project>

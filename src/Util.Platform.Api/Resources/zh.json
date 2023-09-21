@@ -1,0 +1,15 @@
+﻿{
+  "DuplicateApplicationCode": "应用程序编码 '{0}' 已存在.",
+  "DuplicateApplicationName": "应用程序名称 '{0}' 已存在.",
+  "DuplicateClaimName": "声明名称 '{0}' 已存在.",
+  "DuplicateModuleName": "模块名称 '{0}' 已存在.",
+  "DuplicateRoleCode": "角色编码 '{0}' 已存在.",
+  "DuplicateIdentityResource": "身份资源 '{0}' 已存在.",
+  "DuplicateApiResourceName": "Api资源名称 '{0}' 已存在.",
+  "DuplicateApiResourceUri": "Api资源标识 '{0}' 已存在.",
+  "DuplicateOperationName": "操作资源名称 '{0}' 已存在.",
+  "DuplicateOperationUri": "操作资源标识 '{0}' 已存在.",
+  "UserIsDisabled": "您的帐号已被冻结，请联系管理员",
+  "InvalidAccountOrPassword": "帐号无效或密码不正确",
+  "UserLockedOut": "帐号已被锁定,请稍后再试"
+}

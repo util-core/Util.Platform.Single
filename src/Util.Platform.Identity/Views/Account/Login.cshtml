@@ -1,0 +1,44 @@
+﻿@model LoginViewModel
+@inject IStringLocalizer Localizer
+
+<div class="container-fluid h-100 text-white">
+    <div class="row h-100">
+        <div class="col-8 box-left-bg">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <img src="~/images/log.png" />
+                </div>
+                <div class="col-10 mt-4 offset-2">
+                    <h3><i class="bi bi-cloud pe-2"></i>@Localizer["SystemName"]</h3>
+                    <p>@Localizer["SystemDescription"]</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 box-right-bg">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="mb-5 text-center">@Localizer["LoginTitle"]</h2>
+                    <form asp-route="Login">
+                        <div class="mb-4">
+                            <input class="form-control rounded-0 lh-lg" autocomplete="off" autofocus placeholder="@Localizer["UserNamePrompt"]" asp-for="UserName">
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control rounded-0 lh-lg" placeholder="@Localizer["PasswordPrompt"]" asp-for="Password">
+                        </div>
+                        <div class="mb-4 remember">
+                            <input class="form-check-input" asp-for="Remember">
+                            <label class="form-check-label" asp-for="Remember">
+                                @Localizer["Remember"]
+                            </label>
+                        </div>
+                        <button class="btn btn-primary rounded-0 w-100 lh-lg">@Localizer["Login"]</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

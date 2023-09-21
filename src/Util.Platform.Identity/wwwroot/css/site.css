@@ -1,0 +1,89 @@
+html,body {
+    height: 100%
+}
+.index-bg {
+    display: flex;
+    margin: 0 auto;
+    width: 100vw;
+    background: linear-gradient(180deg,#EFF4FF 0%,rgba(255,255,255,0) 100%) no-repeat;
+}
+.container .title h1 {
+    font-family: Alibaba-PuHuiTi-Heavy;
+    font-weight: 700;
+    font-size: 3vw;
+    line-height: 3.75vw;
+    text-align: center;
+    color: #161647;
+    margin: 2vw 0 0.7vw 0;
+}
+.container .title p {
+    font-size: 1.05vw;
+    color: #161647;
+}
+.doc-bg, .login-bg {
+    background: rgba(219, 224, 255, 0.7);
+    width: 18vw;
+    height: 18vw;
+    border-radius: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto auto 1vw auto;
+}
+.login-bg {
+    background: rgb(227, 244, 255);
+}
+.row p a {
+    text-decoration: none;
+    color: #161647
+}
+.doc-bg img{
+    width: 13.4vw;
+    height: 10.35vw;
+}
+.login-bg img {
+    width: 9.85vw;
+    height: 10.85vw;
+}
+/*µÇÂ¼*/
+.box-left-bg {
+    background: #3b4357;
+}
+.box-right-bg {
+    background: #2d3042;
+}
+.box-right-bg, .box-left-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.wrapper {
+    position: relative
+}
+.wrapper .row {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%,-50%)
+}
+.box-left-bg img {
+    width: 29vw;
+    height: 25vw;
+}
+.box-left-bg p {
+    color: #d4d9df
+}
+.box-right-bg div.row {
+    width: 60%
+}
+.box-right-bg .remember {
+    text-align: left !important;
+    text-indent: 0.5em;
+    color: #a9aab2;
+}
+
+
+    
+
+
+

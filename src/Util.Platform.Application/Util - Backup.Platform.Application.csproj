@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(NetTargetFramework)</TargetFramework>
+		<RootNamespace>Util.Platform.Identity.Applications</RootNamespace>
+		<AssemblyName>Util.Platform.Identity.Application</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Util.Localization" Version="7.1.27" />
+		<PackageReference Include="Util.Microservices.Dapr" Version="7.1.27" />
+		<PackageReference Include="Util.Microservices.Polly" Version="7.1.27" />
+		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.0.1" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Util.Platform.Identity.Share\Util.Platform.Identity.Share.csproj" />
+	</ItemGroup>
+</Project>

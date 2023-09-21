@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(NetTargetFramework)</TargetFramework>
+		<RootNamespace>Util.Platform.Applications</RootNamespace>
+		<AssemblyName>Util.Platform.Application</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Util.Localization" Version="7.1.29" />
+		<PackageReference Include="Util.Microservices.Polly" Version="7.1.29" />
+		<PackageReference Include="Util.Tenants" Version="7.1.29" />
+		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.0.6" />
+		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.0.6" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Util.Platform.Data.PgSql\03-Util.Platform.Data.PgSql.csproj" />
+	  <ProjectReference Include="..\Util.Platform.Data.SqlServer\02-Util.Platform.Data.SqlServer.csproj" />
+	  <ProjectReference Include="..\Util.Platform.Domain.Identity\Util.Platform.Domain.Identity.csproj" />
+	</ItemGroup>
+</Project>

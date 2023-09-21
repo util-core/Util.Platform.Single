@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>$(NetTargetFramework)</TargetFramework>
+		<AssemblyName>Util.Platform.Tests.Share</AssemblyName>
+		<RootNamespace>Util.Platform.Tests.Share</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoBogus" Version="2.13.1" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\Util.Platform.Application\Util.Platform.Application.csproj" />
+	  <ProjectReference Include="..\..\src\Util.Platform.Data\01-Util.Platform.Data.csproj" />
+	</ItemGroup>
+</Project>
