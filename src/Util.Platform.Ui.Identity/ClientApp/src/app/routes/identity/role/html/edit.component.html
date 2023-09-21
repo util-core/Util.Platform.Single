@@ -1,0 +1,14 @@
+
+<page-header [autoBreadcrumb]="false" [syncTitle]="false" [title]="(isNew?'identity.role.create':'identity.role.update')|i18n"></page-header>
+<nz-card [nzBorderless]="true">
+    <form nz-form="">
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="4">{{'identity.role.code'|i18n}}</nz-form-label><nz-form-control [nzErrorTip]="vt_59f81743aafe48c1ae365d70f58d54aa" [nzSpan]="20"><input #v_716c24015f89406492ea0468256fc896="xValidationExtend" displayName="identity.role.code" name="code" nz-input="" x-validation-extend="" [(ngModel)]="model.code" [maxlength]="256" [x-required-extend]="true" /><ng-template #vt_59f81743aafe48c1ae365d70f58d54aa="">{{v_716c24015f89406492ea0468256fc896.getErrorMessage()}}</ng-template></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="4">{{'identity.role.name'|i18n}}</nz-form-label><nz-form-control [nzErrorTip]="vt_ac3cdbd0f9ab4d568ccd0a2595285a83" [nzSpan]="20"><input #v_6bb45887cb634c8281ac5b549f1528ab="xValidationExtend" displayName="identity.role.name" name="name" nz-input="" x-validation-extend="" [(ngModel)]="model.name" [maxlength]="256" [x-required-extend]="true" /><ng-template #vt_ac3cdbd0f9ab4d568ccd0a2595285a83="">{{v_6bb45887cb634c8281ac5b549f1528ab.getErrorMessage()}}</ng-template></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="4">{{'util.enabled'|i18n}}</nz-form-label><nz-form-control [nzSpan]="20"><nz-switch name="enabled" [(ngModel)]="model.enabled"></nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="4">{{'identity.role.remark'|i18n}}</nz-form-label><nz-form-control [nzErrorTip]="vt_6c94fb4b68354bdda4ef33b41d0564db" [nzSpan]="20"><textarea #v_0a43091cf4b3443fb39d76308a12c6f8="xValidationExtend" displayName="identity.role.remark" name="remark" nz-input="" x-validation-extend="" [(ngModel)]="model.remark" [maxlength]="500" [nzAutosize]="{minRows:3}"></textarea><ng-template #vt_6c94fb4b68354bdda4ef33b41d0564db="">{{v_0a43091cf4b3443fb39d76308a12c6f8.getErrorMessage()}}</ng-template></nz-form-control></nz-form-item>
+        <div nz-row="" nzJustify="end">
+            <button (click)="close()" nz-button="" type="button">{{'util.cancel'|i18n}}</button>
+            <button #btnSubmit="" (click)="submit(btnSubmit)" nz-button="" nzType="primary" type="submit" x-button-extend="">{{'util.ok'|i18n}}</button>
+        </div>
+    </form>
+</nz-card>

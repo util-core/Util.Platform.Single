@@ -1,0 +1,23 @@
+@model UserQuery
+
+<util-form class="search__form">
+    <util-row gutter="{xs: 8, sm: 16, md: 24, lg: 32, xl: 32, xxl: 32}">
+        <util-column sm="4" xs="24">
+            <util-input for="UserName"/>
+        </util-column>
+        <util-column sm="4" xs="24">
+            <util-input for="Email"/>
+        </util-column>
+        <util-column sm="4" xs="24">
+            <util-input for="PhoneNumber"/>
+        </util-column>
+        <util-column sm="4" xs="24">
+            <util-select for="Enabled"/>
+        </util-column>
+        <util-column class="mb-xs">
+            <util-button id="btnQuery" type="Primary" icon="Search" on-click="query(btnQuery)" text-query="true"></util-button>
+            <util-button id="btnRefresh" icon="Sync" on-click="refresh(btnRefresh)" text-refresh="true"></util-button>
+        </util-column>
+    </util-row>
+</util-form>
+

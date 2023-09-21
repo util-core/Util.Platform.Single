@@ -1,0 +1,87 @@
+<nz-card [nzBorderless]="true" [nzTitle]="'identity.module'|i18n">
+    
+<form class="search__form" nz-form="">
+    <div nz-row="" [nzGutter]="{xs: 8, sm: 16, md: 24, lg: 32, xl: 32, xxl: 32}">
+        <div nz-col="" [nzSm]="4" [nzXs]="24">
+            <nz-form-item><nz-form-label>{{'identity.module.name'|i18n}}</nz-form-label><nz-form-control><input name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSm]="4" [nzXs]="24">
+            <nz-form-item><nz-form-label>{{'identity.module.uri'|i18n}}</nz-form-label><nz-form-control><input name="uri" nz-input="" [(ngModel)]="queryParam.uri" /></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSm]="4" [nzXs]="24">
+            <nz-form-item><nz-form-label>{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_b5d2e780377042799524a576dfb35fca="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_b5d2e780377042799524a576dfb35fca.isGroup"><nz-option *ngFor="let item of x_b5d2e780377042799524a576dfb35fca.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_b5d2e780377042799524a576dfb35fca.isGroup"><nz-option-group *ngFor="let group of x_b5d2e780377042799524a576dfb35fca.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+        </div>
+        <div class="mb-sm" nz-col="">
+            <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
+            <button (click)="refresh()" class="mx-sm" nz-button="" type="button"><i nz-icon="" nzType="sync"></i>{{'util.refresh'|i18n}}</button>
+        </div>
+    </div>
+</form>
+    <button (click)="openCreateDialog()" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
+    <button (click)="enable()" nz-button="" nzType="primary"><i nz-icon="" nzType="check-circle"></i>{{'util.enable'|i18n}}</button>
+    <button (click)="disable()" nz-button="" nzType="primary"><i nz-icon="" nzType="close-circle"></i>{{'util.disable'|i18n}}</button>
+    <button (click)="delete()" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_f03a7606313b45088089193d1af970a3" [nzShowIcon]="true"><ng-template #t_f03a7606313b45088089193d1af970a3="">
+        <span [innerHTML]="'app.currentApplication'|i18n:{application:selectedApplication.name}"></span>
+    </ng-template></nz-alert>
+</nz-card>
+<div nz-row="" [nzGutter]="24">
+    <div nz-col="" nzSpan="4">
+        <application-select [loadNonApiOnly]="true" (onClick)="selectApplication($event)"></application-select>
+    </div>
+    <div nz-col="" nzSpan="20">
+        <nz-table #tb_module="" #x_tb_module="xTreeTableExtend" (nzPageIndexChange)="x_tb_module.pageIndexChange($event)" (nzPageSizeChange)="x_tb_module.pageSizeChange($event)" loadMode="0" order="SortId" url="module" x-tree-table-extend="" [(nzPageIndex)]="x_tb_module.queryParam.page" [(nzPageSize)]="x_tb_module.queryParam.pageSize" [(queryParam)]="queryParam" [autoLoad]="false" [isExpandAll]="true" [nzData]="x_tb_module.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb_module.loading" [nzShowPagination]="false" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb_module" [nzTotal]="x_tb_module.total">
+            <thead><tr>
+                <th><label (nzCheckedChange)="x_tb_module.masterToggle()" nz-checkbox="" [nzChecked]="x_tb_module.isMasterChecked()" [nzIndeterminate]="x_tb_module.isMasterIndeterminate()">{{'identity.module.name'|i18n}}</label></th>
+                <th>{{'identity.module.uri'|i18n}}</th>
+                <th>{{'util.enabled'|i18n}}</th>
+                <th nzWidth="400px">{{'util.operation'|i18n}}</th>
+            </tr></thead>
+            <tbody>
+                <ng-container *ngFor="let row of x_tb_module.dataSource">
+                    <tr *ngIf="x_tb_module.isShow(row)">
+                        <td (nzExpandChange)="x_tb_module.collapse(row,$event)" [nzExpand]="x_tb_module.isExpand(row)" [nzIndentSize]="row.level*x_tb_module.config.table.indentUnitWidth" [nzShowExpand]="!x_tb_module.isLeaf(row) || x_tb_module.isShow(row) && row===selectedModule"><label (nzCheckedChange)="x_tb_module.toggle(row)" nz-checkbox="" [nzChecked]="x_tb_module.isChecked(row)" [nzIndeterminate]="x_tb_module.isIndeterminate(row)">{{row.name}}</label></td>
+                        <td>{{row.uri}}</td>
+                        <td>
+                            <nz-tag *ngIf="row.enabled" nzColor="geekblue">{{'util.enabled'|i18n}}</nz-tag>
+                            <nz-tag *ngIf="!row.enabled" nzColor="red">{{'util.notEnabled'|i18n}}</nz-tag>
+                        </td>
+                        <td>
+                            <a (click)="openCreateDialog(row)">{{'identity.module.createSubModule'|i18n}}</a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <a (click)="configResource(row)" *ngIf="x_tb_module.isLeaf(row)">{{'identity.module.resourceSettings'|i18n}}</a>
+                            <nz-divider *ngIf="x_tb_module.isLeaf(row)" nzType="vertical"></nz-divider>
+                            <a (click)="openEditDialog(row)">{{'util.update'|i18n}}</a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <a (click)="delete(row.id)" class="ant-btn-dangerous">{{'util.delete'|i18n}}</a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <a nz-dropdown="" [nzDropdownMenu]="menu">
+                                <i nz-icon="" nzTheme="outline" nzType="more"></i>
+                            </a>
+                            <nz-dropdown-menu #menu="nzDropdownMenu"><ul nz-menu="">
+                                <li (click)="openDetailDialog(row)" nz-menu-item=""><i class="mr-sm" nz-icon="" nzType="info-circle"></i>{{'util.detail'|i18n}}</li>
+                            </ul></nz-dropdown-menu>
+                        </td>
+                    </tr>
+                    <tr *ngIf="x_tb_module.isShow(row) && row===selectedModule" [nzExpand]="row===selectedModule && x_tb_module.isExpand(row)">
+                        <div nz-row="">
+                            <div nz-col="" nzPush="2" nzSpan="22">
+                                <nz-tabset>
+                                    <nz-tab [nzTitle]="'identity.operation'|i18n"><ng-template nz-tab="">
+                                        <operation-list [module]="row"></operation-list>
+                                    </ng-template></nz-tab>
+                                    <nz-tab [nzTitle]="'identity.columnsResource'|i18n"><ng-template nz-tab="">
+                                        a
+                                    </ng-template></nz-tab>
+                                    <nz-tab [nzTitle]="'identity.rowsResource'|i18n"><ng-template nz-tab="">
+                                        b
+                                    </ng-template></nz-tab>
+                                </nz-tabset>
+                            </div>
+                        </div>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </nz-table><ng-template #total_tb_module="" let-range="range" let-total="">{{ 'util.tableTotalTemplate'|i18n:{start:range[0],end:range[1],total:total} }}</ng-template>
+    </div>
+</div>

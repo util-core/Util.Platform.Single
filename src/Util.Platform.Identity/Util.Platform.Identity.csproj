@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Util.Platform.Share.Identity.IdentityServer" Version="0.0.6" />
+		<PackageReference Include="Util.Platform.Share.Identity.IdentityServer" Version="0.1.2" />
 	</ItemGroup>
 
 	<ItemGroup>

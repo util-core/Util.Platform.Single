@@ -1,0 +1,8 @@
+{
+  "permission": {
+    "remoteEntry": "https://admin.a.com/mf/permission/remoteEntry.js",
+    "exposedModule": "./Module",
+    "routePath": "permission",
+    "ngModuleName": "PermissionModule"
+  }
+}

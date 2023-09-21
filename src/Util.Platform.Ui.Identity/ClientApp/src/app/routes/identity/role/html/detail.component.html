@@ -1,0 +1,12 @@
+
+<page-header [autoBreadcrumb]="false" [syncTitle]="false" [title]="'identity.role.detail'|i18n"></page-header>
+<nz-card [nzBorderless]="true">
+    <nz-descriptions [nzBordered]="true" [nzColumn]="3">
+        <nz-descriptions-item nzSpan="3" [nzTitle]="'identity.role.code'|i18n">{{model.code}}</nz-descriptions-item>
+        <nz-descriptions-item nzSpan="3" [nzTitle]="'identity.role.name'|i18n">{{model.name}}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'identity.role.isAdmin'|i18n"><i *ngIf="model.isAdmin" nz-icon="" nzType="check"></i><i *ngIf="!(model.isAdmin)" nz-icon="" nzType="close"></i></nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'util.enabled'|i18n"><i *ngIf="model.enabled" nz-icon="" nzType="check"></i><i *ngIf="!(model.enabled)" nz-icon="" nzType="close"></i></nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'identity.role.creationTime'|i18n">{{model.creationTime|date:"yyyy-MM-dd HH:mm"}}</nz-descriptions-item>
+        <nz-descriptions-item nzSpan="3" [nzTitle]="'identity.role.remark'|i18n">{{model.remark}}</nz-descriptions-item>
+    </nz-descriptions>
+</nz-card>

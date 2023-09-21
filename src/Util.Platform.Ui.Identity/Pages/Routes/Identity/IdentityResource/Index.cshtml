@@ -1,0 +1,31 @@
+﻿@page
+@model IdentityResourceDto
+<util-card borderless="true" title="identity.identityResource">
+    @*查询表单*@
+    <partial name="Index.Query"/>
+    @*工具按钮*@
+    <util-button type="Primary" icon="Plus" on-click="openCreateDrawer()" text-create="true"></util-button>
+    <util-button type="Primary" Danger="true" icon="Delete" on-click="delete()" text-delete="true"></util-button>
+    @*提示语*@
+    <util-alert class="my-md" type="Info" show-icon="true">
+        <util-i18n key="app.rowsSelected" param="length:getCheckedLength()" />
+    </util-alert>
+    @*表格*@
+    <util-table id="tb_IdentityResource" show-checkbox="true" show-line-number="true"
+                query-param="queryParam" url="identityResource" sort="CreationTime desc">
+        <util-td for="Uri"></util-td>
+        <util-td for="Name"></util-td>
+        <util-td for="Remark"></util-td>
+        <util-td for="Enabled" width="120">
+            <util-tag color-type="GeekBlue" ng-if="row.enabled" text-enabled="true"></util-tag>
+            <util-tag color-type="Red" ng-if="!row.enabled" text-not-enabled="true"></util-tag>
+        </util-td>
+        <util-td title-operation="true" width="300">
+            <util-a on-click="openEditDrawer(row)" text-update="true"></util-a>
+            <util-divider type="Vertical"></util-divider>
+            <util-a on-click="openDetailDialog(row)" text-detail="true"></util-a>
+            <util-divider type="Vertical"></util-divider>
+            <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+        </util-td>
+    </util-table>
+</util-card>

@@ -1,0 +1,24 @@
+﻿@page
+@model ApplicationDto
+@*标题*@
+<util-page-header2 title-create="identity.application.create" title-update="identity.application.update" auto-breadcrumb="false" sync-title="false"></util-page-header2>
+@*表单*@
+<util-form label-span="6" control-span="18" gutter="16">
+    <util-card borderless="true">
+        <util-input for="Code" />
+        <util-input for="Name" />
+        <util-switch for="Enabled"></util-switch>
+        <util-switch for="IsApi"></util-switch>
+        <util-switch for="IsClient" on-model-change="toggleIsClient($event)" extra="identity.application.clientExplain"></util-switch>
+        <util-textarea for="Remark"></util-textarea>
+    </util-card>
+    <util-card title="identity.application.clientInfo" ng-if="isClient" borderless="true">
+        <util-select for="AllowedGrantType"></util-select>
+        <util-input for="AllowedCorsOrigins" />
+        <util-switch for="AllowOfflineAccess"></util-switch>
+        <util-select for="AllowedScopes" url="application/scopes" mode="Multiple"></util-select>
+        <util-input-number for="AccessTokenLifetime" extra="identity.application.accessTokenLifetimeExplain" />
+        <util-input for="RedirectUri" extra="identity.application.redirectUriExplain" />
+        <util-input for="PostLogoutRedirectUri" extra="identity.application.redirectUriExplain" />
+    </util-card>
+</util-form>

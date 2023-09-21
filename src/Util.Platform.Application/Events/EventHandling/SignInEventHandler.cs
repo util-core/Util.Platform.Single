@@ -1,4 +1,4 @@
-﻿using Util.Platform.Applications.Services.Abstractions.Identity;
+﻿using Util.Platform.Applications.Services.Abstractions;
 
 namespace Util.Platform.Applications.Events.EventHandling;
 

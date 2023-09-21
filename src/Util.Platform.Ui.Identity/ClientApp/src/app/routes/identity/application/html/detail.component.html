@@ -1,0 +1,19 @@
+<page-header [autoBreadcrumb]="false" [syncTitle]="false" [title]="'identity.application.detail'|i18n"></page-header>
+<nz-card [nzBorderless]="true">
+    <nz-descriptions [nzBordered]="true" [nzColumn]="2">
+        <nz-descriptions-item [nzTitle]="'identity.application.code'|i18n">{{model.code}}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'identity.application.name'|i18n">{{model.name}}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'identity.application.isApi'|i18n"><i *ngIf="model.isApi" nz-icon="" nzType="check"></i><i *ngIf="!(model.isApi)" nz-icon="" nzType="close"></i></nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'identity.application.enabled'|i18n"><i *ngIf="model.enabled" nz-icon="" nzType="check"></i><i *ngIf="!(model.enabled)" nz-icon="" nzType="close"></i></nz-descriptions-item>
+        <nz-descriptions-item nzSpan="2" [nzTitle]="'identity.application.remark'|i18n">{{model.remark}}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'identity.application.isClient'|i18n"><i *ngIf="model.isClient" nz-icon="" nzType="check"></i><i *ngIf="!(model.isClient)" nz-icon="" nzType="close"></i></nz-descriptions-item>
+        <nz-descriptions-item *ngIf="model.isClient" [nzTitle]="'identity.application.accessTokenLifetime'|i18n">{{model.accessTokenLifetime}}</nz-descriptions-item>
+        <nz-descriptions-item *ngIf="model.isClient" [nzTitle]="'identity.application.allowOfflineAccess'|i18n"><i *ngIf="model.allowOfflineAccess" nz-icon="" nzType="check"></i><i *ngIf="!(model.allowOfflineAccess)" nz-icon="" nzType="close"></i></nz-descriptions-item>
+        <nz-descriptions-item *ngIf="model.isClient" nzSpan="2" [nzTitle]="'identity.application.allowedScopes'|i18n">{{model.allowedScopes}}</nz-descriptions-item>
+        <nz-descriptions-item *ngIf="model.isClient" nzSpan="2" [nzTitle]="'identity.application.allowedCorsOrigins'|i18n">{{model.allowedCorsOrigins}}</nz-descriptions-item>
+        <nz-descriptions-item *ngIf="model.isClient" nzSpan="2" [nzTitle]="'identity.application.redirectUri'|i18n">{{model.redirectUri}}</nz-descriptions-item>
+        <nz-descriptions-item *ngIf="model.isClient" nzSpan="2" [nzTitle]="'identity.application.postLogoutRedirectUri'|i18n">{{model.postLogoutRedirectUri}}</nz-descriptions-item>
+        <nz-descriptions-item *ngIf="model.isClient" [nzTitle]="'identity.application.allowedGrantType'|i18n">{{model.allowedGrantTypeDescription}}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'identity.application.creationTime'|i18n">{{model.creationTime|date:"yyyy-MM-dd HH:mm"}}</nz-descriptions-item>
+    </nz-descriptions>
+</nz-card>

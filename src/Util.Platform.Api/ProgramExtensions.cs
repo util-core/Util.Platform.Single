@@ -111,6 +111,16 @@ public static class ProgramExtensions {
     }
 
     /// <summary>
+    /// 配置Cors
+    /// </summary>
+    public static void AddCors( this WebApplicationBuilder builder ) {
+        builder.Services.AddCors( options => options.AddPolicy( "cors", policy => {
+            policy.SetIsOriginAllowed( _ => true );
+            policy.AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+        } ) );
+    }
+
+    /// <summary>
     /// 配置Http日志
     /// </summary>
     public static WebApplicationBuilder AddHttpLogging( this WebApplicationBuilder builder ) {

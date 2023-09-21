@@ -1,0 +1,17 @@
+﻿@page
+@model CreateUserRequest
+@*标题*@
+<util-page-header2 title="identity.user.create" auto-breadcrumb="false" sync-title="false"></util-page-header2>
+@*表单*@
+<util-card borderless="true">
+    <util-form id="form" label-span="4" control-span="20" gutter="16">
+        <util-input for="UserName" />
+        <util-input for="Email" />
+        <util-input for="PhoneNumber" />
+        <util-input for="Password" allow-clear="true" />
+        <util-row justify="End">
+            <util-button on-click="close()" text-cancel="true"></util-button>
+            <util-button id="btnSubmit" is-submit="true" validate-form="true" type="Primary" on-click="submit(btnSubmit)" text-ok="true"></util-button>
+        </util-row>
+    </util-form>
+</util-card>

@@ -1,0 +1,45 @@
+{
+  "app": {
+    "name": "Util管理后台",
+    "description": "Util管理后台"
+  },
+  "user": {
+    "name": "util",
+    "avatar": "./assets/tmp/img/avatar.jpg",
+    "email": "xiadao521@qq.com"
+  },
+  "menu": [
+    {
+      "text": "权限管理",
+      "i18n": "权限管理",
+      "icon": "anticon-edit",
+      "children": [
+        {
+          "text": "应用程序",
+          "link": "/identity/application",
+          "i18n": "应用程序"
+        },
+        {
+          "text": "声明",
+          "link": "/identity/claim",
+          "i18n": "声明"
+        },
+        {
+          "text": "资源",
+          "link": "/identity/resource",
+          "i18n": "资源"
+        },
+        {
+          "text": "角色",
+          "link": "/identity/role",
+          "i18n": "角色"
+        },
+        {
+          "text": "用户",
+          "link": "/identity/user",
+          "i18n": "用户"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+﻿@page
+@model ApplicationDto
+@*标题*@
+<util-page-header2 title="identity.application.detail" auto-breadcrumb="false" sync-title="false"></util-page-header2>
+@*表单*@
+<util-card borderless="true">
+    <util-descriptions column="2" bordered="true">
+        <util-descriptions-item for="Code"></util-descriptions-item>
+        <util-descriptions-item for="Name"></util-descriptions-item>
+        <util-descriptions-item for="IsApi"></util-descriptions-item>
+        <util-descriptions-item for="Enabled"></util-descriptions-item>
+        <util-descriptions-item for="Remark" span="2"></util-descriptions-item>
+        <util-descriptions-item for="IsClient"></util-descriptions-item>
+        <util-descriptions-item for="AccessTokenLifetime" ng-if="model.isClient"></util-descriptions-item>
+        <util-descriptions-item for="AllowOfflineAccess" ng-if="model.isClient"></util-descriptions-item>
+        <util-descriptions-item for="AllowedScopes" span="2" ng-if="model.isClient"></util-descriptions-item>
+        <util-descriptions-item for="AllowedCorsOrigins" span="2" ng-if="model.isClient"></util-descriptions-item>
+        <util-descriptions-item for="RedirectUri" span="2" ng-if="model.isClient"></util-descriptions-item>
+        <util-descriptions-item for="PostLogoutRedirectUri" span="2" ng-if="model.isClient"></util-descriptions-item>
+        <util-descriptions-item for="AllowedGrantTypeDescription" ng-if="model.isClient"></util-descriptions-item>
+        <util-descriptions-item for="CreationTime"></util-descriptions-item>
+    </util-descriptions>
+</util-card>

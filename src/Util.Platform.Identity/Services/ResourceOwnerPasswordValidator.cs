@@ -1,4 +1,6 @@
-﻿namespace Util.Platform.Identity.Services; 
+﻿using Util.Platform.Applications.Services.Abstractions;
+
+namespace Util.Platform.Identity.Services;
 
 /// <summary>
 /// 密码验证器

@@ -1,0 +1,80 @@
+﻿@page
+@model ModuleDto
+<util-card borderless="true" title="identity.module">
+    @*查询表单*@
+    <partial name="Index.Query" />
+    @*工具按钮*@
+    <util-button type="Primary" icon="Plus" on-click="openCreateDialog()" text-create="true"></util-button>
+    <util-button type="Primary" icon="CheckCircle" on-click="enable()" text-enable="true"></util-button>
+    <util-button type="Primary" icon="CloseCircle" on-click="disable()" text-disable="true"></util-button>
+    <util-button type="Primary" danger="true" icon="Delete" on-click="delete()" text-delete="true"></util-button>
+    @*提示语*@
+    <util-alert class="my-md" type="Info" show-icon="true">
+        <util-i18n key="app.currentApplication" param="application:selectedApplication.name" />
+    </util-alert>
+</util-card>
+<util-row gutter="24">
+    @*应用程序列表*@
+    <util-column span="4">
+        <application-select [loadNonApiOnly]="true" (onClick)="selectApplication($event)"></application-select>
+    </util-column>
+    @*表格*@
+    <util-column span="20">
+        <util-tree-table id="tb_module" show-checkbox="true" query-param="queryParam" url="module" sort="SortId"
+                         auto-load="false" expand-all="true" load-mode="Sync">
+            <util-thead>
+                <util-th for="Name"></util-th>
+                <util-th for="Uri"></util-th>
+                <util-th for="Enabled"></util-th>
+                <util-th title-operation="true" width="400"></util-th>
+            </util-thead>
+            <util-tbody>
+                <util-container ng-for="let row of x_tb_module.dataSource">
+                    <util-tr ng-if="x_tb_module.isShow(row)">
+                        <util-td for="Name" bind-show-expand="!x_tb_module.isLeaf(row) || x_tb_module.isShow(row) && row===selectedModule"></util-td>
+                        <util-td for="Uri"></util-td>
+                        <util-td for="Enabled">
+                            <util-tag color-type="GeekBlue" ng-if="row.enabled" text-enabled="true"></util-tag>
+                            <util-tag color-type="Red" ng-if="!row.enabled" text-not-enabled="true"></util-tag>
+                        </util-td>
+                        <util-td title-operation="true">
+                            <util-a on-click="openCreateDialog(row)" text="identity.module.createSubModule"></util-a>
+                            <util-divider type="Vertical"></util-divider>
+                            <util-a on-click="configResource(row)" text="identity.module.resourceSettings" ng-if="x_tb_module.isLeaf(row)"></util-a>
+                            <util-divider type="Vertical" ng-if="x_tb_module.isLeaf(row)"></util-divider>
+                            <util-a on-click="openEditDialog(row)" text-update="true"></util-a>
+                            <util-divider type="Vertical"></util-divider>
+                            <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+                            <util-divider type="Vertical"></util-divider>
+                            @*下拉菜单*@
+                            <util-a dropdown-menu="menu">
+                                <util-icon type="More" theme="Outline"></util-icon>
+                            </util-a>
+                            <util-dropdown-menu id="menu">
+                                <util-menu-item on-click="openDetailDialog(row)" text-detail="true" icon="InfoCircle"></util-menu-item>
+                            </util-dropdown-menu>
+                        </util-td>
+                    </util-tr>
+                    <util-tr expand="row===selectedModule && x_tb_module.isExpand(row)" ng-if="x_tb_module.isShow(row) && row===selectedModule">
+                        <util-row>
+                            <util-column span="22" push="2">
+                                <util-tabset>
+                                    @*操作资源*@
+                                    <util-tab lazy="true" title="identity.operation">
+                                        <operation-list [module]="row"></operation-list>
+                                    </util-tab>
+                                    <util-tab lazy="true" title="identity.columnsResource">
+                                        a
+                                    </util-tab>
+                                    <util-tab lazy="true" title="identity.rowsResource">
+                                        b
+                                    </util-tab>
+                                </util-tabset>
+                            </util-column>
+                        </util-row>
+                    </util-tr>
+                </util-container>
+            </util-tbody>
+        </util-tree-table>
+    </util-column>
+</util-row>

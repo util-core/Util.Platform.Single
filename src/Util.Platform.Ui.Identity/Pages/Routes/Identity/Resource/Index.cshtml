@@ -1,0 +1,17 @@
+﻿@page
+<util-page-header2 title="identity.resource"></util-page-header2>
+@*选项卡*@
+<util-tabset tab-position="Left" bindon-selected-index="selectedTabIndex">
+    @*模块资源*@
+    <util-tab title="identity.module" lazy="true">
+        <module-list></module-list>
+    </util-tab>
+    @*Api资源*@
+    <util-tab title="identity.apiResource" lazy="true">
+        <api-resource-list></api-resource-list>
+    </util-tab>
+    @*身份资源*@
+    <util-tab title="identity.identityResource" lazy="true">
+        <identity-resource-list></identity-resource-list>
+    </util-tab>
+</util-tabset>

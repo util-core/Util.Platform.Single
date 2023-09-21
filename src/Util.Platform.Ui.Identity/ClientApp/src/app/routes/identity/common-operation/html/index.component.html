@@ -1,0 +1,46 @@
+<page-header [autoBreadcrumb]="false" [syncTitle]="false" [title]="'identity.commonOperation'|i18n"></page-header>
+<nz-card [nzBorderless]="true">
+    
+<form class="search__form" nz-form="">
+    <div nz-row="" [nzGutter]="{xs: 8, sm: 16, md: 24, lg: 32, xl: 32, xxl: 32}">
+        <div nz-col="" [nzSm]="4" [nzXs]="24">
+            <nz-form-item><nz-form-label>{{'identity.commonOperation.name'|i18n}}</nz-form-label><nz-form-control><input name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-form-control></nz-form-item>
+        </div>
+        <div class="mb-sm" nz-col="">
+            <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
+            <button #btnRefresh="" (click)="refresh(btnRefresh)" nz-button="" type="button"><i nz-icon="" nzType="sync"></i>{{'util.refresh'|i18n}}</button>
+        </div>
+    </div>
+</form>
+    <button (click)="add()" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
+    <button #btn_save="" (click)="save(btn_save)" nz-button="" nzType="primary"><i nz-icon="" nzType="save"></i>{{'util.save'|i18n}}</button>
+    <button (click)="delete()" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_f0435ce16ef24d4c90aff8457b67b4e5" [nzShowIcon]="true"><ng-template #t_f0435ce16ef24d4c90aff8457b67b4e5="">
+        <span [innerHTML]="'app.rowsSelected'|i18n:{length:getCheckedLength()}"></span>
+    </ng-template></nz-alert>
+    <nz-table #e_tb_commonOperation="xEditTable" #tb_commonOperation="" #x_tb_commonOperation="xTableExtend" (nzPageIndexChange)="x_tb_commonOperation.pageIndexChange($event)" (nzPageSizeChange)="x_tb_commonOperation.pageSizeChange($event)" order="SortId" url="commonOperation" x-edit-table="" x-table-extend="" [(nzPageIndex)]="x_tb_commonOperation.queryParam.page" [(nzPageSize)]="x_tb_commonOperation.queryParam.pageSize" [(queryParam)]="queryParam" [nzData]="x_tb_commonOperation.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb_commonOperation.loading" [nzPageSizeOptions]="x_tb_commonOperation.pageSizeOptions" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb_commonOperation" [nzTotal]="x_tb_commonOperation.total"><thead><tr><th (nzCheckedChange)="x_tb_commonOperation.masterToggle()" [nzChecked]="x_tb_commonOperation.isMasterChecked()" [nzDisabled]="!x_tb_commonOperation.dataSource.length" [nzIndeterminate]="x_tb_commonOperation.isMasterIndeterminate()" [nzShowCheckbox]="true" [nzWidth]="x_tb_commonOperation.config.table.checkboxWidth"></th><th [nzWidth]="x_tb_commonOperation.config.table.lineNumberWidth">{{'util.lineNumber'|i18n}}</th><th nzWidth="30%">{{'identity.commonOperation.name'|i18n}}</th><th>{{'identity.commonOperation.enabled'|i18n}}</th><th>{{'identity.commonOperation.sortId'|i18n}}</th><th nzWidth="30%">{{'identity.commonOperation.remark'|i18n}}</th><th nzWidth="300px">{{'util.operation'|i18n}}</th></tr></thead><tbody><tr #tb_commonOperation_row="xEditRow" (click)="e_tb_commonOperation.clickEdit(row.id)" (dblclick)="e_tb_commonOperation.dblClickEdit(row.id)" *ngFor="let row of x_tb_commonOperation.dataSource;index as index" [x-edit-row]="row">
+        <td (click)="$event.stopPropagation()" (nzCheckedChange)="x_tb_commonOperation.toggle(row)" [nzChecked]="x_tb_commonOperation.isChecked(row)" [nzShowCheckbox]="true"></td><td>{{row.lineNumber}}</td><td><ng-container *ngIf="e_tb_commonOperation.editId !== row.id;else e_tb_commonOperation_name">{{row.name}}</ng-container><ng-template #e_tb_commonOperation_name="">
+            <nz-form-item class="mb0"><nz-form-control [nzErrorTip]="vt_c3d8cfa8d0f94e799f2b8d33bdecbcd9"><input #c_c32553841ee14e28be072a2ace503372="" #v_1d3b9b3d3419435f8e2cab0dd5d4c063="xValidationExtend" displayName="identity.commonOperation.name" name="name" nz-input="" x-validation-extend="" [(ngModel)]="row.name" [editRow]="tb_commonOperation_row" [maxlength]="50" [x-edit-control]="c_c32553841ee14e28be072a2ace503372" [x-required-extend]="true" /><ng-template #vt_c3d8cfa8d0f94e799f2b8d33bdecbcd9="">{{v_1d3b9b3d3419435f8e2cab0dd5d4c063.getErrorMessage()}}</ng-template></nz-form-control></nz-form-item>
+        </ng-template></td>
+        <td>
+            <ng-container *ngIf="e_tb_commonOperation.editId !== row.id;else e_tb_commonOperation_enabled">
+                <nz-tag *ngIf="row.enabled" nzColor="geekblue">{{'util.enabled'|i18n}}</nz-tag>
+                <nz-tag *ngIf="!row.enabled" nzColor="red">{{'util.notEnabled'|i18n}}</nz-tag>
+            </ng-container>
+            <ng-template #e_tb_commonOperation_enabled="">
+                <nz-form-item class="mb0"><nz-form-control><nz-select #c_5812fe7d17114fa58ad0ab95f90f9ca7="" #x_bfae5ef3c69949fb835db84cb3697242="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="row.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]" [editRow]="tb_commonOperation_row" [x-edit-control]="c_5812fe7d17114fa58ad0ab95f90f9ca7"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_bfae5ef3c69949fb835db84cb3697242.isGroup"><nz-option *ngFor="let item of x_bfae5ef3c69949fb835db84cb3697242.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_bfae5ef3c69949fb835db84cb3697242.isGroup"><nz-option-group *ngFor="let group of x_bfae5ef3c69949fb835db84cb3697242.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+            </ng-template>
+        </td>
+        <td><ng-container *ngIf="e_tb_commonOperation.editId !== row.id;else e_tb_commonOperation_sortId">{{row.sortId}}</ng-container><ng-template #e_tb_commonOperation_sortId="">
+            <nz-form-item class="mb0"><nz-form-control><nz-input-number #c_bffd62c5252249f693fd73f1c543b895="" name="sortId" [(ngModel)]="row.sortId" [editRow]="tb_commonOperation_row" [x-edit-control]="c_bffd62c5252249f693fd73f1c543b895"></nz-input-number></nz-form-control></nz-form-item>
+        </ng-template></td>
+        <td><ng-container *ngIf="e_tb_commonOperation.editId !== row.id;else e_tb_commonOperation_remark">{{row.remark}}</ng-container><ng-template #e_tb_commonOperation_remark="">
+            <nz-form-item class="mb0"><nz-form-control [nzErrorTip]="vt_7dee104d16704457bec5be8319a3a386"><input #c_c3d2cc5e230e4209bf679dd23d6b1c33="" #v_05db9077a4e4434992900b815f325ecc="xValidationExtend" displayName="identity.commonOperation.remark" name="remark" nz-input="" x-validation-extend="" [(ngModel)]="row.remark" [editRow]="tb_commonOperation_row" [maxlength]="500" [x-edit-control]="c_c3d2cc5e230e4209bf679dd23d6b1c33" /><ng-template #vt_7dee104d16704457bec5be8319a3a386="">{{v_05db9077a4e4434992900b815f325ecc.getErrorMessage()}}</ng-template></nz-form-control></nz-form-item>
+        </ng-template></td>
+        <td>
+            <a (click)="edit(row.id)">{{'util.update'|i18n}}</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a (click)="delete(row.id)" class="ant-btn-dangerous">{{'util.delete'|i18n}}</a>
+        </td>
+    </tr></tbody></nz-table><ng-template #total_tb_commonOperation="" let-range="range" let-total="">{{ 'util.tableTotalTemplate'|i18n:{start:range[0],end:range[1],total:total} }}</ng-template>
+</nz-card>

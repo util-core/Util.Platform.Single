@@ -7,9 +7,10 @@
 	<ItemGroup>
 		<PackageReference Include="Util.Localization" Version="7.1.29" />
 		<PackageReference Include="Util.Microservices.Polly" Version="7.1.29" />
+		<PackageReference Include="Util.Platform.Share.Apps" Version="0.1.2" />
 		<PackageReference Include="Util.Tenants" Version="7.1.29" />
-		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.0.6" />
-		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.0.6" />
+		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.1.2" />
+		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.1.2" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Util.Platform.Data.PgSql\03-Util.Platform.Data.PgSql.csproj" />

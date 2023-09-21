@@ -1,0 +1,8 @@
+﻿@model ApiResourceDto
+
+@*操作详情 - Api资源表格*@
+<util-table id="tb_api_resource" query-param="queryParam" url="operation/getApis" sort="SortId"
+                 show-pagination="false" scroll-height="450">
+    <util-td for="Name"></util-td>
+    <util-td for="Uri"></util-td>
+</util-table>

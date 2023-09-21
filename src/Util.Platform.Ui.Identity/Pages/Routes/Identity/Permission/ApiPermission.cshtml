@@ -1,0 +1,10 @@
+﻿@page
+@model ApiResourceDto
+
+@*Api权限*@
+<util-tree-table id="tb_api_permission" show-checkbox="true" query-param="queryParam" url="apiPermission" sort="SortId"
+                 auto-load="false" expand-all="true" show-pagination="false" scroll-height="450">
+    <util-td for="Name"></util-td>
+    <util-td for="Uri"></util-td>
+</util-tree-table>
+

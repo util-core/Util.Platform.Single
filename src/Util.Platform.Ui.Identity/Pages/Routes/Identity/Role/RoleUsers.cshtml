@@ -1,0 +1,21 @@
+﻿@page
+@model UserDto
+<util-page-header2 title="identity.role.roleUsers" auto-breadcrumb="false" sync-title="false"></util-page-header2>
+<util-card borderless="true">
+    @*查询表单*@
+    <partial name="./User.Query.cshtml" />
+    @*工具按钮*@
+    <util-button class="mr-sm" type="Primary" icon="UserAdd" text="identity.role.addUsersToRole" on-click="openSelectDialog()"></util-button>
+    <util-button Danger="true" icon="UserDelete" text="identity.role.removeUsersFromRole" on-click="removeUsersFromRole()"></util-button>
+    @*提示语*@
+    <util-alert class="my-md" type="Info" show-icon="true">
+        <util-i18n key="identity.role.currentRoleName" param="roleName:data.name" />
+    </util-alert>
+    @*表格*@
+    <util-table id="tb_user" show-checkbox="true" show-line-number="true" query-param="queryParam" url="user" sort="CreationTime desc">
+        <util-td for="UserName"></util-td>
+        <util-td for="PhoneNumber"></util-td>
+        <util-td for="Email"></util-td>
+        <util-td for="Enabled"></util-td>
+    </util-table>
+</util-card>

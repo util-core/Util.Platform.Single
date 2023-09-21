@@ -19,6 +19,9 @@ builder.AddIdentityAuthentication();
 //配置Http日志
 builder.AddHttpLogging();
 
+//配置Cors
+builder.AddCors();
+
 //配置转发头部
 builder.AddForwardedHeaders();
 
@@ -41,6 +44,9 @@ app.UsePathBase();
 
 //配置转发头部
 app.UseForwardedHeaders();
+
+//配置Cors
+app.UseCors( "cors" );
 
 //配置本地化
 app.UseRequestLocalization();

@@ -1,0 +1,31 @@
+﻿@page
+@model ResourceQuery
+
+<util-row gutter="48">
+    <util-column span="6">
+        <application-select [loadApiOnly]="true" (onClick)="selectApplication($event)"></application-select>
+    </util-column>
+    <util-column span="18">
+        @*查询表单*@
+        <util-form class="search__form">
+            <util-row gutter="{xs: 8, sm: 16, md: 24, lg: 32, xl: 32, xxl: 32}">
+                <util-column sm="8" xs="24">
+                    <util-input for="Name" label-text="identity.apiResource.name" />
+                </util-column>
+                <util-column sm="8" xs="24">
+                    <util-input for="Uri" label-text="identity.apiResource.uri" />
+                </util-column>
+                <util-column class="mb-sm">
+                    <util-button id="btnQuery" type="Primary" icon="Search" on-click="query(btnQuery)" text-query="true"></util-button>
+                    <util-button class="mx-sm" id="btnRefresh" icon="Sync" on-click="refresh(btnRefresh)" text-refresh="true"></util-button>
+                </util-column>
+            </util-row>
+        </util-form>
+        @*Api资源树形表格*@
+        <util-tree-table id="tb_api_resource" show-checkbox="true" query-param="queryParam" url="apiResource" sort="SortId"
+                         auto-load="false" expand-all="true" show-pagination="false" scroll-height="450" checked-keys="checkedIds">
+            <util-td for="Name"></util-td>
+            <util-td for="Uri"></util-td>
+        </util-tree-table>
+    </util-column>
+</util-row>

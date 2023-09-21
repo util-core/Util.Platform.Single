@@ -1,0 +1,26 @@
+
+<div nz-row="" [nzGutter]="48">
+    <div nz-col="" nzSpan="6">
+        <application-select [loadApiOnly]="true" (onClick)="selectApplication($event)"></application-select>
+    </div>
+    <div nz-col="" nzSpan="18">
+        <form class="search__form" nz-form="">
+            <div nz-row="" [nzGutter]="{xs: 8, sm: 16, md: 24, lg: 32, xl: 32, xxl: 32}">
+                <div nz-col="" [nzSm]="8" [nzXs]="24">
+                    <nz-form-item><nz-form-label>{{'identity.apiResource.name'|i18n}}</nz-form-label><nz-form-control><input name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-form-control></nz-form-item>
+                </div>
+                <div nz-col="" [nzSm]="8" [nzXs]="24">
+                    <nz-form-item><nz-form-label>{{'identity.apiResource.uri'|i18n}}</nz-form-label><nz-form-control><input name="uri" nz-input="" [(ngModel)]="queryParam.uri" /></nz-form-control></nz-form-item>
+                </div>
+                <div class="mb-sm" nz-col="">
+                    <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
+                    <button #btnRefresh="" (click)="refresh(btnRefresh)" class="mx-sm" nz-button="" type="button"><i nz-icon="" nzType="sync"></i>{{'util.refresh'|i18n}}</button>
+                </div>
+            </div>
+        </form>
+        <nz-table #tb_api_resource="" #x_tb_api_resource="xTreeTableExtend" (nzPageIndexChange)="x_tb_api_resource.pageIndexChange($event)" (nzPageSizeChange)="x_tb_api_resource.pageSizeChange($event)" order="SortId" url="apiResource" x-tree-table-extend="" [(nzPageIndex)]="x_tb_api_resource.queryParam.page" [(nzPageSize)]="x_tb_api_resource.queryParam.pageSize" [(queryParam)]="queryParam" [autoLoad]="false" [checkedKeys]="checkedIds" [isExpandAll]="true" [nzData]="x_tb_api_resource.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb_api_resource.loading" [nzScroll]="{'y':'450px'}" [nzShowPagination]="false" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb_api_resource" [nzTotal]="x_tb_api_resource.total"><thead><tr><th><label (nzCheckedChange)="x_tb_api_resource.masterToggle()" nz-checkbox="" [nzChecked]="x_tb_api_resource.isMasterChecked()" [nzIndeterminate]="x_tb_api_resource.isMasterIndeterminate()">{{'identity.resource.name'|i18n}}</label></th><th>{{'identity.resource.uri'|i18n}}</th></tr></thead><tbody><ng-container *ngFor="let row of x_tb_api_resource.dataSource;index as index"><tr *ngIf="x_tb_api_resource.isShow(row)">
+            <td (nzExpandChange)="x_tb_api_resource.collapse(row,$event)" [nzExpand]="x_tb_api_resource.isExpand(row)" [nzIndentSize]="row.level*x_tb_api_resource.config.table.indentUnitWidth" [nzShowExpand]="!x_tb_api_resource.isLeaf(row)"><label (nzCheckedChange)="x_tb_api_resource.toggle(row)" nz-checkbox="" [nzChecked]="x_tb_api_resource.isChecked(row)" [nzIndeterminate]="x_tb_api_resource.isIndeterminate(row)">{{row.name}}</label></td>
+            <td>{{row.uri}}</td>
+        </tr></ng-container></tbody></nz-table><ng-template #total_tb_api_resource="" let-range="range" let-total="">{{ 'util.tableTotalTemplate'|i18n:{start:range[0],end:range[1],total:total} }}</ng-template>
+    </div>
+</div>

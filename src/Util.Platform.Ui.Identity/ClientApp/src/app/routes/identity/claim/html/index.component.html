@@ -1,0 +1,51 @@
+<page-header [title]="'identity.claim'|i18n"></page-header>
+<nz-card [nzBorderless]="true">
+    
+<form class="search__form" nz-form="">
+    <div nz-row="" [nzGutter]="{xs: 8, sm: 16, md: 24, lg: 32, xl: 32, xxl: 32}">
+        <div nz-col="" [nzSm]="4" [nzXs]="24">
+            <nz-form-item><nz-form-label>{{'identity.claim.name'|i18n}}</nz-form-label><nz-form-control><input name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSm]="4" [nzXs]="24">
+            <nz-form-item><nz-form-label>{{'identity.claim.remark'|i18n}}</nz-form-label><nz-form-control><input name="remark" nz-input="" [(ngModel)]="queryParam.remark" /></nz-form-control></nz-form-item>
+        </div>
+        <div class="mb-sm" nz-col="">
+            <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
+            <button #btnRefresh="" (click)="refresh(btnRefresh)" nz-button="" type="button"><i nz-icon="" nzType="sync"></i>{{'util.refresh'|i18n}}</button>
+        </div>
+    </div>
+</form>
+
+
+    <button (click)="add()" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
+    <button #btn_save="" (click)="save(btn_save)" nz-button="" nzType="primary"><i nz-icon="" nzType="save"></i>{{'util.save'|i18n}}</button>
+    <button (click)="delete()" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_268adb2849d64cda9a3cf4329e1f20fb" [nzShowIcon]="true"><ng-template #t_268adb2849d64cda9a3cf4329e1f20fb="">
+        <span [innerHTML]="'app.rowsSelected'|i18n:{length:getCheckedLength()}"></span>
+    </ng-template></nz-alert>
+    <nz-table #e_tb_claim="xEditTable" #tb_claim="" #x_tb_claim="xTableExtend" (nzPageIndexChange)="x_tb_claim.pageIndexChange($event)" (nzPageSizeChange)="x_tb_claim.pageSizeChange($event)" order="SortId" url="claim" x-edit-table="" x-table-extend="" [(nzPageIndex)]="x_tb_claim.queryParam.page" [(nzPageSize)]="x_tb_claim.queryParam.pageSize" [(queryParam)]="queryParam" [nzData]="x_tb_claim.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb_claim.loading" [nzPageSizeOptions]="x_tb_claim.pageSizeOptions" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb_claim" [nzTotal]="x_tb_claim.total"><thead><tr><th (nzCheckedChange)="x_tb_claim.masterToggle()" [nzChecked]="x_tb_claim.isMasterChecked()" [nzDisabled]="!x_tb_claim.dataSource.length" [nzIndeterminate]="x_tb_claim.isMasterIndeterminate()" [nzShowCheckbox]="true" [nzWidth]="x_tb_claim.config.table.checkboxWidth"></th><th [nzWidth]="x_tb_claim.config.table.lineNumberWidth">{{'util.lineNumber'|i18n}}</th><th nzWidth="30%">{{'identity.claim.name'|i18n}}</th><th>{{'identity.claim.enabled'|i18n}}</th><th>{{'identity.claim.sortId'|i18n}}</th><th nzWidth="30%">{{'identity.claim.remark'|i18n}}</th><th nzWidth="300px">{{'util.operation'|i18n}}</th></tr></thead><tbody><tr #tb_claim_row="xEditRow" (click)="e_tb_claim.clickEdit(row.id)" (dblclick)="e_tb_claim.dblClickEdit(row.id)" *ngFor="let row of x_tb_claim.dataSource;index as index" [x-edit-row]="row">
+        <td (click)="$event.stopPropagation()" (nzCheckedChange)="x_tb_claim.toggle(row)" [nzChecked]="x_tb_claim.isChecked(row)" [nzShowCheckbox]="true"></td><td>{{row.lineNumber}}</td><td><ng-container *ngIf="e_tb_claim.editId !== row.id;else e_tb_claim_name">{{row.name}}</ng-container><ng-template #e_tb_claim_name="">
+            <nz-form-item class="mb0"><nz-form-control [nzErrorTip]="vt_d779f50edf8a478faef3a64b2e941526"><input #c_bd841af0319c493797194c6015b7316c="" #v_12b0dc6fb794489eaf27825fc42f68eb="xValidationExtend" displayName="identity.claim.name" name="name" nz-input="" x-validation-extend="" [(ngModel)]="row.name" [editRow]="tb_claim_row" [maxlength]="200" [x-edit-control]="c_bd841af0319c493797194c6015b7316c" [x-required-extend]="true" /><ng-template #vt_d779f50edf8a478faef3a64b2e941526="">{{v_12b0dc6fb794489eaf27825fc42f68eb.getErrorMessage()}}</ng-template></nz-form-control></nz-form-item>
+        </ng-template></td>
+        <td>
+            <ng-container *ngIf="e_tb_claim.editId !== row.id;else e_tb_claim_enabled">
+                <nz-tag *ngIf="row.enabled" nzColor="geekblue">{{'util.enabled'|i18n}}</nz-tag>
+                <nz-tag *ngIf="!row.enabled" nzColor="red">{{'util.notEnabled'|i18n}}</nz-tag>
+            </ng-container>
+            <ng-template #e_tb_claim_enabled="">
+                <nz-form-item class="mb0"><nz-form-control><nz-select #c_fa9495d7de3e4e87b4e5037486751c13="" #x_7d08536ccaf74d959af058565d81592a="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="row.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]" [editRow]="tb_claim_row" [x-edit-control]="c_fa9495d7de3e4e87b4e5037486751c13"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_7d08536ccaf74d959af058565d81592a.isGroup"><nz-option *ngFor="let item of x_7d08536ccaf74d959af058565d81592a.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_7d08536ccaf74d959af058565d81592a.isGroup"><nz-option-group *ngFor="let group of x_7d08536ccaf74d959af058565d81592a.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+            </ng-template>
+        </td>
+        <td><ng-container *ngIf="e_tb_claim.editId !== row.id;else e_tb_claim_sortId">{{row.sortId}}</ng-container><ng-template #e_tb_claim_sortId="">
+            <nz-form-item class="mb0"><nz-form-control [nzErrorTip]="vt_9d546e9e6f924adcb6318b902fae815e"><nz-input-number #c_0e822f744bd94d3187bc40f60e437c87="" #v_2a7f7e7bfe8649f7971aad65fb1d6f8e="xValidationExtend" displayName="identity.claim.sortId" name="sortId" x-validation-extend="" [(ngModel)]="row.sortId" [editRow]="tb_claim_row" [required]="true" [x-edit-control]="c_0e822f744bd94d3187bc40f60e437c87"></nz-input-number><ng-template #vt_9d546e9e6f924adcb6318b902fae815e="">{{v_2a7f7e7bfe8649f7971aad65fb1d6f8e.getErrorMessage()}}</ng-template></nz-form-control></nz-form-item>
+        </ng-template></td>
+        <td><ng-container *ngIf="e_tb_claim.editId !== row.id;else e_tb_claim_remark">{{row.remark}}</ng-container><ng-template #e_tb_claim_remark="">
+            <nz-form-item class="mb0"><nz-form-control [nzErrorTip]="vt_039a19fbefc54fc7b79976af995a849a"><input #c_d2e1af644e55407ab995ba22de5463ac="" #v_fbd4e797c99c4f73882edcdd20359eb2="xValidationExtend" displayName="identity.claim.remark" name="remark" nz-input="" x-validation-extend="" [(ngModel)]="row.remark" [editRow]="tb_claim_row" [maxlength]="500" [x-edit-control]="c_d2e1af644e55407ab995ba22de5463ac" /><ng-template #vt_039a19fbefc54fc7b79976af995a849a="">{{v_fbd4e797c99c4f73882edcdd20359eb2.getErrorMessage()}}</ng-template></nz-form-control></nz-form-item>
+        </ng-template></td>
+        <td>
+            <a (click)="edit(row.id)">{{'util.update'|i18n}}</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a (click)="delete(row.id)" class="ant-btn-dangerous">{{'util.delete'|i18n}}</a>
+        </td>
+    </tr></tbody></nz-table><ng-template #total_tb_claim="" let-range="range" let-total="">{{ 'util.tableTotalTemplate'|i18n:{start:range[0],end:range[1],total:total} }}</ng-template>
+</nz-card>
