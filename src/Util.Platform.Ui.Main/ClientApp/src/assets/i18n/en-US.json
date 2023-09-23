@@ -46,7 +46,14 @@
     "emailMessage": "Please enter a valid email",
     "phoneMessage": "Please enter a valid mobile number",
     "idCardMessage": "Please enter a valid ID card",
-    "unauthorizedMessage": "You are not authorized to perform this operation"
+    "unauthorizedMessage": "You are not authorized to perform this operation",
+    "creationTime": "Creation Time",
+    "lastModificationTime": "Last Modification Time",
+    "beginCreationTime": "Begin Creation Time",
+    "endCreationTime": "End Creation Time",
+    "beginLastModificationTime": "Begin Last Modification Time",
+    "endLastModificationTime": "End Last Modification Time",
+    "pinYin": "PinYin"
   },
   "app": {
     "totalTip": "total: <strong class='text-primary mx-xs'>{{total}}</strong>",
@@ -56,9 +63,10 @@
     "selectApplication": "Please select an application",
     "baseInfo": "Base Info"
   },
-  "permissions": {
+  "identity": {
     "application": {
       "": "Application",
+      "clientInfo": "Client Info",
       "create": "Create Application",
       "update": "Edit Application",
       "detail": "Application Detail",
@@ -71,23 +79,20 @@
       "redirectUri": "Redirect Uri",
       "redirectUriExplain": "Multiple redirect addresses can be separated by commas",
       "postLogoutRedirectUri": "Post Logout Redirect Uri",
+      "allowedGrantType": "Allowed Grant Type",
       "allowedCorsOrigins": "Allowed Cors Origins",
       "accessTokenLifetime": "Access Token Lifetime",
       "accessTokenLifetimeExplain": "Access token lifetime unit: seconds",
       "allowedScopes": "Allowed Scopes",
       "allowOfflineAccess": "Allow Offline Access",
-      "remark": "Remark",
-      "creationTime": "CreationTime",
-      "lastModificationTime": "LastModificationTime"
+      "remark": "Remark"
     },
     "claim": {
       "": "Claim",
       "name": "Name",
       "enabled": "Enabled",
       "sortId": "SortId",
-      "remark": "Remark",
-      "creationTime": "CreationTime",
-      "lastModificationTime": "LastModificationTime"
+      "remark": "Remark"
     },
     "resource": {
       "": "Resource",
@@ -110,8 +115,6 @@
       "resourceSettings": "Resource Settings",
       "enabled": "Enabled",
       "sortId": "SortId",
-      "creationTime": "CreationTime",
-      "lastModificationTime": "LastModificationTime",
       "createSubModule": "Create SubModule"
     },
     "operation": {
@@ -128,9 +131,7 @@
       "isBindApi": "Is Bind Api",
       "apiResource": "Api Resource",
       "enabled": "Enabled",
-      "sortId": "SortId",
-      "creationTime": "CreationTime",
-      "lastModificationTime": "LastModificationTime"
+      "sortId": "SortId"
     },
     "commonOperation": {
       "": "CommonOperation",
@@ -141,9 +142,7 @@
       "name": "Name",
       "enabled": "Enabled",
       "sortId": "SortId",
-      "remark": "Remark",
-      "creationTime": "CreationTime",
-      "lastModificationTime": "LastModificationTime"
+      "remark": "Remark"
     },
     "identityResource": {
       "": "Identity Resource",
@@ -155,9 +154,7 @@
       "remark": "Remark",
       "claims": "User Claims",
       "enabled": "Enabled",
-      "sortId": "SortId",
-      "creationTime": "CreationTime",
-      "lastModificationTime": "LastModificationTime"
+      "sortId": "SortId"
     },
     "apiResource": {
       "": "Api Resource",
@@ -175,8 +172,6 @@
       "remark": "Remark",
       "enabled": "Enabled",
       "sortId": "SortId",
-      "creationTime": "CreationTime",
-      "lastModificationTime": "LastModificationTime",
       "createSubApi": "Create SubApi"
     },
     "role": {
@@ -191,8 +186,6 @@
       "sortId": "SortId",
       "enabled": "Enabled",
       "remark": "Remark",
-      "creationTime": "CreationTime",
-      "lastModificationTime": "LastModificationTime",
       "roleUsers": "Role Users",
       "userSettings": "User",
       "permissionSettings": "Permission",
@@ -237,10 +230,7 @@
       "beginCurrentLoginTime": "BeginCurrentLoginTime",
       "endCurrentLoginTime": "EndCurrentLoginTime",
       "currentLoginIp": "CurrentLoginIp",
-      "remark": "Remark",
-      "creationTime": "CreationTime",
-      "beginCreationTime": "BeginCreationTime",
-      "endCreationTime": "EndCreationTime"
+      "remark": "Remark"
     },
     "permission": {
       "": "Permission",
@@ -253,6 +243,10 @@
       "columnsPermission": "Columns Permission",
       "rowsPermission": "Rows Permission",
       "apiPermission": "API Permission"
+    },
+    "operationPermission": {
+      "": "Operation Permission",
+      "name": "ModuleName"
     }
   }
 }

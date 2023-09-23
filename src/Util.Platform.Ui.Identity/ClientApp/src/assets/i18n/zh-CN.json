@@ -46,7 +46,14 @@
     "emailMessage": "请输入有效的电子邮件",
     "phoneMessage": "请输入有效的手机号",
     "idCardMessage": "请输入有效的身份证号",
-    "unauthorizedMessage": "您无权进行该操作"
+    "unauthorizedMessage": "您无权进行该操作",
+    "creationTime": "创建时间",
+    "lastModificationTime": "最后修改时间",
+    "beginCreationTime": "创建起始时间",
+    "endCreationTime": "创建结束时间",
+    "beginLastModificationTime": "最后修改起始时间",
+    "endLastModificationTime": "最后修改结束时间",
+    "pinYin": "拼音简码"
   },
   "app": {    
     "totalTip": "共<strong class='text-primary mx-xs'>{{total}}</strong>项",
@@ -78,11 +85,7 @@
       "accessTokenLifetimeExplain": "访问令牌生存期单位: 秒",
       "allowedScopes": "允许的权限范围",
       "allowOfflineAccess": "允许获取刷新令牌",
-      "remark": "备注",
-      "creationTime": "创建时间",
-      "beginCreationTime": "起始创建时间",
-      "endCreationTime": "结束创建时间",
-      "lastModificationTime": "最后修改时间"
+      "remark": "备注"      
     },
     "claim": {
       "": "声明",
@@ -90,9 +93,7 @@
       "name": "声明名称",
       "enabled": "启用",
       "sortId": "排序号",
-      "remark": "备注",
-      "creationTime": "创建时间",
-      "lastModificationTime": "最后修改时间"
+      "remark": "备注"
     },
     "resource": {
       "": "资源",
@@ -115,8 +116,6 @@
       "resourceSettings": "资源设置",
       "enabled": "启用",
       "sortId": "排序号",
-      "creationTime": "创建时间",
-      "lastModificationTime": "最后修改时间",
       "createSubModule": "创建下级模块"
     },
     "operation": {
@@ -133,9 +132,7 @@
       "isBindApi": "是否绑定Api资源",
       "apiResource": "关联Api资源",
       "enabled": "启用",
-      "sortId": "排序号",
-      "creationTime": "创建时间",
-      "lastModificationTime": "最后修改时间"
+      "sortId": "排序号"
     },
     "commonOperation": {
       "": "常用操作资源",
@@ -146,9 +143,7 @@
       "name": "操作名称",
       "enabled": "启用",
       "sortId": "排序号",
-      "remark": "备注",
-      "creationTime": "创建时间",
-      "lastModificationTime": "最后修改时间"
+      "remark": "备注"
     },
     "columnsResource": {
       "": "列集资源"
@@ -166,9 +161,7 @@
       "remark": "备注",
       "claims": "用户声明",
       "enabled": "启用",
-      "sortId": "排序号",
-      "creationTime": "创建时间",
-      "lastModificationTime": "最后修改时间"
+      "sortId": "排序号"
     },
     "apiResource": {
       "": "Api资源",
@@ -186,8 +179,6 @@
       "remark": "备注",
       "enabled": "启用",
       "sortId": "排序号",
-      "creationTime": "创建时间",
-      "lastModificationTime": "最后修改时间",
       "createSubApi": "创建下级Api"
     },
     "role": {
@@ -203,8 +194,6 @@
       "sortId": "排序号",
       "enabled": "启用",
       "remark": "备注",
-      "creationTime": "创建时间",
-      "lastModificationTime": "最后修改时间",
       "roleUsers": "角色用户设置",
       "userSettings": "用户设置",
       "permissionSettings": "权限设置",
@@ -248,10 +237,7 @@
       "beginCurrentLoginTime": "本次登录起始时间",
       "endCurrentLoginTime": "本次登录结束时间",
       "currentLoginIp": "本次登录Ip",
-      "remark": "备注",
-      "creationTime": "创建时间",
-      "beginCreationTime": "起始创建时间",
-      "endCreationTime": "结束创建时间"
+      "remark": "备注"
     },
     "permission": {
       "": "角色权限设置",
