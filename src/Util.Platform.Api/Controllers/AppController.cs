@@ -23,6 +23,7 @@ public class AppController : WebApiControllerBase {
     /// 获取应用数据
     /// </summary>
     [HttpGet( "AppData" )]
+    [Acl( Ignore = true )]
     public async Task<IActionResult> GetAppData() {
         var result = await AppService.GetAppDataByCacheAsync( Session.GetApplicationId(), Session.GetUserId() );
         return Success( result );

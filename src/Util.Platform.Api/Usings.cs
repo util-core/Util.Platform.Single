@@ -26,6 +26,7 @@ global using Util.Tenants;
 global using Util.Aop;
 global using Util.Dates;
 global using Util.Images;
+global using Util.Security;
 global using Util.Security.Authorization;
 global using Util.Infrastructure;
 global using Util.Localization;
