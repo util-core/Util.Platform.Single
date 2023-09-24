@@ -81,7 +81,7 @@ public class AppService : ServiceBase, IAppService {
         var result = new AppData();
         if ( applicationId.IsEmpty() || userId.IsEmpty() )
             return result;
-        var cacheKey = new GetAppDataCacheKey( userId, applicationId );
+        var cacheKey = new GetAppDataCacheKey( userId.ToString(), applicationId.ToString() );
         return await CacheService.GetAsync( cacheKey, async () => await GetAppDataAsync( applicationId, userId, cancellationToken ), cancellationToken: cancellationToken );
     }
 

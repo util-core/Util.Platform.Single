@@ -1,4 +1,5 @@
-﻿using Util.Helpers;
+﻿using EasyCaching.Core.Configurations;
+using Util.Helpers;
 using Util.Platform.Domain.Models;
 
 namespace Util.Platform.Identity;
@@ -31,7 +32,10 @@ public static class ProgramExtensions {
                 options.Cultures = new[] { "zh-CN", "en-US" };
             } )
             .AddSerilog()
-            .AddMemoryCache()
+            .AddRedisCache( options => {
+                options.DBConfig.Endpoints.Add(
+                    new ServerEndPoint( builder.Configuration.GetConnectionString( "Redis" ), 6379 ) );
+            } )
             .AddUtil();
         return builder;
     }

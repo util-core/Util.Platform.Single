@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder( args );
 builder.AddUtil();
 
 //配置控制器
-builder.Services.AddControllers();
+builder.Services.AddControllers( options => options.Filters.Add<AclFilter>() );
 
 //配置工作单元
 builder.AddIdentityUnitOfWork();

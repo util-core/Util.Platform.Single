@@ -10,9 +10,9 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-        <PackageReference Include="Util.Application.WebApi" Version="7.1.31" />
-        <PackageReference Include="Util.Platform.Share.Tools" Version="0.1.5" />
-        <PackageReference Include="Util.Ui.NgZorro" Version="7.1.31" />
+        <PackageReference Include="Util.Application.WebApi" Version="7.1.33" />
+        <PackageReference Include="Util.Platform.Share.Tools" Version="0.2.2" />
+        <PackageReference Include="Util.Ui.NgZorro" Version="7.1.33" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
     <ItemGroup>

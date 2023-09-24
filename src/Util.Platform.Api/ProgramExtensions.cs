@@ -19,7 +19,10 @@ public static class ProgramExtensions {
             .AddJsonLocalization( options => {
                 options.Cultures = new[] { "zh-CN", "en-US" };
             } )
-            .AddMemoryCache()
+            .AddRedisCache( options => {
+                options.DBConfig.Endpoints.Add(
+                    new ServerEndPoint( builder.Configuration.GetConnectionString( "Redis" ), 6379 ) );
+            } )
             .AddSerilog()
             .AddUtil();
         return builder;

@@ -35,7 +35,7 @@ global using Util.Platform.Share.Identity.Applications.Services.Implements;
 global using Util.Platform.Share.Identity.Applications.Options;
 global using Util.Platform.Share.Identity.Dtos;
 global using Util.Platform.Share.Apps.Dtos;
-global using Util.Platform.Share.Apps.CacheKeys;
+global using Util.Platform.Share.CacheKeys;
 global using Util.Platform.Share.Apps.Helpers;
 global using Util.Platform.Domain.Models;
 global using Util.Platform.Domain.Repositories;
