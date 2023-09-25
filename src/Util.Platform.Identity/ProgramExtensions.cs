@@ -33,8 +33,7 @@ public static class ProgramExtensions {
             } )
             .AddSerilog()
             .AddRedisCache( options => {
-                options.DBConfig.Endpoints.Add(
-                    new ServerEndPoint( builder.Configuration.GetConnectionString( "Redis" ), 6379 ) );
+                options.DBConfig.Configuration = builder.Configuration.GetConnectionString( "Redis" );
             } )
             .AddUtil();
         return builder;
