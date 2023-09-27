@@ -15,9 +15,9 @@
         <util-select for="Claims" url="claim/items" mode="Tags"></util-select>
         <util-input-number for="SortId" />
         <util-textarea for="Remark"></util-textarea>
-        <util-row justify="End">
+        <util-modal-footer>
             <util-button class="mr-sm" on-click="close()" text-cancel="true"></util-button>
             <util-button id="btnSubmit" is-submit="true" validate-form="true" type="Primary" on-click="submit(btnSubmit)" text-ok="true"></util-button>
-        </util-row>
+        </util-modal-footer>
     </util-form>
 </util-card>

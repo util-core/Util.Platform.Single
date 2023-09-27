@@ -34,6 +34,7 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+yarn.lock
 
 # System files
 .DS_Store

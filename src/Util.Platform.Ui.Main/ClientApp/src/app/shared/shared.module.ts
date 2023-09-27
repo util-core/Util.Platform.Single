@@ -8,8 +8,9 @@ import { SHARED_DELON_MODULES } from './shared-delon.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 import { UtilModule } from 'util-angular';
 import { NgxTinymceModule } from 'ngx-tinymce';
+import { IconSelectModule } from "./components/icon-select/icon-select.module";
 
-const THIRDMODULES: Array<Type<void>> = [UtilModule, NgxTinymceModule];
+const THIRDMODULES: Array<Type<void>> = [UtilModule, NgxTinymceModule, IconSelectModule];
 const COMPONENTS: Array<Type<void>> = [];
 const DIRECTIVES: Array<Type<void>> = [];
 

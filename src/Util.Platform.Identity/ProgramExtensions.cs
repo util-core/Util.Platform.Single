@@ -1,5 +1,4 @@
-﻿using EasyCaching.Core.Configurations;
-using Util.Helpers;
+﻿using Util.Helpers;
 using Util.Platform.Domain.Models;
 
 namespace Util.Platform.Identity;

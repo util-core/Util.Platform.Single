@@ -6,14 +6,13 @@
     <util-tab lazy="true" title="identity.permission.operationPermission" ng-if="!application.isApi">
         <operation-permission [role]="role" [application]="application" [isDeny]="isDeny"></operation-permission>
     </util-tab>
-    @*列集权限*@
+    @*列集权限
     <util-tab lazy="true" title="identity.permission.columnsPermission" ng-if="!application.isApi">
-        
     </util-tab>
-    @*行集权限*@
+    行集权限
     <util-tab lazy="true" title="identity.permission.rowsPermission" ng-if="!application.isApi">
-        
     </util-tab>
+    *@
     @*Api权限*@
     <util-tab lazy="true" title="identity.permission.apiPermission" ng-if="application.isApi">
         <api-permission [role]="role" [application]="application" [isDeny]="isDeny"></api-permission>

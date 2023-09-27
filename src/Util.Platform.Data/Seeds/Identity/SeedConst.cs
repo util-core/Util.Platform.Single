@@ -13,14 +13,6 @@ public static class SeedConst {
     /// </summary>
     public static Guid ApiApplicationId = "0F5FB254-47A1-4E2F-B79A-C7AD1D226AB9".ToGuid();
     /// <summary>
-    /// Api网关Swagger UI应用程序标识
-    /// </summary>
-    public static Guid ApiGatewaySwaggerId = "a429bc6f-4f95-4bdc-ae79-024aaf41196c".ToGuid();
-    /// <summary>
-    /// Identity Api Swagger UI应用程序标识
-    /// </summary>
-    public static Guid IdentityApiSwaggerId = "9f6bc688-2634-4098-b622-4bde9a3ab5c4".ToGuid();
-    /// <summary>
     /// 默认用户标识
     /// </summary>
     public static Guid UserId = "55ba53a6-e482-4d9b-8d91-3fba6610b896".ToGuid();

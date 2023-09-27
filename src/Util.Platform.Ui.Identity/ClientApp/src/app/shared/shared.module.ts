@@ -10,13 +10,9 @@ import {UtilModule} from 'util-angular';
 import {NgxTinymceModule} from 'ngx-tinymce';
 import {IconSelectModule} from "./components/icon-select/icon-select.module";
 
-const THIRDMODULES: Array<Type<void>> = [UtilModule, NgxTinymceModule];
+const THIRDMODULES: Array<Type<void>> = [UtilModule, NgxTinymceModule, IconSelectModule];
 const COMPONENTS: Array<Type<void>> = [];
 const DIRECTIVES: Array<Type<void>> = [];
-
-const MODULES = [
-    IconSelectModule
-];
 
 @NgModule({
     imports: [
@@ -28,7 +24,6 @@ const MODULES = [
         DelonACLModule,
         ...SHARED_DELON_MODULES,
         ...SHARED_ZORRO_MODULES,
-        ...MODULES,
         ...THIRDMODULES
     ],
     declarations: [
@@ -44,7 +39,6 @@ const MODULES = [
         DelonACLModule,
         ...SHARED_DELON_MODULES,
         ...SHARED_ZORRO_MODULES,
-        ...MODULES,
         ...THIRDMODULES,
         ...COMPONENTS,
         ...DIRECTIVES

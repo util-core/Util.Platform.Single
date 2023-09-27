@@ -16,8 +16,8 @@ public static class ApplicationSeed {
                 IsClient = true,
                 AccessTokenLifetime = 3600,
                 AllowOfflineAccess = true,
-                AllowedCorsOrigins = "https://localhost:16003",
-                RedirectUri = "https://localhost:16003/",
+                AllowedCorsOrigins = "https://localhost:16003,https://localhost:12086",
+                RedirectUri = "https://localhost:16003/,https://localhost:12086/swagger/oauth2-redirect.html",
                 CreationTime = DateTime.UtcNow,
                 LastModificationTime = DateTime.UtcNow,
                 CreatorId = SeedConst.UserId,
@@ -34,21 +34,6 @@ public static class ApplicationSeed {
                 CreatorId = SeedConst.UserId,
                 LastModifierId = SeedConst.UserId,
                 Version = "9ca734db-c97c-4454-acdb-80e8ddf0ed41"u8.ToArray()
-            },
-            new Application( SeedConst.IdentityApiSwaggerId ) {
-                Code = "api-swagger",
-                Name = "Swagger UI - Util Platform Api",
-                Enabled = true,
-                IsClient = true,
-                AccessTokenLifetime = 3600,
-                AllowOfflineAccess = true,
-                AllowedCorsOrigins = "https://localhost:12086",
-                RedirectUri = "https://localhost:12086/swagger/oauth2-redirect.html",
-                CreationTime = DateTime.UtcNow,
-                LastModificationTime = DateTime.UtcNow,
-                CreatorId = SeedConst.UserId,
-                LastModifierId = SeedConst.UserId,
-                Version = "a13ca9b4-99eb-4f0d-a230-bcd1eada2cdf"u8.ToArray()
             }
         };
     }
