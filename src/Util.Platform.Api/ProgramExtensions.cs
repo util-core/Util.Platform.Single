@@ -20,8 +20,7 @@ public static class ProgramExtensions {
                 options.Cultures = new[] { "zh-CN", "en-US" };
             } )
             .AddRedisCache( options => {
-                options.DBConfig.Endpoints.Add(
-                    new ServerEndPoint( builder.Configuration.GetConnectionString( "Redis" ), 6379 ) );
+                options.DBConfig.Configuration = builder.Configuration.GetConnectionString( "Redis" );
             } )
             .AddSerilog()
             .AddUtil();

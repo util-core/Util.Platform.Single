@@ -25,8 +25,6 @@ export class ModuleEditComponent extends TreeEditComponentBase<ModuleViewModel> 
      */
     @Input() applicationName;
 
-    selectIconVisible = false;
-
     /**
      * 初始化模块编辑页
      * @param injector 注入器
@@ -79,6 +77,5 @@ export class ModuleEditComponent extends TreeEditComponentBase<ModuleViewModel> 
      */
     selectedIcon(e: string): void {
         this.model.icon = e;
-        this.selectIconVisible = true;
     }
 }

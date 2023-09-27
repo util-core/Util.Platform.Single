@@ -18,9 +18,15 @@ interface IconItem {
 })
 export class IconSelectComponent implements OnInit, AfterViewInit {
   @Input() visible = false;
+  // @Input() rows = 20;
+  @Input() columns = 5;
+  @Input() pageSize = 100;
+  cardWidth = 350;
+  cardHeight = 270;
+  iconSpan = 20;
   // 做图标搜索防抖
   private searchText$ = new Subject<string>();
-  selectedIcon = '';
+  @Input() selectedIcon = '';
   @Output() readonly selectIcon = new EventEmitter<string>();
   // 分页信息
   pageObj = {
@@ -32,7 +38,7 @@ export class IconSelectComponent implements OnInit, AfterViewInit {
   sourceIconsArray: IconItem[] = []; // 所有icon的数据源
   iconsStrShowArray: IconItem[] = []; // 每页中展示的icon
   gridStyle = {
-    width: '20%'
+    width: this.iconSpan +'%'
   };
   destroyRef = inject(DestroyRef);
 
@@ -54,6 +60,7 @@ export class IconSelectComponent implements OnInit, AfterViewInit {
     this.iconsStrAllArray.forEach(icon => (icon.isChecked = false));
 
     item.isChecked = true;
+    this.visible = false;
     this.selectIcon.emit(item.icon);
   }
 
@@ -70,6 +77,10 @@ export class IconSelectComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.cardWidth = 66.8 * this.columns;
+    this.cardHeight = (71.5 * (this.pageSize / this.columns)) * 0.4;
+    this.iconSpan = (100 / this.columns);
+    this.pageObj.pageSize = this.pageSize;
     this.getData();
   }
 

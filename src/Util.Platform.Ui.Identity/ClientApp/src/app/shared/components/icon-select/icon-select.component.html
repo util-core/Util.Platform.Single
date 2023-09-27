@@ -14,10 +14,10 @@
   <input nz-input [placeholder]="'搜索图标的type'" (input)="searchIcon($event)" />
 </ng-template>
 <ng-template #contentTemplate>
-  <nz-card style="width: 350px; max-height: 270px; overflow: auto" [nzBodyStyle]="{ padding: '0' }" [nzBorderless]="true">
+  <nz-card style="width:{{cardWidth}}px; height: {{cardHeight}}px; overflow: auto" [nzBodyStyle]="{ padding: '0' }" [nzBorderless]="true">
     <nz-card *ngIf="iconsStrShowArray && iconsStrShowArray.length > 0; else noResult">
       <ng-container *ngFor="let item of iconsStrShowArray">
-        <div class="center" nz-card-grid [ngStyle]="gridStyle" (click)="selIconFn(item)">
+        <div class="center" nz-card-grid [ngStyle]="{ width: this.iconSpan+'%'}" (click)="selIconFn(item)">
           <i nz-icon nzTheme="outline" style="font-size: 20px" [ngStyle]="{ color: item.isChecked ? '#409eff' : '' }" title="{{item.icon}}" [nzType]="item.icon"></i>
         </div>
       </ng-container>

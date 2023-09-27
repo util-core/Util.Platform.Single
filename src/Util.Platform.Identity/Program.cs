@@ -1,90 +1,90 @@
 using Util.Platform.Identity;
 
-//´´½¨WebÓ¦ÓÃ³ÌĞòÉú³ÉÆ÷
+//åˆ›å»ºWebåº”ç”¨ç¨‹åºç”Ÿæˆå™¨
 var builder = WebApplication.CreateBuilder( args );
 
-//ÅäÖÃ¿ØÖÆÆ÷
+//é…ç½®æ§åˆ¶å™¨
 builder.AddControllers();
 
-//Util»ù´¡¹¦ÄÜÅäÖÃ
+//UtilåŸºç¡€åŠŸèƒ½é…ç½®
 builder.AddUtil();
 
-//ÅäÖÃ¹¤×÷µ¥Ôª
+//é…ç½®å·¥ä½œå•å…ƒ
 builder.AddIdentityUnitOfWork();
 
-//ÅäÖÃÉí·İ±êÊ¶·şÎñ
+//é…ç½®èº«ä»½æ ‡è¯†æœåŠ¡
 builder.AddIdentity();
 
-//ÅäÖÃÉí·İÑéÖ¤·şÎñÆ÷
+//é…ç½®èº«ä»½éªŒè¯æœåŠ¡å™¨
 builder.AddIdentityServer();
 
-//ÅäÖÃÈÏÖ¤
+//é…ç½®è®¤è¯
 builder.Services.AddAuthentication();
 
-//ÅäÖÃCors
+//é…ç½®Cors
 builder.AddCors();
 
-//ÅäÖÃ×ª·¢Í·²¿
+//é…ç½®è½¬å‘å¤´éƒ¨
 builder.AddForwardedHeaders();
 
-//ÅäÖÃHttpÈÕÖ¾
+//é…ç½®Httpæ—¥å¿—
 builder.AddHttpLogging();
 
-//´´½¨WebÓ¦ÓÃ³ÌĞò
+//åˆ›å»ºWebåº”ç”¨ç¨‹åº
 var app = builder.Build();
 
-//===== ÅäÖÃÇëÇó¹ÜµÀ =====//
+//===== é…ç½®è¯·æ±‚ç®¡é“ =====//
 
-//ÅäÖÃHttpÈÕÖ¾¼ÇÂ¼
+//é…ç½®Httpæ—¥å¿—è®°å½•
 app.UseHttpLogging();
 
-//ÅäÖÃÒì³£Ò³
+//é…ç½®å¼‚å¸¸é¡µ
 app.UseCustomExceptionPage();
 
-//ÅäÖÃ»ùÂ·¾¶
+//é…ç½®åŸºè·¯å¾„
 app.UsePathBase();
 
-//ÅäÖÃ×ª·¢Í·²¿
+//é…ç½®è½¬å‘å¤´éƒ¨
 app.UseForwardedHeaders();
 
-//ÅäÖÃCors
+//é…ç½®Cors
 app.UseCors( "cors" );
 
-//ÅäÖÃ¾²Ì¬ÎÄ¼ş
+//é…ç½®é™æ€æ–‡ä»¶
 app.UseStaticFiles();
 
-//ÅäÖÃ±¾µØ»¯
+//é…ç½®æœ¬åœ°åŒ–
 app.UseRequestLocalization();
 
-//ÅäÖÃCookie²ßÂÔ
+//é…ç½®Cookieç­–ç•¥
 app.UseCookiePolicy();
 
-//ÅäÖÃÂ·ÓÉ
+//é…ç½®è·¯ç”±
 app.UseRouting();
 
-//ÅäÖÃÉí·İ·şÎñÆ÷
+//é…ç½®èº«ä»½æœåŠ¡å™¨
 app.UseCustomIdentityServer();
 
-//ÅäÖÃÈÏÖ¤
+//é…ç½®è®¤è¯
 app.UseAuthentication();
 
-//ÅäÖÃ×â»§
+//é…ç½®ç§Ÿæˆ·
 app.UseTenant();
 
-//ÅäÖÃÊÚÈ¨
+//é…ç½®æˆæƒ
 app.UseAuthorization();
 
-//ÅäÖÃ¿ØÖÆÆ÷
+//é…ç½®æ§åˆ¶å™¨
 app.MapDefaultControllerRoute();
 
 try {
-    //Æô¶¯Ó¦ÓÃ
-    app.Logger.LogInformation( "×¼±¸Æô¶¯Ó¦ÓÃ ..." );
+    //å¯åŠ¨åº”ç”¨
+    app.Logger.LogInformation( "å‡†å¤‡å¯åŠ¨åº”ç”¨ ..." );
     await app.RunAsync();
     return 0;
 }
 catch ( Exception ex ) {
-    app.Logger.LogCritical( ex, "Ó¦ÓÃÆô¶¯Ê§°Ü ..." );
+    app.Logger.LogCritical( ex, "åº”ç”¨å¯åŠ¨å¤±è´¥ ..." );
     return 1;
 }
 finally {

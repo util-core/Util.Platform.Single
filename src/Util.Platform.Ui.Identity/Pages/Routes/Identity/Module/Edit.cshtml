@@ -13,7 +13,7 @@
         <util-input for="Uri"/>
         <util-input for="Icon" bind-add-on-after="selectIcon"/>
         <util-template id="selectIcon">
-            <app-icon-select [visible]="selectIconVisible" (selectIcon)="selectedIcon($event)"></app-icon-select>
+            <app-icon-select columns="8" pageSize="100" [selectedIcon]="model.icon" [visible]="selectIconVisible" (selectIcon)="selectedIcon($event)"></app-icon-select>
         </util-template>
         <util-switch for="Expanded"/>
         <util-switch for="Enabled"/>
