@@ -35,7 +35,6 @@ public class SignInEventHandler : EventHandlerBase<SignInEvent> {
         if ( @event.State != SignInState.Succeeded )
             return;
         await RemoveUserCache( userId, cancellationToken );
-        await SetAclCacheAsync( userId, cancellationToken );
     }
 
     /// <summary>
@@ -44,12 +43,5 @@ public class SignInEventHandler : EventHandlerBase<SignInEvent> {
     private async Task RemoveUserCache( string userId, CancellationToken cancellationToken ) {
         var userPrefix = string.Format( CacheKeyConst.UserPrefix, userId );
         await CacheService.RemoveByPrefixAsync( userPrefix, cancellationToken );
-    }
-
-    /// <summary>
-    /// 设置用户访问控制列表缓存
-    /// </summary>
-    private async Task SetAclCacheAsync( string userId, CancellationToken cancellationToken ) {
-        await SystemService.SetAclCacheAsync( userId.ToGuid(), cancellationToken );
     }
 }

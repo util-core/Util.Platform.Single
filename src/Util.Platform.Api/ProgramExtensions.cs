@@ -1,4 +1,5 @@
 ﻿using Util.Helpers;
+using Util.Platform.Api.Authorization;
 
 namespace Util.Platform.Api;
 
@@ -19,9 +20,7 @@ public static class ProgramExtensions {
             .AddJsonLocalization( options => {
                 options.Cultures = new[] { "zh-CN", "en-US" };
             } )
-            .AddRedisCache( options => {
-                options.DBConfig.Configuration = builder.Configuration.GetConnectionString( "Redis" );
-            } )
+            .AddMemoryCache()
             .AddSerilog()
             .AddUtil();
         return builder;
@@ -231,6 +230,14 @@ public static class ProgramExtensions {
             options.OAuthConfigObject.ClientSecret = "secret";
         } );
         app.MapGet( "/", () => Results.LocalRedirect( "~/swagger" ) );
+    }
+
+    /// <summary>
+    /// 注册访问控制列表加载中间件
+    /// </summary>
+    /// <param name="builder">应用程序生成器</param>
+    public static IApplicationBuilder UseLoadAcl( this IApplicationBuilder builder ) {
+        return builder.UseMiddleware<LoadAclMiddleware>();
     }
 
     /// <summary>

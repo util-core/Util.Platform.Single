@@ -31,9 +31,7 @@ public static class ProgramExtensions {
                 options.Cultures = new[] { "zh-CN", "en-US" };
             } )
             .AddSerilog()
-            .AddRedisCache( options => {
-                options.DBConfig.Configuration = builder.Configuration.GetConnectionString( "Redis" );
-            } )
+            .AddMemoryCache()
             .AddUtil();
         return builder;
     }

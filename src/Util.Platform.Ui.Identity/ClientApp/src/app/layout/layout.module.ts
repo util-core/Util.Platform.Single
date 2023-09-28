@@ -21,8 +21,6 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { ReuseTabModule } from '@delon/abc/reuse-tab';
 
 import { LayoutBasicComponent } from './basic/basic.component';
-import { HeaderClearStorageComponent } from './basic/widgets/clear-storage.component';
-import { HeaderFullScreenComponent } from './basic/widgets/fullscreen.component';
 import { HeaderI18nComponent } from './basic/widgets/i18n.component';
 import { HeaderSearchComponent } from './basic/widgets/search.component';
 import { HeaderUserComponent } from './basic/widgets/user.component';
@@ -32,9 +30,7 @@ const COMPONENTS = [LayoutBasicComponent, LayoutBlankComponent];
 
 const HEADERCOMPONENTS = [
     HeaderSearchComponent,
-    HeaderFullScreenComponent,
     HeaderI18nComponent,
-    HeaderClearStorageComponent,
     HeaderUserComponent
 ];
 

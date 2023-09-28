@@ -3,6 +3,7 @@ namespace Util.Platform.Api.Controllers.Identity;
 /// <summary>
 /// 应用程序控制器
 /// </summary>
+[Acl( "application.view" )]
 public class ApplicationController : CrudControllerBase<ApplicationDto, ApplicationQuery> {
     /// <summary>
     /// 初始化应用程序控制器
@@ -76,6 +77,7 @@ public class ApplicationController : CrudControllerBase<ApplicationDto, Applicat
     /// </summary>
     /// <param name="request">创建参数</param>
     [HttpPost]
+    [Acl( "application.create" )]
     public new async Task<IActionResult> CreateAsync( ApplicationDto request ) {
         return await base.CreateAsync( request );
     }
@@ -86,6 +88,7 @@ public class ApplicationController : CrudControllerBase<ApplicationDto, Applicat
     /// <param name="id">标识</param>
     /// <param name="request">修改参数</param>
     [HttpPut( "{id?}" )]
+    [Acl( "application.update" )]
     public new async Task<IActionResult> UpdateAsync( string id, ApplicationDto request ) {
         return await base.UpdateAsync( id, request );
     }
@@ -95,6 +98,7 @@ public class ApplicationController : CrudControllerBase<ApplicationDto, Applicat
     /// </summary>
     /// <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
     [HttpPost( "delete" )]
+    [Acl( "application.delete" )]
     public new async Task<IActionResult> DeleteAsync( [FromBody] string ids ) {
         return await base.DeleteAsync( ids );
     }
