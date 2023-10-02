@@ -1,4 +1,4 @@
-# Identity Api镜像配置
+# Util Platform Api镜像配置
 
 # 变量定义
 ARG runtime_version=7.0.9

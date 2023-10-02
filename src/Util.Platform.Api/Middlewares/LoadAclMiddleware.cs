@@ -1,8 +1,7 @@
 ﻿using Util.Caching;
-using Util.Platform.Applications.Services.Abstractions;
 using ISession = Util.Sessions.ISession;
 
-namespace Util.Platform.Api.Authorization;
+namespace Util.Platform.Api.Middlewares;
 
 /// <summary>
 /// 访问控制列表加载中间件
@@ -40,9 +39,14 @@ public class LoadAclMiddleware {
     /// 加载访问控制列表
     /// </summary>
     private async Task LoadAcl( HttpContext httpContext ) {
-        var cache = httpContext.RequestServices.GetRequiredService<ICache>();
         var session = httpContext.RequestServices.GetRequiredService<ISession>();
-        var key = $"{string.Format( CacheKeyConst.UserPrefix, session.UserId )}-load-acl-{session.GetApplicationId()}";
+        if ( session.IsAuthenticated == false )
+            return;
+        var applicationId = session.GetApplicationId();
+        if ( applicationId.IsEmpty() )
+            return;
+        var cache = httpContext.RequestServices.GetRequiredService<ICache>();
+        var key = $"{string.Format( CacheKeyConst.UserPrefix, session.UserId )}-load-acl-{applicationId}";
         var exists = await cache.ExistsAsync( key );
         if ( exists )
             return;

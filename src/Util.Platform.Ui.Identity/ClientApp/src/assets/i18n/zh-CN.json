@@ -53,15 +53,19 @@
     "endCreationTime": "创建结束时间",
     "beginLastModificationTime": "最后修改起始时间",
     "endLastModificationTime": "最后修改结束时间",
-    "pinYin": "拼音简码"
+    "pinYin": "拼音简码",
+    "i18n": "多语言键名"
   },
-  "app": {    
+  "app": {
     "totalTip": "共<strong class='text-primary mx-xs'>{{total}}</strong>项",
     "loadedTip": "已加载<strong class='text-primary mx-xs'>{{length}}</strong>项",
     "rowsSelected": "已选择<strong class='text-primary mx-xs'>{{length}}</strong>项",
     "currentApplication": "当前应用程序: <strong class='text-primary ml-sm'> {{application}}</strong>",
     "selectApplication": "请选择应用程序",
     "baseInfo": "基础信息"
+  },
+  "menu": {
+    "system": "系统管理"
   },
   "identity": {
     "application": {
@@ -109,7 +113,7 @@
       "detail": "模块详情",
       "applicationId": "应用程序",
       "applicationName": "应用程序",
-      "uri": "模块地址",
+      "uri": "地址",
       "name": "模块名称",
       "parentId": "父模块",
       "remark": "备注",

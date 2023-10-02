@@ -1,4 +1,4 @@
-﻿namespace Util.Platform.Identity.Services; 
+﻿namespace Util.Platform.Api.Services; 
 
 /// <summary>
 /// 客户端存储

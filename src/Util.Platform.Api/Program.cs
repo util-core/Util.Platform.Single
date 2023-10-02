@@ -1,20 +1,23 @@
 //创建Web应用程序生成器
 var builder = WebApplication.CreateBuilder( args );
 
+//配置控制器
+builder.AddControllers();
+
 //配置Util
 builder.AddUtil();
 
-//配置控制器
-builder.Services.AddControllers();
-
 //配置工作单元
-builder.AddIdentityUnitOfWork();
+builder.AddUnitOfWork();
 
 //配置身份标识服务
 builder.AddIdentity();
 
-//配置认证方案
-builder.AddIdentityAuthentication();
+//配置身份验证服务器
+builder.AddIdentityServer();
+
+//配置Jwt认证方案
+builder.AddJwtBearerAuthentication();
 
 //配置Http日志
 builder.AddHttpLogging();
@@ -57,11 +60,17 @@ app.UseCustomSwagger();
 //配置静态文件
 app.UseStaticFiles();
 
+//配置Cookie策略
+app.UseCookiePolicy();
+
 //配置路由
 app.UseRouting();
 
-//配置认证
-app.UseAuthentication();
+//配置身份服务器
+app.UseIdentityServer();
+
+//配置Jwt认证
+app.UseJwtBearerAuthentication();
 
 //加载访问控制列表
 app.UseLoadAcl();
@@ -73,7 +82,7 @@ app.UseTenant();
 app.UseAuthorization();
 
 //配置控制器
-app.MapControllers();
+app.MapDefaultControllerRoute();
 
 try {
     //迁移数据

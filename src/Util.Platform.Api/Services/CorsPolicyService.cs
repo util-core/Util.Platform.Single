@@ -1,4 +1,4 @@
-﻿namespace Util.Platform.Identity.Services; 
+﻿namespace Util.Platform.Api.Services; 
 
 /// <summary>
 /// 跨域策略服务

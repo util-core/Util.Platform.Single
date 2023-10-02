@@ -1,5 +1,7 @@
 ﻿using Util.Helpers;
-using Util.Platform.Api.Authorization;
+using Util.Platform.Api.Middlewares;
+using Util.Platform.Api.Services;
+using Util.Platform.Domain.Models;
 
 namespace Util.Platform.Api;
 
@@ -8,6 +10,14 @@ namespace Util.Platform.Api;
 /// </summary>
 public static class ProgramExtensions {
     /// <summary>
+    /// 配置控制器
+    /// </summary>
+    public static WebApplicationBuilder AddControllers( this WebApplicationBuilder builder ) {
+        builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+        return builder;
+    }
+
+    /// <summary>
     /// Util基础功能配置
     /// </summary>
     /// <param name="builder">Web应用生成器</param>
@@ -15,21 +25,24 @@ public static class ProgramExtensions {
         builder.AsBuild()
             .AddAop()
             .AddUtc()
-            .AddTenant( t => t.IsEnabled = false )
-            .AddAcl<PermissionManager>()
+            .AddTenant( t => {
+                t.IsEnabled = false;
+                t.Resolvers.Add( new IdentityTenantResolver { Priority = 99 } );
+            } )
             .AddJsonLocalization( options => {
                 options.Cultures = new[] { "zh-CN", "en-US" };
             } )
-            .AddMemoryCache()
+            .AddAcl<PermissionManager>()
             .AddSerilog()
+            .AddMemoryCache()
             .AddUtil();
         return builder;
     }
 
     /// <summary>
-    /// 配置Identity工作单元
+    /// 配置工作单元
     /// </summary>
-    public static WebApplicationBuilder AddIdentityUnitOfWork( this WebApplicationBuilder builder ) {
+    public static WebApplicationBuilder AddUnitOfWork( this WebApplicationBuilder builder ) {
         var dbType = builder.GetDatabaseType();
         builder.AsBuild()
             .AddSqlServerUnitOfWork<ISystemUnitOfWork, Util.Platform.Data.SqlServer.SystemUnitOfWork>(
@@ -79,16 +92,32 @@ public static class ProgramExtensions {
     }
 
     /// <summary>
-    /// 配置认证方案
+    /// 配置身份验证服务器
     /// </summary>
-    public static WebApplicationBuilder AddIdentityAuthentication( this WebApplicationBuilder builder ) {
-        builder.Services
-            .AddAuthentication( options => {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            } )
-            .AddJwtBearer( JwtBearerDefaults.AuthenticationScheme, options => {
-                options.Authority = builder.GetIdentityUrl();
+    public static WebApplicationBuilder AddIdentityServer( this WebApplicationBuilder builder ) {
+        builder.Services.AddIdentityServer( options => {
+            options.Events.RaiseErrorEvents = true;
+            options.Events.RaiseInformationEvents = true;
+            options.Events.RaiseFailureEvents = true;
+            options.Events.RaiseSuccessEvents = true;
+        } )
+            .AddAspNetIdentity<User>()
+            .AddDeveloperSigningCredential()
+            .AddResourceStore<ResourceStore>()
+            .AddClientStore<ClientStore>()
+            .AddCorsPolicyService<CorsPolicyService>()
+            .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
+            .AddProfileService<ProfileService>();
+        return builder;
+    }
+
+    /// <summary>
+    /// 配置Jwt认证方案
+    /// </summary>
+    public static WebApplicationBuilder AddJwtBearerAuthentication( this WebApplicationBuilder builder ) {
+        builder.Services.AddAuthentication()
+            .AddJwtBearer( options => {
+                options.Authority = GetIdentityUrl();
                 options.Audience = builder.GetAudience();
                 options.RequireHttpsMetadata = false;
                 options.TokenValidationParameters.ValidateAudience = false;
@@ -100,8 +129,8 @@ public static class ProgramExtensions {
     /// <summary>
     /// 获取身份认证服务器地址
     /// </summary>
-    public static string GetIdentityUrl( this WebApplicationBuilder builder ) {
-        return builder.Configuration["IdentityUrl"];
+    public static string GetIdentityUrl() {
+        return $"{Web.Request.Scheme}://{Web.Request.Host}";
     }
 
     /// <summary>
@@ -160,7 +189,7 @@ public static class ProgramExtensions {
                 Description = description,
                 Version = version
             } );
-            var identityUrl = builder.GetIdentityUrl();
+            var identityUrl = GetIdentityUrl();
             options.AddSecurityDefinition( "oauth2", new OpenApiSecurityScheme {
                 Type = SecuritySchemeType.OAuth2,
                 Flows = new OpenApiOAuthFlows {
@@ -184,9 +213,13 @@ public static class ProgramExtensions {
     /// 配置异常页
     /// </summary>
     public static void UseExceptionPage( this WebApplication app ) {
-        if ( app.Environment.IsDevelopment() == false )
-            return;
-        app.UseDeveloperExceptionPage();
+        if ( app.Environment.IsDevelopment() ) {
+            app.UseDeveloperExceptionPage();
+        }
+        else {
+            app.UseExceptionHandler( "/Error" );
+            app.UseHsts();
+        }
     }
 
     /// <summary>
@@ -229,7 +262,15 @@ public static class ProgramExtensions {
             options.OAuthUsePkce();
             options.OAuthConfigObject.ClientSecret = "secret";
         } );
-        app.MapGet( "/", () => Results.LocalRedirect( "~/swagger" ) );
+    }
+
+    /// <summary>
+    /// 配置Cookie策略
+    /// </summary>
+    public static void UseCookiePolicy( this WebApplication app ) {
+        app.UseCookiePolicy( new CookiePolicyOptions {
+            MinimumSameSitePolicy = SameSiteMode.Lax
+        } );
     }
 
     /// <summary>
@@ -238,6 +279,14 @@ public static class ProgramExtensions {
     /// <param name="builder">应用程序生成器</param>
     public static IApplicationBuilder UseLoadAcl( this IApplicationBuilder builder ) {
         return builder.UseMiddleware<LoadAclMiddleware>();
+    }
+
+    /// <summary>
+    /// 注册Jwt认证中间件
+    /// </summary>
+    /// <param name="builder">应用程序生成器</param>
+    public static IApplicationBuilder UseJwtBearerAuthentication( this IApplicationBuilder builder ) {
+        return builder.UseMiddleware<JwtBearerAuthenticationMiddleware>();
     }
 
     /// <summary>
@@ -258,8 +307,8 @@ public static class ProgramExtensions {
         var migrationService = scope.ServiceProvider.GetRequiredService<IMigrationService>();
         InstallEfTool( migrationService );
         app.Logger.LogInformation( "准备迁移数据..." );
-        Migrate( app,migrationService, migrationName, "Util.Platform.Data.SqlServer" );
-        Migrate( app, migrationService, migrationName, "Util.Platform.Data.PgSql" );
+        Migrate( app, migrationService, migrationName, "Util.Platform.Data.SqlServer",GetDatabaseType( app ) == DatabaseType.SqlServer );
+        Migrate( app, migrationService, migrationName, "Util.Platform.Data.PgSql", GetDatabaseType( app ) == DatabaseType.PgSql );
         var policy = scope.ServiceProvider.GetRequiredService<IPolicy>();
         await policy.Retry().HandleException<Exception>().Forever().Wait()
             .OnRetry( ( exception, retry ) => {
@@ -273,6 +322,19 @@ public static class ProgramExtensions {
     }
 
     /// <summary>
+    /// 获取数据库类型
+    /// </summary>
+    public static DatabaseType GetDatabaseType( this WebApplication app ) {
+        try {
+            var dbType = app.Configuration["DatabaseType"];
+            return dbType.IsEmpty() ? DatabaseType.SqlServer : Util.Helpers.Enum.Parse<DatabaseType>( dbType );
+        }
+        catch {
+            return DatabaseType.SqlServer;
+        }
+    }
+
+    /// <summary>
     /// 安装和更新 dotnet-ef 工具
     /// </summary>
     private static void InstallEfTool( IMigrationService migrationService ) {
@@ -282,10 +344,12 @@ public static class ProgramExtensions {
     /// <summary>
     /// 迁移
     /// </summary>
-    private static void Migrate( WebApplication app, IMigrationService migrationService,string migrationName,string dataProjectName ) {
+    private static void Migrate( WebApplication app, IMigrationService migrationService, string migrationName, string dataProjectName,bool isMigrate ) {
         try {
             var path = Common.JoinPath( Common.GetParentDirectory(), dataProjectName );
-            migrationService.AddMigration( migrationName, path ).Migrate( path );
+            migrationService.AddMigration( migrationName, path );
+            if( isMigrate )
+                migrationService.Migrate( path );
         }
         catch ( Exception exception ) {
             app.Logger.LogError( exception, "迁移数据发生异常..." );

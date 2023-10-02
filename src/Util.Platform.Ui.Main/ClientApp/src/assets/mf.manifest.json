@@ -1,8 +1,8 @@
 {
-  "permission": {
-    "remoteEntry": "https://admin.a.com/mf/permission/remoteEntry.js",
+  "identity": {
+    "remoteEntry": "http://localhost:16003/remoteEntry.js",
     "exposedModule": "./Module",
-    "routePath": "permission",
-    "ngModuleName": "PermissionModule"
+    "routePath": "identity",
+    "ngModuleName": "IdentityModule"
   }
 }

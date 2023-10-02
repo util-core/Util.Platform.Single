@@ -53,7 +53,8 @@
     "endCreationTime": "End Creation Time",
     "beginLastModificationTime": "Begin Last Modification Time",
     "endLastModificationTime": "End Last Modification Time",
-    "pinYin": "PinYin"
+    "pinYin": "PinYin",
+    "i18n": "I18n"
   },
   "app": {
     "totalTip": "total: <strong class='text-primary mx-xs'>{{total}}</strong>",
@@ -62,6 +63,9 @@
     "currentApplication": "Current Application: <strong class='text-primary ml-sm'> {{application}}</strong>",
     "selectApplication": "Please select an application",
     "baseInfo": "Base Info"
+  },
+  "menu": {
+    "system": "System"
   },
   "identity": {
     "application": {

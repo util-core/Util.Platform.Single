@@ -5,9 +5,9 @@
     @*查询表单*@
     <partial name="Index.Query" />
     @*工具按钮*@    
-    <util-button type="Primary" icon="Plus" on-click="add()" text-create="true"></util-button>
-    <util-button id="btn_save" type="Primary" icon="Save" on-click="save(btn_save)" text-save="true"></util-button>
-    <util-button type="Primary" danger="true" icon="Delete" on-click="delete()" text-delete="true"></util-button>
+    <util-button type="Primary" icon="Plus" on-click="add()" text-create="true" acl="claim.create"></util-button>
+    <util-button id="btn_save" type="Primary" icon="Save" on-click="save(btn_save)" text-save="true" acl="claim.save"></util-button>
+    <util-button type="Primary" danger="true" icon="Delete" on-click="delete()" text-delete="true" acl="claim.delete"></util-button>
     @*提示语*@
     <util-alert class="my-md" type="Info" show-icon="true">
         <util-i18n key="app.rowsSelected" param="length:getCheckedLength()" />
@@ -35,7 +35,7 @@
         <util-td title-operation="true" width="300">
             <util-a on-click="edit(row.id)" text-update="true"></util-a>
             <util-divider type="Vertical"></util-divider>
-            <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+            <util-a danger="true" on-click="delete(row.id)" text-delete="true" acl="claim.delete"></util-a>
         </util-td>
     </util-table>
 </util-card>

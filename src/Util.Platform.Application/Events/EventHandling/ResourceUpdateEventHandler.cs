@@ -1,6 +1,4 @@
-﻿using Util.Domain.Events;
-
-namespace Util.Platform.Applications.Events.EventHandling;
+﻿namespace Util.Platform.Applications.Events.EventHandling;
 
 /// <summary>
 /// 资源更新事件处理器
@@ -32,16 +30,35 @@ public class ResourceUpdateEventHandler : EventHandlerBase<EntityUpdatedEvent<Re
     /// <param name="event">资源更新事件</param>
     /// <param name="cancellationToken">取消令牌</param>
     public override async Task HandleAsync( EntityUpdatedEvent<Resource> @event, CancellationToken cancellationToken ) {
+        await OnTextChange( @event, cancellationToken );
         await OnIconChange( @event, cancellationToken );
     }
 
     /// <summary>
-    /// 图标变化,清除应用数据缓存
+    /// 模块文本变化
+    /// </summary>
+    private async Task OnTextChange( EntityUpdatedEvent<Resource> @event, CancellationToken cancellationToken ) {
+        if ( @event.Entity.Type != ResourceType.Module )
+            return;
+        if ( @event.ChangeValues.Any( t => t.PropertyName == "Name" ) )
+            await RemoveGetAppDataCache( cancellationToken );
+    }
+
+    /// <summary>
+    /// 模块图标变化
     /// </summary>
     private async Task OnIconChange( EntityUpdatedEvent<Resource> @event, CancellationToken cancellationToken ) {
-        if ( @event.ChangeValues.Any( t => t.PropertyName == "Icon" ) ) {
-            var cacheKey = new GetAppDataCacheKey( Session.UserId, Session.GetApplicationId().ToString() );
-            await CacheService.RemoveAsync( cacheKey, cancellationToken );
-        }
+        if ( @event.Entity.Type != ResourceType.Module )
+            return;
+        if ( @event.ChangeValues.Any( t => t.PropertyName == "Icon" ) )
+            await RemoveGetAppDataCache( cancellationToken );
+    }
+
+    /// <summary>
+    /// 清除应用数据缓存
+    /// </summary>
+    private async Task RemoveGetAppDataCache( CancellationToken cancellationToken ) {
+        var cacheKey = new GetAppDataCacheKey( Session.UserId, Session.GetApplicationId().ToString() );
+        await CacheService.RemoveAsync( cacheKey, cancellationToken );
     }
 }

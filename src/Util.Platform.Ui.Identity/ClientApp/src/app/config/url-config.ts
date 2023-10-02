@@ -5,7 +5,7 @@ export const urlConfig = {
     /**
      * 认证服务器地址
      */
-    identityUrl: "https://localhost:20080",
+    identityUrl: "https://localhost:12086",
     /**
      * Api端点地址
      */

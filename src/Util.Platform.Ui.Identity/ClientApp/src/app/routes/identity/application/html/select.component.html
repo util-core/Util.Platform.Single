@@ -1,4 +1,4 @@
-<nz-card class="ant-card__body-nopadding" style="min-height:300px" [nzTitle]="'identity.application'|i18n">
+<nz-card class="ant-card__body-nopadding" style="min-height:300px;" [nzTitle]="'identity.application'|i18n">
     <ul nz-menu="" nzMode="inline">
         <li (click)="clickItem(item)" *ngFor="let item of list" nz-menu-item="" [nzSelected]="item==selected">{{item.name}}</li>
     </ul>

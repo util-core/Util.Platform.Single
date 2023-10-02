@@ -9,13 +9,13 @@ export const urlConfig = {
     /**
      * 认证服务器地址
      */
-    identityUrl: "",
+    identityUrl: "https://localhost:12086",
     /**
      * Api端点地址
      */
-    apiEndpointUrl: "",
+    apiEndpointUrl: "https://localhost:12086",
     /**
      * 获取应用数据地址
      */
-    appDataUrl: "/api/systems/appData"
+    appDataUrl: "/api/app/appData"
 };

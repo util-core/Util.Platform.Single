@@ -11,23 +11,20 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Util.Logging.Serilog" Version="7.1.39" />
-		<PackageReference Include="Util.Ui.NgZorro" Version="7.1.39" />
-		<PackageReference Include="Util.Ui.NgAlain" Version="7.1.39" />
+		<PackageReference Include="Util.Logging.Serilog" Version="7.1.42" />
+		<PackageReference Include="Util.Ui.NgZorro" Version="7.1.42" />
+		<PackageReference Include="Util.Ui.NgAlain" Version="7.1.42" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Content Remove="$(SpaRoot)**" />
-		<Content Remove="ClientApp\package\node_modules\**" />
 		<None Remove=".gitignore" />
 		<None Remove=".gitmodules" />
 		<None Remove="$(SpaRoot)**" />
 		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
 		<None Remove="$(SpaRoot)\package\.git" />
-		<Compile Remove="ClientApp\package\node_modules\**" />
 		<None Remove="$(SpaRoot).angular\**" />
 		<None Remove="$(SpaRoot)dist\**" />
-		<None Remove="ClientApp\package\node_modules\**" />
 		<None Remove="$(SpaRoot).eslintignore" />
 		<None Remove="$(SpaRoot).eslintrc.js" />
 		<None Remove="$(SpaRoot).gitignore" />

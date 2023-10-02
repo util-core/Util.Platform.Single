@@ -1,6 +1,6 @@
 ﻿using Util.Platform.Domain.Models;
 
-namespace Util.Platform.Identity.Services; 
+namespace Util.Platform.Api.Services; 
 
 /// <summary>
 /// 用户配置服务

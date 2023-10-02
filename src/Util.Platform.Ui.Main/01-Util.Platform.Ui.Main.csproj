@@ -12,9 +12,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Util.Logging.Serilog" Version="7.1.39" />
-		<PackageReference Include="Util.Ui.NgZorro" Version="7.1.39" />
-		<PackageReference Include="Util.Ui.NgAlain" Version="7.1.39" />
+		<PackageReference Include="Util.Logging.Serilog" Version="7.1.42" />
+		<PackageReference Include="Util.Ui.NgZorro" Version="7.1.42" />
+		<PackageReference Include="Util.Ui.NgAlain" Version="7.1.42" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -24,17 +24,17 @@
 		<None Remove="$(SpaRoot)**" />
 		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
 		<None Remove="$(SpaRoot)\package\.git" />
-        <None Remove="$(SpaRoot).angular\**" />
+		<None Remove="$(SpaRoot).angular\**" />
 		<None Remove="$(SpaRoot)dist\**" />
-        <None Remove="$(SpaRoot).eslintignore" />
-        <None Remove="$(SpaRoot).eslintrc.js" />
-        <None Remove="$(SpaRoot).gitignore" />
-        <None Remove="$(SpaRoot).nvmrc" />
-        <None Remove="$(SpaRoot).stylelintrc" />
+		<None Remove="$(SpaRoot).eslintignore" />
+		<None Remove="$(SpaRoot).eslintrc.js" />
+		<None Remove="$(SpaRoot).gitignore" />
+		<None Remove="$(SpaRoot).nvmrc" />
+		<None Remove="$(SpaRoot).stylelintrc" />
 		<None Remove="$(SpaRoot).prettierignore" />
-        <None Remove="$(SpaRoot).prettierrc.js" />
-        <None Remove="$(SpaRoot).npmignore" />
+		<None Remove="$(SpaRoot).prettierrc.js" />
+		<None Remove="$(SpaRoot).npmignore" />
 		<None Remove="$(SpaRoot)clear-node-modules.ps1" />
 		<None Remove="$(SpaRoot)start.ps1" />
-    </ItemGroup>
+	</ItemGroup>
 </Project>

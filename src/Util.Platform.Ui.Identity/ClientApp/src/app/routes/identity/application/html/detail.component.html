@@ -14,6 +14,6 @@
         <nz-descriptions-item *ngIf="model.isClient" nzSpan="2" [nzTitle]="'identity.application.redirectUri'|i18n">{{model.redirectUri}}</nz-descriptions-item>
         <nz-descriptions-item *ngIf="model.isClient" nzSpan="2" [nzTitle]="'identity.application.postLogoutRedirectUri'|i18n">{{model.postLogoutRedirectUri}}</nz-descriptions-item>
         <nz-descriptions-item *ngIf="model.isClient" [nzTitle]="'identity.application.allowedGrantType'|i18n">{{model.allowedGrantTypeDescription}}</nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'identity.application.creationTime'|i18n">{{model.creationTime|date:"yyyy-MM-dd HH:mm"}}</nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'util.creationTime'|i18n">{{model.creationTime|date:"yyyy-MM-dd HH:mm"}}</nz-descriptions-item>
     </nz-descriptions>
 </nz-card>

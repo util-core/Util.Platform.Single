@@ -24,15 +24,17 @@
                          auto-load="false" expand-all="true" load-mode="Sync">
             <util-thead>
                 <util-th for="Name"></util-th>
+                <util-th for="I18n"></util-th>
                 <util-th for="Icon"></util-th>
                 <util-th for="Uri"></util-th>
                 <util-th for="Enabled"></util-th>
-                <util-th title-operation="true" width="400"></util-th>
+                <util-th title-operation="true" width="360"></util-th>
             </util-thead>
             <util-tbody>
                 <util-container ng-for="let row of x_tb_module.dataSource">
                     <util-tr ng-if="x_tb_module.isShow(row)">
                         <util-td for="Name" bind-show-expand="!x_tb_module.isLeaf(row) || x_tb_module.isShow(row) && row===selectedModule"></util-td>
+                        <util-td for="I18n"></util-td>
                         <util-td for="Icon">
                             <util-icon bind-type="row.icon"></util-icon>
                         </util-td>

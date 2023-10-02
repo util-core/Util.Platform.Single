@@ -17,6 +17,10 @@ export class ModuleViewModel extends TreeViewModel {
      */
     name;
     /**
+     * 多语言键名
+     */
+    i18n;
+    /**
      * 模块地址
      */
     uri;

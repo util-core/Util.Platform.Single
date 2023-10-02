@@ -5,12 +5,12 @@
 		<AssemblyName>Util.Platform.Application</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Util.Localization" Version="7.1.39" />
-		<PackageReference Include="Util.Microservices.Polly" Version="7.1.39" />
-		<PackageReference Include="Util.Platform.Share.Apps" Version="0.2.7" />
-		<PackageReference Include="Util.Tenants" Version="7.1.39" />
-		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.2.7" />
-		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.2.7" />
+		<PackageReference Include="Util.Localization" Version="7.1.42" />
+		<PackageReference Include="Util.Microservices.Polly" Version="7.1.42" />
+		<PackageReference Include="Util.Platform.Share.Apps" Version="0.3.5" />
+		<PackageReference Include="Util.Tenants" Version="7.1.42" />
+		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.3.5" />
+		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.3.5" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Util.Platform.Data.PgSql\03-Util.Platform.Data.PgSql.csproj" />

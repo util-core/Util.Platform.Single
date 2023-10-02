@@ -10,10 +10,10 @@
             <nz-form-item><nz-form-label>{{'identity.application.name'|i18n}}</nz-form-label><nz-form-control><input name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-form-control></nz-form-item>
         </div>
         <div nz-col="" [nzSm]="4" [nzXs]="24">
-            <nz-form-item><nz-form-label>{{'identity.application.beginCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-date-picker name="beginCreationTime" [(ngModel)]="queryParam.beginCreationTime" [nzShowTime]="true"></nz-date-picker></nz-form-control></nz-form-item>
+            <nz-form-item><nz-form-label>{{'util.beginCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-date-picker name="beginCreationTime" [(ngModel)]="queryParam.beginCreationTime"></nz-date-picker></nz-form-control></nz-form-item>
         </div>
         <div nz-col="" [nzSm]="4" [nzXs]="24">
-            <nz-form-item><nz-form-label>{{'identity.application.endCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-date-picker name="endCreationTime" [(ngModel)]="queryParam.endCreationTime" [nzShowTime]="true"></nz-date-picker></nz-form-control></nz-form-item>
+            <nz-form-item><nz-form-label>{{'util.endCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-date-picker name="endCreationTime" [(ngModel)]="queryParam.endCreationTime"></nz-date-picker></nz-form-control></nz-form-item>
         </div>
         <div class="mb-sm" nz-col="">
             <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
@@ -25,7 +25,7 @@
     <button (click)="delete()" *aclIf="'application.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
     <button (click)="container.masterToggle()" *ngIf="!container.isMasterChecked()" nz-button=""><i nz-icon="" nzType="check-square"></i>{{'util.selectAll'|i18n}}</button>
     <button (click)="container.masterToggle()" *ngIf="container.isMasterChecked()" nz-button=""><i nz-icon="" nzType="close-square"></i>{{'util.deselectAll'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_84ecf0ebfc5144bf9b728e1b83602a67" [nzShowIcon]="true"><ng-template #t_84ecf0ebfc5144bf9b728e1b83602a67="">
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_6a649f1014104b7aad58a26e94dbe77a" [nzShowIcon]="true"><ng-template #t_6a649f1014104b7aad58a26e94dbe77a="">
         <span class="mr-xs" [innerHTML]="'app.totalTip'|i18n:{total:container.total}"></span>,
         <span class="mr-xs" [innerHTML]="'app.loadedTip'|i18n:{length:container.data.length}"></span>,
         <span [innerHTML]="'app.rowsSelected'|i18n:{length:container.getCheckedLength()}"></span>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="text-center" nz-col="" nzSpan="24">
                     <h1 class="mb0" nz-typography="">
-                        <span>{{model.name}}</span>
+                        <ellipsis lines="1" [tooltip]="true">{{model.name}}</ellipsis>
                     </h1>
                     <div class="text-grey mb-sm" nz-typography="">
                         <span>{{model.code}}</span>

@@ -1,6 +1,4 @@
-using Util.Platform.Applications.Services.Abstractions;
-
-namespace Util.Platform.Identity.Controllers;
+namespace Util.Platform.Api.Controllers;
 
 /// <summary>
 /// 用户认证控制器

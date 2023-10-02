@@ -1,4 +1,4 @@
-namespace Util.Platform.Identity.Controllers;
+namespace Util.Platform.Api.Controllers;
 
 /// <summary>
 /// Ö÷¿ØÖÆÆ÷
