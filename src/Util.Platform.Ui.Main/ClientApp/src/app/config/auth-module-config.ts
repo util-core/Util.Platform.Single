@@ -1,12 +1,12 @@
 import { OAuthModuleConfig } from 'angular-oauth2-oidc';
-import { urlConfig } from '../../config/url-config';
+import { bootstrapConfig } from './bootstrap-config';
 
 /**
- * æˆæƒæ¨¡å—é…ç½®
+ * ÊÚÈ¨Ä£¿éÅäÖÃ
  */
 export const authModuleConfig: OAuthModuleConfig = {
     resourceServer: {
-        allowedUrls: [urlConfig.apiEndpointUrl],
+        allowedUrls: [bootstrapConfig.apiEndpointUrl],
         sendAccessToken: true
     }
 };

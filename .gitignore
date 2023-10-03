@@ -12,3 +12,4 @@ bld/
 [Ll]og/
 .vs/
 *.pdb
+dist

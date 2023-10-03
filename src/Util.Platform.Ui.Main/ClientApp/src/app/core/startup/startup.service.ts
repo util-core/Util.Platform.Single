@@ -7,7 +7,7 @@ import { ACLService } from '@delon/acl';
 import { getManifest } from '@angular-architects/module-federation';
 import { Util, AppConfig, Result, StateCode, AuthService } from 'util-angular';
 import { I18NService } from '../i18n/i18n.service';
-import { CustomManifest } from '../../microfrontends/custom-manifest';
+import { CustomManifest } from '../microfrontends/custom-manifest';
 import { buildRoutes } from '../../routes/routes-routing.module';
 import { urlConfig } from '../../config/url-config';
 

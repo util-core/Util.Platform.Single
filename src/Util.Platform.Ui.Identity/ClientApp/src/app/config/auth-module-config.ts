@@ -1,8 +1,8 @@
 import { OAuthModuleConfig } from 'angular-oauth2-oidc';
-import { urlConfig } from '../../config/url-config';
+import { urlConfig } from './url-config';
 
 /**
- * ÊÚÈ¨Ä£¿éÅäÖÃ
+ * æˆæƒæ¨¡å—é…ç½®
  */
 export const authModuleConfig: OAuthModuleConfig = {
     resourceServer: {

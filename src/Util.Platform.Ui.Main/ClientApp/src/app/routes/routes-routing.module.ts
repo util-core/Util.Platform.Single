@@ -1,17 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { CustomManifest } from '../microfrontends/custom-manifest';
+import { CustomManifest } from '../core/microfrontends/custom-manifest';
 import { environment } from '@env/environment';
 import { AuthGuard } from 'util-angular';
-// layout
 import { LayoutBasicComponent } from '../layout/basic/basic.component';
-import { LayoutPassportComponent } from '../layout/passport/passport.component';
-// dashboard pages
 import { DashboardComponent } from './dashboard/dashboard.component';
-// single pages
-import { CallbackComponent } from './passport/callback.component';
-import { UserLockComponent } from './passport/lock/lock.component';
 
 const routes: Routes = [
     {
@@ -25,14 +19,6 @@ const routes: Routes = [
             { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) }
         ]
     },
-    {
-        path: 'passport',
-        component: LayoutPassportComponent,
-        children: [
-            { path: 'lock', component: UserLockComponent, data: { title: '锁屏', titleI18n: 'lock' } }
-        ]
-    },
-    { path: 'passport/callback/:type', component: CallbackComponent },
     { path: '**', redirectTo: 'exception/404' }
 ];
 

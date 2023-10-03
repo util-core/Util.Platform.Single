@@ -83,7 +83,7 @@ export class I18NService extends AlainI18nBaseService {
     }
 
     loadLangData(lang: string): Observable<NzSafeAny> {
-        return this.http.get(`assets/i18n/${lang}.json?b=22`);
+        return this.http.get(`assets/i18n/${lang}.json`);
     }
 
     use(lang: string, data: Record<string, unknown>): void {

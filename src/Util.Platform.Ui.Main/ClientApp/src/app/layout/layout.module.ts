@@ -26,9 +26,8 @@ import { HeaderFullScreenComponent } from './basic/widgets/fullscreen.component'
 import { HeaderI18nComponent } from './basic/widgets/i18n.component';
 import { HeaderSearchComponent } from './basic/widgets/search.component';
 import { HeaderUserComponent } from './basic/widgets/user.component';
-import { LayoutBlankComponent } from './blank/blank.component';
 
-const COMPONENTS = [LayoutBasicComponent, LayoutBlankComponent];
+const COMPONENTS = [LayoutBasicComponent];
 
 const HEADERCOMPONENTS = [
     HeaderSearchComponent,
@@ -36,12 +35,6 @@ const HEADERCOMPONENTS = [
     HeaderClearStorageComponent,
     HeaderI18nComponent,
     HeaderUserComponent
-];
-
-// passport
-import { LayoutPassportComponent } from './passport/passport.component';
-const PASSPORT = [
-    LayoutPassportComponent
 ];
 
 @NgModule({
@@ -66,8 +59,8 @@ const PASSPORT = [
         NzIconModule,
         ReuseTabModule
     ],
-    declarations: [...COMPONENTS, ...HEADERCOMPONENTS, ...PASSPORT],
-    exports: [...COMPONENTS, ...PASSPORT],
+    declarations: [...COMPONENTS, ...HEADERCOMPONENTS],
+    exports: [...COMPONENTS],
 })
 export class LayoutModule { }
 

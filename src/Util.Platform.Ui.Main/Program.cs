@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder( args );
 //配置Util服务
 builder.AsBuild()
     .AddSerilog()
-    .AddNgZorro()
+    .AddNgZorro( t => t.RootPath = "ClientApp/src" )
     .AddUtil();
 
 //构建Web应用程序

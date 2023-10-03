@@ -1,5 +1,5 @@
 import { AppConfig } from 'util-angular';
-import { urlConfig } from './config/url-config';
+import { urlConfig } from './url-config';
 
 /**
  * 应用配置

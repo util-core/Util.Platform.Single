@@ -2,12 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'util-angular';
 import { environment } from '@env/environment';
-
-// layout
 import { LayoutBasicComponent } from '../layout/basic/basic.component';
-// dashboard pages
 import { DashboardComponent } from './dashboard/dashboard.component';
-// single pages
 import { routes as identityRoutes } from "./identity/identity-routing.module";
 
 const routes: Routes = [
