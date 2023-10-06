@@ -5,8 +5,8 @@
     @*查询表单*@
     <partial name="Index.Query" />
     @*工具按钮*@
-    <util-button type="Primary" icon="Plus" on-click="openCreateDialog()" text-create="true"></util-button>
-    <util-button type="Primary" Danger="true" icon="Delete" on-click="delete()" text-delete="true"></util-button>
+    <util-button type="Primary" icon="Plus" on-click="openCreateDialog()" text-create="true" acl="user.create"></util-button>
+    <util-button type="Primary" Danger="true" icon="Delete" on-click="delete()" text-delete="true" acl="user.delete"></util-button>
     @*提示语*@
     <util-alert type="Info" show-icon="true" class="my-md">
         <util-i18n key="app.rowsSelected" param="length:getCheckedLength()" />
@@ -26,8 +26,10 @@
         <util-td for="CreationTime"></util-td>
         <util-td title-operation="true">
             <util-a on-click="openDetailDialog(row)" text-detail="true"></util-a>
-            <util-divider type="Vertical"></util-divider>
-            <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+            <util-container acl="user.delete">
+                <util-divider type="Vertical"></util-divider>
+                <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+            </util-container>
         </util-td>
     </util-table>
 </util-card>

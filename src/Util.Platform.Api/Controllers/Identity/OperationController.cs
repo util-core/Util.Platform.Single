@@ -3,6 +3,7 @@ namespace Util.Platform.Api.Controllers.Identity;
 /// <summary>
 /// 操作资源控制器
 /// </summary>
+[Acl( "operation.view" )]
 public class OperationController : QueryControllerBase<OperationDto, ResourceQuery> {
     /// <summary>
     /// 初始化操作资源控制器
@@ -64,6 +65,7 @@ public class OperationController : QueryControllerBase<OperationDto, ResourceQue
     /// </summary>
     /// <param name="request">创建参数</param>
     [HttpPost]
+    [Acl( "operation.create" )]
     public async Task<IActionResult> CreateAsync( CreateOperationRequest request ) {
         if ( request == null )
             return Fail( ApplicationResource.CreateRequestIsEmpty );
@@ -78,6 +80,7 @@ public class OperationController : QueryControllerBase<OperationDto, ResourceQue
     /// <param name="id">标识</param>
     /// <param name="request">修改参数</param>
     [HttpPut( "{id?}" )]
+    [Acl( "operation.update" )]
     public async Task<IActionResult> UpdateAsync( string id, OperationDto request ) {
         if ( request == null )
             return Fail( ApplicationResource.UpdateRequestIsEmpty );
@@ -95,6 +98,7 @@ public class OperationController : QueryControllerBase<OperationDto, ResourceQue
     /// </summary>
     /// <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
     [HttpPost( "delete" )]
+    [Acl( "operation.delete" )]
     public async Task<IActionResult> DeleteAsync( [FromBody] string ids ) {
         await OperationService.DeleteAsync( ids );
         return Success();

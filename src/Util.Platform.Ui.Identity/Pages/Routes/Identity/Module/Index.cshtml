@@ -4,10 +4,10 @@
     @*查询表单*@
     <partial name="Index.Query" />
     @*工具按钮*@
-    <util-button type="Primary" icon="Plus" on-click="openCreateDialog()" text-create="true"></util-button>
-    <util-button type="Primary" icon="CheckCircle" on-click="enable()" text-enable="true"></util-button>
-    <util-button type="Primary" icon="CloseCircle" on-click="disable()" text-disable="true"></util-button>
-    <util-button type="Primary" danger="true" icon="Delete" on-click="delete()" text-delete="true"></util-button>
+    <util-button type="Primary" icon="Plus" on-click="openCreateDialog()" text-create="true" acl="module.create"></util-button>
+    <util-button type="Primary" icon="CheckCircle" on-click="enable()" text-enable="true" acl="module.enable"></util-button>
+    <util-button type="Primary" icon="CloseCircle" on-click="disable()" text-disable="true" acl="module.disable"></util-button>
+    <util-button type="Primary" danger="true" icon="Delete" on-click="delete()" text-delete="true" acl="module.delete"></util-button>
     @*提示语*@
     <util-alert class="my-md" type="Info" show-icon="true">
         <util-i18n key="app.currentApplication" param="application:selectedApplication.name" />
@@ -27,6 +27,7 @@
                 <util-th for="I18n"></util-th>
                 <util-th for="Icon"></util-th>
                 <util-th for="Uri"></util-th>
+                <util-th for="IsHide"></util-th>
                 <util-th for="Enabled"></util-th>
                 <util-th title-operation="true" width="360"></util-th>
             </util-thead>
@@ -39,18 +40,25 @@
                             <util-icon bind-type="row.icon"></util-icon>
                         </util-td>
                         <util-td for="Uri"></util-td>
+                        <util-td for="IsHide"></util-td>
                         <util-td for="Enabled">
                             <util-tag color-type="GeekBlue" ng-if="row.enabled" text-enabled="true"></util-tag>
                             <util-tag color-type="Red" ng-if="!row.enabled" text-not-enabled="true"></util-tag>
                         </util-td>
                         <util-td title-operation="true">
-                            <util-a on-click="openCreateDialog(row)" text="identity.module.createSubModule"></util-a>
-                            <util-divider type="Vertical"></util-divider>
-                            <util-a on-click="configResource(row)" text="identity.module.resourceSettings" ng-if="x_tb_module.isLeaf(row)"></util-a>
-                            <util-divider type="Vertical" ng-if="x_tb_module.isLeaf(row)"></util-divider>
-                            <util-a on-click="openEditDialog(row)" text-update="true"></util-a>
-                            <util-divider type="Vertical"></util-divider>
-                            <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+                            <util-a on-click="openCreateDialog(row)" text="identity.module.createSubModule" acl="module.create"></util-a>
+                            <util-container acl="module.settings">
+                                <util-divider type="Vertical"></util-divider>
+                                <util-a on-click="configResource(row)" text="identity.module.resourceSettings"></util-a>
+                            </util-container>
+                            <util-container acl="module.update">
+                                <util-divider type="Vertical"></util-divider>
+                                <util-a on-click="openEditDialog(row)" text-update="true"></util-a>
+                            </util-container>
+                            <util-container acl="module.delete">
+                                <util-divider type="Vertical" ></util-divider>
+                                <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+                            </util-container>
                             <util-divider type="Vertical"></util-divider>
                             @*下拉菜单*@
                             <util-a dropdown-menu="menu">

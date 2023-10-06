@@ -59,6 +59,10 @@ export class PermissionComponent extends ComponentBase {
             this.grantPermissionComponent.load(application);
             return;
         }
+        if (this.denyPermissionComponent) {
+            this.denyPermissionComponent.load(application);
+            return;
+        }
     }
 
     /**

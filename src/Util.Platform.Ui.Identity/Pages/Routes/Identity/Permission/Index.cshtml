@@ -12,11 +12,11 @@
     <util-column span="20">
         <util-tabset bindon-selected-index="selectedTabIndex">
             @*授予权限*@
-            <util-tab lazy="true" title="identity.permission.grantPermission">
+            <util-tab lazy="true" title="identity.permission.grantPermission" acl="permission.grantOperation || permission.grantApi">
                 <resources-permission #grantPermission [role]="role" [application]="selectedApplication"></resources-permission>
             </util-tab>
             @*拒绝权限*@
-            <util-tab lazy="true" title="identity.permission.denyPermission">
+            <util-tab lazy="true" title="identity.permission.denyPermission" acl="permission.denyOperation || permission.denyApi">
                 <resources-permission #denyPermission [role]="role" [application]="selectedApplication" [isDeny]="true"></resources-permission>
             </util-tab>
         </util-tabset>

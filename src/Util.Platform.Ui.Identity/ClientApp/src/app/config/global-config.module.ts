@@ -12,11 +12,7 @@ const alainConfig: AlainConfig = {
 };
 const alainModules: any[] = [AlainThemeModule.forRoot(), DelonACLModule.forRoot()];
 const alainProvides = [{ provide: ALAIN_CONFIG, useValue: alainConfig }];
-alainProvides.push({
-    provide: RouteReuseStrategy,
-    useClass: ReuseTabStrategy,
-    deps: [ReuseTabService],
-} as any);
+alainProvides.push({ provide: RouteReuseStrategy, useClass: ReuseTabStrategy, deps: [ReuseTabService] } as any);
 const ngZorroConfig: NzConfig = {};
 const zorroProvides = [{ provide: NZ_CONFIG, useValue: ngZorroConfig }];
 

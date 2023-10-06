@@ -4,8 +4,8 @@
     @*查询表单*@
     <partial name="Index.Query"/>
     @*工具按钮*@
-    <util-button type="Primary" icon="Plus" on-click="openCreateDrawer()" text-create="true"></util-button>
-    <util-button type="Primary" Danger="true" icon="Delete" on-click="delete()" text-delete="true"></util-button>
+    <util-button type="Primary" icon="Plus" on-click="openCreateDrawer()" text-create="true" acl="identityResource.create"></util-button>
+    <util-button type="Primary" Danger="true" icon="Delete" on-click="delete()" text-delete="true" acl="identityResource.delete"></util-button>
     @*提示语*@
     <util-alert class="my-md" type="Info" show-icon="true">
         <util-i18n key="app.rowsSelected" param="length:getCheckedLength()" />
@@ -21,11 +21,13 @@
             <util-tag color-type="Red" ng-if="!row.enabled" text-not-enabled="true"></util-tag>
         </util-td>
         <util-td title-operation="true" width="300">
-            <util-a on-click="openEditDrawer(row)" text-update="true"></util-a>
+            <util-a on-click="openEditDrawer(row)" text-update="true" acl="identityResource.update"></util-a>
             <util-divider type="Vertical"></util-divider>
             <util-a on-click="openDetailDialog(row)" text-detail="true"></util-a>
-            <util-divider type="Vertical"></util-divider>
-            <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+            <util-container acl="identityResource.delete">
+                <util-divider type="Vertical" ></util-divider>
+                <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+            </util-container>
         </util-td>
     </util-table>
 </util-card>

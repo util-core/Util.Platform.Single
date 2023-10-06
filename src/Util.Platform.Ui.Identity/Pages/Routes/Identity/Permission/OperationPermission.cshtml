@@ -6,7 +6,7 @@
                  auto-load="false" expand-all="true" show-pagination="false" scroll-height="450">
     <util-td width="300" for="Name"></util-td>
     <util-td title-operation="true">
-        <util-checkbox ng-for="let item of getOperations(row)" on-checked-change="x_tb_operation_permission.toggle(item)" 
+        <util-checkbox ng-for="let item of getOperations(row)" on-checked-change="check(item,row)"
                        checked="x_tb_operation_permission.isChecked(item)">{{item.name}}</util-checkbox>
     </util-td>
 </util-tree-table>

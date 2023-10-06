@@ -3,6 +3,7 @@ namespace Util.Platform.Api.Controllers.Identity;
 /// <summary>
 /// 常用操作资源控制器
 /// </summary>
+[Acl( "commonOperation.view" )]
 public class CommonOperationController : CrudControllerBase<CommonOperationDto, CommonOperationQuery> {
     /// <summary>
     /// 初始化常用操作资源控制器
@@ -27,15 +28,6 @@ public class CommonOperationController : CrudControllerBase<CommonOperationDto, 
     }
 
     /// <summary>
-    /// 查询
-    /// </summary>
-    /// <param name="query">查询参数</param>
-    [HttpGet( "Query" )]
-    public new async Task<IActionResult> QueryAsync( [FromQuery] CommonOperationQuery query ) {
-        return await base.QueryAsync( query );
-    }
-
-    /// <summary>
     /// 分页查询
     /// </summary>
     /// <param name="query">查询参数</param>
@@ -55,29 +47,11 @@ public class CommonOperationController : CrudControllerBase<CommonOperationDto, 
     }
 
     /// <summary>
-    /// 创建
-    /// </summary>
-    /// <param name="request">创建参数</param>
-    [HttpPost]
-    public new async Task<IActionResult> CreateAsync( CommonOperationDto request ) {
-        return await base.CreateAsync( request );
-    }
-
-    /// <summary>
-    /// 修改
-    /// </summary>
-    /// <param name="id">标识</param>
-    /// <param name="request">修改参数</param>
-    [HttpPut( "{id?}" )]
-    public new async Task<IActionResult> UpdateAsync( string id, CommonOperationDto request ) {
-        return await base.UpdateAsync( id, request );
-    }
-
-    /// <summary>
     /// 批量删除
     /// </summary>
     /// <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
     [HttpPost( "delete" )]
+    [Acl( "commonOperation.delete" )]
     public new async Task<IActionResult> DeleteAsync( [FromBody] string ids ) {
         return await base.DeleteAsync( ids );
     }
@@ -87,6 +61,7 @@ public class CommonOperationController : CrudControllerBase<CommonOperationDto, 
     /// </summary>
     /// <param name="request">保存参数</param>
     [HttpPost( "save" )]
+    [Acl( "commonOperation.save" )]
     public new async Task<IActionResult> SaveAsync( SaveModel request ) {
         return await base.SaveAsync( request );
     }

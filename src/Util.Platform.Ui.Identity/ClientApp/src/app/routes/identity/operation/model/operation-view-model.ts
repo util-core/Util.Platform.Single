@@ -33,6 +33,10 @@ export class OperationViewModel extends ViewModel {
      */
     name;
     /**
+     * 是否基础资源
+     */
+    isBase;
+    /**
      * 备注
      */
     remark;

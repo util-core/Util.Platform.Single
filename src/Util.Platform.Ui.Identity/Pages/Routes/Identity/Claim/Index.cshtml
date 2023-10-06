@@ -32,10 +32,12 @@
         <util-td for="Remark" is-edit="true" width="30%">
             <util-input for="Remark"/>
         </util-td>
-        <util-td title-operation="true" width="300">
+        <util-td title-operation="true" width="300" acl="claim.save">
             <util-a on-click="edit(row.id)" text-update="true"></util-a>
-            <util-divider type="Vertical"></util-divider>
-            <util-a danger="true" on-click="delete(row.id)" text-delete="true" acl="claim.delete"></util-a>
+            <util-container acl="claim.delete">
+                <util-divider type="Vertical"></util-divider>
+                <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+            </util-container>
         </util-td>
     </util-table>
 </util-card>

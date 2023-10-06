@@ -41,7 +41,7 @@ export class OperationPermissionComponent extends ComponentBase implements After
     /**
      * 操作权限树形表格指令
      */
-    @ViewChild("x_tb_operation_permission") treeTable: TreeTableExtendDirective<any>;
+    @ViewChild("x_tb_operation_permission") treeTable: TreeTableExtendDirective<OperationPermissionViewModel>;
 
     /**
      * 初始化操作权限页
@@ -61,7 +61,9 @@ export class OperationPermissionComponent extends ComponentBase implements After
     private initLoad() {
         this.loadChange$.pipe(
             map(application => application && application.id),
-            filter(value => !this.util.helper.isEmpty(value)),
+            filter(value => {
+                return !this.util.helper.isEmpty(value);
+            }),
             distinctUntilChanged()
         ).subscribe(applicationId => {
             this.queryParam.applicationId = applicationId;
@@ -107,12 +109,30 @@ export class OperationPermissionComponent extends ComponentBase implements After
     /**
      * 获取操作资源
      */
-    getOperations(model: OperationPermissionViewModel) {
+    getOperations(module: OperationPermissionViewModel) {
         if (!this.treeTable)
             return [];
-        if (!model.leaf)
-            return [];
-        return this.treeTable.getChildren(model);
+        let result = this.treeTable.getChildren(module);
+        return result.filter((children: OperationPermissionViewModel) => children.isOperation);
+    }
+
+    /**
+     * 勾选操作
+     */
+    check(operation: OperationPermissionViewModel, module: OperationPermissionViewModel) {
+        this.treeTable.toggle(operation);
+        let operations = this.getOperations(module);
+        if (operation.isBase) {
+            if (this.treeTable.isChecked(operation))
+                return;
+            operations.forEach(item => {
+                if (this.treeTable.isChecked(item))
+                    this.treeTable.toggle(item);
+            });
+            return;
+        }
+        let baseOperation = operations.find((item: OperationPermissionViewModel) => item.isBase);
+        this.treeTable.checkIds(baseOperation.id);
     }
 
     /**

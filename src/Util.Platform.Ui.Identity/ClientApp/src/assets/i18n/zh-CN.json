@@ -54,7 +54,8 @@
     "beginLastModificationTime": "最后修改起始时间",
     "endLastModificationTime": "最后修改结束时间",
     "pinYin": "拼音简码",
-    "i18n": "多语言键名"
+    "i18n": "多语言键名",
+    "isHide": "是否隐藏"
   },
   "app": {
     "totalTip": "共<strong class='text-primary mx-xs'>{{total}}</strong>项",
@@ -133,6 +134,7 @@
       "uri": "资源标识",
       "name": "操作名称",
       "remark": "备注",
+      "isBase": "是否基础操作",
       "isBindApi": "是否绑定Api资源",
       "apiResource": "关联Api资源",
       "enabled": "启用",

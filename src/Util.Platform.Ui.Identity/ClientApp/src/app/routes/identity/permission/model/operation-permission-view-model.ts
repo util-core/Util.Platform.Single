@@ -12,4 +12,8 @@ export class OperationPermissionViewModel extends TreeViewModel {
      * 是否操作资源
      */
     isOperation: boolean;
+    /**
+     * 是否基础资源
+     */
+    isBase: boolean;
 }

@@ -29,6 +29,10 @@ export class ModuleViewModel extends TreeViewModel {
      */
     icon;
     /**
+     * 是否隐藏
+     */
+    isHide;
+    /**
      * 备注
      */
     remark;

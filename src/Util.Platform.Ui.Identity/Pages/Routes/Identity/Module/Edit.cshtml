@@ -16,6 +16,7 @@
         <util-template id="selectIcon">
             <app-icon-select columns="8" pageSize="100" [selectedIcon]="model.icon" [visible]="selectIconVisible" (selectIcon)="selectedIcon($event)"></app-icon-select>
         </util-template>
+        <util-switch for="IsHide" />
         <util-switch for="Expanded"/>
         <util-switch for="Enabled"/>
         <util-input-number for="SortId"/>

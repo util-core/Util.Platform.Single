@@ -3,6 +3,7 @@ namespace Util.Platform.Api.Controllers.Identity;
 /// <summary>
 /// Api权限控制器
 /// </summary>
+[Acl( "permission.view" )]
 public class ApiPermissionController : WebApiControllerBase {
     /// <summary>
     /// 初始化Api权限控制器
@@ -37,6 +38,7 @@ public class ApiPermissionController : WebApiControllerBase {
     /// </summary>
     /// <param name="request">权限参数</param>
     [HttpPost( "GrantPermissions" )]
+    [Acl( "permission.grantApi" )]
     public async Task<IActionResult> GrantPermissionsAsync( PermissionRequest request ) {
         await ApiPermissionService.GrantApiPermissionsAsync( request );
         return Success();
@@ -47,6 +49,7 @@ public class ApiPermissionController : WebApiControllerBase {
     /// </summary>
     /// <param name="request">权限参数</param>
     [HttpPost( "DenyPermissions" )]
+    [Acl( "permission.denyApi" )]
     public async Task<IActionResult> DenyPermissionsAsync( PermissionRequest request ) {
         await ApiPermissionService.DenyApiPermissionsAsync( request );
         return Success();

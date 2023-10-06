@@ -4,10 +4,10 @@
     @*查询表单*@
     <partial name="Index.Query" />
     @*工具按钮*@
-    <util-button type="Primary" icon="Plus" on-click="openCreateDialog()" text-create="true"></util-button>
-    <util-button type="Primary" icon="CheckCircle" on-click="enable()" text-enable="true"></util-button>
-    <util-button type="Primary" icon="CloseCircle" on-click="disable()" text-disable="true"></util-button>
-    <util-button type="Primary" danger="true" icon="Delete" on-click="delete()" text-delete="true"></util-button>
+    <util-button type="Primary" icon="Plus" on-click="openCreateDialog()" text-create="true" acl="apiResource.create"></util-button>
+    <util-button type="Primary" icon="CheckCircle" on-click="enable()" text-enable="true" acl="apiResource.enable"></util-button>
+    <util-button type="Primary" icon="CloseCircle" on-click="disable()" text-disable="true" acl="apiResource.disable"></util-button>
+    <util-button type="Primary" danger="true" icon="Delete" on-click="delete()" text-delete="true" acl="apiResource.delete"></util-button>
     @*提示语*@
     <util-alert class="my-md" type="Info" show-icon="true">
         <util-i18n key="app.currentApplication" param="application:selectedApplication.name" />
@@ -29,11 +29,15 @@
                 <util-tag color-type="Red" ng-if="!row.enabled" text-not-enabled="true"></util-tag>
             </util-td>
             <util-td title-operation="true" width="300">
-                <util-a on-click="openCreateDialog(row)" text="identity.apiResource.createSubApi"></util-a>
-                <util-divider type="Vertical"></util-divider>
-                <util-a on-click="openEditDialog(row)" text-update="true"></util-a>
-                <util-divider type="Vertical"></util-divider>
-                <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+                <util-a on-click="openCreateDialog(row)" text="identity.apiResource.createSubApi" acl="apiResource.create"></util-a>
+                <util-container acl="apiResource.update">
+                    <util-divider type="Vertical"></util-divider>
+                    <util-a on-click="openEditDialog(row)" text-update="true"></util-a>
+                </util-container>
+                <util-container acl="apiResource.delete">
+                    <util-divider type="Vertical"></util-divider>
+                    <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+                </util-container>
                 <util-divider type="Vertical"></util-divider>
                 <util-a dropdown-menu="menu">
                     <util-icon type="More" theme="Outline"></util-icon>

@@ -37,36 +37,6 @@ export class StartupService {
      * 启动初始化
      */
     initial() {
-        return this.loadByApi();
-    }
-
-    /**
-     * 通过app-data.json配置文件加载应用数据
-     */
-    private loadByConfig(): Promise<void> {
-        const defaultLang = this.i18n.defaultLang;
-        const result = zip(this.i18n.loadLangData(defaultLang), this.util.http.get('assets/app-data.json').request()).pipe(
-            catchError(() => {
-                setTimeout(() => this.util.router.navigateByUrl(`/exception/500`));
-                return [];
-            }),
-            map(([langData, appData]: [Record<string, string>, any]) => {
-                this.i18n.use(defaultLang, langData);
-                this.settingService.setApp(appData.app);
-                this.settingService.setUser(appData.user);
-                this.aclService.setFull(true);
-                this.menuService.add(appData.menu);
-                this.titleService.default = '';
-                this.titleService.suffix = appData.app.name;
-            })
-        );
-        return lastValueFrom(result);
-    }
-
-    /**
-     * 通过服务端API加载应用数据
-     */
-    private loadByApi() {
         return this.authService.loadDiscoveryDocumentAndTryLogin()
             .then(() => {
                 if (this.authService.hasToken()) {
