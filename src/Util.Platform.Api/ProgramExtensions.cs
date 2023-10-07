@@ -46,11 +46,14 @@ public static class ProgramExtensions {
         var dbType = builder.GetDatabaseType();
         builder.AsBuild()
             .AddSqlServerUnitOfWork<ISystemUnitOfWork, Util.Platform.Data.SqlServer.SystemUnitOfWork>(
-                builder.GetIdentitySqlServerConnectionString(),
+                builder.GetSqlServerConnectionString(),
                 condition: dbType == DatabaseType.SqlServer )
             .AddPgSqlUnitOfWork<ISystemUnitOfWork, Util.Platform.Data.PgSql.SystemUnitOfWork>(
-                builder.GetIdentityPgSqlConnectionString(),
-                condition: dbType == DatabaseType.PgSql );
+                builder.GetPgSqlConnectionString(),
+                condition: dbType == DatabaseType.PgSql )
+            .AddMySqlUnitOfWork<ISystemUnitOfWork, Util.Platform.Data.MySql.SystemUnitOfWork>(
+                builder.GetMySqlConnectionString(),
+                condition: dbType == DatabaseType.MySql );
         return builder;
     }
 
@@ -68,17 +71,24 @@ public static class ProgramExtensions {
     }
 
     /// <summary>
-    /// 获取Identity SqlServer数据库连接字符串
+    /// 获取SqlServer数据库连接字符串
     /// </summary>
-    public static string GetIdentitySqlServerConnectionString( this WebApplicationBuilder builder ) {
+    public static string GetSqlServerConnectionString( this WebApplicationBuilder builder ) {
         return builder.Configuration.GetConnectionString( "SqlServer" );
     }
 
     /// <summary>
-    /// 获取Identity PgSql数据库连接字符串
+    /// 获取PgSql数据库连接字符串
     /// </summary>
-    public static string GetIdentityPgSqlConnectionString( this WebApplicationBuilder builder ) {
+    public static string GetPgSqlConnectionString( this WebApplicationBuilder builder ) {
         return builder.Configuration.GetConnectionString( "PgSql" );
+    }
+
+    /// <summary>
+    /// 获取MySql数据库连接字符串
+    /// </summary>
+    public static string GetMySqlConnectionString( this WebApplicationBuilder builder ) {
+        return builder.Configuration.GetConnectionString( "MySql" );
     }
 
     /// <summary>
@@ -309,6 +319,7 @@ public static class ProgramExtensions {
         app.Logger.LogInformation( "准备迁移数据..." );
         Migrate( app, migrationService, migrationName, "Util.Platform.Data.SqlServer",GetDatabaseType( app ) == DatabaseType.SqlServer );
         Migrate( app, migrationService, migrationName, "Util.Platform.Data.PgSql", GetDatabaseType( app ) == DatabaseType.PgSql );
+        Migrate( app, migrationService, migrationName, "Util.Platform.Data.MySql", GetDatabaseType( app ) == DatabaseType.MySql );
         var policy = scope.ServiceProvider.GetRequiredService<IPolicy>();
         await policy.Retry().HandleException<Exception>().Forever().Wait()
             .OnRetry( ( exception, retry ) => {
