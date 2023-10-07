@@ -46,7 +46,7 @@
     <script src="./swagger-ui-standalone-preset.js"></script>
     <!--<script src="https://unpkg.com/swagger-ui-dist@4.14.0/swagger-ui-bundle.js" crossorigin></script>-->
     <!--<script src="https://unpkg.com/swagger-ui-dist@4.14.0/swagger-ui-standalone-preset.js" crossorigin></script>-->
-<script>
+    <script>
         /* Source: https://gist.github.com/lamberta/3768814
          * Parse a string function definition and return a function object. Does not use eval.
          * @param {string} str
@@ -85,28 +85,28 @@
                 for (var i = keys.length; i--;)
                     document.cookie = keys[i] + "=0; expire=" + date.toGMTString() + "; path=/";
             }
-    }
+        }
 
-    function logout() {
-        // 可通过该变量 configObject.oauth2RedirectUrl 获取地址
-        // 新浏览器才支持该方法
-        fetch("https://localhost:12086/api/system/Logout")
-            .then(function (response) {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('请求失败');
-                }
-            })
-            .then(function (data) {
-                // 处理响应数据
-                console.log("老何的成功数据", data);
-            })
-            .catch(function (error) {
-                // 请求失败处理
-                console.log("老何的失败数据", error);
-            });
-    }
+        function logout() {
+            // 可通过该变量 configObject.oauth2RedirectUrl 获取地址
+            // 新浏览器才支持该方法
+            fetch("https://localhost:12086/api/system/Logout")
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('请求失败');
+                    }
+                })
+                .then(function (data) {
+                    // 处理响应数据
+                    console.log("老何的成功数据", data);
+                })
+                .catch(function (error) {
+                    // 请求失败处理
+                    console.log("老何的失败数据", error);
+                });
+        }
 
         const MyLogoutPlugin = () => ({
             statePlugins: {
