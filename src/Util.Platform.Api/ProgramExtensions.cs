@@ -271,6 +271,10 @@ public static class ProgramExtensions {
             options.OAuthScopes( "openid" );
             options.OAuthUsePkce();
             options.OAuthConfigObject.ClientSecret = "secret";
+
+            // Add Customize index.html
+            options.IndexStream = () =>
+                typeof(Program).Assembly.GetManifestResourceStream("Util.Platform.Api.Resources.index.html");
         } );
     }
 
