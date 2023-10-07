@@ -80,17 +80,14 @@
             var date = new Date();
             date.setTime(date.getTime() - 10000);
             var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
-            console.log("需要删除的cookie名字：" + keys);
             if (keys) {
                 for (var i = keys.length; i--;)
                     document.cookie = keys[i] + "=0; expire=" + date.toGMTString() + "; path=/";
             }
         }
 
-        function logout() {
-            // 可通过该变量 configObject.oauth2RedirectUrl 获取地址
-            // 新浏览器才支持该方法
-            fetch("https://localhost:12086/api/system/Logout")
+        function logout() { 
+            fetch("/api/system/Logout")
                 .then(function (response) {
                     if (response.ok) {
                         return response.json();
@@ -99,12 +96,8 @@
                     }
                 })
                 .then(function (data) {
-                    // 处理响应数据
-                    console.log("老何的成功数据", data);
                 })
                 .catch(function (error) {
-                    // 请求失败处理
-                    console.log("老何的失败数据", error);
                 });
         }
 
@@ -112,13 +105,9 @@
             statePlugins: {
                 auth: {
                     wrapActions: {
-                        logout: (internalLogoutAction) => (keys) => {
-                            // here, you can run the logout request.
-                            console.log("老何尝试Logout from following securities:", keys)
-                            // clearCookies()
-                            logout()
-                            console.log("清空老何的cookies完毕")
-                            return internalLogoutAction(keys) // don't forget! otherwise, Swagger UI won't logout
+                        logout: (internalLogoutAction) => (keys) => {                           
+                            logout()                           
+                            return internalLogoutAction(keys)
                         }
                     }
                 }
@@ -132,7 +121,6 @@
 
             console.log('configObject', configObject);
 
-            // Workaround for https://github.com/swagger-api/swagger-ui/issues/5945
             configObject.urls.forEach(function (item) {
                 if (item.url.startsWith("http") || item.url.startsWith("/")) return;
                 item.url = window.location.href.replace("index.html", item.url).split('#')[0];

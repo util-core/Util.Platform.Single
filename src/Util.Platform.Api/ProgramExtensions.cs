@@ -1,7 +1,9 @@
-﻿using Util.Helpers;
+﻿using System.IO;
+using Util.Helpers;
 using Util.Platform.Api.Middlewares;
 using Util.Platform.Api.Services;
 using Util.Platform.Domain.Models;
+using File = Util.Helpers.File;
 
 namespace Util.Platform.Api;
 
@@ -271,10 +273,10 @@ public static class ProgramExtensions {
             options.OAuthScopes( "openid" );
             options.OAuthUsePkce();
             options.OAuthConfigObject.ClientSecret = "secret";
-
-            // Add Customize index.html
-            options.IndexStream = () =>
-                typeof(Program).Assembly.GetManifestResourceStream("Util.Platform.Api.Resources.index.html");
+            options.IndexStream = () => {
+                var filePath = Util.Helpers.Common.JoinPath( Util.Helpers.Common.GetCurrentDirectory(), "/Swagger/index.html" );
+                return File.ReadToStream( filePath );
+            };
         } );
     }
 
@@ -321,7 +323,7 @@ public static class ProgramExtensions {
         var migrationService = scope.ServiceProvider.GetRequiredService<IMigrationService>();
         InstallEfTool( migrationService );
         app.Logger.LogInformation( "准备迁移数据..." );
-        Migrate( app, migrationService, migrationName, "Util.Platform.Data.SqlServer",GetDatabaseType( app ) == DatabaseType.SqlServer );
+        Migrate( app, migrationService, migrationName, "Util.Platform.Data.SqlServer", GetDatabaseType( app ) == DatabaseType.SqlServer );
         Migrate( app, migrationService, migrationName, "Util.Platform.Data.PgSql", GetDatabaseType( app ) == DatabaseType.PgSql );
         Migrate( app, migrationService, migrationName, "Util.Platform.Data.MySql", GetDatabaseType( app ) == DatabaseType.MySql );
         var policy = scope.ServiceProvider.GetRequiredService<IPolicy>();
@@ -359,11 +361,11 @@ public static class ProgramExtensions {
     /// <summary>
     /// 迁移
     /// </summary>
-    private static void Migrate( WebApplication app, IMigrationService migrationService, string migrationName, string dataProjectName,bool isMigrate ) {
+    private static void Migrate( WebApplication app, IMigrationService migrationService, string migrationName, string dataProjectName, bool isMigrate ) {
         try {
             var path = Common.JoinPath( Common.GetParentDirectory(), dataProjectName );
             migrationService.AddMigration( migrationName, path );
-            if( isMigrate )
+            if ( isMigrate )
                 migrationService.Migrate( path );
         }
         catch ( Exception exception ) {
