@@ -1,25 +1,32 @@
 <nz-card [nzBorderless]="true">
-    <button (click)="openCreateDrawer()" nz-button="" nz-tooltip="" nzType="primary" [nzTooltipTitle]="'identity.operation.create'|i18n"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
-    <button (click)="openManageCommonOperation()" nz-button="" nz-tooltip="" nzType="primary" [nzTooltipTitle]="'identity.operation.manageCommonOperation'|i18n"><i nz-icon="" nzType="setting"></i>{{'identity.operation.manageCommonOperation'|i18n}}</button>
-    <button (click)="delete()" nz-button="" nz-tooltip="" nzType="primary" [nzDanger]="true" [nzTooltipTitle]="'identity.operation.delete'|i18n"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_79423ca8902f4d82aac161cc240aa2c4" [nzShowIcon]="true"><ng-template #t_79423ca8902f4d82aac161cc240aa2c4="">
+    <button (click)="openCreateDrawer()" *aclIf="'operation.create'" class="mr-sm" nz-button="" nz-tooltip="" nzType="primary" [nzTooltipTitle]="'identity.operation.create'|i18n"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
+    <button (click)="openManageCommonOperation()" *aclIf="'commonOperation.view'" class="mr-sm" nz-button="" nz-tooltip="" nzType="primary" [nzTooltipTitle]="'identity.operation.manageCommonOperation'|i18n"><i nz-icon="" nzType="setting"></i>{{'identity.operation.manageCommonOperation'|i18n}}</button>
+    <button (click)="delete()" *aclIf="'operation.delete'" nz-button="" nz-tooltip="" nzType="primary" [nzDanger]="true" [nzTooltipTitle]="'identity.operation.delete'|i18n"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_24941efc23e04d80a7821ab56925dcc1" [nzShowIcon]="true"><ng-template #t_24941efc23e04d80a7821ab56925dcc1="">
         <span [innerHTML]="'identity.operation.module'|i18n:{module:module&&module.name}"></span>
         <span [innerHTML]="'app.rowsSelected'|i18n:{length:getCheckedLength()}"></span>
     </ng-template></nz-alert>
-    <nz-table #tb_operation="" #x_tb_operation="xTableExtend" (nzPageIndexChange)="x_tb_operation.pageIndexChange($event)" (nzPageSizeChange)="x_tb_operation.pageSizeChange($event)" order="SortId" url="operation" x-table-extend="" [(nzPageIndex)]="x_tb_operation.queryParam.page" [(nzPageSize)]="x_tb_operation.queryParam.pageSize" [(queryParam)]="queryParam" [nzData]="x_tb_operation.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb_operation.loading" [nzPageSizeOptions]="x_tb_operation.pageSizeOptions" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb_operation" [nzTotal]="x_tb_operation.total"><thead><tr><th (nzCheckedChange)="x_tb_operation.masterToggle()" [nzChecked]="x_tb_operation.isMasterChecked()" [nzDisabled]="!x_tb_operation.dataSource.length" [nzIndeterminate]="x_tb_operation.isMasterIndeterminate()" [nzShowCheckbox]="true" [nzWidth]="x_tb_operation.config.table.checkboxWidth"></th><th [nzWidth]="x_tb_operation.config.table.lineNumberWidth">{{'util.lineNumber'|i18n}}</th><th>{{'identity.operation.name'|i18n}}</th><th>{{'identity.operation.uri'|i18n}}</th><th>{{'identity.operation.remark'|i18n}}</th><th>{{'identity.operation.enabled'|i18n}}</th><th nzWidth="300px">{{'util.operation'|i18n}}</th></tr></thead><tbody><tr *ngFor="let row of x_tb_operation.dataSource;index as index">
+    <nz-table #tb_operation="" #x_tb_operation="xTableExtend" (nzPageIndexChange)="x_tb_operation.pageIndexChange($event)" (nzPageSizeChange)="x_tb_operation.pageSizeChange($event)" order="SortId" url="operation" x-table-extend="" [(nzPageIndex)]="x_tb_operation.queryParam.page" [(nzPageSize)]="x_tb_operation.queryParam.pageSize" [(queryParam)]="queryParam" [nzData]="x_tb_operation.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb_operation.loading" [nzPageSizeOptions]="x_tb_operation.pageSizeOptions" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb_operation" [nzTotal]="x_tb_operation.total"><thead><tr><th (nzCheckedChange)="x_tb_operation.masterToggle()" [nzChecked]="x_tb_operation.isMasterChecked()" [nzDisabled]="!x_tb_operation.dataSource.length" [nzIndeterminate]="x_tb_operation.isMasterIndeterminate()" [nzShowCheckbox]="true" [nzWidth]="x_tb_operation.config.table.checkboxWidth"></th><th [nzWidth]="x_tb_operation.config.table.lineNumberWidth">{{'util.lineNumber'|i18n}}</th><th>{{'identity.operation.name'|i18n}}</th><th>{{'identity.operation.uri'|i18n}}</th><th>{{'identity.operation.isBase'|i18n}}</th><th>{{'identity.operation.remark'|i18n}}</th><th>{{'identity.operation.enabled'|i18n}}</th><th nzWidth="300px">{{'util.operation'|i18n}}</th></tr></thead><tbody><tr *ngFor="let row of x_tb_operation.dataSource;index as index">
         <td (click)="$event.stopPropagation()" (nzCheckedChange)="x_tb_operation.toggle(row)" [nzChecked]="x_tb_operation.isChecked(row)" [nzShowCheckbox]="true"></td><td>{{row.lineNumber}}</td><td>{{row.name}}</td>
         <td>{{row.uri}}</td>
+        <td><i *ngIf="!row.isBase" nz-icon nzType="close"></i>
+<i *ngIf="row.isBase" nz-icon nzType="check"></i>
+</td>
         <td>{{row.remark}}</td>
         <td>
             <nz-tag *ngIf="row.enabled" nzColor="geekblue">{{'util.enabled'|i18n}}</nz-tag>
             <nz-tag *ngIf="!row.enabled" nzColor="red">{{'util.notEnabled'|i18n}}</nz-tag>
         </td>
         <td>
-            <a (click)="openEditDrawer(row)">{{'util.update'|i18n}}</a>
-            <nz-divider nzType="vertical"></nz-divider>
             <a (click)="openDetailDialog(row)">{{'util.detail'|i18n}}</a>
-            <nz-divider nzType="vertical"></nz-divider>
-            <a (click)="delete(row.id)" class="ant-btn-dangerous">{{'util.delete'|i18n}}</a>
+            <ng-container *aclIf="'operation.update'">
+                <nz-divider nzType="vertical"></nz-divider>
+                <a (click)="openEditDrawer(row)">{{'util.update'|i18n}}</a>
+            </ng-container>
+            <ng-container *aclIf="'operation.delete'">
+                <nz-divider nzType="vertical"></nz-divider>
+                <a (click)="delete(row.id)" class="ant-btn-dangerous">{{'util.delete'|i18n}}</a>
+            </ng-container>
         </td>
     </tr></tbody></nz-table><ng-template #total_tb_operation="" let-range="range" let-total="">{{ 'util.tableTotalTemplate'|i18n:{start:range[0],end:range[1],total:total} }}</ng-template>
 </nz-card>

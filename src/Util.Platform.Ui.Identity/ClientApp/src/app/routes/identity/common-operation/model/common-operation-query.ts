@@ -1,19 +1,7 @@
-import { QueryParameter } from "util-angular";
+import { CommonOperationQueryBase } from 'util-platform-identity';
 
 /**
 * 常用操作资源查询参数
 */
-export class CommonOperationQuery extends QueryParameter {
-   /**
-    * 操作名称
-    */
-    name;
-    /**
-    * 启用
-    */
-    enabled;
-    /**
-    * 备注
-    */
-    remark;
+export class CommonOperationQuery extends CommonOperationQueryBase {
 }

@@ -32,6 +32,9 @@ public class Startup {
             .AddPgSqlUnitOfWork<ISystemUnitOfWork, Data.PgSql.SystemUnitOfWork>(
                 Config.GetConnectionString( "PgSqlTestConnection" ),
                 condition: false )
+            .AddMySqlUnitOfWork<ISystemUnitOfWork, Data.MySql.SystemUnitOfWork>(
+                Config.GetConnectionString( "MySqlTestConnection" ),
+                condition: false )
             .AddUtil();
     }
 

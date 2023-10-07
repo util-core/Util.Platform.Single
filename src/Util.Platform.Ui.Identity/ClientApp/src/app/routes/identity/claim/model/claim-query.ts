@@ -1,19 +1,7 @@
-﻿import { QueryParameter } from 'util-angular';
+﻿import { ClaimQueryBase } from 'util-platform-identity';
 
 /**
  * 声明查询参数
  */
-export class ClaimQuery extends QueryParameter {
-    /**
-     * 声明名称
-     */
-    name;
-    /**
-     * 启用
-     */
-    enabled;
-    /**
-     * 备注
-     */
-    remark;
+export class ClaimQuery extends ClaimQueryBase {
 }

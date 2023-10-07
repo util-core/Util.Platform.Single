@@ -10,7 +10,7 @@
             <nz-form-item><nz-form-label>{{'identity.role.name'|i18n}}</nz-form-label><nz-form-control><input name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-form-control></nz-form-item>
         </div>
         <div nz-col="" [nzSm]="4" [nzXs]="24">
-            <nz-form-item><nz-form-label>{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_c28b0c2a3d4d4567ad406fb57ad81cc9="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_c28b0c2a3d4d4567ad406fb57ad81cc9.isGroup"><nz-option *ngFor="let item of x_c28b0c2a3d4d4567ad406fb57ad81cc9.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_c28b0c2a3d4d4567ad406fb57ad81cc9.isGroup"><nz-option-group *ngFor="let group of x_c28b0c2a3d4d4567ad406fb57ad81cc9.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+            <nz-form-item><nz-form-label>{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_0196378b2f7c4c1db49de73f32582267="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_0196378b2f7c4c1db49de73f32582267.isGroup"><nz-option *ngFor="let item of x_0196378b2f7c4c1db49de73f32582267.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_0196378b2f7c4c1db49de73f32582267.isGroup"><nz-option-group *ngFor="let group of x_0196378b2f7c4c1db49de73f32582267.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
         </div>
         <div class="mb-sm" nz-col="">
             <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
@@ -18,28 +18,36 @@
         </div>
     </div>
 </form>
-    <button (click)="openCreateDialog()" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
-    <button (click)="delete()" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_23815a88eb1e42b5ba34e8ad9c4c78aa" [nzShowIcon]="true"><ng-template #t_23815a88eb1e42b5ba34e8ad9c4c78aa="">
+    <button (click)="openCreateDialog()" *aclIf="'role.create'" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
+    <button (click)="delete()" *aclIf="'role.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_a3142ea400df480d8cea2017ff652a62" [nzShowIcon]="true"><ng-template #t_a3142ea400df480d8cea2017ff652a62="">
         <span [innerHTML]="'app.rowsSelected'|i18n:{length:getCheckedLength()}"></span>
     </ng-template></nz-alert>
     <nz-table #tb_role="" #x_tb_role="xTableExtend" (nzPageIndexChange)="x_tb_role.pageIndexChange($event)" (nzPageSizeChange)="x_tb_role.pageSizeChange($event)" order="CreationTime desc" url="role" x-table-extend="" [(nzPageIndex)]="x_tb_role.queryParam.page" [(nzPageSize)]="x_tb_role.queryParam.pageSize" [(queryParam)]="queryParam" [nzData]="x_tb_role.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb_role.loading" [nzPageSizeOptions]="x_tb_role.pageSizeOptions" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb_role" [nzTotal]="x_tb_role.total"><thead><tr><th (nzCheckedChange)="x_tb_role.masterToggle()" [nzChecked]="x_tb_role.isMasterChecked()" [nzDisabled]="!x_tb_role.dataSource.length" [nzIndeterminate]="x_tb_role.isMasterIndeterminate()" [nzShowCheckbox]="true" [nzWidth]="x_tb_role.config.table.checkboxWidth"></th><th [nzWidth]="x_tb_role.config.table.lineNumberWidth">{{'util.lineNumber'|i18n}}</th><th>{{'identity.role.code'|i18n}}</th><th>{{'identity.role.name'|i18n}}</th><th>{{'identity.role.isAdmin'|i18n}}</th><th nzWidth="120px">{{'util.enabled'|i18n}}</th><th>{{'identity.role.remark'|i18n}}</th><th nzWidth="300px">{{'util.operation'|i18n}}</th></tr></thead><tbody><tr *ngFor="let row of x_tb_role.dataSource;index as index">
         <td (click)="$event.stopPropagation()" (nzCheckedChange)="x_tb_role.toggle(row)" [nzChecked]="x_tb_role.isChecked(row)" [nzShowCheckbox]="true"></td><td>{{row.lineNumber}}</td><td>{{row.code}}</td>
         <td>{{row.name}}</td>
-        <td>{{(row.isAdmin?'util.yes':'util.no')|i18n}}</td>
+        <td><i *ngIf="!row.isAdmin" nz-icon nzType="close"></i>
+<i *ngIf="row.isAdmin" nz-icon nzType="check"></i>
+</td>
         <td>
             <nz-tag *ngIf="row.enabled" nzColor="geekblue">{{'util.enabled'|i18n}}</nz-tag>
             <nz-tag *ngIf="!row.enabled" nzColor="red">{{'util.notEnabled'|i18n}}</nz-tag>
         </td>
         <td>{{row.remark}}</td>
         <td>
-            <a (click)="openRoleUsersDialog(row)">{{'identity.role.userSettings'|i18n}}</a>
-            <nz-divider nzType="vertical"></nz-divider>
-            <a (click)="openPermissionDialog(row)">{{'identity.role.permissionSettings'|i18n}}</a>
-            <nz-divider nzType="vertical"></nz-divider>
-            <a (click)="openEditDialog(row)">{{'util.update'|i18n}}</a>
-            <nz-divider nzType="vertical"></nz-divider>
-            <a (click)="delete(row.id)" class="ant-btn-dangerous">{{'util.delete'|i18n}}</a>
+            <a (click)="openRoleUsersDialog(row)" *aclIf="'role.userSettings'">{{'identity.role.userSettings'|i18n}}</a>
+            <ng-container *aclIf="'permission.view'">
+                <nz-divider nzType="vertical"></nz-divider>
+                <a (click)="openPermissionDialog(row)">{{'identity.role.permissionSettings'|i18n}}</a>
+            </ng-container>
+            <ng-container *aclIf="'role.update'">
+                <nz-divider nzType="vertical"></nz-divider>
+                <a (click)="openEditDialog(row)">{{'util.update'|i18n}}</a>
+            </ng-container>
+            <ng-container *aclIf="'role.delete'">
+                <nz-divider nzType="vertical"></nz-divider>
+                <a (click)="delete(row.id)" class="ant-btn-dangerous">{{'util.delete'|i18n}}</a>
+            </ng-container>
             <nz-divider nzType="vertical"></nz-divider>
             <a nz-dropdown="" [nzDropdownMenu]="menu">
                 <i nz-icon="" nzTheme="outline" nzType="more"></i>

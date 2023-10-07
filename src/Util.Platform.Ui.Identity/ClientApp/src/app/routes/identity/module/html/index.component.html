@@ -9,7 +9,7 @@
             <nz-form-item><nz-form-label>{{'identity.module.uri'|i18n}}</nz-form-label><nz-form-control><input name="uri" nz-input="" [(ngModel)]="queryParam.uri" /></nz-form-control></nz-form-item>
         </div>
         <div nz-col="" [nzSm]="4" [nzXs]="24">
-            <nz-form-item><nz-form-label>{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_0073fea1356b4befa4cda89432e1e811="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_0073fea1356b4befa4cda89432e1e811.isGroup"><nz-option *ngFor="let item of x_0073fea1356b4befa4cda89432e1e811.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_0073fea1356b4befa4cda89432e1e811.isGroup"><nz-option-group *ngFor="let group of x_0073fea1356b4befa4cda89432e1e811.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+            <nz-form-item><nz-form-label>{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_c13ccd94a4be47ffbcf7da923cc697fe="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_c13ccd94a4be47ffbcf7da923cc697fe.isGroup"><nz-option *ngFor="let item of x_c13ccd94a4be47ffbcf7da923cc697fe.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_c13ccd94a4be47ffbcf7da923cc697fe.isGroup"><nz-option-group *ngFor="let group of x_c13ccd94a4be47ffbcf7da923cc697fe.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
         </div>
         <div class="mb-sm" nz-col="">
             <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
@@ -21,7 +21,7 @@
     <button (click)="enable()" *aclIf="'module.enable'" nz-button="" nzType="primary"><i nz-icon="" nzType="check-circle"></i>{{'util.enable'|i18n}}</button>
     <button (click)="disable()" *aclIf="'module.disable'" nz-button="" nzType="primary"><i nz-icon="" nzType="close-circle"></i>{{'util.disable'|i18n}}</button>
     <button (click)="delete()" *aclIf="'module.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_53e1e1092ce44d4a82101274719fb78d" [nzShowIcon]="true"><ng-template #t_53e1e1092ce44d4a82101274719fb78d="">
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_9bae9ad5a23343b6b46eaf9869efa9bc" [nzShowIcon]="true"><ng-template #t_9bae9ad5a23343b6b46eaf9869efa9bc="">
         <span [innerHTML]="'app.currentApplication'|i18n:{application:selectedApplication.name}"></span>
     </ng-template></nz-alert>
 </nz-card>
@@ -49,10 +49,9 @@
                             <i nz-icon="" [nzType]="row.icon"></i>
                         </td>
                         <td>{{row.uri}}</td>
-                        <td>
-                            <i *ngIf="!row.isHide" nz-icon="" nzType="close"></i>
-                            <i *ngIf="row.isHide" nz-icon="" nzType="check"></i>
-                        </td>
+                        <td><i *ngIf="!row.isHide" nz-icon nzType="close"></i>
+<i *ngIf="row.isHide" nz-icon nzType="check"></i>
+</td>
                         <td>
                             <nz-tag *ngIf="row.enabled" nzColor="geekblue">{{'util.enabled'|i18n}}</nz-tag>
                             <nz-tag *ngIf="!row.enabled" nzColor="red">{{'util.notEnabled'|i18n}}</nz-tag>

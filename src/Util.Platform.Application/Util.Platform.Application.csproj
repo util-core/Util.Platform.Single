@@ -7,12 +7,13 @@
 	<ItemGroup>
 		<PackageReference Include="Util.Localization" Version="7.1.46" />
 		<PackageReference Include="Util.Microservices.Polly" Version="7.1.46" />
-		<PackageReference Include="Util.Platform.Share.Apps" Version="0.4.5" />
+		<PackageReference Include="Util.Platform.Share.Apps" Version="0.4.6" />
 		<PackageReference Include="Util.Tenants" Version="7.1.46" />
-		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.4.5" />
-		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.4.5" />
+		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.4.6" />
+		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.4.6" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\Util.Platform.Data.MySql\04-Util.Platform.Data.MySql.csproj" />
 	  <ProjectReference Include="..\Util.Platform.Data.PgSql\03-Util.Platform.Data.PgSql.csproj" />
 	  <ProjectReference Include="..\Util.Platform.Data.SqlServer\02-Util.Platform.Data.SqlServer.csproj" />
 	  <ProjectReference Include="..\Util.Platform.Domain.Identity\Util.Platform.Domain.Identity.csproj" />

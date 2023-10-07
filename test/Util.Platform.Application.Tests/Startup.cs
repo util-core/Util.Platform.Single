@@ -23,6 +23,9 @@ public class Startup {
             .AddPgSqlUnitOfWork<ISystemUnitOfWork, Data.PgSql.SystemUnitOfWork>(
                 Config.GetConnectionString( "PgSql" ),
                 condition: false )
+            .AddMySqlUnitOfWork<ISystemUnitOfWork, Data.MySql.SystemUnitOfWork>(
+                Config.GetConnectionString( "MySql" ),
+                condition: false )
             .AddUtil();
     }
 

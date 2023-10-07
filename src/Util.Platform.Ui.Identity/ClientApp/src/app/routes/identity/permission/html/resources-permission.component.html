@@ -1,9 +1,29 @@
 
 <nz-tabset nzTabPosition="left" [(nzSelectedIndex)]="selectedTabIndex">
-    <nz-tab *ngIf="!application.isApi" [nzTitle]="'identity.permission.operationPermission'|i18n"><ng-template nz-tab="">
-        <operation-permission [role]="role" [application]="application" [isDeny]="isDeny"></operation-permission>
-    </ng-template></nz-tab>
-    <nz-tab *ngIf="application.isApi" [nzTitle]="'identity.permission.apiPermission'|i18n"><ng-template nz-tab="">
-        <api-permission [role]="role" [application]="application" [isDeny]="isDeny"></api-permission>
-    </ng-template></nz-tab>
+    <ng-container *ngIf="!isDeny">
+        <ng-container *aclIf="'permission.grantOperation'">
+            <nz-tab *ngIf="!application.isApi" [nzTitle]="'identity.permission.operationPermission'|i18n"><ng-template nz-tab="">
+                <operation-permission [role]="role" [application]="application" [isDeny]="false"></operation-permission>
+            </ng-template></nz-tab>
+        </ng-container>
+        <ng-container *aclIf="'permission.grantApi'">
+            <nz-tab *ngIf="application.isApi" [nzTitle]="'identity.permission.apiPermission'|i18n"><ng-template nz-tab="">
+                <api-permission [role]="role" [application]="application" [isDeny]="false"></api-permission>
+            </ng-template></nz-tab>
+        </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="isDeny">
+        <ng-container *aclIf="'permission.denyOperation'">
+            <nz-tab *ngIf="!application.isApi" [nzTitle]="'identity.permission.operationPermission'|i18n"><ng-template nz-tab="">
+                <operation-permission [role]="role" [application]="application" [isDeny]="true"></operation-permission>
+            </ng-template></nz-tab>
+        </ng-container>
+        <ng-container *aclIf="'permission.denyApi'">
+            <nz-tab *ngIf="application.isApi" [nzTitle]="'identity.permission.apiPermission'|i18n"><ng-template nz-tab="">
+                <api-permission [role]="role" [application]="application" [isDeny]="true"></api-permission>
+            </ng-template></nz-tab>
+        </ng-container>
+    </ng-container>
+
 </nz-tabset>

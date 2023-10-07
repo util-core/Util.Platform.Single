@@ -9,7 +9,7 @@
             <nz-form-item><nz-form-label>{{'identity.apiResource.uri'|i18n}}</nz-form-label><nz-form-control><input name="uri" nz-input="" [(ngModel)]="queryParam.uri" /></nz-form-control></nz-form-item>
         </div>
         <div nz-col="" [nzSm]="4" [nzXs]="24">
-            <nz-form-item><nz-form-label>{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_740e65b61a644ab49b3a1cfcc3056cab="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_740e65b61a644ab49b3a1cfcc3056cab.isGroup"><nz-option *ngFor="let item of x_740e65b61a644ab49b3a1cfcc3056cab.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_740e65b61a644ab49b3a1cfcc3056cab.isGroup"><nz-option-group *ngFor="let group of x_740e65b61a644ab49b3a1cfcc3056cab.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+            <nz-form-item><nz-form-label>{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_b4a946dbd37c4db2918c8963e3520a71="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_b4a946dbd37c4db2918c8963e3520a71.isGroup"><nz-option *ngFor="let item of x_b4a946dbd37c4db2918c8963e3520a71.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_b4a946dbd37c4db2918c8963e3520a71.isGroup"><nz-option-group *ngFor="let group of x_b4a946dbd37c4db2918c8963e3520a71.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
         </div>
         <div class="mb-sm" nz-col="">
             <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
@@ -17,11 +17,11 @@
         </div>
     </div>
 </form>
-    <button (click)="openCreateDialog()" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
-    <button (click)="enable()" nz-button="" nzType="primary"><i nz-icon="" nzType="check-circle"></i>{{'util.enable'|i18n}}</button>
-    <button (click)="disable()" nz-button="" nzType="primary"><i nz-icon="" nzType="close-circle"></i>{{'util.disable'|i18n}}</button>
-    <button (click)="delete()" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_d510a26a20c443b8804a6d5e69b7e643" [nzShowIcon]="true"><ng-template #t_d510a26a20c443b8804a6d5e69b7e643="">
+    <button (click)="openCreateDialog()" *aclIf="'apiResource.create'" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
+    <button (click)="enable()" *aclIf="'apiResource.enable'" nz-button="" nzType="primary"><i nz-icon="" nzType="check-circle"></i>{{'util.enable'|i18n}}</button>
+    <button (click)="disable()" *aclIf="'apiResource.disable'" nz-button="" nzType="primary"><i nz-icon="" nzType="close-circle"></i>{{'util.disable'|i18n}}</button>
+    <button (click)="delete()" *aclIf="'apiResource.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_97a69f5100724820b84fcdb93d29b950" [nzShowIcon]="true"><ng-template #t_97a69f5100724820b84fcdb93d29b950="">
         <span [innerHTML]="'app.currentApplication'|i18n:{application:selectedApplication.name}"></span>
     </ng-template></nz-alert>
 </nz-card>
@@ -38,11 +38,15 @@
                 <nz-tag *ngIf="!row.enabled" nzColor="red">{{'util.notEnabled'|i18n}}</nz-tag>
             </td>
             <td>
-                <a (click)="openCreateDialog(row)">{{'identity.apiResource.createSubApi'|i18n}}</a>
-                <nz-divider nzType="vertical"></nz-divider>
-                <a (click)="openEditDialog(row)">{{'util.update'|i18n}}</a>
-                <nz-divider nzType="vertical"></nz-divider>
-                <a (click)="delete(row.id)" class="ant-btn-dangerous">{{'util.delete'|i18n}}</a>
+                <a (click)="openCreateDialog(row)" *aclIf="'apiResource.create'">{{'identity.apiResource.createSubApi'|i18n}}</a>
+                <ng-container *aclIf="'apiResource.update'">
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a (click)="openEditDialog(row)">{{'util.update'|i18n}}</a>
+                </ng-container>
+                <ng-container *aclIf="'apiResource.delete'">
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a (click)="delete(row.id)" class="ant-btn-dangerous">{{'util.delete'|i18n}}</a>
+                </ng-container>
                 <nz-divider nzType="vertical"></nz-divider>
                 <a nz-dropdown="" [nzDropdownMenu]="menu">
                     <i nz-icon="" nzTheme="outline" nzType="more"></i>

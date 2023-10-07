@@ -13,7 +13,7 @@
             <nz-form-item><nz-form-label>{{'identity.user.phoneNumber'|i18n}}</nz-form-label><nz-form-control><input name="phoneNumber" nz-input="" [(ngModel)]="queryParam.phoneNumber" /></nz-form-control></nz-form-item>
         </div>
         <div nz-col="" [nzSm]="4" [nzXs]="24">
-            <nz-form-item><nz-form-label>{{'identity.user.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_0ccb48fb247e4908b7761a16ed826e62="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_0ccb48fb247e4908b7761a16ed826e62.isGroup"><nz-option *ngFor="let item of x_0ccb48fb247e4908b7761a16ed826e62.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_0ccb48fb247e4908b7761a16ed826e62.isGroup"><nz-option-group *ngFor="let group of x_0ccb48fb247e4908b7761a16ed826e62.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+            <nz-form-item><nz-form-label>{{'identity.user.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_b2f7b040537e48e7aaf4d798f939406d="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_b2f7b040537e48e7aaf4d798f939406d.isGroup"><nz-option *ngFor="let item of x_b2f7b040537e48e7aaf4d798f939406d.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_b2f7b040537e48e7aaf4d798f939406d.isGroup"><nz-option-group *ngFor="let group of x_b2f7b040537e48e7aaf4d798f939406d.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
         </div>
         <div class="mb-xs" nz-col="">
             <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
@@ -23,16 +23,18 @@
 </form>
 
 
-    <button (click)="openCreateDialog()" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
-    <button (click)="delete()" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_07e0a66bb0484594a419bd2df1fff025" [nzShowIcon]="true"><ng-template #t_07e0a66bb0484594a419bd2df1fff025="">
+    <button (click)="openCreateDialog()" *aclIf="'user.create'" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
+    <button (click)="delete()" *aclIf="'user.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_767604be4fb540b38ca4908780f1dea1" [nzShowIcon]="true"><ng-template #t_767604be4fb540b38ca4908780f1dea1="">
         <span [innerHTML]="'app.rowsSelected'|i18n:{length:getCheckedLength()}"></span>
     </ng-template></nz-alert>
     <nz-table #tb_user="" #x_tb_user="xTableExtend" (nzPageIndexChange)="x_tb_user.pageIndexChange($event)" (nzPageSizeChange)="x_tb_user.pageSizeChange($event)" order="CreationTime desc" url="user" x-table-extend="" [(nzPageIndex)]="x_tb_user.queryParam.page" [(nzPageSize)]="x_tb_user.queryParam.pageSize" [(queryParam)]="queryParam" [nzData]="x_tb_user.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb_user.loading" [nzPageSizeOptions]="x_tb_user.pageSizeOptions" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb_user" [nzTotal]="x_tb_user.total"><thead><tr><th (nzCheckedChange)="x_tb_user.masterToggle()" [nzChecked]="x_tb_user.isMasterChecked()" [nzDisabled]="!x_tb_user.dataSource.length" [nzIndeterminate]="x_tb_user.isMasterIndeterminate()" [nzShowCheckbox]="true" [nzWidth]="x_tb_user.config.table.checkboxWidth"></th><th [nzWidth]="x_tb_user.config.table.lineNumberWidth">{{'util.lineNumber'|i18n}}</th><th>{{'identity.user.userName'|i18n}}</th><th>{{'identity.user.email'|i18n}}</th><th>{{'identity.user.phoneNumber'|i18n}}</th><th>{{'identity.user.enabled'|i18n}}</th><th>{{'identity.user.loginCount'|i18n}}</th><th>{{'identity.user.registerIp'|i18n}}</th><th>{{'identity.user.lastLoginTime'|i18n}}</th><th>{{'identity.user.lastLoginIp'|i18n}}</th><th>{{'identity.user.currentLoginTime'|i18n}}</th><th>{{'identity.user.currentLoginIp'|i18n}}</th><th>{{'util.creationTime'|i18n}}</th><th>{{'util.operation'|i18n}}</th></tr></thead><tbody><tr *ngFor="let row of x_tb_user.dataSource;index as index">
         <td (click)="$event.stopPropagation()" (nzCheckedChange)="x_tb_user.toggle(row)" [nzChecked]="x_tb_user.isChecked(row)" [nzShowCheckbox]="true"></td><td>{{row.lineNumber}}</td><td>{{row.userName}}</td>
         <td>{{row.email}}</td>
         <td>{{row.phoneNumber}}</td>
-        <td>{{(row.enabled?'util.yes':'util.no')|i18n}}</td>
+        <td><i *ngIf="!row.enabled" nz-icon nzType="close"></i>
+<i *ngIf="row.enabled" nz-icon nzType="check"></i>
+</td>
         <td>{{row.loginCount}}</td>
         <td>{{row.registerIp}}</td>
         <td>{{row.lastLoginTime}}</td>
@@ -42,8 +44,10 @@
         <td>{{row.creationTime}}</td>
         <td>
             <a (click)="openDetailDialog(row)">{{'util.detail'|i18n}}</a>
-            <nz-divider nzType="vertical"></nz-divider>
-            <a (click)="delete(row.id)" class="ant-btn-dangerous">{{'util.delete'|i18n}}</a>
+            <ng-container *aclIf="'user.delete'">
+                <nz-divider nzType="vertical"></nz-divider>
+                <a (click)="delete(row.id)" class="ant-btn-dangerous">{{'util.delete'|i18n}}</a>
+            </ng-container>
         </td>
     </tr></tbody></nz-table><ng-template #total_tb_user="" let-range="range" let-total="">{{ 'util.tableTotalTemplate'|i18n:{start:range[0],end:range[1],total:total} }}</ng-template>
 </nz-card>
