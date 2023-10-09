@@ -1,4 +1,4 @@
-import { ApplicationQueryBase } from "util-platform";
+import { ApplicationQueryBase } from "util-platform-identity";
 
 /**
  * 应用程序查询参数

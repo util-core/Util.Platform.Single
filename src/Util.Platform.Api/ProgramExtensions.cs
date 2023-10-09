@@ -1,9 +1,7 @@
-﻿using System.IO;
-using Util.Helpers;
+﻿using Util.Helpers;
 using Util.Platform.Api.Middlewares;
 using Util.Platform.Api.Services;
 using Util.Platform.Domain.Models;
-using File = Util.Helpers.File;
 
 namespace Util.Platform.Api;
 
@@ -34,7 +32,7 @@ public static class ProgramExtensions {
             .AddJsonLocalization( options => {
                 options.Cultures = new[] { "zh-CN", "en-US" };
             } )
-            .AddAcl<PermissionManager>()
+            .AddAcl<PermissionManager>(t => t.AllowAnonymous = true )
             .AddSerilog()
             .AddMemoryCache()
             .AddUtil();

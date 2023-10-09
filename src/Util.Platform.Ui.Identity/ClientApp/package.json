@@ -50,7 +50,7 @@
     "date-fns": "~2.30.0",
     "ng-event-bus": "~5.2.0",
     "util-angular": "^16.0.6",
-    "util-platform": "0.0.1",
+    "util-platform": "0.0.7",
     "util-platform-identity": "0.0.4"
   },
   "devDependencies": {

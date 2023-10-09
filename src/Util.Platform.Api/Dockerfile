@@ -1,21 +1,20 @@
-# Util Platform Api¾µÏñÅäÖÃ
+# Util Platform Apié•œåƒé…ç½®
 
-# ±äÁ¿¶¨Òå
+# å˜é‡å®šä¹‰
 ARG runtime_version=7.0.9
 ARG sdk_version=7.0.306
 
-# »ù´¡½×¶Î
+# åŸºç¡€é˜¶æ®µ
 FROM mcr.microsoft.com/dotnet/aspnet:${runtime_version} AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-# ·¢²¼½×¶Î
+# å‘å¸ƒé˜¶æ®µ
 FROM mcr.microsoft.com/dotnet/sdk:${sdk_version} AS publish
 WORKDIR /src
 COPY ["Directory.Build.props", "."]
 COPY ["build/*", "./build/"]
-COPY ["nuget.config", "."]
 COPY ["src/Services/Identity/Util.Platform.Identity.Api/Util.Platform.Identity.Api.csproj", "src/Services/Identity/Util.Platform.Identity.Api/"]
 COPY ["src/Share/Util.Platform.Share.Config/Util.Platform.Share.Config.csproj", "src/Share/Util.Platform.Share.Config/"]
 COPY ["src/Services/Identity/Util.Platform.Identity.Application/Util.Platform.Identity.Application.csproj", "src/Services/Identity/Util.Platform.Identity.Application/"]
@@ -30,7 +29,7 @@ COPY . .
 WORKDIR "/src/src/Services/Identity/Util.Platform.Identity.Api"
 RUN dotnet publish "Util.Platform.Identity.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
-# ×îÖÕ½×¶Î
+# æœ€ç»ˆé˜¶æ®µ
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .

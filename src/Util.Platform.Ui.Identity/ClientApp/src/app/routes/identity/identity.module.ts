@@ -5,7 +5,6 @@ import { IdentityRoutingModule } from './identity-routing.module';
 import { ApplicationListComponent } from './application/application-list.component';
 import { ApplicationEditComponent } from './application/application-edit.component';
 import { ApplicationDetailComponent } from './application/application-detail.component';
-import { ApplicationSelectComponent } from './application/application-select.component';
 
 import { ClaimListComponent } from './claim/claim-list.component';
 
@@ -50,7 +49,7 @@ import { ApiPermissionComponent } from './permission/api-permission.component';
  */
 @NgModule( {
     declarations: [
-        ApplicationListComponent, ApplicationEditComponent, ApplicationDetailComponent, ApplicationSelectComponent,
+        ApplicationListComponent, ApplicationEditComponent, ApplicationDetailComponent,
         ClaimListComponent, ResourceComponent, CommonOperationListComponent,
         ModuleListComponent, ModuleEditComponent, ModuleDetailComponent,
         OperationListComponent, OperationEditComponent, OperationDetailComponent, ApiResourceSelectComponent,

@@ -5,7 +5,7 @@ import { ResourceQuery } from '../resource/model/resource-query';
 import { ModuleViewModel } from './model/module-view-model';
 import { ApplicationViewModel } from "../application/model/application-view-model";
 import { ModuleEditComponent } from './module-edit.component';
-import { ApplicationSelectComponent } from '../application/application-select.component';
+import { ApplicationSelectComponent } from 'util-platform/application-select';
 import { ModuleDetailComponent } from './module-detail.component';
 
 /**

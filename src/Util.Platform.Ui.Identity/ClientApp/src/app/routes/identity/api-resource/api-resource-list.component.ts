@@ -5,7 +5,7 @@ import { ResourceQuery } from '../resource/model/resource-query';
 import { ApiResourceViewModel } from './model/api-resource-view-model';
 import { ApplicationViewModel } from "../application/model/application-view-model";
 import { ApiResourceEditComponent } from './api-resource-edit.component';
-import { ApplicationSelectComponent } from '../application/application-select.component';
+import { ApplicationSelectComponent } from 'util-platform/application-select';
 import { ApiResourceDetailComponent } from './api-resource-detail.component';
 
 /**

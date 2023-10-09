@@ -10,10 +10,10 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-        <PackageReference Include="Util.Application.WebApi" Version="7.1.46" />
-        <PackageReference Include="Util.Platform.Share.Tools" Version="0.4.6" />
-        <PackageReference Include="Util.Platform.Share.Identity.IdentityServer" Version="0.4.6" />
-        <PackageReference Include="Util.Ui.NgZorro" Version="7.1.46" />
+        <PackageReference Include="Util.Application.WebApi" Version="7.1.47" />
+        <PackageReference Include="Util.Platform.Share.Tools" Version="0.4.7" />
+        <PackageReference Include="Util.Platform.Share.Identity.IdentityServer" Version="0.4.7" />
+        <PackageReference Include="Util.Ui.NgZorro" Version="7.1.47" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
     <ItemGroup>
@@ -39,34 +39,34 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="fonts\MiSans-Bold.ttf">
+      <None Update="Fonts\MiSans-Bold.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="fonts\MiSans-Demibold.ttf">
+      <None Update="Fonts\MiSans-Demibold.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="fonts\MiSans-ExtraLight.ttf">
+      <None Update="Fonts\MiSans-ExtraLight.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="fonts\MiSans-Heavy.ttf">
+      <None Update="Fonts\MiSans-Heavy.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="fonts\MiSans-Light.ttf">
+      <None Update="Fonts\MiSans-Light.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="fonts\MiSans-Medium.ttf">
+      <None Update="Fonts\MiSans-Medium.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="fonts\MiSans-Normal.ttf">
+      <None Update="Fonts\MiSans-Normal.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="fonts\MiSans-Regular.ttf">
+      <None Update="Fonts\MiSans-Regular.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="fonts\MiSans-Semibold.ttf">
+      <None Update="Fonts\MiSans-Semibold.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="fonts\MiSans-Thin.ttf">
+      <None Update="Fonts\MiSans-Thin.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

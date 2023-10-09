@@ -1,4 +1,4 @@
-import { ApplicationViewModelBase } from "util-platform";
+import { ApplicationViewModelBase } from "util-platform-identity";
 
 /**
  * 应用程序参数

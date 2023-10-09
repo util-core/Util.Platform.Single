@@ -35,7 +35,7 @@ import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 
-export const SHARED_ZORRO_MODULES = [
+export const Shared_Zorro_Modules = [
     NzFormModule,
     NzGridModule,
     NzButtonModule,

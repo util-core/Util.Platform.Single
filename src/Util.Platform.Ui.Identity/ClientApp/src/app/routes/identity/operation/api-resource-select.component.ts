@@ -4,7 +4,7 @@ import { TreeTableQueryComponentBase } from "util-angular";
 import { ResourceQuery } from '../resource/model/resource-query';
 import { ApiResourceViewModel } from "../api-resource/model/api-resource-view-model";
 import { ApplicationViewModel } from "../application/model/application-view-model";
-import { ApplicationSelectComponent } from '../application/application-select.component';
+import { ApplicationSelectComponent } from 'util-platform/application-select';
 
 /**
  * Api资源选择页
