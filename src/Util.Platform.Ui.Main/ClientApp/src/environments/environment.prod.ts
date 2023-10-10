@@ -1,7 +1,7 @@
 import { Environment } from '@delon/theme';
 
 /**
- * 生产环境配置
+ * 鐢熶骇鐜閰嶇疆
  */
 export const environment = {
     production: true,

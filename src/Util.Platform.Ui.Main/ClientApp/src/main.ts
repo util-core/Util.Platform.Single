@@ -2,7 +2,7 @@ import { loadManifest } from '@angular-architects/module-federation';
 import { bootstrapConfig } from './app/config/bootstrap-config';
 
 /**
- * ¼ÓÔØÎ¢Ç°¶ËÅäÖÃ²¢Æô¶¯
+ * åŠ è½½å¾®å‰ç«¯é…ç½®å¹¶å¯åŠ¨
  */
 loadManifest(bootstrapConfig.manifestUrl)
     .catch(err => console.error(err))

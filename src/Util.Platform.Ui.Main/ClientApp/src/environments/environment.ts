@@ -1,7 +1,7 @@
 import { Environment } from '@delon/theme';
 
 /**
- * ¿ª·¢»·¾³ÅäÖÃ
+ * å¼€å‘ç¯å¢ƒé…ç½®
  */
 export const environment = {
     production: false,
