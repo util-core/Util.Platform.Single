@@ -1,11 +1,11 @@
 <page-header [autoBreadcrumb]="false" [syncTitle]="false" [title]="'identity.permission'|i18n"></page-header>
-<nz-alert class="my-md" nzType="info" [nzMessage]="t_08a947aa61024a2a8e0e06074d708f45"><ng-template #t_08a947aa61024a2a8e0e06074d708f45="">
+<nz-alert class="my-md" nzType="info" [nzMessage]="t_b0a336520e62449e80ff7b2edbcb40ca"><ng-template #t_b0a336520e62449e80ff7b2edbcb40ca="">
     <span [innerHTML]="'identity.role.currentRoleName'|i18n:{roleName:role.name}"></span>
     <span [innerHTML]="'app.currentApplication'|i18n:{application:selectedApplication.name}"></span>
 </ng-template></nz-alert>
 <div nz-row="" [nzGutter]="48">
     <div nz-col="" nzSpan="4">
-        <application-select (onClick)="selectApplication($event)"></application-select>
+        <platform-application-select (onClick)="selectApplication($event)"></platform-application-select>
     </div>
     <div nz-col="" nzSpan="20">
         <nz-tabset [(nzSelectedIndex)]="selectedTabIndex">

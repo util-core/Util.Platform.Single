@@ -22,7 +22,7 @@
 
 @*卡片列表*@
 <util-row gutter="24" >
-    <util-column sm="8" md="6" xs="24" ng-for="let model of container.data">
+    <util-column Lg="6" sm="8" xs="24" ng-for="let model of container.data">
         <util-card Actions="[actionEdit, actionDetail, actionDelete]" hoverable="true" on-click="container.toggle(model)">
             <util-row>
                 <util-column span="24">

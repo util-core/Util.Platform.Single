@@ -12,8 +12,9 @@ public class AccountController : AccountControllerBase<ISystemService,LoginReque
     /// <param name="schemeProvider">认证方案提供器</param>
     /// <param name="events">事件服务</param>
     /// <param name="systemService">系统服务</param>
+    /// <param name="localizer">字符串本地化</param>
     public AccountController( IIdentityServerInteractionService interaction, IAuthenticationSchemeProvider schemeProvider, 
-        IEventService events, ISystemService systemService  ) 
-        : base( interaction, schemeProvider, events, systemService ) {
+        IEventService events, ISystemService systemService,IStringLocalizer localizer  ) 
+        : base( interaction, schemeProvider, events, systemService, localizer ) {
     }
 }

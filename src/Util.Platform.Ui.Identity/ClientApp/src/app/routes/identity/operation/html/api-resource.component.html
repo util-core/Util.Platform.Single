@@ -1,7 +1,7 @@
 
 <div nz-row="" [nzGutter]="48">
     <div nz-col="" nzSpan="6">
-        <application-select [loadApiOnly]="true" (onClick)="selectApplication($event)"></application-select>
+        <platform-application-select (onClick)="selectApplication($event)" [loadApiOnly]="true"></platform-application-select>
     </div>
     <div nz-col="" nzSpan="18">
         <form class="search__form" nz-form="">

@@ -19,6 +19,7 @@ global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Authentication;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.AspNetCore.Http.Features.Authentication;
+global using Microsoft.Extensions.Localization;
 global using IdentityServer4.Services;
 global using Util.Applications.Trees;
 global using Util.Applications.Controllers;

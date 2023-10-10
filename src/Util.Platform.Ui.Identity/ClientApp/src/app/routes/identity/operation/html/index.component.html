@@ -2,7 +2,7 @@
     <button (click)="openCreateDrawer()" *aclIf="'operation.create'" class="mr-sm" nz-button="" nz-tooltip="" nzType="primary" [nzTooltipTitle]="'identity.operation.create'|i18n"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
     <button (click)="openManageCommonOperation()" *aclIf="'commonOperation.view'" class="mr-sm" nz-button="" nz-tooltip="" nzType="primary" [nzTooltipTitle]="'identity.operation.manageCommonOperation'|i18n"><i nz-icon="" nzType="setting"></i>{{'identity.operation.manageCommonOperation'|i18n}}</button>
     <button (click)="delete()" *aclIf="'operation.delete'" nz-button="" nz-tooltip="" nzType="primary" [nzDanger]="true" [nzTooltipTitle]="'identity.operation.delete'|i18n"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_24941efc23e04d80a7821ab56925dcc1" [nzShowIcon]="true"><ng-template #t_24941efc23e04d80a7821ab56925dcc1="">
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_7b5733d77dcf4540831e81e782953e20" [nzShowIcon]="true"><ng-template #t_7b5733d77dcf4540831e81e782953e20="">
         <span [innerHTML]="'identity.operation.module'|i18n:{module:module&&module.name}"></span>
         <span [innerHTML]="'app.rowsSelected'|i18n:{length:getCheckedLength()}"></span>
     </ng-template></nz-alert>

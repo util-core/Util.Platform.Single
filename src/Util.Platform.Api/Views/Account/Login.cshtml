@@ -28,10 +28,10 @@
                     }
                     <form asp-route="Login">
                         <div class="mb-4">
-                            <input class="form-control rounded-0 lh-lg" autocomplete="off" autofocus placeholder="@Localizer["UserNamePrompt"]" asp-for="UserName">
+                            <input class="form-control rounded-0 lh-lg" autocomplete="off" autofocus placeholder="@Localizer["UserNamePrompt"]" asp-for="UserName" required>
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control rounded-0 lh-lg" placeholder="@Localizer["PasswordPrompt"]" asp-for="Password">
+                            <input type="password" class="form-control rounded-0 lh-lg" placeholder="@Localizer["PasswordPrompt"]" asp-for="Password" required>
                         </div>
                         <div class="mb-4 remember">
                             <input class="form-check-input" asp-for="Remember">
@@ -46,7 +46,3 @@
         </div>
     </div>
 </div>
-
-
-
-

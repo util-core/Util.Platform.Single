@@ -20,7 +20,7 @@
 </form>
 
 
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_43e49e2d17c54c8bbf5e5c378e71d766" [nzShowIcon]="true"><ng-template #t_43e49e2d17c54c8bbf5e5c378e71d766="">
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_bf25748a7bf342e5b7f18a051a85dcb9" [nzShowIcon]="true"><ng-template #t_bf25748a7bf342e5b7f18a051a85dcb9="">
         <span [innerHTML]="'identity.role.currentRoleName'|i18n:{roleName:data.name}"></span>
     </ng-template></nz-alert>
     <nz-table #tb_user="" #x_tb_user="xTableExtend" (nzPageIndexChange)="x_tb_user.pageIndexChange($event)" (nzPageSizeChange)="x_tb_user.pageSizeChange($event)" order="CreationTime desc" url="user" x-table-extend="" [(nzPageIndex)]="x_tb_user.queryParam.page" [(nzPageSize)]="x_tb_user.queryParam.pageSize" [(queryParam)]="queryParam" [nzData]="x_tb_user.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb_user.loading" [nzPageSizeOptions]="x_tb_user.pageSizeOptions" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb_user" [nzTotal]="x_tb_user.total"><thead><tr><th (nzCheckedChange)="x_tb_user.masterToggle()" [nzChecked]="x_tb_user.isMasterChecked()" [nzDisabled]="!x_tb_user.dataSource.length" [nzIndeterminate]="x_tb_user.isMasterIndeterminate()" [nzShowCheckbox]="true" [nzWidth]="x_tb_user.config.table.checkboxWidth"></th><th [nzWidth]="x_tb_user.config.table.lineNumberWidth">{{'util.lineNumber'|i18n}}</th><th>{{'identity.user.userName'|i18n}}</th><th>{{'identity.user.phoneNumber'|i18n}}</th><th>{{'identity.user.email'|i18n}}</th><th>{{'identity.user.enabled'|i18n}}</th></tr></thead><tbody><tr *ngFor="let row of x_tb_user.dataSource;index as index">
