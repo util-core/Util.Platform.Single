@@ -2,7 +2,7 @@ import { OAuthModuleConfig } from 'angular-oauth2-oidc';
 import { bootstrapConfig } from './bootstrap-config';
 
 /**
- * ÊÚÈ¨Ä£¿éÅäÖÃ
+ * æˆæƒæ¨¡å—é…ç½®
  */
 export const authModuleConfig: OAuthModuleConfig = {
     resourceServer: {

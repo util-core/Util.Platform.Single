@@ -1,17 +1,17 @@
 namespace Util.Platform.Api.Controllers;
 
 /// <summary>
-/// ÓÃ»§ÈÏÖ¤¿ØÖÆÆ÷
+/// ç”¨æˆ·è®¤è¯æ§åˆ¶å™¨
 /// </summary>
 [AllowAnonymous]
 public class AccountController : AccountControllerBase<ISystemService,LoginRequest> {
     /// <summary>
-    /// ³õÊ¼»¯ÓÃ»§ÈÏÖ¤¿ØÖÆÆ÷
+    /// åˆå§‹åŒ–ç”¨æˆ·è®¤è¯æ§åˆ¶å™¨
     /// </summary>
-    /// <param name="interaction">½»»¥·şÎñ</param>
-    /// <param name="schemeProvider">ÈÏÖ¤·½°¸Ìá¹©Æ÷</param>
-    /// <param name="events">ÊÂ¼ş·şÎñ</param>
-    /// <param name="systemService">ÏµÍ³·şÎñ</param>
+    /// <param name="interaction">äº¤äº’æœåŠ¡</param>
+    /// <param name="schemeProvider">è®¤è¯æ–¹æ¡ˆæä¾›å™¨</param>
+    /// <param name="events">äº‹ä»¶æœåŠ¡</param>
+    /// <param name="systemService">ç³»ç»ŸæœåŠ¡</param>
     public AccountController( IIdentityServerInteractionService interaction, IAuthenticationSchemeProvider schemeProvider, 
         IEventService events, ISystemService systemService  ) 
         : base( interaction, schemeProvider, events, systemService ) {

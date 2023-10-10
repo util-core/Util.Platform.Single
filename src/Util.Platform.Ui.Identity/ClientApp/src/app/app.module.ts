@@ -12,7 +12,7 @@ import { LayoutModule } from './layout/layout.module';
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 
-// #region ÓïÑÔÉèÖÃ
+// #region è¯­è¨€è®¾ç½®
 import { registerLocaleData } from '@angular/common';
 import { default as ngLang } from '@angular/common/locales/zh';
 import { zhCN as dateLang } from 'date-fns/locale';
@@ -36,25 +36,25 @@ const LANG_PROVIDES = [
 ];
 // #endregion
 
-// #region Í¼±êÉèÖÃ
+// #region å›¾æ ‡è®¾ç½®
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 
- const antDesignIcons = AllIcons as {
-   [key: string]: IconDefinition;
- };
+const antDesignIcons = AllIcons as {
+    [key: string]: IconDefinition;
+};
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
 // #endregion
 
-// #region ngx-tinymce(¸»ÎÄ±¾ÉèÖÃ)
+// #region ngx-tinymce(å¯Œæ–‡æœ¬è®¾ç½®)
 import { NgxTinymceModule, TinymceOptions } from 'ngx-tinymce';
 const tinymceOptions: TinymceOptions = {
     baseURL: '/assets/tinymce/'
 };
 // #endregion
 
-// #region util(utilÉèÖÃ)
+// #region util(utilè®¾ç½®)
 import { Util, AppConfig } from 'util-angular';
 import { appConfig } from './config/app-config';
 // #endregion
@@ -87,8 +87,8 @@ import { appConfig } from './config/app-config';
 })
 export class AppModule {
     /**
-     * ³õÊ¼»¯Ó¦ÓÃ¸ùÄ£¿é
-     * @param injector ×¢ÈëÆ÷
+     * åˆå§‹åŒ–åº”ç”¨æ ¹æ¨¡å—
+     * @param injector æ³¨å…¥å™¨
      */
     constructor(injector: Injector) {
         Util.init(injector);

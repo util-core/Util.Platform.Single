@@ -1,15 +1,15 @@
 namespace Util.Platform.Api.Controllers;
 
 /// <summary>
-/// Ö÷¿ØÖÆÆ÷
+/// ä¸»æ§åˆ¶å™¨
 /// </summary>
 [AllowAnonymous]
 public class HomeController : HomeControllerBase {
     /// <summary>
-    /// ³õÊ¼»¯Ö÷¿ØÖÆÆ÷
+    /// åˆå§‹åŒ–ä¸»æ§åˆ¶å™¨
     /// </summary>
-    /// <param name="interaction">½»»¥·şÎñ</param>
-    /// <param name="environment">Ö÷»ú»·¾³</param>
+    /// <param name="interaction">äº¤äº’æœåŠ¡</param>
+    /// <param name="environment">ä¸»æœºç¯å¢ƒ</param>
     public HomeController( IIdentityServerInteractionService interaction, IWebHostEnvironment environment ) 
         : base( interaction, environment ) {
     }
