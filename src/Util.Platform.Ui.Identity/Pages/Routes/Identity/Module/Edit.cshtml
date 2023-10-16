@@ -7,14 +7,14 @@
     <util-form label-span="3" control-span="21" gutter="16">
         <util-display for="ApplicationName" show-label="true" value="applicationName"></util-display>
         <util-tree-select for="ParentId" query-param="queryParam" load-mode="Sync" url="module/tree" default-expand-all="true"
-                          sort="SortId" label-text="identity.module.parentId" control-span="8">
+            sort="SortId" label-text="identity.module.parentId" control-span="8">
         </util-tree-select>
         <util-input for="Name"/>
         <util-input for="I18n" />
         <util-input for="Uri"/>
-        <util-input for="Icon" bind-add-on-after="selectIcon"/>
-        <util-template id="selectIcon">
-            <app-icon-select columns="8" pageSize="100" [selectedIcon]="model.icon" [visible]="selectIconVisible" (selectIcon)="selectedIcon($event)"></app-icon-select>
+        <util-input for="Icon" bind-add-on-after="selectIconTemplate" />
+        <util-template id="selectIconTemplate">
+            <biz-icon-select rows="6" selected-icon="model.icon" on-select-icon="selectIcon($event)"></biz-icon-select>
         </util-template>
         <util-switch for="IsHide" />
         <util-switch for="Expanded"/>

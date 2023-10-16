@@ -75,7 +75,7 @@ export class ModuleEditComponent extends TreeEditComponentBase<ModuleViewModel> 
     /**
      * 选择图标
      */
-    selectedIcon(icon) {
+    selectIcon(icon) {
         this.model.icon = icon;
     }
 }

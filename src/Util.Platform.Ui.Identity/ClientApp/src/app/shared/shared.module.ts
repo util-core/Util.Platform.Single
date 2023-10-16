@@ -9,12 +9,14 @@ import { Shared_Delon_Modules } from './shared-delon.module';
 import { Shared_Platform_Modules } from './shared-platform.module';
 import { UtilModule } from 'util-angular';
 import { NgxTinymceModule } from 'ngx-tinymce';
-import { IconSelectModule } from "./components/icon-select/icon-select.module";
 
-const THIRDMODULES: Array<Type<void>> = [UtilModule, NgxTinymceModule,IconSelectModule];
+const THIRDMODULES: Array<Type<void>> = [UtilModule, NgxTinymceModule];
 const COMPONENTS: Array<Type<void>> = [];
 const DIRECTIVES: Array<Type<void>> = [];
 
+/**
+ * ¹²ÏíÄ£¿é
+ */
 @NgModule({
     imports: [
         CommonModule,

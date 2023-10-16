@@ -2,14 +2,14 @@
     
 <form class="search__form" nz-form="">
     <div nz-row="" [nzGutter]="{xs: 8, sm: 16, md: 24, lg: 32, xl: 32, xxl: 32}">
-        <div nz-col="" [nzSm]="4" [nzXs]="24">
+        <div nz-col="" [nzLg]="6" [nzMd]="10" [nzSm]="12" [nzXl]="4" [nzXs]="24">
             <nz-form-item><nz-form-label>{{'identity.module.name'|i18n}}</nz-form-label><nz-form-control><input name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-form-control></nz-form-item>
         </div>
-        <div nz-col="" [nzSm]="4" [nzXs]="24">
+        <div nz-col="" [nzLg]="6" [nzMd]="10" [nzSm]="12" [nzXl]="4" [nzXs]="24">
             <nz-form-item><nz-form-label>{{'identity.module.uri'|i18n}}</nz-form-label><nz-form-control><input name="uri" nz-input="" [(ngModel)]="queryParam.uri" /></nz-form-control></nz-form-item>
         </div>
-        <div nz-col="" [nzSm]="4" [nzXs]="24">
-            <nz-form-item><nz-form-label>{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_4a4e751a8da449929616d1039c053183="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_4a4e751a8da449929616d1039c053183.isGroup"><nz-option *ngFor="let item of x_4a4e751a8da449929616d1039c053183.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_4a4e751a8da449929616d1039c053183.isGroup"><nz-option-group *ngFor="let group of x_4a4e751a8da449929616d1039c053183.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+        <div nz-col="" [nzLg]="6" [nzMd]="10" [nzSm]="12" [nzXl]="4" [nzXs]="24">
+            <nz-form-item><nz-form-label>{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_2f0dd79c20b840e7979caa7d721a8136="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_2f0dd79c20b840e7979caa7d721a8136.isGroup"><nz-option *ngFor="let item of x_2f0dd79c20b840e7979caa7d721a8136.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_2f0dd79c20b840e7979caa7d721a8136.isGroup"><nz-option-group *ngFor="let group of x_2f0dd79c20b840e7979caa7d721a8136.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
         </div>
         <div class="mb-sm" nz-col="">
             <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
@@ -21,7 +21,7 @@
     <button (click)="enable()" *aclIf="'module.enable'" nz-button="" nzType="primary"><i nz-icon="" nzType="check-circle"></i>{{'util.enable'|i18n}}</button>
     <button (click)="disable()" *aclIf="'module.disable'" nz-button="" nzType="primary"><i nz-icon="" nzType="close-circle"></i>{{'util.disable'|i18n}}</button>
     <button (click)="delete()" *aclIf="'module.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_fce1aa82fde941cc9b304ba4aa2fbf12" [nzShowIcon]="true"><ng-template #t_fce1aa82fde941cc9b304ba4aa2fbf12="">
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_c356387d9bdc49e9b0e46c630fac2707" [nzShowIcon]="true"><ng-template #t_c356387d9bdc49e9b0e46c630fac2707="">
         <span [innerHTML]="'app.currentApplication'|i18n:{application:selectedApplication.name}"></span>
     </ng-template></nz-alert>
 </nz-card>

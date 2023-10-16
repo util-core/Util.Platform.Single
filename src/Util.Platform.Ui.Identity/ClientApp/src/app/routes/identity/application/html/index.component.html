@@ -25,7 +25,7 @@
     <button (click)="delete()" *aclIf="'application.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
     <button (click)="container.masterToggle()" *ngIf="!container.isMasterChecked()" nz-button=""><i nz-icon="" nzType="check-square"></i>{{'util.selectAll'|i18n}}</button>
     <button (click)="container.masterToggle()" *ngIf="container.isMasterChecked()" nz-button=""><i nz-icon="" nzType="close-square"></i>{{'util.deselectAll'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_d8774a40b8744dc79a81a9978b1b3845" [nzShowIcon]="true"><ng-template #t_d8774a40b8744dc79a81a9978b1b3845="">
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_d200f3f70c2c479a8187543092956ec8" [nzShowIcon]="true"><ng-template #t_d200f3f70c2c479a8187543092956ec8="">
         <span class="mr-xs" [innerHTML]="'app.totalTip'|i18n:{total:container.total}"></span>,
         <span class="mr-xs" [innerHTML]="'app.loadedTip'|i18n:{length:container.data.length}"></span>,
         <span [innerHTML]="'app.rowsSelected'|i18n:{length:container.getCheckedLength()}"></span>

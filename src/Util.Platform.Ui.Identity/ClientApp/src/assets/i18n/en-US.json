@@ -1,5 +1,9 @@
 {
   "util": {
+    "clear": "Clear",
+    "import": "Import",
+    "export": "Export",
+    "reset": "Reset",
     "lang": "Language",
     "yes": "Yes",
     "no": "No",

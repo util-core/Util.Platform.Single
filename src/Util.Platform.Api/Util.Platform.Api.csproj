@@ -5,15 +5,15 @@
 	    <AssemblyName>Util.Platform.Api</AssemblyName>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-        <PackageReference Include="Util.Application.WebApi" Version="7.1.54" />
-        <PackageReference Include="Util.Platform.Share.Tools" Version="0.5.0" />
-        <PackageReference Include="Util.Platform.Share.Identity.IdentityServer" Version="0.5.0" />
-        <PackageReference Include="Util.Ui.NgZorro" Version="7.1.54" />
+        <PackageReference Include="Util.Application.WebApi" Version="7.1.59" />
+        <PackageReference Include="Util.Platform.Share.Tools" Version="0.5.1" />
+        <PackageReference Include="Util.Platform.Share.Identity.IdentityServer" Version="0.5.1" />
+        <PackageReference Include="Util.Ui.NgZorro" Version="7.1.59" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
     <ItemGroup>
