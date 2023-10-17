@@ -127,7 +127,7 @@ public static class ProgramExtensions {
     public static WebApplicationBuilder AddJwtBearerAuthentication( this WebApplicationBuilder builder ) {
         builder.Services.AddAuthentication()
             .AddJwtBearer( options => {
-                options.Authority = GetIdentityUrl();
+                options.Authority = GetIdentityUrl( builder );
                 options.Audience = builder.GetAudience();
                 options.RequireHttpsMetadata = false;
                 options.TokenValidationParameters.ValidateAudience = false;
@@ -139,8 +139,11 @@ public static class ProgramExtensions {
     /// <summary>
     /// 获取身份认证服务器地址
     /// </summary>
-    public static string GetIdentityUrl() {
-        return $"{Web.Request.Scheme}://{Web.Request.Host}";
+    public static string GetIdentityUrl( WebApplicationBuilder builder ) {
+        var result = builder.Configuration["IdentityUrl"];
+        if( result.IsEmpty() )
+            return $"{Web.Request.Scheme}://{Web.Request.Host}";
+        return result;
     }
 
     /// <summary>
@@ -199,7 +202,7 @@ public static class ProgramExtensions {
                 Description = description,
                 Version = version
             } );
-            var identityUrl = GetIdentityUrl();
+            var identityUrl = GetIdentityUrl( builder );
             options.AddSecurityDefinition( "oauth2", new OpenApiSecurityScheme {
                 Type = SecuritySchemeType.OAuth2,
                 Flows = new OpenApiOAuthFlows {

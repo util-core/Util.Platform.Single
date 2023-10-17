@@ -15,23 +15,21 @@ FROM mcr.microsoft.com/dotnet/sdk:${sdk_version} AS publish
 WORKDIR /src
 COPY ["Directory.Build.props", "."]
 COPY ["build/*", "./build/"]
-COPY ["src/Services/Identity/Util.Platform.Identity.Api/Util.Platform.Identity.Api.csproj", "src/Services/Identity/Util.Platform.Identity.Api/"]
-COPY ["src/Share/Util.Platform.Share.Config/Util.Platform.Share.Config.csproj", "src/Share/Util.Platform.Share.Config/"]
-COPY ["src/Services/Identity/Util.Platform.Identity.Application/Util.Platform.Identity.Application.csproj", "src/Services/Identity/Util.Platform.Identity.Application/"]
-COPY ["src/Services/Identity/Util.Platform.Identity.Data.PgSql/04-Util.Platform.Identity.Data.PgSql.csproj", "src/Services/Identity/Util.Platform.Identity.Data.PgSql/"]
-COPY ["src/Services/Identity/Util.Platform.Identity.Data/02-Util.Platform.Identity.Data.csproj", "src/Services/Identity/Util.Platform.Identity.Data/"]
-COPY ["src/Services/Identity/Util.Platform.Identity.Domain/Util.Platform.Identity.Domain.csproj", "src/Services/Identity/Util.Platform.Identity.Domain/"]
-COPY ["src/Services/Identity/Util.Platform.Identity.Infrastructure/01-Util.Platform.Identity.Infrastructure.csproj", "src/Services/Identity/Util.Platform.Identity.Infrastructure/"]
-COPY ["src/Services/Identity/Util.Platform.Identity.Data.SqlServer/03-Util.Platform.Identity.Data.SqlServer.csproj", "src/Services/Identity/Util.Platform.Identity.Data.SqlServer/"]
-COPY ["src/Services/Identity/Util.Platform.Identity.Dto/Util.Platform.Identity.Dto.csproj", "src/Services/Identity/Util.Platform.Identity.Dto/"]
-RUN dotnet restore "src/Services/Identity/Util.Platform.Identity.Api/Util.Platform.Identity.Api.csproj"
+COPY ["src/Util.Platform.Api/Util.Platform.Api.csproj", "src/Util.Platform.Api/"]
+COPY ["src/Util.Platform.Application/Util.Platform.Application.csproj", "src/Util.Platform.Application/"]
+COPY ["src/Util.Platform.Data.MySql/04-Util.Platform.Data.MySql.csproj", "src/Util.Platform.Data.MySql/"]
+COPY ["src/Util.Platform.Data/01-Util.Platform.Data.csproj", "src/Util.Platform.Data/"]
+COPY ["src/Util.Platform.Domain.Identity/Util.Platform.Domain.Identity.csproj", "src/Util.Platform.Domain.Identity/"]
+COPY ["src/Util.Platform.Data.PgSql/03-Util.Platform.Data.PgSql.csproj", "src/Util.Platform.Data.PgSql/"]
+COPY ["src/Util.Platform.Data.SqlServer/02-Util.Platform.Data.SqlServer.csproj", "src/Util.Platform.Data.SqlServer/"]
+RUN dotnet restore "src/Util.Platform.Api/Util.Platform.Api.csproj"
 COPY . .
-WORKDIR "/src/src/Services/Identity/Util.Platform.Identity.Api"
-RUN dotnet publish "Util.Platform.Identity.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+WORKDIR "/src/src/Util.Platform.Api"
+RUN dotnet publish "Util.Platform.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # 最终阶段
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENV TZ=Asia/Shanghai
-ENTRYPOINT ["dotnet", "Util.Platform.Identity.Api.dll"]
+ENTRYPOINT ["dotnet", "Util.Platform.Api.dll"]
