@@ -1,6 +1,6 @@
 {
   "identity": {
-    "remoteEntry": "http://localhost:16003/remoteEntry.js",
+    "remoteEntry": "http://localhost:16101/remoteEntry.js",
     "exposedModule": "./Module",
     "routePath": "identity",
     "ngModuleName": "IdentityModule"

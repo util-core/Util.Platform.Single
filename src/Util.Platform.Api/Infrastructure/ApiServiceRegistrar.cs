@@ -21,7 +21,7 @@ public class ApiServiceRegistrar : IServiceRegistrar {
     /// </summary>
     /// <param name="serviceContext">服务上下文</param>
     public Action Register( ServiceContext serviceContext ) {
-        var path = Common.GetPhysicalPath( "~/fonts" );
+        var path = Common.GetPhysicalPath( "~/Fonts" );
         ImageManager.LoadFonts( path );
         return null;
     }

@@ -6,7 +6,7 @@ FROM nginx:stable-alpine3.17
 # 设置工作目录
 WORKDIR /var/www/html
 
-# 复制权限管理
+# 复制发布文件
 COPY dist ./
 
 # 复制nginx配置
