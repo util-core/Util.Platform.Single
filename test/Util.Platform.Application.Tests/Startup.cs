@@ -19,13 +19,13 @@ public class Startup {
             .AddMemoryCache()
             .AddSqlServerUnitOfWork<ISystemUnitOfWork, Data.SqlServer.SystemUnitOfWork>(
                 Config.GetConnectionString( "SqlServer" ),
-                condition: true )
+                condition: false )
             .AddPgSqlUnitOfWork<ISystemUnitOfWork, Data.PgSql.SystemUnitOfWork>(
                 Config.GetConnectionString( "PgSql" ),
                 condition: false )
             .AddMySqlUnitOfWork<ISystemUnitOfWork, Data.MySql.SystemUnitOfWork>(
                 Config.GetConnectionString( "MySql" ),
-                condition: false )
+                condition: true )
             .AddUtil();
     }
 

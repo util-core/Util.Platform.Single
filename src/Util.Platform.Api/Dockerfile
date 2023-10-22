@@ -17,11 +17,11 @@ COPY ["Directory.Build.props", "."]
 COPY ["build/*", "./build/"]
 COPY ["src/Util.Platform.Api/Util.Platform.Api.csproj", "src/Util.Platform.Api/"]
 COPY ["src/Util.Platform.Application/Util.Platform.Application.csproj", "src/Util.Platform.Application/"]
-COPY ["src/Util.Platform.Data.MySql/04-Util.Platform.Data.MySql.csproj", "src/Util.Platform.Data.MySql/"]
-COPY ["src/Util.Platform.Data/01-Util.Platform.Data.csproj", "src/Util.Platform.Data/"]
+COPY ["src/Util.Platform.Data.MySql/Util.Platform.Data.MySql.csproj", "src/Util.Platform.Data.MySql/"]
+COPY ["src/Util.Platform.Data/Util.Platform.Data.csproj", "src/Util.Platform.Data/"]
 COPY ["src/Util.Platform.Domain.Identity/Util.Platform.Domain.Identity.csproj", "src/Util.Platform.Domain.Identity/"]
-COPY ["src/Util.Platform.Data.PgSql/03-Util.Platform.Data.PgSql.csproj", "src/Util.Platform.Data.PgSql/"]
-COPY ["src/Util.Platform.Data.SqlServer/02-Util.Platform.Data.SqlServer.csproj", "src/Util.Platform.Data.SqlServer/"]
+COPY ["src/Util.Platform.Data.PgSql/Util.Platform.Data.PgSql.csproj", "src/Util.Platform.Data.PgSql/"]
+COPY ["src/Util.Platform.Data.SqlServer/Util.Platform.Data.SqlServer.csproj", "src/Util.Platform.Data.SqlServer/"]
 RUN dotnet restore "src/Util.Platform.Api/Util.Platform.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Util.Platform.Api"

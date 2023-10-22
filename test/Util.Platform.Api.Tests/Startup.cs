@@ -16,6 +16,7 @@ public class Startup {
                 webHostBuilder.UseTestServer()
                     .Configure( t => {
                         t.UseRouting();
+                        t.UseAuthorization();
                         t.UseEndpoints( endpoints => {
                             endpoints.MapControllers();
                         } );
@@ -24,17 +25,18 @@ public class Startup {
             .AsBuild()
             .AddAop()
             .AddUtc()
+            .AddAcl( t => t.AllowAnonymous = true )
             .AddJsonLocalization()
             .AddMemoryCache()
             .AddSqlServerUnitOfWork<ISystemUnitOfWork, Data.SqlServer.SystemUnitOfWork>(
                 Config.GetConnectionString( "SqlServerTestConnection" ),
-                condition: true )
+                condition: false )
             .AddPgSqlUnitOfWork<ISystemUnitOfWork, Data.PgSql.SystemUnitOfWork>(
                 Config.GetConnectionString( "PgSqlTestConnection" ),
                 condition: false )
             .AddMySqlUnitOfWork<ISystemUnitOfWork, Data.MySql.SystemUnitOfWork>(
                 Config.GetConnectionString( "MySqlTestConnection" ),
-                condition: false )
+                condition: true )
             .AddUtil();
     }
 

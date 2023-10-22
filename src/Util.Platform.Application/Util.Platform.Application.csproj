@@ -13,9 +13,9 @@
 		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.6.2" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\Util.Platform.Data.MySql\04-Util.Platform.Data.MySql.csproj" />
-	  <ProjectReference Include="..\Util.Platform.Data.PgSql\03-Util.Platform.Data.PgSql.csproj" />
-	  <ProjectReference Include="..\Util.Platform.Data.SqlServer\02-Util.Platform.Data.SqlServer.csproj" />
+	  <ProjectReference Include="..\Util.Platform.Data.MySql\Util.Platform.Data.MySql.csproj" />
+	  <ProjectReference Include="..\Util.Platform.Data.PgSql\Util.Platform.Data.PgSql.csproj" />
+	  <ProjectReference Include="..\Util.Platform.Data.SqlServer\Util.Platform.Data.SqlServer.csproj" />
 	  <ProjectReference Include="..\Util.Platform.Domain.Identity\Util.Platform.Domain.Identity.csproj" />
 	</ItemGroup>
 </Project>

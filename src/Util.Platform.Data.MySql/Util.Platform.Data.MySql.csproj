@@ -12,6 +12,6 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Util.Platform.Data\01-Util.Platform.Data.csproj" />
+      <ProjectReference Include="..\Util.Platform.Data\Util.Platform.Data.csproj" />
     </ItemGroup>
 </Project>

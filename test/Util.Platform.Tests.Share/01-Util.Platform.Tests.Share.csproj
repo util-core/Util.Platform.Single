@@ -10,6 +10,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\src\Util.Platform.Application\Util.Platform.Application.csproj" />
-	  <ProjectReference Include="..\..\src\Util.Platform.Data\01-Util.Platform.Data.csproj" />
+	  <ProjectReference Include="..\..\src\Util.Platform.Data\Util.Platform.Data.csproj" />
 	</ItemGroup>
 </Project>
