@@ -6,6 +6,6 @@ module.exports = withModuleFederationPlugin({
         './Module': './src/app/routes/identity/identity.module.ts'
     },
     shared: {
-        ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' })
+        ...shareAll({ singleton: true, strictVersion: false, requiredVersion: 'auto' })
     }
 });
