@@ -17,15 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Presentation", "01-Prese
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Domain.Identity", "src\Util.Platform.Domain.Identity\Util.Platform.Domain.Identity.csproj", "{FBC0A32F-56FB-4D9B-BDC3-EED7A2633043}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-Util.Platform.Data", "src\Util.Platform.Data\01-Util.Platform.Data.csproj", "{1D2E4BD1-DA8C-4E53-95D8-3611ED872BA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Data", "src\Util.Platform.Data\Util.Platform.Data.csproj", "{1D2E4BD1-DA8C-4E53-95D8-3611ED872BA7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Util.Platform.Data.SqlServer", "src\Util.Platform.Data.SqlServer\02-Util.Platform.Data.SqlServer.csproj", "{C336D82B-B63E-4589-8496-C556A219C48E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Data.SqlServer", "src\Util.Platform.Data.SqlServer\Util.Platform.Data.SqlServer.csproj", "{C336D82B-B63E-4589-8496-C556A219C48E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-Util.Platform.Tests.Share", "test\Util.Platform.Tests.Share\01-Util.Platform.Tests.Share.csproj", "{96BD8C9E-DB8D-4F54-846C-33861A275FF4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-Util.Platform.Data.SqlServer.Tests", "test\Util.Platform.Data.SqlServer.Tests\04-Util.Platform.Data.SqlServer.Tests.csproj", "{676967DA-C791-4FCB-83AB-47C64E813B20}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-Util.Platform.Data.PgSql", "src\Util.Platform.Data.PgSql\03-Util.Platform.Data.PgSql.csproj", "{22E6B8A1-8E86-4116-A5EA-1F1DAD97AE91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Data.PgSql", "src\Util.Platform.Data.PgSql\Util.Platform.Data.PgSql.csproj", "{22E6B8A1-8E86-4116-A5EA-1F1DAD97AE91}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-Util.Platform.Data.PgSql.Tests", "test\Util.Platform.Data.PgSql.Tests\05-Util.Platform.Data.PgSql.Tests.csproj", "{D4733B3B-2E52-464D-A7E9-79BB1D1EFA84}"
 EndProject
@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-Util.Platform.Ui.Main", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Util.Platform.Ui.Identity", "src\Util.Platform.Ui.Identity\02-Util.Platform.Ui.Identity.csproj", "{7D7B81D5-027C-4738-A534-9F820A69F2F8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-Util.Platform.Data.MySql", "src\Util.Platform.Data.MySql\04-Util.Platform.Data.MySql.csproj", "{CB2A3BBB-E4D0-4D07-BE00-777FB589EC18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Util.Platform.Data.MySql", "src\Util.Platform.Data.MySql\Util.Platform.Data.MySql.csproj", "{CB2A3BBB-E4D0-4D07-BE00-777FB589EC18}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-Util.Platform.Data.MySql.Tests", "test\Util.Platform.Data.MySql.Tests\06-Util.Platform.Data.MySql.Tests.csproj", "{03F8A5B2-05B2-49B7-BD71-29D3394D7A48}"
 EndProject
