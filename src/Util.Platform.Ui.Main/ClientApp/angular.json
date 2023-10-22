@@ -92,7 +92,7 @@
           "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "main:build",
-            "publicHost": "http://localhost:16001",
+            "publicHost": "https://localhost:16001",
             "port": 16001,
             "extraWebpackConfig": "webpack.config.js"
           },

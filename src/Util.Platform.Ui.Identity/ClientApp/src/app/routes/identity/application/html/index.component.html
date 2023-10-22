@@ -25,7 +25,7 @@
     <button (click)="delete()" *aclIf="'application.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
     <button (click)="container.masterToggle()" *ngIf="!container.isMasterChecked()" nz-button=""><i nz-icon="" nzType="check-square"></i>{{'util.selectAll'|i18n}}</button>
     <button (click)="container.masterToggle()" *ngIf="container.isMasterChecked()" nz-button=""><i nz-icon="" nzType="close-square"></i>{{'util.deselectAll'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_d200f3f70c2c479a8187543092956ec8" [nzShowIcon]="true"><ng-template #t_d200f3f70c2c479a8187543092956ec8="">
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_6a5f42c8f884410c9e861b354a38959a" [nzShowIcon]="true"><ng-template #t_6a5f42c8f884410c9e861b354a38959a="">
         <span class="mr-xs" [innerHTML]="'app.totalTip'|i18n:{total:container.total}"></span>,
         <span class="mr-xs" [innerHTML]="'app.loadedTip'|i18n:{length:container.data.length}"></span>,
         <span [innerHTML]="'app.rowsSelected'|i18n:{length:container.getCheckedLength()}"></span>
@@ -52,9 +52,6 @@
                     </h1>
                     <div class="text-grey mb-sm" nz-typography="">
                         <span>{{model.code}}</span>
-                    </div>
-                    <div class="mb-sm" nz-typography="">
-                        <span class="mr-sm">{{'identity.application.isApi'|i18n}}:</span><span>{{(model.isApi?'util.yes':'util.no')|i18n}}</span>
                     </div>
                     <div nz-typography="">
                         <nz-tag *ngIf="model.enabled" nzColor="geekblue">{{'util.enabled'|i18n}}</nz-tag>

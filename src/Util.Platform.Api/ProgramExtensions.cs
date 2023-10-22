@@ -32,7 +32,7 @@ public static class ProgramExtensions {
             .AddJsonLocalization( options => {
                 options.Cultures = new[] { "zh-CN", "en-US" };
             } )
-            .AddAcl<PermissionManager>(t => t.AllowAnonymous = true )
+            .AddAcl<PermissionManager>()
             .AddSerilog()
             .AddMemoryCache()
             .AddUtil();
@@ -261,6 +261,8 @@ public static class ProgramExtensions {
         var openApi = app.Configuration.GetSection( "OpenApi" );
         if ( openApi.Exists() == false )
             return;
+        var document = openApi.GetRequiredSection( "Document" );
+        var title = document.GetValue<string>( "Title" );
         var version = openApi.GetValue<string>( "Version" );
         var endpoint = openApi.GetRequiredSection( "Endpoint" );
         var name = endpoint.GetValue<string>( "Name" );
@@ -268,16 +270,15 @@ public static class ProgramExtensions {
         var appName = endpoint.GetValue<string>( "AppName" );
         app.UseSwagger();
         app.UseSwaggerUI( options => {
+            options.DocumentTitle = title;
             options.SwaggerEndpoint( $"/swagger/{version}/swagger.json", name );
             options.OAuthClientId( clientId );
             options.OAuthAppName( appName );
             options.OAuthScopes( "openid" );
             options.OAuthUsePkce();
             options.OAuthConfigObject.ClientSecret = "secret";
-            options.IndexStream = () => {
-                var filePath = Util.Helpers.Common.JoinPath( Util.Helpers.Common.GetCurrentDirectory(), "/Swagger/index.html" );
-                return File.ReadToStream( filePath );
-            };
+            options.ConfigObject.AdditionalItems["logoutUrl"] = "/api/logout";
+            options.IndexStream = ()=> typeof( IpAccessor ).Assembly.GetManifestResourceStream( "Util.Platform.Share.Swagger.index.html" );
         } );
     }
 
@@ -288,14 +289,6 @@ public static class ProgramExtensions {
         app.UseCookiePolicy( new CookiePolicyOptions {
             MinimumSameSitePolicy = SameSiteMode.Lax
         } );
-    }
-
-    /// <summary>
-    /// 注册访问控制列表加载中间件
-    /// </summary>
-    /// <param name="builder">应用程序生成器</param>
-    public static IApplicationBuilder UseLoadAcl( this IApplicationBuilder builder ) {
-        return builder.UseMiddleware<LoadAclMiddleware>();
     }
 
     /// <summary>

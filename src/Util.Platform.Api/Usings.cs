@@ -56,3 +56,4 @@ global using Util.Platform.Applications;
 global using Util.Platform.Data;
 global using Util.Platform.Api;
 global using Util.Platform.Domain.Identity;
+global using Util.Platform.Share.Middlewares;

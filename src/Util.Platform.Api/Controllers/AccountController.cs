@@ -17,4 +17,13 @@ public class AccountController : AccountControllerBase<ISystemService,LoginReque
         IEventService events, ISystemService systemService,IStringLocalizer localizer  ) 
         : base( interaction, schemeProvider, events, systemService, localizer ) {
     }
+
+    /// <summary>
+    /// 退出登录
+    /// </summary>
+    [HttpGet]
+    [Route( "/api/logout" )]
+    public async Task Logout() {
+        await SystemService.SignOutAsync();
+    }
 }

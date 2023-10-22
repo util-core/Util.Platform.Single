@@ -9,7 +9,7 @@
             <nz-form-item><nz-form-label>{{'identity.module.uri'|i18n}}</nz-form-label><nz-form-control><input name="uri" nz-input="" [(ngModel)]="queryParam.uri" /></nz-form-control></nz-form-item>
         </div>
         <div nz-col="" [nzLg]="6" [nzMd]="10" [nzSm]="12" [nzXl]="4" [nzXs]="24">
-            <nz-form-item><nz-form-label>{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_2f0dd79c20b840e7979caa7d721a8136="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_2f0dd79c20b840e7979caa7d721a8136.isGroup"><nz-option *ngFor="let item of x_2f0dd79c20b840e7979caa7d721a8136.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_2f0dd79c20b840e7979caa7d721a8136.isGroup"><nz-option-group *ngFor="let group of x_2f0dd79c20b840e7979caa7d721a8136.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+            <nz-form-item><nz-form-label>{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #x_cfcaf1269e3046508cda4c05d38b07f5="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_cfcaf1269e3046508cda4c05d38b07f5.isGroup"><nz-option *ngFor="let item of x_cfcaf1269e3046508cda4c05d38b07f5.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_cfcaf1269e3046508cda4c05d38b07f5.isGroup"><nz-option-group *ngFor="let group of x_cfcaf1269e3046508cda4c05d38b07f5.optionGroups" [nzLabel]="group.text"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
         </div>
         <div class="mb-sm" nz-col="">
             <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
@@ -21,13 +21,13 @@
     <button (click)="enable()" *aclIf="'module.enable'" nz-button="" nzType="primary"><i nz-icon="" nzType="check-circle"></i>{{'util.enable'|i18n}}</button>
     <button (click)="disable()" *aclIf="'module.disable'" nz-button="" nzType="primary"><i nz-icon="" nzType="close-circle"></i>{{'util.disable'|i18n}}</button>
     <button (click)="delete()" *aclIf="'module.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
-    <nz-alert class="my-md" nzType="info" [nzMessage]="t_c356387d9bdc49e9b0e46c630fac2707" [nzShowIcon]="true"><ng-template #t_c356387d9bdc49e9b0e46c630fac2707="">
+    <nz-alert class="my-md" nzType="info" [nzMessage]="t_9b82250f3b7546a3b49b32a5379eca38" [nzShowIcon]="true"><ng-template #t_9b82250f3b7546a3b49b32a5379eca38="">
         <span [innerHTML]="'app.currentApplication'|i18n:{application:selectedApplication.name}"></span>
     </ng-template></nz-alert>
 </nz-card>
 <div nz-row="" [nzGutter]="24">
     <div nz-col="" nzSpan="4">
-        <platform-application-select (onClick)="selectApplication($event)" [loadNonApiOnly]="true"></platform-application-select>
+        <platform-application-select (onClick)="selectApplication($event)"></platform-application-select>
     </div>
     <div nz-col="" nzSpan="20">
         <nz-table #tb_module="" #x_tb_module="xTreeTableExtend" (nzPageIndexChange)="x_tb_module.pageIndexChange($event)" (nzPageSizeChange)="x_tb_module.pageSizeChange($event)" loadMode="0" order="SortId" url="module" x-tree-table-extend="" [(nzPageIndex)]="x_tb_module.queryParam.page" [(nzPageSize)]="x_tb_module.queryParam.pageSize" [(queryParam)]="queryParam" [autoLoad]="false" [isExpandAll]="true" [nzData]="x_tb_module.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb_module.loading" [nzShowPagination]="false" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb_module" [nzTotal]="x_tb_module.total">

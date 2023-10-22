@@ -9,10 +9,6 @@ public static class SeedConst {
     /// </summary>
     public static Guid ApplicationId = "e9138a35-a4ff-460e-ac55-b743d55b9691".ToGuid();
     /// <summary>
-    /// Api应用程序标识
-    /// </summary>
-    public static Guid ApiApplicationId = "0F5FB254-47A1-4E2F-B79A-C7AD1D226AB9".ToGuid();
-    /// <summary>
     /// 默认用户标识
     /// </summary>
     public static Guid UserId = "55ba53a6-e482-4d9b-8d91-3fba6610b896".ToGuid();

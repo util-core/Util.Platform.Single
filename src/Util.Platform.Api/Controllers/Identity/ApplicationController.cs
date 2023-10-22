@@ -21,27 +21,9 @@ public class ApplicationController : CrudControllerBase<ApplicationDto, Applicat
     /// <summary>
     /// 获取全部已启用的应用程序
     /// </summary>
-    [HttpGet( "all" )]
+    [HttpGet( "enabled" )]
     public async Task<IActionResult> GetAllAsync() {
         var result = await ApplicationService.GetEnabledApplicationsAsync();
-        return Success( result );
-    }
-
-    /// <summary>
-    /// 获取已启用的Api应用程序
-    /// </summary>
-    [HttpGet( "apis" )]
-    public async Task<IActionResult> GetApiApplicationsAsync() {
-        var result = await ApplicationService.GetEnabledApiApplicationsAsync();
-        return Success( result );
-    }
-
-    /// <summary>
-    /// 获取已启用的非Api应用程序
-    /// </summary>
-    [HttpGet( "non-apis" )]
-    public async Task<IActionResult> GetNonApiApplicationsAsync() {
-        var result = await ApplicationService.GetEnabledNonApiApplicationsAsync();
         return Success( result );
     }
 

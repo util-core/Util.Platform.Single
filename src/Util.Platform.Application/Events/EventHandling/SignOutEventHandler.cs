@@ -8,10 +8,8 @@ public class SignOutEventHandler : EventHandlerBase<SignOutEvent> {
     /// 初始化退出登录事件处理器
     /// </summary>
     /// <param name="cache">缓存</param>
-    /// <param name="session">用户会话</param>
-    public SignOutEventHandler( ICache cache, ISession session ) {
+    public SignOutEventHandler( ICache cache ) {
         CacheService = cache ?? throw new ArgumentNullException( nameof( cache ) );
-        Session = session ?? throw new ArgumentNullException( nameof( session ) );
     }
 
     /// <summary>
@@ -20,17 +18,12 @@ public class SignOutEventHandler : EventHandlerBase<SignOutEvent> {
     protected ICache CacheService { get; }
 
     /// <summary>
-    /// 用户会话
-    /// </summary>
-    protected ISession Session { get; }
-
-    /// <summary>
     /// 处理事件
     /// </summary>
     /// <param name="event">退出登录事件</param>
     /// <param name="cancellationToken">取消令牌</param>
     public override async Task HandleAsync( SignOutEvent @event, CancellationToken cancellationToken ) {
-        var userPrefix = string.Format( CacheKeyConst.UserPrefix, Session.UserId );
+        var userPrefix = string.Format( CacheKeyConst.UserPrefix, @event.UserId );
         await CacheService.RemoveByPrefixAsync( userPrefix, cancellationToken );
     }
 }

@@ -19,7 +19,6 @@ import { ModuleDetailComponent } from "./module/module-detail.component";
 import { OperationListComponent } from './operation/operation-list.component';
 import { OperationEditComponent } from './operation/operation-edit.component';
 import { OperationDetailComponent } from './operation/operation-detail.component';
-import { ApiResourceSelectComponent } from './operation/api-resource-select.component';
 
 import { IdentityResourceListComponent } from './identity-resource/identity-resource-list.component';
 import { IdentityResourceEditComponent } from './identity-resource/identity-resource-edit.component';
@@ -52,7 +51,7 @@ import { ApiPermissionComponent } from './permission/api-permission.component';
         ApplicationListComponent, ApplicationEditComponent, ApplicationDetailComponent,
         ClaimListComponent, ResourceComponent, CommonOperationListComponent,
         ModuleListComponent, ModuleEditComponent, ModuleDetailComponent,
-        OperationListComponent, OperationEditComponent, OperationDetailComponent, ApiResourceSelectComponent,
+        OperationListComponent, OperationEditComponent, OperationDetailComponent,
         IdentityResourceListComponent, IdentityResourceEditComponent, IdentityResourceDetailComponent,
         ApiResourceListComponent, ApiResourceEditComponent, ApiResourceDetailComponent,
         RoleListComponent, RoleEditComponent, RoleDetailComponent, RoleUsersComponent, SelectUsersComponent,
@@ -61,7 +60,7 @@ import { ApiPermissionComponent } from './permission/api-permission.component';
     ],
     imports: [
         SharedModule, IdentityRoutingModule
-    ],
+    ]
 } )
 export class IdentityModule {
 }

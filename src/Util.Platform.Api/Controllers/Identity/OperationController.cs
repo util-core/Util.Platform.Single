@@ -28,30 +28,6 @@ public class OperationController : QueryControllerBase<OperationDto, ResourceQue
     }
 
     /// <summary>
-    /// 获取操作关联的Api资源标识列表
-    /// </summary>
-    /// <param name="operationId">操作标识</param>
-    [HttpGet( "getApiIds" )]
-    public async Task<IActionResult> GetApiResourceIdsAsync( string operationId ) {
-        if ( operationId.IsEmpty() )
-            throw new ArgumentNullException( nameof( operationId ) );
-        var result = await OperationService.GetApiResourceIdsAsync( operationId.ToGuid() );
-        return Success( result );
-    }
-
-    /// <summary>
-    /// 获取操作关联的Api资源列表
-    /// </summary>
-    /// <param name="operationId">操作标识</param>
-    [HttpGet( "getApis" )]
-    public async Task<IActionResult> GetApiResourcesAsync( string operationId ) {
-        if ( operationId.IsEmpty() )
-            throw new ArgumentNullException( nameof( operationId ) );
-        var result = await OperationService.GetApiResourcesAsync( operationId.ToGuid() );
-        return Success( result );
-    }
-
-    /// <summary>
     /// 分页查询
     /// </summary>
     /// <param name="query">查询参数</param>

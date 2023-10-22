@@ -6,13 +6,13 @@
     <util-container ng-if="!isDeny">
         <util-container acl="permission.grantOperation">
             @*授予操作权限*@
-            <util-tab lazy="true" title="identity.permission.operationPermission" ng-if="!application.isApi">
+            <util-tab lazy="true" title="identity.permission.operationPermission">
                 <operation-permission [role]="role" [application]="application" [isDeny]="false"></operation-permission>
             </util-tab>
         </util-container>
         <util-container acl="permission.grantApi">
             @*授予Api权限*@
-            <util-tab lazy="true" title="identity.permission.apiPermission" ng-if="application.isApi">
+            <util-tab lazy="true" title="identity.permission.apiPermission" >
                 <api-permission [role]="role" [application]="application" [isDeny]="false"></api-permission>
             </util-tab>
         </util-container>
@@ -22,23 +22,23 @@
     <util-container ng-if="isDeny">
         <util-container acl="permission.denyOperation">
             @*拒绝操作权限*@
-            <util-tab lazy="true" title="identity.permission.operationPermission" ng-if="!application.isApi">
+            <util-tab lazy="true" title="identity.permission.operationPermission" >
                 <operation-permission [role]="role" [application]="application" [isDeny]="true"></operation-permission>
             </util-tab>
         </util-container>
         <util-container acl="permission.denyApi">
             @*拒绝Api权限*@
-            <util-tab lazy="true" title="identity.permission.apiPermission" ng-if="application.isApi">
+            <util-tab lazy="true" title="identity.permission.apiPermission">
                 <api-permission [role]="role" [application]="application" [isDeny]="true"></api-permission>
             </util-tab>
         </util-container>
     </util-container>
 
     @*列集权限
-    <util-tab lazy="true" title="identity.permission.columnsPermission" ng-if="!application.isApi">
+    <util-tab lazy="true" title="identity.permission.columnsPermission">
     </util-tab>
     行集权限
-    <util-tab lazy="true" title="identity.permission.rowsPermission" ng-if="!application.isApi">
+    <util-tab lazy="true" title="identity.permission.rowsPermission">
     </util-tab>
     *@
 </util-tabset>

@@ -12,11 +12,7 @@
         <util-input for="Uri" />
         <util-switch for="IsBase"></util-switch>
         <util-switch for="Enabled"></util-switch>
-        <util-switch for="IsBindApi"></util-switch>
         <util-input-number for="SortId"></util-input-number>
         <util-textarea for="Remark"></util-textarea>
     </util-form>
-</util-card>
-<util-card borderless="true" title="identity.operation.apiResource" ng-if="model.isBindApi">
-    <api-resource-select [checkedIds]="apiResourceIds"></api-resource-select>
 </util-card>
