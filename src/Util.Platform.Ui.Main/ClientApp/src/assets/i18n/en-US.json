@@ -59,7 +59,9 @@
     "endLastModificationTime": "End Last Modification Time",
     "pinYin": "PinYin",
     "i18n": "I18n",
-    "isHide": "IsHide"
+    "isHide": "IsHide",
+    "male": "Male",
+    "female": "Female"
   },
   "app": {
     "totalTip": "total: <strong class='text-primary mx-xs'>{{total}}</strong>",
