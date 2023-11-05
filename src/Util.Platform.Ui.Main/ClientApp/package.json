@@ -49,9 +49,9 @@
     "lodash-es": "4.17.21",
     "date-fns": "2.30.0",
     "ng-event-bus": "5.2.0",
-    "util-angular": "16.0.9",
-    "util-platform": "0.1.4",
-    "util-platform-identity": "0.0.8"
+    "util-angular": "16.0.10",
+    "util-platform": "0.1.5",
+    "util-platform-identity": "0.0.9"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "16.2.8",
