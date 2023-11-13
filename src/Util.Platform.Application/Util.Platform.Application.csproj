@@ -5,12 +5,12 @@
 		<AssemblyName>Util.Platform.Application</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Util.Localization" Version="7.1.68" />
-		<PackageReference Include="Util.Microservices.Polly" Version="7.1.68" />
-		<PackageReference Include="Util.Platform.Share.Apps" Version="0.6.5" />
-		<PackageReference Include="Util.Tenants" Version="7.1.68" />
-		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.6.5" />
-		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.6.5" />
+		<PackageReference Include="Util.Localization" Version="7.1.76" />
+		<PackageReference Include="Util.Microservices.Polly" Version="7.1.76" />
+		<PackageReference Include="Util.Platform.Share.Apps" Version="0.6.9" />
+		<PackageReference Include="Util.Tenants" Version="7.1.76" />
+		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.6.9" />
+		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.6.9" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Util.Platform.Data.MySql\Util.Platform.Data.MySql.csproj" />

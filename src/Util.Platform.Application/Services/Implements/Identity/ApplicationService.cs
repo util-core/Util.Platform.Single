@@ -16,10 +16,9 @@ public class ApplicationService : ApplicationServiceBase<ISystemUnitOfWork, Appl
     /// <param name="applicationRepository">应用程序仓储</param>
     /// <param name="identityResourceRepository">身份资源仓储</param>
     /// <param name="apiResourceRepository">Api资源仓储</param>
-    /// <param name="localizer">本地化查找器</param>
     public ApplicationService( IServiceProvider serviceProvider, ICache cache, ISystemUnitOfWork unitOfWork,
         IApplicationRepository applicationRepository, IIdentityResourceRepository identityResourceRepository,
-        IApiResourceRepository apiResourceRepository, IStringLocalizer localizer )
-        : base( serviceProvider, cache, unitOfWork, applicationRepository, identityResourceRepository, apiResourceRepository, localizer ) {
+        IApiResourceRepository apiResourceRepository )
+        : base( serviceProvider, cache, unitOfWork, applicationRepository, identityResourceRepository, apiResourceRepository ) {
     }
 }

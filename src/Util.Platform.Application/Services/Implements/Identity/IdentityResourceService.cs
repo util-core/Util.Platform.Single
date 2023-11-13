@@ -14,9 +14,8 @@ public class IdentityResourceService : IdentityResourceServiceBase<ISystemUnitOf
     /// <param name="unitOfWork">工作单元</param>
     /// <param name="resourceRepository">资源仓储</param>
     /// <param name="identityResourceRepository">身份资源仓储</param>
-    /// <param name="localizer">本地化查找器</param>
     public IdentityResourceService( IServiceProvider serviceProvider, ISystemUnitOfWork unitOfWork, IResourceRepository resourceRepository,
-        IIdentityResourceRepository identityResourceRepository, IStringLocalizer localizer )
-        : base( serviceProvider, unitOfWork, resourceRepository, identityResourceRepository, localizer ) {
+        IIdentityResourceRepository identityResourceRepository )
+        : base( serviceProvider, unitOfWork, resourceRepository, identityResourceRepository ) {
     }
 }
