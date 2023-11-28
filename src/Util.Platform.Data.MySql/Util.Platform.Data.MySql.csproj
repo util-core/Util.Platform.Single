@@ -5,7 +5,7 @@
 	    <AssemblyName>Util.Platform.Data.MySql</AssemblyName>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Util.Data.EntityFrameworkCore.MySql" Version="7.1.76" />
+        <PackageReference Include="Util.Data.EntityFrameworkCore.MySql" Version="7.1.92" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
 	        <PrivateAssets>all</PrivateAssets>
 	        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

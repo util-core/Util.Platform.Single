@@ -11,10 +11,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Util.Logging.Serilog" Version="7.1.76" />
-		<PackageReference Include="Util.Platform.Share.Ui.TagHelper" Version="0.6.9" />
-		<PackageReference Include="Util.Ui.NgZorro" Version="7.1.76" />
-		<PackageReference Include="Util.Ui.NgAlain" Version="7.1.76" />
+		<PackageReference Include="Util.Logging.Serilog" Version="7.1.92" />
+		<PackageReference Include="Util.Platform.Share.Ui.TagHelper" Version="0.7.3" />
+		<PackageReference Include="Util.Ui.NgZorro" Version="7.1.92" />
+		<PackageReference Include="Util.Ui.NgAlain" Version="7.1.92" />
 	</ItemGroup>
 
 	<ItemGroup>
