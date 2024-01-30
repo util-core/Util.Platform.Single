@@ -61,7 +61,8 @@
     "i18n": "I18n",
     "isHide": "IsHide",
     "male": "Male",
-    "female": "Female"
+    "female": "Female",
+    "copyToClipboard": "Copy to clipboard"
   },
   "app": {
     "totalTip": "total: <strong class='text-primary mx-xs'>{{total}}</strong>",

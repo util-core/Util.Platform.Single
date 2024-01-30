@@ -61,7 +61,8 @@
     "i18n": "多语言键名",
     "isHide": "是否隐藏",
     "male": "男",
-    "female": "女"
+    "female": "女",
+    "copyToClipboard": "复制到剪贴板"
   },
   "app": {
     "totalTip": "共<strong class='text-primary mx-xs'>{{total}}</strong>项",

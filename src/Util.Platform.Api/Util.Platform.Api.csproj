@@ -5,16 +5,16 @@
 	    <AssemblyName>Util.Platform.Api</AssemblyName>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-        <PackageReference Include="Util.Application.WebApi" Version="7.1.114" />
-        <PackageReference Include="Util.Platform.Share.Middlewares" Version="0.7.9" />
-        <PackageReference Include="Util.Platform.Share.Tools" Version="0.7.9" />
-        <PackageReference Include="Util.Platform.Share.Identity.IdentityServer" Version="0.7.9" />
-        <PackageReference Include="Util.Ui.NgZorro" Version="7.1.114" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+        <PackageReference Include="Util.Application.WebApi" Version="8.0.0" />
+        <PackageReference Include="Util.Platform.Share.Middlewares" Version="0.8.0" />
+        <PackageReference Include="Util.Platform.Share.Tools" Version="0.8.0" />
+        <PackageReference Include="Util.Platform.Share.Identity.IdentityServer" Version="0.8.0" />
+        <PackageReference Include="Util.Ui.NgZorro" Version="8.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
     <ItemGroup>

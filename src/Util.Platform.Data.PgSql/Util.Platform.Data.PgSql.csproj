@@ -5,8 +5,8 @@
 	    <AssemblyName>Util.Platform.Data.PgSql</AssemblyName>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Util.Data.EntityFrameworkCore.PostgreSql" Version="7.1.114" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
+        <PackageReference Include="Util.Data.EntityFrameworkCore.PostgreSql" Version="8.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
 	        <PrivateAssets>all</PrivateAssets>
 	        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
