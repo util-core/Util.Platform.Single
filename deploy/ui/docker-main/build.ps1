@@ -17,7 +17,7 @@ rimraf $path/dist
 rimraf ./dist
 
 Write-Host "main: install npm ..."
-yarn --ignore-optional --cwd $path
+yarn --cwd $path
 
 Write-Host "main: npm run build:prod..."
 yarn --cwd $path run build:prod
