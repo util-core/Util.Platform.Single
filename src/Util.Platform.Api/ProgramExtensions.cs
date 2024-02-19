@@ -349,7 +349,7 @@ public static class ProgramExtensions {
     /// 安装和更新 dotnet-ef 工具
     /// </summary>
     private static void InstallEfTool( IMigrationService migrationService ) {
-        migrationService.InstallEfTool().UpdateEfTool();
+        migrationService.UninstallEfTool().InstallEfTool("8.0.0");
     }
 
     /// <summary>
