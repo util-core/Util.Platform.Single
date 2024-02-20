@@ -17,13 +17,13 @@ public class Startup {
             .AddUtc()
             .AddJsonLocalization()
             .AddMemoryCache()
-            .AddSqlServerUnitOfWork<ISystemUnitOfWork, Data.SqlServer.SystemUnitOfWork>(
+            .AddSqlServerUnitOfWork<IPlatformUnitOfWork, Data.SqlServer.PlatformUnitOfWork>(
                 Config.GetConnectionString( "SqlServer" ),
                 condition: false )
-            .AddPgSqlUnitOfWork<ISystemUnitOfWork, Data.PgSql.SystemUnitOfWork>(
+            .AddPgSqlUnitOfWork<IPlatformUnitOfWork, Data.PgSql.PlatformUnitOfWork>(
                 Config.GetConnectionString( "PgSql" ),
                 condition: false )
-            .AddMySqlUnitOfWork<ISystemUnitOfWork, Data.MySql.SystemUnitOfWork>(
+            .AddMySqlUnitOfWork<IPlatformUnitOfWork, Data.MySql.PlatformUnitOfWork>(
                 Config.GetConnectionString( "MySql" ),
                 condition: true )
             .AddUtil();
@@ -42,7 +42,7 @@ public class Startup {
     /// 初始化数据库
     /// </summary>
     private void InitDatabase( IServiceCollection services ) {
-        var unitOfWork = services.BuildServiceProvider().GetService<ISystemUnitOfWork>();
+        var unitOfWork = services.BuildServiceProvider().GetService<IPlatformUnitOfWork>();
         unitOfWork.EnsureDeleted();
         unitOfWork.EnsureCreated();
     }

@@ -7,7 +7,7 @@ public class ClaimRepositoryTest {
     /// <summary>
     /// 工作单元
     /// </summary>
-    private readonly ISystemUnitOfWork _unitOfWork;
+    private readonly IPlatformUnitOfWork _unitOfWork;
     /// <summary>
     /// 仓储
     /// </summary>
@@ -16,7 +16,7 @@ public class ClaimRepositoryTest {
     /// <summary>
     /// 测试初始化
     /// </summary>
-    public ClaimRepositoryTest( ISystemUnitOfWork unitOfWork, IClaimRepository repository ) {
+    public ClaimRepositoryTest( IPlatformUnitOfWork unitOfWork, IClaimRepository repository ) {
         _unitOfWork = unitOfWork;
         _repository = repository;
     }

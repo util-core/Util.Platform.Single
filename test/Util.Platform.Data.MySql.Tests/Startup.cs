@@ -15,7 +15,7 @@ public class Startup {
             .AsBuild()
             .AddAop()
             .AddUtc()
-            .AddMySqlUnitOfWork<ISystemUnitOfWork, SystemUnitOfWork>( Config.GetConnectionString( "connection" ) )
+            .AddMySqlUnitOfWork<IPlatformUnitOfWork, PlatformUnitOfWork>( Config.GetConnectionString( "connection" ) )
             .AddUtil();
     }
 
@@ -31,7 +31,7 @@ public class Startup {
     /// 初始化数据库
     /// </summary>
     private void InitDatabase( IServiceCollection services ) {
-        var unitOfWork = services.BuildServiceProvider().GetService<ISystemUnitOfWork>();
+        var unitOfWork = services.BuildServiceProvider().GetService<IPlatformUnitOfWork>();
         unitOfWork.EnsureDeleted();
         unitOfWork.EnsureCreated();
     }

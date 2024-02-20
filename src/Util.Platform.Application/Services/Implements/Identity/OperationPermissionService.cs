@@ -6,7 +6,7 @@ namespace Util.Platform.Applications.Services.Implements.Identity;
 /// <summary>
 /// 操作权限服务
 /// </summary>
-public class OperationPermissionService : OperationPermissionServiceBase<ISystemUnitOfWork, Permission, Resource, Application,
+public class OperationPermissionService : OperationPermissionServiceBase<IPlatformUnitOfWork, Permission, Resource, Application,
     User, Role, OperationPermissionDto, PermissionRequest>, IOperationPermissionService {
     /// <summary>
     /// 初始化操作权限服务
@@ -17,7 +17,7 @@ public class OperationPermissionService : OperationPermissionServiceBase<ISystem
     /// <param name="userRepository">用户仓储</param>
     /// <param name="roleRepository">角色仓储</param>
     /// <param name="resourceRepository">资源仓储</param>
-    public OperationPermissionService( IServiceProvider serviceProvider, ISystemUnitOfWork unitOfWork, IPermissionRepository permissionRepository,
+    public OperationPermissionService( IServiceProvider serviceProvider, IPlatformUnitOfWork unitOfWork, IPermissionRepository permissionRepository,
         IUserRepository userRepository, IRoleRepository roleRepository, IResourceRepository resourceRepository )
         : base( serviceProvider, unitOfWork, permissionRepository, userRepository, roleRepository, resourceRepository ) {
     }

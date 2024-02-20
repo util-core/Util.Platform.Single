@@ -12,7 +12,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Util.Logging.Serilog" Version="8.0.2" />
-		<PackageReference Include="Util.Platform.Share.Ui.TagHelper" Version="0.8.0" />
+		<PackageReference Include="Util.Platform.Share.Ui.TagHelper" Version="0.8.1" />
 		<PackageReference Include="Util.Ui.NgZorro" Version="8.0.2" />
 		<PackageReference Include="Util.Ui.NgAlain" Version="8.0.2" />
 	</ItemGroup>

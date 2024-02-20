@@ -7,7 +7,7 @@ public class ApplicationRepositoryTest {
     /// <summary>
     /// 工作单元
     /// </summary>
-    private readonly ISystemUnitOfWork _unitOfWork;
+    private readonly IPlatformUnitOfWork _unitOfWork;
     /// <summary>
     /// 仓储
     /// </summary>
@@ -16,7 +16,7 @@ public class ApplicationRepositoryTest {
     /// <summary>
     /// 测试初始化
     /// </summary>
-    public ApplicationRepositoryTest( ISystemUnitOfWork unitOfWork, IApplicationRepository repository ) {
+    public ApplicationRepositoryTest( IPlatformUnitOfWork unitOfWork, IApplicationRepository repository ) {
         _unitOfWork = unitOfWork;
         _repository = repository;
     }

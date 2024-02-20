@@ -10,7 +10,7 @@ public class RoleServiceTest {
     /// <summary>
     /// 系统工作单元
     /// </summary>
-    private readonly ISystemUnitOfWork _unitOfWork;
+    private readonly IPlatformUnitOfWork _unitOfWork;
     /// <summary>
     /// 角色服务
     /// </summary>
@@ -27,7 +27,7 @@ public class RoleServiceTest {
     /// <summary>
     /// 测试初始化
     /// </summary>
-    public RoleServiceTest( ISystemUnitOfWork unitOfWork, IRoleService roleService, IUserService userService, IRoleRepository roleRepository ) {
+    public RoleServiceTest( IPlatformUnitOfWork unitOfWork, IRoleService roleService, IUserService userService, IRoleRepository roleRepository ) {
         _unitOfWork = unitOfWork;
         _service = roleService;
         _userService = userService;

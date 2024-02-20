@@ -7,6 +7,7 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.AspNetCore.Identity;
 global using Util.Domain;
+global using Util.Data;
 global using Util.Validation;
 global using Util.Data.EntityFrameworkCore;
 global using Util.Data.EntityFrameworkCore.Trees;

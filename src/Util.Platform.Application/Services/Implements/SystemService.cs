@@ -7,7 +7,7 @@ namespace Util.Platform.Applications.Services.Implements;
 /// <summary>
 /// 系统服务
 /// </summary>
-public class SystemService : SystemServiceBase<ISystemUnitOfWork, Permission, Resource, Application, User, Role, AppResources, ModuleDto, LoginRequest>, ISystemService {
+public class SystemService : SystemServiceBase<IPlatformUnitOfWork, Permission, Resource, Application, User, Role, AppResources, ModuleDto, LoginRequest>, ISystemService {
     /// <summary>
     /// 初始化系统服务
     /// </summary>
@@ -18,7 +18,7 @@ public class SystemService : SystemServiceBase<ISystemUnitOfWork, Permission, Re
     /// <param name="permissionService">权限服务</param>
     /// <param name="signInManager">登录服务</param>
     /// <param name="userManager">用户服务</param>
-    public SystemService( IServiceProvider serviceProvider, IEventBus eventBus, ICache cache, ISystemUnitOfWork unitOfWork, IPermissionService permissionService,
+    public SystemService( IServiceProvider serviceProvider, IEventBus eventBus, ICache cache, IPlatformUnitOfWork unitOfWork, IPermissionService permissionService,
         ISignInManager signInManager, IUserManager userManager )
         : base( serviceProvider, eventBus, cache, unitOfWork, permissionService, signInManager, userManager ) {
     }

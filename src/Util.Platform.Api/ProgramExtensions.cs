@@ -45,13 +45,13 @@ public static class ProgramExtensions {
     public static WebApplicationBuilder AddUnitOfWork( this WebApplicationBuilder builder ) {
         var dbType = builder.GetDatabaseType();
         builder.AsBuild()
-            .AddSqlServerUnitOfWork<ISystemUnitOfWork, Util.Platform.Data.SqlServer.SystemUnitOfWork>(
+            .AddSqlServerUnitOfWork<IPlatformUnitOfWork, Util.Platform.Data.SqlServer.PlatformUnitOfWork>(
                 builder.GetSqlServerConnectionString(),
                 condition: dbType == DatabaseType.SqlServer )
-            .AddPgSqlUnitOfWork<ISystemUnitOfWork, Util.Platform.Data.PgSql.SystemUnitOfWork>(
+            .AddPgSqlUnitOfWork<IPlatformUnitOfWork, Util.Platform.Data.PgSql.PlatformUnitOfWork>(
                 builder.GetPgSqlConnectionString(),
                 condition: dbType == DatabaseType.PgSql )
-            .AddMySqlUnitOfWork<ISystemUnitOfWork, Util.Platform.Data.MySql.SystemUnitOfWork>(
+            .AddMySqlUnitOfWork<IPlatformUnitOfWork, Util.Platform.Data.MySql.PlatformUnitOfWork>(
                 builder.GetMySqlConnectionString(),
                 condition: dbType == DatabaseType.MySql );
         return builder;
@@ -141,7 +141,7 @@ public static class ProgramExtensions {
     /// </summary>
     public static string GetIdentityUrl( WebApplicationBuilder builder ) {
         var result = builder.Configuration["IdentityUrl"];
-        if( result.IsEmpty() )
+        if ( result.IsEmpty() )
             return $"{Web.Request.Scheme}://{Web.Request.Host}";
         return result;
     }
@@ -228,8 +228,7 @@ public static class ProgramExtensions {
     public static void UseExceptionPage( this WebApplication app ) {
         if ( app.Environment.IsDevelopment() ) {
             app.UseDeveloperExceptionPage();
-        }
-        else {
+        } else {
             app.UseExceptionHandler( "/Error" );
             app.UseHsts();
         }
@@ -278,7 +277,7 @@ public static class ProgramExtensions {
             options.OAuthUsePkce();
             options.OAuthConfigObject.ClientSecret = "secret";
             options.ConfigObject.AdditionalItems["logoutUrl"] = "/api/logout";
-            options.IndexStream = ()=> typeof( IpAccessor ).Assembly.GetManifestResourceStream( "Util.Platform.Share.Swagger.index.html" );
+            options.IndexStream = () => typeof( IpAccessor ).Assembly.GetManifestResourceStream( "Util.Platform.Share.Swagger.index.html" );
         } );
     }
 
@@ -310,7 +309,7 @@ public static class ProgramExtensions {
             return;
         var migrationName = app.Configuration.GetValue<string>( "Migration:Name" );
         using var scope = app.Services.CreateScope();
-        var unitOfWork = scope.ServiceProvider.GetRequiredService<ISystemUnitOfWork>();
+        var unitOfWork = scope.ServiceProvider.GetRequiredService<IPlatformUnitOfWork>();
         var appliedMigrations = await unitOfWork.GetAppliedMigrationsAsync();
         if ( appliedMigrations.Any( t => t.Contains( migrationName ) ) )
             return;
@@ -346,10 +345,10 @@ public static class ProgramExtensions {
     }
 
     /// <summary>
-    /// 安装和更新 dotnet-ef 工具
+    /// 安装 dotnet-ef 工具
     /// </summary>
     private static void InstallEfTool( IMigrationService migrationService ) {
-        migrationService.UninstallEfTool().InstallEfTool("8.0.0");
+        migrationService.InstallEfTool( "8.0.0" );
     }
 
     /// <summary>

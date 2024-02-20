@@ -66,9 +66,6 @@ import { environment } from '@env/environment';
           <router-outlet (activate)="reuseTab.activate($event)" (attach)="reuseTab.activate($event)"></router-outlet>
       </ng-template>
     </layout-default>
-
-    <setting-drawer *ngIf="showSettingDrawer"></setting-drawer>
-    <theme-btn></theme-btn>
   `,
 })
 export class LayoutBasicComponent {
@@ -77,7 +74,6 @@ export class LayoutBasicComponent {
     logoCollapsed: `./assets/logo.svg`,
   };
   searchToggleStatus = false;
-  showSettingDrawer = !environment.production;
   get user(): User {
     return this.settings.user;
   }
