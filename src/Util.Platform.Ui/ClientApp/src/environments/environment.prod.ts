@@ -6,23 +6,23 @@ import { NzSafeAny } from 'ng-zorro-antd/core/types';
 const win = window as NzSafeAny;
 
 /**
- * Éú²ú»·¾³ÅäÖÃ
+ * ç”Ÿäº§ç¯å¢ƒé…ç½®
  */
 export const environment = {
     /**
-     * ÊÇ·ñÉú²ú»·¾³
+     * æ˜¯å¦ç”Ÿäº§ç¯å¢ƒ
      */
     production: true,
     /**
-     * ÊÇ·ñÊ¹ÓÃ´ø # µÄ url
+     * æ˜¯å¦ä½¿ç”¨å¸¦ # çš„ url
      */
     useHash: false,
     /**
-     * ÈÏÖ¤·şÎñÆ÷µØÖ·
+     * è®¤è¯æœåŠ¡å™¨åœ°å€
      */
     identityUrl: win.bootstrapConfig.identityUrl,
     /**
-     * Api¶ËµãµØÖ·
+     * Apiç«¯ç‚¹åœ°å€
      */
     apiEndpointUrl: win.bootstrapConfig.apiEndpointUrl
 };

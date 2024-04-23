@@ -1,21 +1,21 @@
 /**
- * ¿ª·¢»·¾³ÅäÖÃ
+ * å¼€å‘ç¯å¢ƒé…ç½®
  */
 export const environment = {
     /**
-     * ÊÇ·ñÉú²ú»·¾³
+     * æ˜¯å¦ç”Ÿäº§ç¯å¢ƒ
      */
     production: false,
     /**
-     * ÊÇ·ñÊ¹ÓÃ´ø # µÄ url
+     * æ˜¯å¦ä½¿ç”¨å¸¦ # çš„ url
      */
     useHash: false,
     /**
-     * ÈÏÖ¤·şÎñÆ÷µØÖ·
+     * è®¤è¯æœåŠ¡å™¨åœ°å€
      */
     identityUrl: "https://localhost:10086",
     /**
-     * Api¶ËµãµØÖ·
+     * Apiç«¯ç‚¹åœ°å€
      */
     apiEndpointUrl: "https://localhost:10086"
 };
