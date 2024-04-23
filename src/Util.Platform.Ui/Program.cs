@@ -16,7 +16,6 @@ builder.AsBuild()
     .AddSerilog()
     .AddNgZorro(t => {
         t.EnableTableSort = true;
-        t.EnableGenerateAllHtml = true;
     } )
     .AddUtil();
 
