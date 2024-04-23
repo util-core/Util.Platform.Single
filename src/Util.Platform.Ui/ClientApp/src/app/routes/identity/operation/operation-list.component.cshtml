@@ -1,0 +1,52 @@
+﻿@page
+@model OperationDto
+
+<util-card borderless="true" bind-title="card_title" extra="tool">
+    @*标题*@
+    <util-template id="card_title">
+        <util-i18n key="identity.operation.module" param="module:module?.name" />-<util-i18n key="identity.operation.title" />
+    </util-template>
+    @*工具按钮*@
+    <util-template id="tool">
+        <util-button type="Primary" icon="Plus" on-click="openCreateDrawer()" text-create="true" tooltip-title="identity.operation.create" acl="operation.create"></util-button>
+        <util-button icon="Form" class="ml-md" on-click="openManageCommonOperation()" text="identity.operation.manageCommonOperation"
+                     tooltip-title="identity.operation.manageCommonOperation" acl="commonOperation.view"></util-button>
+        <util-a show-table-settings="tb" class="ml-md"></util-a>
+    </util-template>
+    @*表格*@
+    <util-table id="tb" key="identity_operation" enable-table-settings="true"
+                show-checkbox="true" show-line-number="true" 
+                url="operation" query-param="queryParam" sort="SortId">
+        <util-td for="Name"></util-td>
+        <util-td for="Uri"></util-td>
+        <util-td for="IsBase" sort="false"></util-td>
+        <util-td for="Remark"></util-td>
+        <util-td for="Enabled">
+            <util-tag color-type="GeekBlue" ng-if="row.enabled" text-enabled="true"></util-tag>
+            <util-tag color-type="Red" ng-if="!row.enabled" text-not-enabled="true"></util-tag>
+        </util-td>
+        <util-td for="CreationTime"></util-td>
+        <util-td for="LastModificationTime"></util-td>
+        <util-td title-operation="true">
+            <util-a on-click="openDetailDialog(row)" text-detail="true"></util-a>
+            <util-container acl="operation.update">
+                <util-divider type="Vertical"></util-divider>
+                <util-a on-click="openEditDrawer(row)" text-update="true"></util-a>
+            </util-container>
+            <util-container acl="operation.delete">
+                <util-divider type="Vertical"></util-divider>
+                <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+            </util-container>
+        </util-td>
+    </util-table>
+</util-card>
+
+@*页脚工具栏*@
+<util-footer-toolbar ng-if="isChecked()" bind-extra="footer_info">
+    @*提示信息*@
+    <util-template id="footer_info">
+        <util-i18n key="app.rowsSelected" param="length:getCheckedLength()"/>
+    </util-template>
+    @*删除按钮*@
+    <util-button type="Primary" Danger="true" icon="Delete" on-click="delete()" text-delete="true" tooltip-title="identity.operation.delete" acl="operation.delete"></util-button>
+</util-footer-toolbar>

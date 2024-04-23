@@ -13,3 +13,6 @@ bld/
 .vs/
 *.pdb
 dist
+*.db-shm
+*.db-wal
+.nx/

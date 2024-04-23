@@ -1,0 +1,72 @@
+﻿@page
+@model ApplicationDto
+
+@*页标题*@
+<util-page-header-x title="identity.application"></util-page-header-x>
+
+@*查询表单*@
+<partial name="part/application-list-query" />
+
+@*卡片列表*@
+<util-row-x column="4" class="cardlist">
+    <util-column-x acl="application.create">
+        @*创建按钮*@
+        <util-button block="true" on-click="openCreateDrawer()" icon="Plus" text-add="true"></util-button>
+    </util-column-x>
+    <util-column-x ng-for="let model of container.data">
+        @*卡片*@
+        <util-card Actions="[actionEdit, actionDetail, actionDelete]" hoverable="true" on-click="container.toggle(model)">
+            <util-skeleton avatar="true" active="true" loading="avatarLoading">
+                @*复选框*@
+                <util-flex justify="FlexEnd">
+                    <util-checkbox on-checked-change="container.toggle(model)" checked="container.isChecked(model)"></util-checkbox>
+                </util-flex>
+                @*头像,标题,描述*@
+                <util-card-meta avatar="avatar" bind-title="model.code" bind-description="description"></util-card-meta>
+            </util-skeleton>
+        </util-card>
+
+        @*头像*@
+        <util-template id="avatar">
+            <util-image bind-src="getAvatarUrl(model)" width="48" class="rounded-circle mb-lg" disable-preview="true" on-load="onLoadAvatar()"></util-image>
+        </util-template>
+        @*描述*@
+        <util-template id="description">
+            <util-flex gap="Middle">
+                @*名称*@
+                <util-h5 bind-content="model.name"></util-h5>
+                @*启用*@
+                <util-div>
+                    <util-tag color-type="GeekBlue" ng-if="model.enabled" text-enabled="true"></util-tag>
+                    <util-tag color-type="Red" ng-if="!model.enabled" text-not-enabled="true"></util-tag>
+                </util-div>
+            </util-flex>
+            @*备注*@
+            <util-ellipsis for="Remark" lines="1"></util-ellipsis>
+        </util-template>
+        @*编辑操作*@
+        <util-template id="actionEdit">
+            <util-icon type="Edit" on-click="$event.stopPropagation();openEditDrawer(model)" tooltip-title-update="true" acl="application.update"></util-icon>
+        </util-template>
+        @*详情操作*@
+        <util-template id="actionDetail">
+            <util-icon type="More" on-click="$event.stopPropagation();openDetailDialog(model)" tooltip-title-detail="true"></util-icon>
+        </util-template>
+        @*删除操作*@
+        <util-template id="actionDelete">
+            <util-icon Type="Delete" on-click="$event.stopPropagation();delete(model.id)" tooltip-title-delete="true" acl="application.delete"></util-icon>
+        </util-template>
+    </util-column-x>
+</util-row-x>
+
+@*页脚工具栏*@
+<util-footer-toolbar ng-if="container.isChecked()" bind-extra="footer_info">
+    @*提示信息*@
+    <util-template id="footer_info">
+        <util-i18n key="app.totalTip" param="total:container.total" class="mr-xs" />,
+        <util-i18n key="app.loadedTip" param="length:container.data.length" class="mr-xs" />,
+        <util-i18n key="app.rowsSelected" param="length:container.getCheckedLength()" />
+    </util-template>
+    @*删除按钮*@
+    <util-button type="Primary" Danger="true" icon="Delete" on-click="delete()" text-delete="true" acl="application.delete"></util-button>
+</util-footer-toolbar>

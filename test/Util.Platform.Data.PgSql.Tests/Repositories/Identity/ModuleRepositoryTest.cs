@@ -48,7 +48,7 @@ public class ModuleRepositoryTest {
             Uri = url,
             Enabled = true,
             Icon = icon,
-            Expanded = true
+            IsExpanded = true
 
         };
         entity.Init();
@@ -64,6 +64,6 @@ public class ModuleRepositoryTest {
         Assert.Equal( url, result.Uri );
         Assert.True( result.Enabled );
         Assert.Equal( icon, result.Icon );
-        Assert.True( result.Expanded );
+        Assert.True( result.IsExpanded );
     }
 }

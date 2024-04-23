@@ -5,16 +5,17 @@
 		<AssemblyName>Util.Platform.Application</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Util.Localization" Version="8.0.2" />
-		<PackageReference Include="Util.Microservices.Polly" Version="8.0.2" />
-		<PackageReference Include="Util.Platform.Share.Apps" Version="0.8.1" />
-		<PackageReference Include="Util.Tenants" Version="8.0.2" />
-		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.8.1" />
-		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.8.1" />
+		<PackageReference Include="Util.Localization" Version="8.0.14" />
+		<PackageReference Include="Util.Microservices.Polly" Version="8.0.14" />
+		<PackageReference Include="Util.Platform.Share.Apps" Version="0.9.3" />
+		<PackageReference Include="Util.Tenants" Version="8.0.14" />
+		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.9.3" />
+		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.9.3" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Util.Platform.Data.MySql\Util.Platform.Data.MySql.csproj" />
 	  <ProjectReference Include="..\Util.Platform.Data.PgSql\Util.Platform.Data.PgSql.csproj" />
+	  <ProjectReference Include="..\Util.Platform.Data.Sqlite\Util.Platform.Data.Sqlite.csproj" />
 	  <ProjectReference Include="..\Util.Platform.Data.SqlServer\Util.Platform.Data.SqlServer.csproj" />
 	  <ProjectReference Include="..\Util.Platform.Domain.Identity\Util.Platform.Domain.Identity.csproj" />
 	</ItemGroup>

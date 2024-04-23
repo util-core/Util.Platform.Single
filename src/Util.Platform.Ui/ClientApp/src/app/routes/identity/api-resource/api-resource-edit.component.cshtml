@@ -1,0 +1,22 @@
+﻿@page
+@model ApiResourceDto
+
+@*表单*@
+<util-card borderless="true">
+    <util-form label-span="6" control-span="18" gutter="24">
+        <util-display for="ApplicationName" show-label="true" value="applicationName"></util-display>
+        <util-tree-select for="ParentId" query-param="queryParam" load-mode="Sync" url="apiResource/tree" default-expand-all="true"
+                          sort="SortId" label-text="identity.apiResource.parentId" control-span="8"></util-tree-select>
+        <util-input for="Name" />
+        <util-input for="Url" />
+        <util-select for="HttpMethod"></util-select>
+        <util-switch for="Enabled" />
+        <util-select for="Claims" url="claim/items" mode="Tags"></util-select>
+        <util-input-number for="SortId" />
+        <util-textarea for="Remark"></util-textarea>
+        <util-drawer-footer justify="FlexEnd">
+            <util-button on-click="close()" text-cancel="true"></util-button>
+            <util-button id="btnSubmit" is-submit="true" validate-form="true" type="Primary" on-click="submit(btnSubmit)" text-ok="true"></util-button>
+        </util-drawer-footer>
+    </util-form>
+</util-card>

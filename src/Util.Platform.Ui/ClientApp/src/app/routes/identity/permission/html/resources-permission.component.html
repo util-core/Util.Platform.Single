@@ -1,0 +1,28 @@
+
+<nz-tabset nzTabPosition="left" [(nzSelectedIndex)]="selectedTabIndex">
+    <ng-container *ngIf="!isDeny">
+        <ng-container *aclIf="'permission.grantOperation'">
+            <nz-tab [nzTitle]="'identity.permission.operationPermission'|i18n"><ng-template nz-tab="">
+                <operation-permission [role]="role" [application]="application" [isDeny]="false"></operation-permission>
+            </ng-template></nz-tab>
+        </ng-container>
+        <ng-container *aclIf="'permission.grantApi'">
+            <nz-tab [nzTitle]="'identity.permission.apiPermission'|i18n"><ng-template nz-tab="">
+                <api-permission [role]="role" [application]="application" [isDeny]="false"></api-permission>
+            </ng-template></nz-tab>
+        </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="isDeny">
+        <ng-container *aclIf="'permission.denyOperation'">
+            <nz-tab [nzTitle]="'identity.permission.operationPermission'|i18n"><ng-template nz-tab="">
+                <operation-permission [role]="role" [application]="application" [isDeny]="true"></operation-permission>
+            </ng-template></nz-tab>
+        </ng-container>
+        <ng-container *aclIf="'permission.denyApi'">
+            <nz-tab [nzTitle]="'identity.permission.apiPermission'|i18n"><ng-template nz-tab="">
+                <api-permission [role]="role" [application]="application" [isDeny]="true"></api-permission>
+            </ng-template></nz-tab>
+        </ng-container>
+    </ng-container>
+</nz-tabset>

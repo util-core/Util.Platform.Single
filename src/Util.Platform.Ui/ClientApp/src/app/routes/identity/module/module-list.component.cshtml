@@ -1,0 +1,124 @@
+﻿@page
+@model ModuleDto
+
+@*查询表单*@
+<partial name="part/module-list-query" />
+
+<util-card borderless="true" title="identity.module" extra="tool">
+    @*工具按钮*@
+    <util-template id="tool">
+        <util-button type="Primary" icon="Plus" on-click="openCreateDrawer()" text-create="true" acl="module.create"></util-button>
+        <util-a show-table-settings="tb" class="ml-md"></util-a>
+        <util-a id="btnFullscreen" fullscreen="tb" fullscreen-title="identity.module" class="ml-md"></util-a>
+    </util-template>
+
+    @*提示语*@
+    <util-alert id="alert" class="mb-md" type="Info" show-icon="true">
+        <util-i18n key="app.currentApplication" param="application:selectedApplication.name" />
+    </util-alert>
+
+    <util-row gutter="24">
+        @*应用程序列表*@
+        <util-column xs="hideApplication?0:24" xl="hideApplication?0:6" xxl="hideApplication?0:4" >
+            <biz-application-select on-click="selectApplication($event)" hidden="hideApplication" ></biz-application-select>
+        </util-column>
+        @*表格*@
+        <util-column xs="24" xl="hideApplication?24:18" xxl="hideApplication?24:20">
+            <util-tree-table id="tb" key="identity_module" enable-table-settings="true"
+                             show-checkbox="true" auto-load="false" 
+                             expand-all="true" load-mode="Sync"
+                             url="module" query-param="queryParam" sort="SortId">
+                <util-thead>
+                    <util-tr>
+                        <util-th for="Name" left="true" width="300" ellipsis="true"></util-th>
+                        <util-th for="ApplicationName"></util-th>
+                        <util-th for="ParentName" title="identity.module.parentId"></util-th>
+                        <util-th for="Uri"></util-th>
+                        <util-th for="I18n"></util-th>
+                        <util-th for="Icon"></util-th>
+                        <util-th for="IsExpanded"></util-th>
+                        <util-th for="Group"></util-th>
+                        <util-th for="IsHide"></util-th>
+                        <util-th for="HideInBreadcrumb"></util-th>
+                        <util-th for="Enabled"></util-th>
+                        <util-th for="Remark"></util-th>
+                        <util-th for="CreationTime"></util-th>
+                        <util-th for="LastModificationTime"></util-th>
+                        <util-th title-operation="true" right="true" width="300"></util-th>
+                    </util-tr>
+                </util-thead>
+                <util-tbody>
+                    <util-container ng-for="let row of x_tb.dataSource">
+                        <util-tr ng-if="x_tb.isShow(row)">
+                            <util-td for="Name" show-expand="!x_tb.isLeaf(row) || x_tb.isShow(row) && row===selectedModule"></util-td>
+                            <util-td for="ApplicationName" ellipsis="true"></util-td>
+                            <util-td for="ParentName" ellipsis="true"></util-td>
+                            <util-td for="Uri" ellipsis="true" clipboard="true"></util-td>
+                            <util-td for="I18n" ellipsis="true" clipboard="true"></util-td>
+                            <util-td for="Icon">
+                                <util-icon bind-type="row.icon"></util-icon>
+                            </util-td>
+                            <util-td for="IsExpanded"></util-td>
+                            <util-td for="Group"></util-td>
+                            <util-td for="IsHide"></util-td>
+                            <util-td for="HideInBreadcrumb"></util-td>
+                            <util-td for="Enabled">
+                                <util-tag color-type="GeekBlue" ng-if="row.enabled" text-enabled="true"></util-tag>
+                                <util-tag color-type="Red" ng-if="!row.enabled" text-not-enabled="true"></util-tag>
+                            </util-td>
+                            <util-td for="Remark" ellipsis="true"></util-td>
+                            <util-td for="CreationTime"></util-td>
+                            <util-td for="LastModificationTime"></util-td>
+                            <util-td title-operation="true">
+                                <util-a on-click="openCreateDrawer(row)" text="identity.module.createSubModule" acl="module.create"></util-a>
+                                <util-container acl="module.settings">
+                                    <util-divider type="Vertical"></util-divider>
+                                    <util-a on-click="configResource(row)" text="identity.module.resourceSettings"></util-a>
+                                </util-container>
+                                <util-container acl="module.update">
+                                    <util-divider type="Vertical"></util-divider>
+                                    <util-a on-click="openEditDrawer(row)" text-update="true"></util-a>
+                                </util-container>
+                                <util-divider type="Vertical"></util-divider>
+                                @*下拉菜单*@
+                                <util-a dropdown-menu="menu">
+                                    <util-icon type="More" theme="Outline"></util-icon>
+                                </util-a>
+                                <util-dropdown-menu id="menu">
+                                    <util-menu-item on-click="openDetailDialog(row)" text-detail="true" icon="InfoCircle"></util-menu-item>
+                                    <util-menu-item on-click="delete(row.id)" danger="true" text-delete="true" icon="Delete" acl="module.delete"></util-menu-item>
+                                </util-dropdown-menu>
+                            </util-td>
+                        </util-tr>
+                        <util-tr expand="row===selectedModule && x_tb.isExpand(row)" ng-if="x_tb.isShow(row) && row===selectedModule">
+                            <util-row>
+                                <util-column span="23" push="1">
+                                    <util-tabset>
+                                        @*操作资源*@
+                                        <util-tab lazy="true" title="identity.operation">
+                                            <operation-list [module]="row"></operation-list>
+                                        </util-tab>
+                                    </util-tabset>
+                                </util-column>
+                            </util-row>
+                        </util-tr>
+                    </util-container>
+                </util-tbody>
+            </util-tree-table>
+        </util-column>
+    </util-row>
+</util-card>
+
+@*页脚工具栏*@
+<util-footer-toolbar ng-if="isChecked()" bind-extra="footer_info">
+    @*提示信息*@
+    <util-template id="footer_info">
+        <util-i18n key="app.rowsSelected" param="length:getCheckedLength()" />
+    </util-template>
+    @*启用按钮*@
+    <util-button icon="CheckCircle" on-click="enable()" text-enable="true" acl="module.enable"></util-button>
+    @*禁用按钮*@
+    <util-button icon="CloseCircle" on-click="disable()" text-disable="true" acl="module.disable"></util-button>
+    @*删除按钮*@
+    <util-button type="Primary" danger="true" icon="Delete" on-click="delete()" text-delete="true" acl="module.delete"></util-button>
+</util-footer-toolbar>

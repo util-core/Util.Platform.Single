@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(NetTargetFramework)</TargetFramework>
+		<RootNamespace>Util.Platform.Data.Sqlite</RootNamespace>
+		<AssemblyName>Util.Platform.Data.Sqlite</AssemblyName>
+	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="Util.Platform.db-shm" />
+	  <None Remove="Util.Platform.db-wal" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Util.Data.EntityFrameworkCore.Sqlite" Version="8.0.14" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Util.Platform.Data\Util.Platform.Data.csproj" />
+	</ItemGroup>
+</Project>

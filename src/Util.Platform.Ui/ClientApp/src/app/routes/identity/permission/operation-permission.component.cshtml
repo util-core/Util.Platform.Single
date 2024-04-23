@@ -1,0 +1,21 @@
+﻿@page
+@model OperationPermissionDto
+
+@*操作权限*@
+<util-card borderless="true" bind-title="getTitle()" extra="tool">
+    @*工具栏*@
+    <util-template id="tool">
+        <util-a show-table-settings="tb"></util-a>
+    </util-template>
+    @*表格*@
+    <util-tree-table id="tb" key="identity_operation_permission"
+                     show-checkbox="true" auto-load="false" enable-table-settings="true"
+                     url="operationPermission" query-param="queryParam" sort="SortId"
+                     expand-all="true" show-pagination="false">
+        <util-td for="Name" width="300"></util-td>
+        <util-td title-operation="true" width="800">
+            <util-checkbox ng-for="let item of getOperations(row)" on-checked-change="check(item,row)"
+                           checked="x_tb.isChecked(item)">{{item.name}}</util-checkbox>
+        </util-td>
+    </util-tree-table>
+</util-card>

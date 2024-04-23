@@ -30,34 +30,15 @@ public class ResourceUpdateEventHandler : EventHandlerBase<EntityUpdatedEvent<Re
     /// <param name="event">资源更新事件</param>
     /// <param name="cancellationToken">取消令牌</param>
     public override async Task HandleAsync( EntityUpdatedEvent<Resource> @event, CancellationToken cancellationToken ) {
-        await OnTextChange( @event, cancellationToken );
-        await OnIconChange( @event, cancellationToken );
-    }
-
-    /// <summary>
-    /// 模块文本变化
-    /// </summary>
-    private async Task OnTextChange( EntityUpdatedEvent<Resource> @event, CancellationToken cancellationToken ) {
-        if ( @event.Entity.Type != ResourceType.Module )
-            return;
-        if ( @event.ChangeValues.Any( t => t.PropertyName == "Name" ) )
-            await RemoveGetAppDataCache( cancellationToken );
-    }
-
-    /// <summary>
-    /// 模块图标变化
-    /// </summary>
-    private async Task OnIconChange( EntityUpdatedEvent<Resource> @event, CancellationToken cancellationToken ) {
-        if ( @event.Entity.Type != ResourceType.Module )
-            return;
-        if ( @event.ChangeValues.Any( t => t.PropertyName == "Icon" ) )
-            await RemoveGetAppDataCache( cancellationToken );
+        await RemoveGetAppDataCache( @event, cancellationToken );
     }
 
     /// <summary>
     /// 清除应用数据缓存
     /// </summary>
-    private async Task RemoveGetAppDataCache( CancellationToken cancellationToken ) {
+    private async Task RemoveGetAppDataCache( EntityUpdatedEvent<Resource> @event, CancellationToken cancellationToken ) {
+        if ( @event.Entity.Type != ResourceType.Module )
+            return;
         var cacheKey = new GetAppDataCacheKey( Session.UserId, Session.GetApplicationId().ToString() );
         await CacheService.RemoveAsync( cacheKey, cancellationToken );
     }

@@ -1,0 +1,25 @@
+﻿@page
+
+@*角色信息*@
+<util-alert id="alert" type="Info" class="my-md">
+    <util-i18n key="identity.role.currentRoleName" param="roleName:role.name" />
+    <util-i18n key="app.currentApplication" param="application:selectedApplication.name" />
+</util-alert>
+
+<util-row gutter="24">
+    <util-column xs="hideApplication?0:24" xl="hideApplication?0:6" xxl="hideApplication?0:4">
+        <biz-application-select on-click="selectApplication($event)" hidden="hideApplication"></biz-application-select>
+    </util-column>
+    <util-column xs="24" xl="hideApplication?24:18" xxl="hideApplication?24:20">
+        <util-tabset bindon-selected-index="selectedTabIndex">
+            @*授予权限*@
+            <util-tab lazy="true" title="identity.permission.grantPermission" acl="permission.grantOperation || permission.grantApi">
+                <resources-permission #grantPermission [role]="role" [application]="selectedApplication"></resources-permission>
+            </util-tab>
+            @*拒绝权限*@
+            <util-tab lazy="true" title="identity.permission.denyPermission" acl="permission.denyOperation || permission.denyApi">
+                <resources-permission #denyPermission [role]="role" [application]="selectedApplication" [isDeny]="true"></resources-permission>
+            </util-tab>
+        </util-tabset>
+    </util-column>
+</util-row>

@@ -1,0 +1,24 @@
+﻿@page
+@model ApplicationDto
+
+@*表单*@
+<util-card borderless="true">
+    <util-descriptions bordered="true">
+        <util-descriptions-item for="Code"></util-descriptions-item>
+        <util-descriptions-item for="Name"></util-descriptions-item>
+        <util-descriptions-item for="Enabled"></util-descriptions-item>
+        <util-descriptions-item for="IsClient"></util-descriptions-item>
+        <util-container ng-if="model.isClient">
+            <util-descriptions-item for="AccessTokenLifetime" ></util-descriptions-item>
+            <util-descriptions-item for="AllowOfflineAccess"></util-descriptions-item>
+            <util-descriptions-item for="AllowedScopes" span="2"></util-descriptions-item>
+            <util-descriptions-item for="AllowedCorsOrigins" span="2"></util-descriptions-item>
+            <util-descriptions-item for="RedirectUri" span="2"></util-descriptions-item>
+            <util-descriptions-item for="PostLogoutRedirectUri" span="2"></util-descriptions-item>
+            <util-descriptions-item for="AllowedGrantTypeDescription" span="2"></util-descriptions-item>
+        </util-container>
+        <util-descriptions-item for="Remark" span="2"></util-descriptions-item>
+        <util-descriptions-item for="CreationTime"></util-descriptions-item>
+        <util-descriptions-item for="LastModificationTime"></util-descriptions-item>
+    </util-descriptions>
+</util-card>

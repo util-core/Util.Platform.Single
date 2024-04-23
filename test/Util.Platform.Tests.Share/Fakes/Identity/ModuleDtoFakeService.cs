@@ -1,4 +1,4 @@
-namespace Util.Platform.Tests.Share.Fakes.Identity; 
+namespace Util.Platform.Tests.Share.Fakes.Identity;
 
 /// <summary>
 /// 模块参数模拟数据服务
@@ -18,13 +18,13 @@ public static class ModuleDtoFakeService {
     public static List<ModuleDto> GetModuleDtos( int count ) {
         return new AutoFaker<ModuleDto>()
             .Ignore( t => t.Id )
-            .RuleFor( t => t.Uri, t => t.Random.String2( 1, 300 ) )
-            .RuleFor( t => t.Name, t => t.Random.String2( 1, 200 ) )
             .Ignore( t => t.ParentId )
             .Ignore( t => t.Path )
             .Ignore( t => t.Level )
+            .Ignore( t => t.Children )
+            .RuleFor( t => t.Uri, t => t.Random.String2( 1, 300 ) )
+            .RuleFor( t => t.Name, t => t.Random.String2( 1, 200 ) )
             .RuleFor( t => t.Remark, t => t.Random.String2( 1, 500 ) )
-            .Ignore( t => t.SortId )
             .Generate( count );
     }
 }

@@ -1,0 +1,29 @@
+﻿@page
+@model ModuleDto
+
+@*表单*@
+<util-card borderless="true">
+    <util-descriptions bordered="true">
+        <util-descriptions-item for="ApplicationName"></util-descriptions-item>
+        <util-descriptions-item for="Enabled"></util-descriptions-item>
+        <util-descriptions-item for="Name"></util-descriptions-item>
+        <util-descriptions-item for="ParentName" title="identity.module.parentId"></util-descriptions-item>
+        <util-descriptions-item for="Uri" span="2"></util-descriptions-item>
+        <util-descriptions-item for="Remark" span="2"></util-descriptions-item>
+        <util-descriptions-item for="SortId" span="2"></util-descriptions-item>
+        <util-descriptions-item for="CreationTime"></util-descriptions-item>
+        <util-descriptions-item for="LastModificationTime"></util-descriptions-item>
+    </util-descriptions>
+</util-card>
+<util-card title="identity.module.menuSettings" borderless="true">
+    <util-descriptions bordered="true">
+        <util-descriptions-item for="I18n"></util-descriptions-item>
+        <util-descriptions-item for="Icon">
+            <util-icon bind-type="model.icon"></util-icon>
+        </util-descriptions-item>
+        <util-descriptions-item for="IsExpanded"></util-descriptions-item>
+        <util-descriptions-item for="Group"></util-descriptions-item>
+        <util-descriptions-item for="IsHide"></util-descriptions-item>
+        <util-descriptions-item for="HideInBreadcrumb"></util-descriptions-item>
+    </util-descriptions>
+</util-card>

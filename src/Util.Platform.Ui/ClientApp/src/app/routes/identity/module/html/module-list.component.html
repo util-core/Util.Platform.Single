@@ -1,0 +1,146 @@
+
+
+<nz-card class="searchForm" [nzBorderless]="true">
+    <form nz-form="">
+        <div nz-row="" [nzGutter]="24">
+            <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:100px">{{'identity.module.name'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_name"><input #model_name="ngModel" #name="" name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-input-group><ng-template #tmp_name=""><i (click)="model_name.reset()" *ngIf="model_name.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+            </div>
+            <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:100px">{{'identity.module.uri'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_uri"><input #model_uri="ngModel" #uri="" name="uri" nz-input="" [(ngModel)]="queryParam.uri" /></nz-input-group><ng-template #tmp_uri=""><i (click)="model_uri.reset()" *ngIf="model_uri.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+            </div>
+            <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:100px">{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #enabled="" #x_enabled="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_enabled.isGroup"><nz-option *ngFor="let item of x_enabled.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_enabled.isGroup"><nz-option-group *ngFor="let group of x_enabled.optionGroups" [nzLabel]="group.text|i18n"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+            </div>
+            <div *ngIf="expand" nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:100px">{{'identity.resource.remark'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_remark"><input #model_remark="ngModel" #remark="" name="remark" nz-input="" [(ngModel)]="queryParam.remark" /></nz-input-group><ng-template #tmp_remark=""><i (click)="model_remark.reset()" *ngIf="model_remark.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+            </div>
+            <div *ngIf="expand" nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:100px">{{'util.beginCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-range-picker #begin_creation_time="" #x_begin_creation_time="xRangePickerExtend" name="begin_creation_time" x-range-picker-extend="" [(beginDate)]="queryParam.beginCreationTime" [(endDate)]="queryParam.endCreationTime" [(ngModel)]="x_begin_creation_time.rangeDates"></nz-range-picker></nz-form-control></nz-form-item>
+            </div>
+            <div *ngIf="expand" nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:100px">{{'util.beginLastModificationTime'|i18n}}</nz-form-label><nz-form-control><nz-range-picker #begin_last_modification_time="" #x_begin_last_modification_time="xRangePickerExtend" name="begin_last_modification_time" x-range-picker-extend="" [(beginDate)]="queryParam.beginLastModificationTime" [(endDate)]="queryParam.endLastModificationTime" [(ngModel)]="x_begin_last_modification_time.rangeDates"></nz-range-picker></nz-form-control></nz-form-item>
+            </div>
+            <div class="mb-md" nz-col="" [nzLg]="{span:expand?24:24}" [nzMd]="{span:expand?24:12}" [nzSm]="24" [nzXl]="{span:expand?24:24}" [nzXs]="24" [nzXXl]="{span:expand?12:6}">
+                <div nz-flex="" nzAlign="center" nzGap="small" nzJustify="flex-end">
+                    <button #btnRefresh="" (click)="refresh()" nz-button="" type="button"><i nz-icon="" nzType="sync"></i>{{'util.reset'|i18n}}</button>
+                    <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
+                    <a (click)="expand=!expand" class="ml-sm">{{expand?('util.collapse'|i18n):('util.expand'|i18n)}}<i nz-icon="" [nzType]="expand?'up':'down'"></i></a>
+                </div>
+            </div>
+        </div>
+    </form>
+</nz-card>
+
+<nz-card [nzBorderless]="true" [nzExtra]="tool" [nzTitle]="'identity.module'|i18n">
+    <ng-template #tool="">
+        <button (click)="openCreateDrawer()" *aclIf="'module.create'" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
+        <a (click)="ts_tb.show()" class="ml-md card-tool-icon-btn" nz-tooltip="" [nzTooltipTitle]="'util.tableSettings'|i18n"><i nz-icon="" nzType="setting"></i></a>
+        <a #btnFullscreen="" #x_btnFullscreen="xButtonExtend" (click)="x_btnFullscreen.fullscreen(tb,null,true,'identity.module')" class="ml-md card-tool-icon-btn" nz-tooltip="" x-button-extend="" [nzTooltipTitle]="(x_btnFullscreen.isFullscreen?'util.fullscreenExit':'util.fullscreen')|i18n"><i *ngIf="!x_btnFullscreen.isFullscreen" nz-icon="" nzTheme="outline" nzType="fullscreen"></i><i *ngIf="x_btnFullscreen.isFullscreen" nz-icon="" nzTheme="outline" nzType="fullscreen-exit"></i></a>
+    </ng-template>
+
+    <nz-alert #alert="" class="mb-md" nzType="info" [nzMessage]="t_alert" [nzShowIcon]="true"><ng-template #t_alert="">
+        <span [innerHTML]="'app.currentApplication'|i18n:{application:selectedApplication.name}"></span>
+    </ng-template></nz-alert>
+
+    <div nz-row="" [nzGutter]="24">
+        <div nz-col="" [nzXl]="hideApplication?0:6" [nzXs]="hideApplication?0:24" [nzXXl]="hideApplication?0:4">
+            <platform-application-select (onClick)="selectApplication($event)" [hidden]="hideApplication"></platform-application-select>
+        </div>
+        <div nz-col="" [nzXl]="hideApplication?24:18" [nzXs]="24" [nzXXl]="hideApplication?24:20">
+            <nz-table #tb="" #x_tb="xTreeTableExtend" (nzPageIndexChange)="x_tb.pageIndexChange($event)" (nzPageSizeChange)="x_tb.pageSizeChange($event)" loadMode="0" nzTableLayout="fixed" order="SortId" url="module" x-tree-table-extend="" [(nzPageIndex)]="x_tb.queryParam.page" [(nzPageSize)]="x_tb.queryParam.pageSize" [(queryParam)]="queryParam" [autoLoad]="false" [isExpandAll]="true" [nzBordered]="ts_tb.bordered" [nzCustomColumn]="ts_tb.columns" [nzData]="x_tb.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb.loading" [nzScroll]="ts_tb.scroll" [nzShowPagination]="false" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb" [nzSize]="ts_tb.size" [nzTotal]="x_tb.total">
+                <thead>
+                    <tr>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'identity.module.name')" nz-resizable="" nzBounds="window" nzCellControl="identity.module.name" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.module.name')" [nzRight]="ts_tb.isRight('identity.module.name')"><label (nzCheckedChange)="x_tb.masterToggle()" nz-checkbox="" [nzChecked]="x_tb.isMasterChecked()" [nzIndeterminate]="x_tb.isMasterIndeterminate()">{{'identity.module.name'|i18n}}</label><nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'identity.module.applicationName')" nz-resizable="" nzBounds="window" nzCellControl="identity.module.applicationName" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.module.applicationName')" [nzRight]="ts_tb.isRight('identity.module.applicationName')" [titleAlign]="ts_tb.getTitleAlign('identity.module.applicationName')">{{'identity.module.applicationName'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'identity.module.parentId')" nz-resizable="" nzBounds="window" nzCellControl="identity.module.parentId" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.module.parentId')" [nzRight]="ts_tb.isRight('identity.module.parentId')" [titleAlign]="ts_tb.getTitleAlign('identity.module.parentId')">{{'identity.module.parentId'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'identity.module.uri')" nz-resizable="" nzBounds="window" nzCellControl="identity.module.uri" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.module.uri')" [nzRight]="ts_tb.isRight('identity.module.uri')" [titleAlign]="ts_tb.getTitleAlign('identity.module.uri')">{{'identity.module.uri'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'util.i18n')" nz-resizable="" nzBounds="window" nzCellControl="util.i18n" nzPreview="" [nzLeft]="ts_tb.isLeft('util.i18n')" [nzRight]="ts_tb.isRight('util.i18n')" [titleAlign]="ts_tb.getTitleAlign('util.i18n')">{{'util.i18n'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'util.icon')" nz-resizable="" nzBounds="window" nzCellControl="util.icon" nzPreview="" [nzLeft]="ts_tb.isLeft('util.icon')" [nzRight]="ts_tb.isRight('util.icon')" [titleAlign]="ts_tb.getTitleAlign('util.icon')">{{'util.icon'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'util.expanded')" nz-resizable="" nzBounds="window" nzCellControl="util.expanded" nzPreview="" [nzLeft]="ts_tb.isLeft('util.expanded')" [nzRight]="ts_tb.isRight('util.expanded')" [titleAlign]="ts_tb.getTitleAlign('util.expanded')">{{'util.expanded'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'menu.group')" nz-resizable="" nzBounds="window" nzCellControl="menu.group" nzPreview="" [nzLeft]="ts_tb.isLeft('menu.group')" [nzRight]="ts_tb.isRight('menu.group')" [titleAlign]="ts_tb.getTitleAlign('menu.group')">{{'menu.group'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'util.isHide')" nz-resizable="" nzBounds="window" nzCellControl="util.isHide" nzPreview="" [nzLeft]="ts_tb.isLeft('util.isHide')" [nzRight]="ts_tb.isRight('util.isHide')" [titleAlign]="ts_tb.getTitleAlign('util.isHide')">{{'util.isHide'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'menu.hideInBreadcrumb')" nz-resizable="" nzBounds="window" nzCellControl="menu.hideInBreadcrumb" nzPreview="" [nzLeft]="ts_tb.isLeft('menu.hideInBreadcrumb')" [nzRight]="ts_tb.isRight('menu.hideInBreadcrumb')" [titleAlign]="ts_tb.getTitleAlign('menu.hideInBreadcrumb')">{{'menu.hideInBreadcrumb'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'util.enabled')" nz-resizable="" nzBounds="window" nzCellControl="util.enabled" nzPreview="" [nzLeft]="ts_tb.isLeft('util.enabled')" [nzRight]="ts_tb.isRight('util.enabled')" [titleAlign]="ts_tb.getTitleAlign('util.enabled')">{{'util.enabled'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'identity.module.remark')" nz-resizable="" nzBounds="window" nzCellControl="identity.module.remark" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.module.remark')" [nzRight]="ts_tb.isRight('identity.module.remark')" [titleAlign]="ts_tb.getTitleAlign('identity.module.remark')">{{'identity.module.remark'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'util.creationTime')" nz-resizable="" nzBounds="window" nzCellControl="util.creationTime" nzPreview="" [nzLeft]="ts_tb.isLeft('util.creationTime')" [nzRight]="ts_tb.isRight('util.creationTime')" [titleAlign]="ts_tb.getTitleAlign('util.creationTime')">{{'util.creationTime'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'util.lastModificationTime')" nz-resizable="" nzBounds="window" nzCellControl="util.lastModificationTime" nzPreview="" [nzLeft]="ts_tb.isLeft('util.lastModificationTime')" [nzRight]="ts_tb.isRight('util.lastModificationTime')" [titleAlign]="ts_tb.getTitleAlign('util.lastModificationTime')">{{'util.lastModificationTime'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                        <th (nzResizeEnd)="ts_tb.handleResize($event,'util.operation')" nz-resizable="" nzBounds="window" nzCellControl="util.operation" nzPreview="" [nzLeft]="ts_tb.isLeft('util.operation')" [nzRight]="ts_tb.isRight('util.operation')" [titleAlign]="ts_tb.getTitleAlign('util.operation')">{{'util.operation'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let row of x_tb.dataSource">
+                        <tr *ngIf="x_tb.isShow(row)">
+                            <td (nzExpandChange)="x_tb.collapse(row,$event)" nzCellControl="identity.module.name" [nzEllipsis]="ts_tb.getEllipsis('identity.module.name')" [nzExpand]="x_tb.isExpand(row)" [nzIndentSize]="row.level*x_tb.config.table.indentUnitWidth" [nzLeft]="ts_tb.isLeft('identity.module.name')" [nzRight]="ts_tb.isRight('identity.module.name')" [nzShowExpand]="!x_tb.isLeaf(row) || x_tb.isShow(row) && row===selectedModule"><label (nzCheckedChange)="x_tb.toggle(row)" nz-checkbox="" [nzChecked]="x_tb.isChecked(row)" [nzIndeterminate]="x_tb.isIndeterminate(row)">{{row.name}}</label></td>
+                            <td nzCellControl="identity.module.applicationName" [nzAlign]="ts_tb.getAlign('identity.module.applicationName')" [nzEllipsis]="ts_tb.getEllipsis('identity.module.applicationName')" [nzLeft]="ts_tb.isLeft('identity.module.applicationName')" [nzRight]="ts_tb.isRight('identity.module.applicationName')">{{row.applicationName}}</td>
+                            <td nzCellControl="identity.module.parentId" [nzAlign]="ts_tb.getAlign('identity.module.parentId')" [nzEllipsis]="ts_tb.getEllipsis('identity.module.parentId')" [nzLeft]="ts_tb.isLeft('identity.module.parentId')" [nzRight]="ts_tb.isRight('identity.module.parentId')">{{row.parentName}}</td>
+                            <td nzCellControl="identity.module.uri" [nzAlign]="ts_tb.getAlign('identity.module.uri')" [nzEllipsis]="ts_tb.getEllipsis('identity.module.uri')" [nzLeft]="ts_tb.isLeft('identity.module.uri')" [nzRight]="ts_tb.isRight('identity.module.uri')">{{row.uri}}<button #btn__uri="" #x_btn__uri="xButtonExtend" (click)="x_btn__uri.copyToClipboard(row.uri)" *ngIf="row.uri" nz-button="" nz-tooltip="" nzType="text" x-button-extend="" [nzTooltipTitle]="'util.copyToClipboard'|i18n"><i nz-icon="" nzType="copy"></i></button></td>
+                            <td nzCellControl="util.i18n" [nzAlign]="ts_tb.getAlign('util.i18n')" [nzEllipsis]="ts_tb.getEllipsis('util.i18n')" [nzLeft]="ts_tb.isLeft('util.i18n')" [nzRight]="ts_tb.isRight('util.i18n')">{{row.i18n}}<button #btn__i18n="" #x_btn__i18n="xButtonExtend" (click)="x_btn__i18n.copyToClipboard(row.i18n)" *ngIf="row.i18n" nz-button="" nz-tooltip="" nzType="text" x-button-extend="" [nzTooltipTitle]="'util.copyToClipboard'|i18n"><i nz-icon="" nzType="copy"></i></button></td>
+                            <td nzCellControl="util.icon" [nzAlign]="ts_tb.getAlign('util.icon')" [nzEllipsis]="ts_tb.getEllipsis('util.icon')" [nzLeft]="ts_tb.isLeft('util.icon')" [nzRight]="ts_tb.isRight('util.icon')">
+                                <i nz-icon="" [nzType]="row.icon"></i>
+                            </td>
+                            <td nzCellControl="util.expanded" [nzAlign]="ts_tb.getAlign('util.expanded')" [nzEllipsis]="ts_tb.getEllipsis('util.expanded')" [nzLeft]="ts_tb.isLeft('util.expanded')" [nzRight]="ts_tb.isRight('util.expanded')"><i *ngIf="!row.isExpanded" nz-icon nzType="close"></i>
+<i *ngIf="row.isExpanded" nz-icon nzType="check"></i>
+</td>
+                            <td nzCellControl="menu.group" [nzAlign]="ts_tb.getAlign('menu.group')" [nzEllipsis]="ts_tb.getEllipsis('menu.group')" [nzLeft]="ts_tb.isLeft('menu.group')" [nzRight]="ts_tb.isRight('menu.group')"><i *ngIf="!row.group" nz-icon nzType="close"></i>
+<i *ngIf="row.group" nz-icon nzType="check"></i>
+</td>
+                            <td nzCellControl="util.isHide" [nzAlign]="ts_tb.getAlign('util.isHide')" [nzEllipsis]="ts_tb.getEllipsis('util.isHide')" [nzLeft]="ts_tb.isLeft('util.isHide')" [nzRight]="ts_tb.isRight('util.isHide')"><i *ngIf="!row.isHide" nz-icon nzType="close"></i>
+<i *ngIf="row.isHide" nz-icon nzType="check"></i>
+</td>
+                            <td nzCellControl="menu.hideInBreadcrumb" [nzAlign]="ts_tb.getAlign('menu.hideInBreadcrumb')" [nzEllipsis]="ts_tb.getEllipsis('menu.hideInBreadcrumb')" [nzLeft]="ts_tb.isLeft('menu.hideInBreadcrumb')" [nzRight]="ts_tb.isRight('menu.hideInBreadcrumb')"><i *ngIf="!row.hideInBreadcrumb" nz-icon nzType="close"></i>
+<i *ngIf="row.hideInBreadcrumb" nz-icon nzType="check"></i>
+</td>
+                            <td nzCellControl="util.enabled" [nzAlign]="ts_tb.getAlign('util.enabled')" [nzEllipsis]="ts_tb.getEllipsis('util.enabled')" [nzLeft]="ts_tb.isLeft('util.enabled')" [nzRight]="ts_tb.isRight('util.enabled')">
+                                <nz-tag *ngIf="row.enabled" nzColor="geekblue">{{'util.enabled'|i18n}}</nz-tag>
+                                <nz-tag *ngIf="!row.enabled" nzColor="red">{{'util.notEnabled'|i18n}}</nz-tag>
+                            </td>
+                            <td nzCellControl="identity.module.remark" [nzAlign]="ts_tb.getAlign('identity.module.remark')" [nzEllipsis]="ts_tb.getEllipsis('identity.module.remark')" [nzLeft]="ts_tb.isLeft('identity.module.remark')" [nzRight]="ts_tb.isRight('identity.module.remark')">{{row.remark}}</td>
+                            <td nzCellControl="util.creationTime" [nzAlign]="ts_tb.getAlign('util.creationTime')" [nzEllipsis]="ts_tb.getEllipsis('util.creationTime')" [nzLeft]="ts_tb.isLeft('util.creationTime')" [nzRight]="ts_tb.isRight('util.creationTime')">{{row.creationTime|date:'yyyy-MM-dd HH:mm'}}</td>
+                            <td nzCellControl="util.lastModificationTime" [nzAlign]="ts_tb.getAlign('util.lastModificationTime')" [nzEllipsis]="ts_tb.getEllipsis('util.lastModificationTime')" [nzLeft]="ts_tb.isLeft('util.lastModificationTime')" [nzRight]="ts_tb.isRight('util.lastModificationTime')">{{row.lastModificationTime|date:'yyyy-MM-dd HH:mm'}}</td>
+                            <td nzCellControl="util.operation" [nzAlign]="ts_tb.getAlign('util.operation')" [nzEllipsis]="ts_tb.getEllipsis('util.operation')" [nzLeft]="ts_tb.isLeft('util.operation')" [nzRight]="ts_tb.isRight('util.operation')">
+                                <a (click)="openCreateDrawer(row)" *aclIf="'module.create'">{{'identity.module.createSubModule'|i18n}}</a>
+                                <ng-container *aclIf="'module.settings'">
+                                    <nz-divider nzType="vertical"></nz-divider>
+                                    <a (click)="configResource(row)">{{'identity.module.resourceSettings'|i18n}}</a>
+                                </ng-container>
+                                <ng-container *aclIf="'module.update'">
+                                    <nz-divider nzType="vertical"></nz-divider>
+                                    <a (click)="openEditDrawer(row)">{{'util.update'|i18n}}</a>
+                                </ng-container>
+                                <nz-divider nzType="vertical"></nz-divider>
+                                <a nz-dropdown="" [nzDropdownMenu]="menu">
+                                    <i nz-icon="" nzTheme="outline" nzType="more"></i>
+                                </a>
+                                <nz-dropdown-menu #menu="nzDropdownMenu"><ul nz-menu="">
+                                    <li (click)="openDetailDialog(row)" nz-menu-item=""><i class="mr-sm" nz-icon="" nzType="info-circle"></i>{{'util.detail'|i18n}}</li>
+                                    <li (click)="delete(row.id)" *aclIf="'module.delete'" nz-menu-item="" [nzDanger]="true"><i class="mr-sm" nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</li>
+                                </ul></nz-dropdown-menu>
+                            </td>
+                        </tr>
+                        <tr *ngIf="x_tb.isShow(row) && row===selectedModule" [nzExpand]="row===selectedModule && x_tb.isExpand(row)">
+                            <div nz-row="">
+                                <div nz-col="" [nzPush]="1" [nzSpan]="23">
+                                    <nz-tabset>
+                                        <nz-tab [nzTitle]="'identity.operation'|i18n"><ng-template nz-tab="">
+                                            <operation-list [module]="row"></operation-list>
+                                        </ng-template></nz-tab>
+                                    </nz-tabset>
+                                </div>
+                            </div>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </nz-table><ng-template #total_tb="" let-range="range" let-total="">{{ 'util.tableTotalTemplate'|i18n:{start:range[0],end:range[1],total:total} }}</ng-template><x-table-settings #ts_tb="" key="identity_module" [enableFixedColumn]="true" [initColumns]="[{'title':'identity.module.name','width':'300','left':true,'ellipsis':true},{'title':'identity.module.applicationName','ellipsis':true},{'title':'identity.module.parentId','ellipsis':true},{'title':'identity.module.uri','ellipsis':true},{'title':'util.i18n','ellipsis':true},{'title':'util.icon'},{'title':'util.expanded'},{'title':'menu.group'},{'title':'util.isHide'},{'title':'menu.hideInBreadcrumb'},{'title':'util.enabled'},{'title':'identity.module.remark','ellipsis':true},{'title':'util.creationTime'},{'title':'util.lastModificationTime'},{'title':'util.operation','width':'300','right':true}]" [isTreeTable]="true"></x-table-settings>
+        </div>
+    </div>
+</nz-card>
+
+<footer-toolbar *ngIf="isChecked()" [extra]="footer_info">
+    <ng-template #footer_info="">
+        <span [innerHTML]="'app.rowsSelected'|i18n:{length:getCheckedLength()}"></span>
+    </ng-template>
+    <button (click)="enable()" *aclIf="'module.enable'" nz-button=""><i nz-icon="" nzType="check-circle"></i>{{'util.enable'|i18n}}</button>
+    <button (click)="disable()" *aclIf="'module.disable'" nz-button=""><i nz-icon="" nzType="close-circle"></i>{{'util.disable'|i18n}}</button>
+    <button (click)="delete()" *aclIf="'module.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
+</footer-toolbar>

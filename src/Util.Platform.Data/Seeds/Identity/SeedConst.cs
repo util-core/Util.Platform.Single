@@ -25,6 +25,18 @@ public static class SeedConst {
     /// </summary>
     public static Guid TestRoleId = "3465BC8F-DC86-46DA-BB97-1721E257143C".ToGuid();
     /// <summary>
+    /// 主导航资源标识
+    /// </summary>
+    public static Guid MainResourceId = "3A36ABFA-EC83-4F40-A2AD-A0A49C811D6A".ToGuid();
+    /// <summary>
+    /// 仪表盘资源标识
+    /// </summary>
+    public static Guid DashboardResourceId = "D861923E-EC0A-4347-A121-C8D1D7E6B489".ToGuid();
+    /// <summary>
+    /// 监控页资源标识
+    /// </summary>
+    public static Guid MonitorResourceId = "316CA95F-C920-47CB-B93B-12E13E26F9F8".ToGuid();
+    /// <summary>
     /// 系统管理资源标识
     /// </summary>
     public static Guid SystemResourceId = "ec9c35b4-3dfd-4cee-be70-9d83993b40e5".ToGuid();

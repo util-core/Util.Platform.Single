@@ -17,6 +17,9 @@ public class Startup {
             .AddUtc()
             .AddJsonLocalization()
             .AddMemoryCache()
+            .AddSqliteUnitOfWork<IPlatformUnitOfWork, Data.Sqlite.PlatformUnitOfWork>(
+                Config.GetConnectionString( "Sqlite" ),
+                condition: true )
             .AddSqlServerUnitOfWork<IPlatformUnitOfWork, Data.SqlServer.PlatformUnitOfWork>(
                 Config.GetConnectionString( "SqlServer" ),
                 condition: false )
@@ -25,7 +28,7 @@ public class Startup {
                 condition: false )
             .AddMySqlUnitOfWork<IPlatformUnitOfWork, Data.MySql.PlatformUnitOfWork>(
                 Config.GetConnectionString( "MySql" ),
-                condition: true )
+                condition: false )
             .AddUtil();
     }
 

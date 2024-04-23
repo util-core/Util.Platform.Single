@@ -1,0 +1,54 @@
+import { Provider, EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
+import { AuthConfig, OAuthModuleConfig, provideOAuthClient } from 'angular-oauth2-oidc';
+import { urlConfig } from './url.config';
+
+/**
+* 认证配置
+*/
+const authConfig: AuthConfig = {
+    /** 
+     * 认证服务器地址
+     */
+    issuer: urlConfig.identityUrl,
+    /**
+     * 客户端标识
+     */
+    clientId: 'admin',
+    /**
+     * 使用授权码模式
+     */
+    responseType: 'code',
+    /**
+     * 认证成功返回的地址
+     */
+    redirectUri: `${location.origin}/`,
+    /**
+     * 权限范围
+     */
+    scope: 'openid profile offline_access',
+    /**
+     * 是否显示调试信息
+     */
+    showDebugInformation: true
+};
+
+
+/**
+ * 认证模块配置
+ */
+const authModuleConfig: OAuthModuleConfig = {
+    resourceServer: {
+        allowedUrls: [urlConfig.apiEndpointUrl],
+        sendAccessToken: true
+    }
+};
+
+/**
+ * 认证配置提供器
+ */
+export const provideAuth = (): EnvironmentProviders => {
+    const provides: Array<Provider | EnvironmentProviders> = [];
+    provides.push({ provide: AuthConfig, useValue: authConfig });
+    provides.push(provideOAuthClient(authModuleConfig));
+    return makeEnvironmentProviders(provides);
+}

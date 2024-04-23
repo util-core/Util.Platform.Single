@@ -18,8 +18,12 @@ public static class RoleDtoFakeService {
     public static List<RoleDto> GetRoleDtos( int count ) {
         return new AutoFaker<RoleDto>()
             .Ignore( t => t.Id )
-            .Ignore( t => t.PinYin )
             .Ignore( t => t.Type )
+            .Ignore( t => t.PinYin )
+            .Ignore( t => t.ParentId )
+            .Ignore( t => t.Path )
+            .Ignore( t => t.Level )
+            .Ignore( t => t.Children )
             .RuleFor( t => t.Code, t => t.Random.String2( 1, 256 ) )
             .RuleFor( t => t.Name, t => t.Random.String2( 1, 256 ) )
             .RuleFor( t => t.Remark, t => t.Random.String2( 1, 500 ) )

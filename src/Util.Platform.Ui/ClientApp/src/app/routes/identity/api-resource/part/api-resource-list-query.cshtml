@@ -1,0 +1,34 @@
+﻿@model ResourceQuery
+
+@*查询表单*@
+<util-card borderless="true" class="searchForm">
+    <util-search-form label-width="120">
+        <util-row gutter="24">
+            <util-column>
+                <util-input for="Name" label-text="identity.apiResource.name" />
+            </util-column>
+            <util-column>
+                <util-input for="Uri" label-text="identity.apiResource.url" />
+            </util-column>
+            <util-column>
+                <util-select for="Enabled" />
+            </util-column>
+            <util-column>
+                <util-input for="Remark" />
+            </util-column>
+            <util-column>
+                <util-range-picker for-begin="BeginCreationTime" for-end="EndCreationTime" />
+            </util-column>
+            <util-column>
+                <util-range-picker for-begin="BeginLastModificationTime" for-end="EndLastModificationTime" />
+            </util-column>
+            <util-column class="mb-md">
+                <util-flex justify="FlexEnd" align="Center" gap="Small">
+                    <util-button id="btnRefresh" icon="Sync" on-click="refresh()" text-reset="true"></util-button>
+                    <util-button id="btnQuery" type="Primary" icon="Search" on-click="query(btnQuery)" text-query="true"></util-button>
+                    <util-a is-search="true" class="ml-sm"></util-a>
+                </util-flex>
+            </util-column>
+        </util-row>
+    </util-search-form>
+</util-card>

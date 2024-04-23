@@ -1,0 +1,91 @@
+
+
+<nz-card class="searchForm" [nzBorderless]="true">
+    <form nz-form="">
+        <div nz-row="" [nzGutter]="24">
+            <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'identity.apiResource.name'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_name"><input #model_name="ngModel" #name="" name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-input-group><ng-template #tmp_name=""><i (click)="model_name.reset()" *ngIf="model_name.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+            </div>
+            <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'identity.apiResource.url'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_uri"><input #model_uri="ngModel" #uri="" name="uri" nz-input="" [(ngModel)]="queryParam.uri" /></nz-input-group><ng-template #tmp_uri=""><i (click)="model_uri.reset()" *ngIf="model_uri.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+            </div>
+            <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #enabled="" #x_enabled="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_enabled.isGroup"><nz-option *ngFor="let item of x_enabled.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_enabled.isGroup"><nz-option-group *ngFor="let group of x_enabled.optionGroups" [nzLabel]="group.text|i18n"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+            </div>
+            <div *ngIf="expand" nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'identity.resource.remark'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_remark"><input #model_remark="ngModel" #remark="" name="remark" nz-input="" [(ngModel)]="queryParam.remark" /></nz-input-group><ng-template #tmp_remark=""><i (click)="model_remark.reset()" *ngIf="model_remark.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+            </div>
+            <div *ngIf="expand" nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'util.beginCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-range-picker #begin_creation_time="" #x_begin_creation_time="xRangePickerExtend" name="begin_creation_time" x-range-picker-extend="" [(beginDate)]="queryParam.beginCreationTime" [(endDate)]="queryParam.endCreationTime" [(ngModel)]="x_begin_creation_time.rangeDates"></nz-range-picker></nz-form-control></nz-form-item>
+            </div>
+            <div *ngIf="expand" nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'util.beginLastModificationTime'|i18n}}</nz-form-label><nz-form-control><nz-range-picker #begin_last_modification_time="" #x_begin_last_modification_time="xRangePickerExtend" name="begin_last_modification_time" x-range-picker-extend="" [(beginDate)]="queryParam.beginLastModificationTime" [(endDate)]="queryParam.endLastModificationTime" [(ngModel)]="x_begin_last_modification_time.rangeDates"></nz-range-picker></nz-form-control></nz-form-item>
+            </div>
+            <div class="mb-md" nz-col="" [nzLg]="{span:expand?24:24}" [nzMd]="{span:expand?24:12}" [nzSm]="24" [nzXl]="{span:expand?24:24}" [nzXs]="24" [nzXXl]="{span:expand?12:6}">
+                <div nz-flex="" nzAlign="center" nzGap="small" nzJustify="flex-end">
+                    <button #btnRefresh="" (click)="refresh()" nz-button="" type="button"><i nz-icon="" nzType="sync"></i>{{'util.reset'|i18n}}</button>
+                    <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
+                    <a (click)="expand=!expand" class="ml-sm">{{expand?('util.collapse'|i18n):('util.expand'|i18n)}}<i nz-icon="" [nzType]="expand?'up':'down'"></i></a>
+                </div>
+            </div>
+        </div>
+    </form>
+</nz-card>
+
+<nz-card [nzBorderless]="true" [nzExtra]="tool" [nzTitle]="'identity.apiResource'|i18n">
+    <ng-template #tool="">
+        <button (click)="openCreateDrawer()" *aclIf="'apiResource.create'" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
+        <a (click)="ts_tb.show()" class="ml-md card-tool-icon-btn" nz-tooltip="" [nzTooltipTitle]="'util.tableSettings'|i18n"><i nz-icon="" nzType="setting"></i></a>
+    </ng-template>
+    
+    <nz-alert #alert="" class="mb-md" nzType="info" [nzMessage]="t_alert" [nzShowIcon]="true"><ng-template #t_alert="">
+        <span [innerHTML]="'app.currentApplication'|i18n:{application:selectedApplication.name}"></span>
+    </ng-template></nz-alert>
+
+    <div nz-row="" [nzGutter]="24">
+        <div nz-col="" [nzSpan]="24" [nzXl]="{span:6}" [nzXXl]="{span:4}">
+            <platform-application-select (onClick)="selectApplication($event)"></platform-application-select>
+        </div>
+        <div nz-col="" [nzSpan]="24" [nzXl]="{span:18}" [nzXXl]="{span:20}">
+            <nz-table #tb="" #x_tb="xTreeTableExtend" (nzPageIndexChange)="x_tb.pageIndexChange($event)" (nzPageSizeChange)="x_tb.pageSizeChange($event)" loadMode="0" nzTableLayout="fixed" order="SortId" url="apiResource" x-tree-table-extend="" [(nzPageIndex)]="x_tb.queryParam.page" [(nzPageSize)]="x_tb.queryParam.pageSize" [(queryParam)]="queryParam" [autoLoad]="false" [isExpandAll]="true" [nzBordered]="ts_tb.bordered" [nzCustomColumn]="ts_tb.columns" [nzData]="x_tb.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb.loading" [nzScroll]="ts_tb.scroll" [nzShowPagination]="false" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb" [nzSize]="ts_tb.size" [nzTotal]="x_tb.total"><thead><tr><th (nzResizeEnd)="ts_tb.handleResize($event,'identity.apiResource.name')" nz-resizable="" nzBounds="window" nzCellControl="identity.apiResource.name" nzPreview="" [nzLeft]="true" [nzRight]="ts_tb.isRight('identity.apiResource.name')"><label (nzCheckedChange)="x_tb.masterToggle()" nz-checkbox="" [nzChecked]="x_tb.isMasterChecked()" [nzIndeterminate]="x_tb.isMasterIndeterminate()">{{'identity.apiResource.name'|i18n}}</label><nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'identity.apiResource.applicationName')" nz-resizable="" nzBounds="window" nzCellControl="identity.apiResource.applicationName" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.apiResource.applicationName')" [nzRight]="ts_tb.isRight('identity.apiResource.applicationName')" [titleAlign]="ts_tb.getTitleAlign('identity.apiResource.applicationName')">{{'identity.apiResource.applicationName'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'identity.apiResource.url')" nz-resizable="" nzBounds="window" nzCellControl="identity.apiResource.url" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.apiResource.url')" [nzRight]="ts_tb.isRight('identity.apiResource.url')" [titleAlign]="ts_tb.getTitleAlign('identity.apiResource.url')">{{'identity.apiResource.url'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'identity.apiResource.httpMethod')" nz-resizable="" nzBounds="window" nzCellControl="identity.apiResource.httpMethod" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.apiResource.httpMethod')" [nzRight]="ts_tb.isRight('identity.apiResource.httpMethod')" [titleAlign]="ts_tb.getTitleAlign('identity.apiResource.httpMethod')">{{'identity.apiResource.httpMethod'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'identity.apiResource.uri')" nz-resizable="" nzBounds="window" nzCellControl="identity.apiResource.uri" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.apiResource.uri')" [nzRight]="ts_tb.isRight('identity.apiResource.uri')" [titleAlign]="ts_tb.getTitleAlign('identity.apiResource.uri')">{{'identity.apiResource.uri'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'util.enabled')" nz-resizable="" nzBounds="window" nzCellControl="util.enabled" nzPreview="" [nzLeft]="ts_tb.isLeft('util.enabled')" [nzRight]="ts_tb.isRight('util.enabled')" [titleAlign]="ts_tb.getTitleAlign('util.enabled')">{{'util.enabled'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'identity.apiResource.claims')" nz-resizable="" nzBounds="window" nzCellControl="identity.apiResource.claims" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.apiResource.claims')" [nzRight]="ts_tb.isRight('identity.apiResource.claims')" [titleAlign]="ts_tb.getTitleAlign('identity.apiResource.claims')">{{'identity.apiResource.claims'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'identity.apiResource.remark')" nz-resizable="" nzBounds="window" nzCellControl="identity.apiResource.remark" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.apiResource.remark')" [nzRight]="ts_tb.isRight('identity.apiResource.remark')" [titleAlign]="ts_tb.getTitleAlign('identity.apiResource.remark')">{{'identity.apiResource.remark'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'util.creationTime')" nz-resizable="" nzBounds="window" nzCellControl="util.creationTime" nzPreview="" [nzLeft]="ts_tb.isLeft('util.creationTime')" [nzRight]="ts_tb.isRight('util.creationTime')" [titleAlign]="ts_tb.getTitleAlign('util.creationTime')">{{'util.creationTime'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'util.lastModificationTime')" nz-resizable="" nzBounds="window" nzCellControl="util.lastModificationTime" nzPreview="" [nzLeft]="ts_tb.isLeft('util.lastModificationTime')" [nzRight]="ts_tb.isRight('util.lastModificationTime')" [titleAlign]="ts_tb.getTitleAlign('util.lastModificationTime')">{{'util.lastModificationTime'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'util.operation')" nz-resizable="" nzBounds="window" nzCellControl="util.operation" nzPreview="" [nzLeft]="ts_tb.isLeft('util.operation')" [nzRight]="ts_tb.isRight('util.operation')" [titleAlign]="ts_tb.getTitleAlign('util.operation')">{{'util.operation'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th></tr></thead><tbody><ng-container *ngFor="let row of x_tb.dataSource;index as index"><tr *ngIf="x_tb.isShow(row)">
+                <td (nzExpandChange)="x_tb.collapse(row,$event)" nzCellControl="identity.apiResource.name" [nzEllipsis]="ts_tb.getEllipsis('identity.apiResource.name')" [nzExpand]="x_tb.isExpand(row)" [nzIndentSize]="row.level*x_tb.config.table.indentUnitWidth" [nzLeft]="ts_tb.isLeft('identity.apiResource.name')" [nzRight]="ts_tb.isRight('identity.apiResource.name')" [nzShowExpand]="!x_tb.isLeaf(row)"><label (nzCheckedChange)="x_tb.toggle(row)" nz-checkbox="" [nzChecked]="x_tb.isChecked(row)" [nzIndeterminate]="x_tb.isIndeterminate(row)">{{row.name}}</label></td>
+                <td nzCellControl="identity.apiResource.applicationName" [nzAlign]="ts_tb.getAlign('identity.apiResource.applicationName')" [nzEllipsis]="ts_tb.getEllipsis('identity.apiResource.applicationName')" [nzLeft]="ts_tb.isLeft('identity.apiResource.applicationName')" [nzRight]="ts_tb.isRight('identity.apiResource.applicationName')">{{row.applicationName}}</td>
+                <td nzCellControl="identity.apiResource.url" [nzAlign]="ts_tb.getAlign('identity.apiResource.url')" [nzEllipsis]="ts_tb.getEllipsis('identity.apiResource.url')" [nzLeft]="ts_tb.isLeft('identity.apiResource.url')" [nzRight]="ts_tb.isRight('identity.apiResource.url')">{{row.url}}</td>
+                <td nzCellControl="identity.apiResource.httpMethod" [nzAlign]="ts_tb.getAlign('identity.apiResource.httpMethod')" [nzEllipsis]="ts_tb.getEllipsis('identity.apiResource.httpMethod')" [nzLeft]="ts_tb.isLeft('identity.apiResource.httpMethod')" [nzRight]="ts_tb.isRight('identity.apiResource.httpMethod')">{{row.httpMethodDisplay}}</td>
+                <td nzCellControl="identity.apiResource.uri" [nzAlign]="ts_tb.getAlign('identity.apiResource.uri')" [nzEllipsis]="ts_tb.getEllipsis('identity.apiResource.uri')" [nzLeft]="ts_tb.isLeft('identity.apiResource.uri')" [nzRight]="ts_tb.isRight('identity.apiResource.uri')">{{row.uri}}</td>
+                <td nzCellControl="util.enabled" [nzAlign]="ts_tb.getAlign('util.enabled')" [nzEllipsis]="ts_tb.getEllipsis('util.enabled')" [nzLeft]="ts_tb.isLeft('util.enabled')" [nzRight]="ts_tb.isRight('util.enabled')">
+                    <nz-tag *ngIf="row.enabled" nzColor="geekblue">{{'util.enabled'|i18n}}</nz-tag>
+                    <nz-tag *ngIf="!row.enabled" nzColor="red">{{'util.notEnabled'|i18n}}</nz-tag>
+                </td>
+                <td nzCellControl="identity.apiResource.claims" [nzAlign]="ts_tb.getAlign('identity.apiResource.claims')" [nzEllipsis]="ts_tb.getEllipsis('identity.apiResource.claims')" [nzLeft]="ts_tb.isLeft('identity.apiResource.claims')" [nzRight]="ts_tb.isRight('identity.apiResource.claims')">{{row.claimsDisplay}}</td>
+                <td nzCellControl="identity.apiResource.remark" [nzAlign]="ts_tb.getAlign('identity.apiResource.remark')" [nzEllipsis]="ts_tb.getEllipsis('identity.apiResource.remark')" [nzLeft]="ts_tb.isLeft('identity.apiResource.remark')" [nzRight]="ts_tb.isRight('identity.apiResource.remark')">{{row.remark}}</td>
+                <td nzCellControl="util.creationTime" [nzAlign]="ts_tb.getAlign('util.creationTime')" [nzEllipsis]="ts_tb.getEllipsis('util.creationTime')" [nzLeft]="ts_tb.isLeft('util.creationTime')" [nzRight]="ts_tb.isRight('util.creationTime')">{{row.creationTime|date:'yyyy-MM-dd HH:mm'}}</td>
+                <td nzCellControl="util.lastModificationTime" [nzAlign]="ts_tb.getAlign('util.lastModificationTime')" [nzEllipsis]="ts_tb.getEllipsis('util.lastModificationTime')" [nzLeft]="ts_tb.isLeft('util.lastModificationTime')" [nzRight]="ts_tb.isRight('util.lastModificationTime')">{{row.lastModificationTime|date:'yyyy-MM-dd HH:mm'}}</td>
+                <td nzCellControl="util.operation" [nzAlign]="ts_tb.getAlign('util.operation')" [nzEllipsis]="ts_tb.getEllipsis('util.operation')" [nzLeft]="ts_tb.isLeft('util.operation')" [nzRight]="ts_tb.isRight('util.operation')">
+                    <a (click)="openCreateDrawer(row)" *aclIf="'apiResource.create'">{{'identity.apiResource.createSubApi'|i18n}}</a>
+                    <ng-container *aclIf="'apiResource.update'">
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <a (click)="openEditDrawer(row)">{{'util.update'|i18n}}</a>
+                    </ng-container>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a nz-dropdown="" [nzDropdownMenu]="menu">
+                        <i nz-icon="" nzTheme="outline" nzType="more"></i>
+                    </a>
+                    <nz-dropdown-menu #menu="nzDropdownMenu"><ul nz-menu="">
+                        <li (click)="openDetailDialog(row)" nz-menu-item=""><i class="mr-sm" nz-icon="" nzType="info-circle"></i>{{'util.detail'|i18n}}</li>
+                        <li (click)="delete(row.id)" *aclIf="'apiResource.delete'" nz-menu-item="" [nzDanger]="true"><i class="mr-sm" nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</li>
+                    </ul></nz-dropdown-menu>
+                </td>
+            </tr></ng-container></tbody></nz-table><ng-template #total_tb="" let-range="range" let-total="">{{ 'util.tableTotalTemplate'|i18n:{start:range[0],end:range[1],total:total} }}</ng-template><x-table-settings #ts_tb="" key="identity_api_resource" [enableFixedColumn]="true" [initColumns]="[{'title':'identity.apiResource.name','width':'250','left':true,'ellipsis':true},{'title':'identity.apiResource.applicationName'},{'title':'identity.apiResource.url'},{'title':'identity.apiResource.httpMethod'},{'title':'identity.apiResource.uri'},{'title':'util.enabled'},{'title':'identity.apiResource.claims'},{'title':'identity.apiResource.remark'},{'title':'util.creationTime'},{'title':'util.lastModificationTime'},{'title':'util.operation','width':'200','right':true}]" [isTreeTable]="true"></x-table-settings>
+        </div>
+    </div>
+</nz-card>
+
+<footer-toolbar *ngIf="isChecked()" [extra]="footer_info">
+    <ng-template #footer_info="">
+        <span [innerHTML]="'app.rowsSelected'|i18n:{length:getCheckedLength()}"></span>
+    </ng-template>
+    <button (click)="enable()" *aclIf="'apiResource.enable'" nz-button=""><i nz-icon="" nzType="check-circle"></i>{{'util.enable'|i18n}}</button>
+    <button (click)="disable()" *aclIf="'apiResource.disable'" nz-button=""><i nz-icon="" nzType="close-circle"></i>{{'util.disable'|i18n}}</button>
+    <button (click)="delete()" *aclIf="'apiResource.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
+</footer-toolbar>

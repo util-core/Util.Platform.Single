@@ -47,12 +47,33 @@ public class ClaimController : CrudControllerBase<ClaimDto, ClaimQuery> {
     }
 
     /// <summary>
-    /// 批量保存
+    /// 创建
     /// </summary>
-    /// <param name="request">保存参数</param>
-    [HttpPost( "save" )]
+    /// <param name="request">创建参数</param>
+    [HttpPost]
     [Acl( "claim.save" )]
-    public new async Task<IActionResult> SaveAsync( SaveModel request ) {
-        return await base.SaveAsync( request );
+    public new async Task<IActionResult> CreateAsync( ClaimDto request ) {
+        return await base.CreateAsync( request );
+    }
+
+    /// <summary>
+    /// 修改
+    /// </summary>
+    /// <param name="id">标识</param>
+    /// <param name="request">修改参数</param>
+    [HttpPut( "{id?}" )]
+    [Acl( "claim.save" )]
+    public new async Task<IActionResult> UpdateAsync( string id, ClaimDto request ) {
+        return await base.UpdateAsync( id, request );
+    }
+
+    /// <summary>
+    /// 批量删除
+    /// </summary>
+    /// <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
+    [HttpPost( "delete" )]
+    [Acl( "claim.delete" )]
+    public new async Task<IActionResult> DeleteAsync( [FromBody] string ids ) {
+        return await base.DeleteAsync( ids );
     }
 }

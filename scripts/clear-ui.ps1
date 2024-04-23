@@ -6,13 +6,11 @@ catch{
     npm install -g rimraf 
 }
 
-$projects = '../src/Util.Platform.Ui.Main/ClientApp','../src/Util.Platform.Ui.Identity/ClientApp'
-foreach ($project in $projects)
-{
-    Write-Host "$project : remove ..."
+$project = '../src/Util.Platform.Ui/ClientApp'
+Write-Host "$project : remove ..."
     rimraf $project/node_modules
     rimraf $project/.angular
     rimraf $project/dist
-}
+    rimraf $project/yarn.lock
 
 Write-Host "remove completed."

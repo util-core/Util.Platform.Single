@@ -28,15 +28,18 @@ public class Startup {
             .AddAcl( t => t.AllowAnonymous = true )
             .AddJsonLocalization()
             .AddMemoryCache()
+            .AddSqliteUnitOfWork<IPlatformUnitOfWork, Data.Sqlite.PlatformUnitOfWork>(
+                Config.GetConnectionString( "SqliteTest" ),
+                condition: true )
             .AddSqlServerUnitOfWork<IPlatformUnitOfWork, Data.SqlServer.PlatformUnitOfWork>(
-                Config.GetConnectionString( "SqlServerTestConnection" ),
+                Config.GetConnectionString( "SqlServerTest" ),
                 condition: false )
             .AddPgSqlUnitOfWork<IPlatformUnitOfWork, Data.PgSql.PlatformUnitOfWork>(
-                Config.GetConnectionString( "PgSqlTestConnection" ),
+                Config.GetConnectionString( "PgSqlTest" ),
                 condition: false )
             .AddMySqlUnitOfWork<IPlatformUnitOfWork, Data.MySql.PlatformUnitOfWork>(
-                Config.GetConnectionString( "MySqlTestConnection" ),
-                condition: true )
+                Config.GetConnectionString( "MySqlTest" ),
+                condition: false )
             .AddUtil();
     }
 

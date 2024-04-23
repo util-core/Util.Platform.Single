@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>$(NetTargetFramework)</TargetFramework>
+		<RootNamespace>Util.Platform.Ui</RootNamespace>
+		<AssemblyName>Util.Platform.Ui</AssemblyName>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Util.Logging.Serilog" Version="8.0.14" />
+		<PackageReference Include="Util.Platform.Share.Ui.TagHelper" Version="0.9.3" />
+		<PackageReference Include="Util.Ui.NgZorro" Version="8.0.14" />
+		<PackageReference Include="Util.Ui.NgAlain" Version="8.0.14" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="ClientApp\dist\**" />
+		<Compile Remove="ClientApp\node_modules\**" />
+		<Content Remove="ClientApp\dist\**" />
+		<Content Remove="ClientApp\node_modules\**" />
+		<EmbeddedResource Remove="ClientApp\dist\**" />
+		<EmbeddedResource Remove="ClientApp\node_modules\**" />
+		<TypeScriptCompile Remove="ClientApp\node_modules\**" />
+		<None Remove="ClientApp\.angular\**" />
+		<None Remove="ClientApp\dist\**" />
+		<None Remove="ClientApp\.eslintignore" />
+		<None Remove="ClientApp\.eslintrc.js" />
+		<None Remove="ClientApp\.gitignore" />
+		<None Remove="ClientApp\.npmignore" />
+		<None Remove="ClientApp\.nvmrc" />
+		<None Remove="ClientApp\.prettierignore" />
+		<None Remove="ClientApp\.prettierrc.js" />
+		<None Remove="ClientApp\.stylelintrc" />
+		<None Remove="ClientApp\yarn.lock" />
+		<None Remove="ClientApp\clear-node-modules.ps1" />
+		<None Remove="ClientApp\start.ps1" />
+		<None Remove="start.ps1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Util.Platform.Application\Util.Platform.Application.csproj" />
+	</ItemGroup>
+</Project>

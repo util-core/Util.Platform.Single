@@ -1,0 +1,57 @@
+@page
+@model RoleDto
+
+@*页标题*@
+<util-page-header-x title="identity.role"></util-page-header-x>
+
+@*查询表单*@
+<partial name="part/role-list-query" />
+
+@*查询表格*@
+<util-card borderless="true" title="identity.role" extra="tool">
+    @*工具按钮*@
+    <util-template id="tool">
+        <util-button type="Primary" icon="Plus" on-click="openCreateDrawer()" text-create="true" acl="role.create"></util-button>
+        <util-a show-table-settings="tb" class="ml-md"></util-a>
+    </util-template>
+
+    @*表格*@
+    <util-table id="tb" key="identity_role" enable-table-settings="true"
+                show-checkbox="true" show-line-number="true" 
+                url="role" query-param="queryParam" sort="CreationTime desc">
+        <util-td for="Code"></util-td>
+        <util-td for="Name"></util-td>
+        <util-td for="IsAdmin"></util-td>
+        <util-td for="Enabled">
+            <util-tag color-type="GeekBlue" ng-if="row.enabled" text-enabled="true"></util-tag>
+            <util-tag color-type="Red" ng-if="!row.enabled" text-not-enabled="true"></util-tag>
+        </util-td>
+        <util-td for="Remark"></util-td>
+        <util-td title-operation="true" width="200">
+            <util-a on-click="openRoleUsersDialog(row)" text="identity.role.userSettings" acl="role.userSettings"></util-a>
+            <util-container acl="permission.view">
+                <util-divider type="Vertical"></util-divider>
+                <util-a on-click="openPermissionDialog(row)" text="identity.role.permissionSettings"></util-a>
+            </util-container>
+            <util-divider type="Vertical"></util-divider>
+            <util-a dropdown-menu="menu">
+                <util-icon type="More" theme="Outline"></util-icon>
+            </util-a>
+            <util-dropdown-menu id="menu">
+                <util-menu-item on-click="openDetailDialog(row)" text-detail="true" icon="InfoCircle"></util-menu-item>
+                <util-menu-item on-click="openEditDrawer(row)" text-update="true" icon="Edit" acl="role.update"></util-menu-item>
+                <util-menu-item danger="true" on-click="delete(row.id)" text-delete="true" icon="Delete" acl="role.delete"></util-menu-item>
+            </util-dropdown-menu>
+        </util-td>
+    </util-table>
+</util-card>
+
+@*页脚工具栏*@
+<util-footer-toolbar ng-if="isChecked()" bind-extra="footer_info">
+    @*提示信息*@
+    <util-template id="footer_info">
+        <util-i18n key="app.rowsSelected" param="length:getCheckedLength()" />
+    </util-template>
+    @*删除按钮*@
+    <util-button type="Primary" Danger="true" icon="Delete" on-click="delete()" text-delete="true" acl="role.delete"></util-button>
+</util-footer-toolbar>

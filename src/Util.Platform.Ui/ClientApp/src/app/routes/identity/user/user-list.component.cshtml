@@ -1,0 +1,60 @@
+@page
+@model UserDto
+
+@*页标题*@
+<util-page-header-x title="identity.user"></util-page-header-x>
+
+@*查询表单*@
+<partial name="part/user-list-query" />
+
+@*查询表格*@
+<util-card borderless="true" title="identity.user" extra="tool">
+    @*工具按钮*@
+    <util-template id="tool">
+        <util-button type="Primary" icon="Plus" on-click="openCreateDrawer()" text-create="true" acl="user.create"></util-button>
+        <util-a show-table-settings="tb" class="ml-md"></util-a>
+    </util-template>
+
+    @*表格*@
+    <util-table id="tb" key="identity_user" enable-table-settings="true"
+                show-checkbox="true" show-line-number="true"
+                url="user" query-param="queryParam" sort="CreationTime desc">
+        <util-td for="UserName" left="true"></util-td>
+        <util-td for="Email"></util-td>
+        <util-td for="EmailConfirmed"></util-td>
+        <util-td for="PhoneNumber"></util-td>
+        <util-td for="PhoneNumberConfirmed"></util-td>
+        <util-td for="TwoFactorEnabled"></util-td>
+        <util-td for="Enabled"></util-td>
+        <util-td for="DisabledTime"></util-td>
+        <util-td for="LockoutEnabled"></util-td>
+        <util-td for="LockoutEnd" sort="false"></util-td>
+        <util-td for="AccessFailedCount"></util-td>
+        <util-td for="LoginCount"></util-td>
+        <util-td for="RegisterIp"></util-td>
+        <util-td for="LastLoginTime"></util-td>
+        <util-td for="LastLoginIp"></util-td>
+        <util-td for="CurrentLoginTime"></util-td>
+        <util-td for="CurrentLoginIp"></util-td>
+        <util-td for="Remark"></util-td>
+        <util-td for="CreationTime"></util-td>
+        <util-td for="LastModificationTime"></util-td>
+        <util-td title-operation="true" right="true">
+            <util-a on-click="openDetailDialog(row)" text-detail="true"></util-a>
+            <util-container acl="user.delete">
+                <util-divider type="Vertical"></util-divider>
+                <util-a danger="true" on-click="delete(row.id)" text-delete="true"></util-a>
+            </util-container>
+        </util-td>
+    </util-table>
+</util-card>
+
+@*页脚工具栏*@
+<util-footer-toolbar ng-if="isChecked()" bind-extra="footer_info">
+    @*提示信息*@
+    <util-template id="footer_info">
+        <util-i18n key="app.rowsSelected" param="length:getCheckedLength()"/>
+    </util-template>
+    @*删除按钮*@
+    <util-button type="Primary" Danger="true" icon="Delete" on-click="delete()" text-delete="true" acl="user.delete"></util-button>
+</util-footer-toolbar>

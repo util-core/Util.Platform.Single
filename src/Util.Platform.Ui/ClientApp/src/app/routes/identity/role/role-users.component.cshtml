@@ -1,0 +1,32 @@
+﻿@page
+@model UserDto
+
+@*查询表单*@
+<partial name="part/user-query" />
+
+<util-card borderless="true" bind-title="title" extra="tool">
+    @*标题*@
+    <util-template id="title">
+        <util-i18n key="identity.role.currentRoleName" param="roleName:data.name" />
+    </util-template>
+
+    @*工具按钮*@
+    <util-template id="tool">
+        <util-button type="Primary" icon="UserAdd" text="identity.role.addUsersToRole" on-click="openSelectDialog()"></util-button>
+        <util-button Danger="true" icon="UserDelete" text="identity.role.removeUsersFromRole" on-click="removeUsersFromRole()"></util-button>
+        <util-a show-table-settings="tb" class="ml-md"></util-a>
+    </util-template>
+
+    @*表格*@
+    <util-table id="tb" key="identity_role_users" enable-table-settings="true"
+                show-checkbox="true" show-line-number="true"
+                url="user" query-param="queryParam" sort="CreationTime desc">
+        <util-td for="UserName"></util-td>
+        <util-td for="Email"></util-td>
+        <util-td for="PhoneNumber"></util-td>
+        <util-td for="Enabled"></util-td>
+        <util-td for="Remark"></util-td>
+        <util-td for="CreationTime"></util-td>
+        <util-td for="LastModificationTime"></util-td>
+    </util-table>
+</util-card>

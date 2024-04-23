@@ -1,0 +1,34 @@
+﻿@page
+@model ModuleDto
+
+@*表单*@
+<util-card borderless="true">
+    <util-form label-span="6" control-span="18" gutter="24">
+        @*基础设置*@
+        <util-display for="ApplicationName" show-label="true" value="applicationName"></util-display>
+        <util-tree-select for="ParentId" query-param="queryParam" load-mode="Sync" url="module/tree" default-expand-all="true"
+                          sort="SortId" label-text="identity.module.parentId">
+        </util-tree-select>
+        <util-input for="Name" />
+        <util-input for="Uri" />
+        <util-switch for="Enabled" />
+        <util-input-number for="SortId" />
+        <util-textarea for="Remark"></util-textarea>
+        @*菜单设置*@
+        <util-divider text="identity.module.menuSettings" orientation="Left"></util-divider>
+        <util-input for="I18n" />
+        <util-input for="Icon" bind-add-on-after="selectIconTemplate" />
+        <util-template id="selectIconTemplate">
+            <biz-icon-select rows="6" selected-icon="model.icon" on-select-icon="selectIcon($event)"></biz-icon-select>
+        </util-template>
+        <util-switch for="IsExpanded" />
+        <util-switch for="Group" />
+        <util-switch for="IsHide" />
+        <util-switch for="HideInBreadcrumb" extra="identity.module.hideInBreadcrumbDescription" />
+        @*操作按钮*@
+        <util-drawer-footer justify="FlexEnd">
+            <util-button on-click="close()" text-cancel="true"></util-button>
+            <util-button id="btnSubmit" is-submit="true" validate-form="true" type="Primary" on-click="submit(btnSubmit)" text-ok="true"></util-button>
+        </util-drawer-footer>
+    </util-form>
+</util-card>

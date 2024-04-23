@@ -1,0 +1,17 @@
+﻿@page
+@model IdentityResourceDto
+
+@*表单*@
+<util-card borderless="true">
+    <util-form label-span="6" control-span="18" gutter="24">
+        <util-input for="Uri" />
+        <util-input for="Name" />
+        <util-switch for="Enabled"></util-switch>
+        <util-select for="Claims" url="claim/items" mode="Tags"></util-select>
+        <util-textarea for="Remark"></util-textarea>
+        <util-drawer-footer justify="FlexEnd">
+            <util-button on-click="close()" text-cancel="true"></util-button>
+            <util-button id="btnSubmit" is-submit="true" validate-form="true" type="Primary" on-click="submit(btnSubmit)" text-ok="true"></util-button>
+        </util-drawer-footer>
+    </util-form>
+</util-card>

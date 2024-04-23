@@ -66,6 +66,40 @@ Util平台处于起步阶段,目前提供了基于资源和角色的权限模块
     - 授予角色API权限
     - 拒绝角色API权限
 
+## 开发指南
+
+- ### 开发环境说明
+  - 开发工具使用 VS , Rider , VS Code 均可.
+    - 如果使用 VS Code, 安装 .Net 默认推荐插件即可, 无需安装其它插件.
+  - 安装 .Net 8 SDK .
+  - 安装 NodeJs.
+  - 开启 Yarn.
+  - **为避免开发环境搭建麻烦, 本项目已使用 Sqlite 作为默认开发数据库,无需安装任何数据库即可运行**.
+  - 开发环境搭建可参考之前的文章: https://zhuanlan.zhihu.com/p/663947596
+
+- ### 运行说明
+  - 进入项目路径 **src\Util.Platform.Api** 运行命令 **dotnet watch run**, 启动 Web Api.
+    - 如果看到 Swagger 界面,则表示启动成功. 
+  - 进入项目路径 **src\Util.Platform.Ui** 运行命令 **dotnet run**, 启动 UI.
+    - **注意: 不要使用 dotnet watch run 命令**.
+    - dotnet run 运行时,会自动运行 yarn 和 npm start 命令,无需单独执行.
+    - 第一次运行时,将还原 npm 包,需要较长时间, 请保障 yarn 命令可用.
+    - npm 包还原成功后, 将启动 Angular 服务器.
+    - 如果看到消息 Local:   http://localhost:6003/  ,则表示前端已启动成功 .
+  - 手工打开浏览器,并输入 https://localhost:16003
+    - 由于 dotnet run 命令不会自动打开浏览器,需要手工打开浏览器.
+    - 注意: 打开的地址为 **https://localhost:16003**
+    - 注意: http://localhost:6003/ 是Angular 服务器的地址,不要访问它.
+  - 如果顺利,现在 Web Api 和 UI 都已经运行,进入UI会将浏览器定向到登录页面.
+    - 使用管理员 **admin** 登录, 密码为 **admin**.
+    - 也可使用测试用户 **test** 登录, 密码为 **test** .
+  - 登录成功, 将进入管理后台.
+
+  - ### 开发说明
+    - 编辑 .cshtml 文件和 .ts 文件,将会自动刷新浏览器.
+    - 其它操作与原生 angular 应用相同.
+
+
 ## Nuget包
 
 | 包名 |  版本 | 下载量

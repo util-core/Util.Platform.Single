@@ -1,0 +1,21 @@
+
+<nz-alert #alert="" class="my-md" nzType="info" [nzMessage]="t_alert"><ng-template #t_alert="">
+    <span [innerHTML]="'identity.role.currentRoleName'|i18n:{roleName:role.name}"></span>
+    <span [innerHTML]="'app.currentApplication'|i18n:{application:selectedApplication.name}"></span>
+</ng-template></nz-alert>
+
+<div nz-row="" [nzGutter]="24">
+    <div nz-col="" [nzXl]="hideApplication?0:6" [nzXs]="hideApplication?0:24" [nzXXl]="hideApplication?0:4">
+        <platform-application-select (onClick)="selectApplication($event)" [hidden]="hideApplication"></platform-application-select>
+    </div>
+    <div nz-col="" [nzXl]="hideApplication?24:18" [nzXs]="24" [nzXXl]="hideApplication?24:20">
+        <nz-tabset [(nzSelectedIndex)]="selectedTabIndex">
+            <nz-tab *aclIf="['permission.grantOperation','permission.grantApi']" [nzTitle]="'identity.permission.grantPermission'|i18n"><ng-template nz-tab="">
+                <resources-permission #grantPermission [role]="role" [application]="selectedApplication"></resources-permission>
+            </ng-template></nz-tab>
+            <nz-tab *aclIf="['permission.denyOperation','permission.denyApi']" [nzTitle]="'identity.permission.denyPermission'|i18n"><ng-template nz-tab="">
+                <resources-permission #denyPermission [role]="role" [application]="selectedApplication" [isDeny]="true"></resources-permission>
+            </ng-template></nz-tab>
+        </nz-tabset>
+    </div>
+</div>

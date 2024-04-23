@@ -1,0 +1,21 @@
+﻿@page
+@model OperationDto
+
+@*表单*@
+<util-card borderless="true">
+    <util-form label-span="6" control-span="18" gutter="24">
+        <util-display for="ApplicationName" show-label="true" />
+        <util-display for="ModuleName" show-label="true" />
+        <util-input for="Name" autocomplete="autocomplete_name" />
+        <util-autocomplete id="autocomplete_name" url="CommonOperation/Items"></util-autocomplete>
+        <util-input for="Uri" />
+        <util-switch for="IsBase"></util-switch>
+        <util-switch for="Enabled"></util-switch>
+        <util-input-number for="SortId"></util-input-number>
+        <util-textarea for="Remark"></util-textarea>
+        <util-drawer-footer justify="FlexEnd">
+            <util-button on-click="close()" text-cancel="true"></util-button>
+            <util-button id="btnSubmit" is-submit="true" validate-form="true" type="Primary" on-click="submit(btnSubmit)" text-ok="true"></util-button>
+        </util-drawer-footer>
+    </util-form>
+</util-card>

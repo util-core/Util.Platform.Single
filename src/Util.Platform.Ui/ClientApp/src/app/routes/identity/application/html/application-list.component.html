@@ -1,0 +1,85 @@
+
+<page-header [title]="'identity.application'|i18n"></page-header>
+
+
+<nz-card class="searchForm" [nzBorderless]="true">
+    <form nz-form="">
+        <div nz-row="" [nzGutter]="24">
+            <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'identity.application.code'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_code"><input #code="" #model_code="ngModel" name="code" nz-input="" [(ngModel)]="queryParam.code" /></nz-input-group><ng-template #tmp_code=""><i (click)="model_code.reset()" *ngIf="model_code.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+            </div>
+            <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'identity.application.name'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_name"><input #model_name="ngModel" #name="" name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-input-group><ng-template #tmp_name=""><i (click)="model_name.reset()" *ngIf="model_name.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+            </div>
+            <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'identity.application.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #enabled="" #x_enabled="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_enabled.isGroup"><nz-option *ngFor="let item of x_enabled.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_enabled.isGroup"><nz-option-group *ngFor="let group of x_enabled.optionGroups" [nzLabel]="group.text|i18n"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
+            </div>
+            <div *ngIf="expand" nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'identity.application.remark'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_remark"><input #model_remark="ngModel" #remark="" name="remark" nz-input="" [(ngModel)]="queryParam.remark" /></nz-input-group><ng-template #tmp_remark=""><i (click)="model_remark.reset()" *ngIf="model_remark.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+            </div>
+            <div *ngIf="expand" nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'util.beginCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-range-picker #begin_creation_time="" #x_begin_creation_time="xRangePickerExtend" name="begin_creation_time" x-range-picker-extend="" [(beginDate)]="queryParam.beginCreationTime" [(endDate)]="queryParam.endCreationTime" [(ngModel)]="x_begin_creation_time.rangeDates"></nz-range-picker></nz-form-control></nz-form-item>
+            </div>
+            <div *ngIf="expand" nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
+                <nz-form-item><nz-form-label style="width:120px">{{'util.beginLastModificationTime'|i18n}}</nz-form-label><nz-form-control><nz-range-picker #begin_last_modification_time="" #x_begin_last_modification_time="xRangePickerExtend" name="begin_last_modification_time" x-range-picker-extend="" [(beginDate)]="queryParam.beginLastModificationTime" [(endDate)]="queryParam.endLastModificationTime" [(ngModel)]="x_begin_last_modification_time.rangeDates"></nz-range-picker></nz-form-control></nz-form-item>
+            </div>
+            <div class="mb-md" nz-col="" [nzLg]="{span:expand?24:24}" [nzMd]="24" [nzSm]="24" [nzXl]="{span:expand?24:24}" [nzXs]="24" [nzXXl]="{span:expand?12:6}">
+                <div nz-flex="" nzAlign="center" nzGap="small" nzJustify="flex-end">
+                    <button #btnRefresh="" (click)="refresh(btnRefresh)" nz-button="" type="button"><i nz-icon="" nzType="sync"></i>{{'util.reset'|i18n}}</button>
+                    <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
+                    <button (click)="container.masterToggle()" *ngIf="!container.isMasterChecked()" nz-button="" type="button"><i nz-icon="" nzType="check-square"></i>{{'util.selectAll'|i18n}}</button>
+                    <button (click)="container.masterToggle()" *ngIf="container.isMasterChecked()" nz-button="" type="button"><i nz-icon="" nzType="close-square"></i>{{'util.deselectAll'|i18n}}</button>
+                    <a (click)="expand=!expand" class="ml-sm">{{expand?('util.collapse'|i18n):('util.expand'|i18n)}}<i nz-icon="" [nzType]="expand?'up':'down'"></i></a>
+                </div>
+            </div>
+        </div>
+    </form>
+</nz-card>
+
+<div class="cardlist" sg-container="" [col]="4">
+    <sg *aclIf="'application.create'">
+        <button (click)="openCreateDrawer()" nz-button="" [nzBlock]="true"><i nz-icon="" nzType="plus"></i>{{'util.add'|i18n}}</button>
+    </sg>
+    <sg *ngFor="let model of container.data">
+        <nz-card (click)="container.toggle(model)" [nzActions]="[actionEdit, actionDetail, actionDelete]" [nzHoverable]="true">
+            <nz-skeleton [nzActive]="true" [nzAvatar]="true" [nzLoading]="avatarLoading">
+                <div nz-flex="" nzJustify="flex-end">
+                    <label (nzCheckedChange)="container.toggle(model)" nz-checkbox="" [nzChecked]="container.isChecked(model)"></label>
+                </div>
+                <nz-card-meta [nzAvatar]="avatar" [nzDescription]="description" [nzTitle]="model.code"></nz-card-meta>
+            </nz-skeleton>
+        </nz-card>
+
+        <ng-template #avatar="">
+            <img (load)="onLoadAvatar()" class="rounded-circle mb-lg" nz-image="" width="48px" [nzDisablePreview]="true" [nzSrc]="getAvatarUrl(model)" />
+        </ng-template>
+        <ng-template #description="">
+            <div nz-flex="" nzGap="middle">
+                <h5 nz-typography="" [nzContent]="model.name"></h5>
+                <div>
+                    <nz-tag *ngIf="model.enabled" nzColor="geekblue">{{'util.enabled'|i18n}}</nz-tag>
+                    <nz-tag *ngIf="!model.enabled" nzColor="red">{{'util.notEnabled'|i18n}}</nz-tag>
+                </div>
+            </div>
+            <ellipsis [lines]="1">{{model.remark}}</ellipsis>
+        </ng-template>
+        <ng-template #actionEdit="">
+            <i (click)="$event.stopPropagation();openEditDrawer(model)" *aclIf="'application.update'" nz-icon="" nz-tooltip="" nzType="edit" [nzTooltipTitle]="'util.update'|i18n"></i>
+        </ng-template>
+        <ng-template #actionDetail="">
+            <i (click)="$event.stopPropagation();openDetailDialog(model)" nz-icon="" nz-tooltip="" nzType="more" [nzTooltipTitle]="'util.detail'|i18n"></i>
+        </ng-template>
+        <ng-template #actionDelete="">
+            <i (click)="$event.stopPropagation();delete(model.id)" *aclIf="'application.delete'" nz-icon="" nz-tooltip="" nzType="delete" [nzTooltipTitle]="'util.delete'|i18n"></i>
+        </ng-template>
+    </sg>
+</div>
+
+<footer-toolbar *ngIf="container.isChecked()" [extra]="footer_info">
+    <ng-template #footer_info="">
+        <span class="mr-xs" [innerHTML]="'app.totalTip'|i18n:{total:container.total}"></span>,
+        <span class="mr-xs" [innerHTML]="'app.loadedTip'|i18n:{length:container.data.length}"></span>,
+        <span [innerHTML]="'app.rowsSelected'|i18n:{length:container.getCheckedLength()}"></span>
+    </ng-template>
+    <button (click)="delete()" *aclIf="'application.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
+</footer-toolbar>

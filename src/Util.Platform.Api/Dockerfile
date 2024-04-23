@@ -1,14 +1,13 @@
 # Util Platform Api镜像配置
 
 # 变量定义
-ARG runtime_version=8.0.1
-ARG sdk_version=8.0.101
+ARG runtime_version=8.0.4
+ARG sdk_version=8.0.204
 
 # 基础阶段
 FROM mcr.microsoft.com/dotnet/aspnet:${runtime_version} AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 # 发布阶段
 FROM mcr.microsoft.com/dotnet/sdk:${sdk_version} AS publish
@@ -22,6 +21,7 @@ COPY ["src/Util.Platform.Data/Util.Platform.Data.csproj", "src/Util.Platform.Dat
 COPY ["src/Util.Platform.Data.PgSql/Util.Platform.Data.PgSql.csproj", "src/Util.Platform.Data.PgSql/"]
 COPY ["src/Util.Platform.Data.MySql/Util.Platform.Data.MySql.csproj", "src/Util.Platform.Data.MySql/"]
 COPY ["src/Util.Platform.Data.SqlServer/Util.Platform.Data.SqlServer.csproj", "src/Util.Platform.Data.SqlServer/"]
+COPY ["src/Util.Platform.Data.Sqlite/Util.Platform.Data.Sqlite.csproj", "src/Util.Platform.Data.Sqlite/"]
 RUN dotnet restore "src/Util.Platform.Api/Util.Platform.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Util.Platform.Api"

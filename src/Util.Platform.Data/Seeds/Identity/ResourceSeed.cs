@@ -8,12 +8,14 @@ public static class ResourceSeed {
     /// 创建默认资源
     /// </summary>
     public static IEnumerable<Resource> CreateDefaultResources() {
-        return new[] {
-            new Resource( SeedConst.SystemResourceId,$"{SeedConst.SystemResourceId},",1 ) {
+        return [
+            new Resource( SeedConst.MainResourceId,$"{SeedConst.MainResourceId},",1 ) {
                 ApplicationId = SeedConst.ApplicationId,
-                Name = "系统管理",
-                I18n = "menu.system",
-                PinYin = "xtgl",
+                Group = false,
+                HideInBreadcrumb = true,
+                Name = "主导航",
+                I18n = "menu.main",
+                PinYin = "zdh",
                 Type = ResourceType.Module,
                 SortId = 1,
                 Enabled = true,
@@ -21,9 +23,56 @@ public static class ResourceSeed {
                 LastModificationTime = DateTime.UtcNow,
                 CreatorId = SeedConst.UserId,
                 LastModifierId = SeedConst.UserId,
+                Version = "574D04B8-30AB-431D-BC93-08E566A1D19B"u8.ToArray()
+            },
+            new Resource( SeedConst.DashboardResourceId,$"{SeedConst.MainResourceId},{SeedConst.DashboardResourceId},",2 ) {
+                ApplicationId = SeedConst.ApplicationId,
+                ParentId = SeedConst.MainResourceId,
+                Name = "仪表盘",
+                I18n = "menu.dashboard",
+                PinYin = "ybp",
+                Type = ResourceType.Module,
+                SortId = 1,
+                Enabled = true,
+                CreationTime = DateTime.UtcNow,
+                LastModificationTime = DateTime.UtcNow,
+                CreatorId = SeedConst.UserId,
+                LastModifierId = SeedConst.UserId,
+                Version = "FF5D7D33-68EC-49BB-B99C-11293135BC0C"u8.ToArray()
+            },
+            new Resource( SeedConst.MonitorResourceId,$"{SeedConst.MainResourceId},{SeedConst.DashboardResourceId},{SeedConst.MonitorResourceId},",3 ) {
+                ApplicationId = SeedConst.ApplicationId,
+                ParentId = SeedConst.DashboardResourceId,
+                Name = "监控页",
+                I18n = "menu.dashboard.monitor",
+                PinYin = "ybp",
+                Uri = "/dashboard/monitor",
+                Type = ResourceType.Module,
+                SortId = 1,
+                Enabled = true,
+                CreationTime = DateTime.UtcNow,
+                LastModificationTime = DateTime.UtcNow,
+                CreatorId = SeedConst.UserId,
+                LastModifierId = SeedConst.UserId,
+                Version = "2F585F17-24F0-4FF1-B9B1-1159A5FD3FCA"u8.ToArray()
+            },
+            new Resource( SeedConst.SystemResourceId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},",2 ) {
+                ApplicationId = SeedConst.ApplicationId,
+                ParentId = SeedConst.MainResourceId,
+                Name = "系统管理",
+                I18n = "menu.system",
+                Icon = "safety-certificate",
+                PinYin = "xtgl",
+                Type = ResourceType.Module,
+                SortId = 2,
+                Enabled = true,
+                CreationTime = DateTime.UtcNow,
+                LastModificationTime = DateTime.UtcNow,
+                CreatorId = SeedConst.UserId,
+                LastModifierId = SeedConst.UserId,
                 Version = "e738a96e-517e-480b-9fb7-5d2616888f1d"u8.ToArray()
             },
-            new Resource( SeedConst.AppliationResourceId,$"{SeedConst.SystemResourceId},{SeedConst.AppliationResourceId},",2 ) {
+            new Resource( SeedConst.AppliationResourceId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},{SeedConst.AppliationResourceId},",3 ) {
                 ApplicationId = SeedConst.ApplicationId,
                 ParentId = SeedConst.SystemResourceId,
                 Name = "应用程序",
@@ -40,7 +89,7 @@ public static class ResourceSeed {
                 LastModifierId = SeedConst.UserId,
                 Version = "7664ee42-1968-4b6a-93e6-851524eaa97c"u8.ToArray()
             },
-            new Resource( SeedConst.ClaimResourceId,$"{SeedConst.SystemResourceId},{SeedConst.ClaimResourceId},",2 ) {
+            new Resource( SeedConst.ClaimResourceId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},{SeedConst.ClaimResourceId},",3 ) {
                 ApplicationId = SeedConst.ApplicationId,
                 ParentId = SeedConst.SystemResourceId,
                 Name = "声明",
@@ -57,7 +106,7 @@ public static class ResourceSeed {
                 LastModifierId = SeedConst.UserId,
                 Version = "44fd1a4e-49ab-4a5c-b7ec-f760ffaa37ba"u8.ToArray()
             },
-            new Resource( SeedConst.ResourceId,$"{SeedConst.SystemResourceId},{SeedConst.ResourceId},",2 ) {
+            new Resource( SeedConst.ResourceId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},{SeedConst.ResourceId},",3 ) {
                 ApplicationId = SeedConst.ApplicationId,
                 ParentId = SeedConst.SystemResourceId,
                 Name = "资源",
@@ -74,7 +123,7 @@ public static class ResourceSeed {
                 LastModifierId = SeedConst.UserId,
                 Version = "881be306-9acc-4b8f-a638-1a43ed8b2f47"u8.ToArray()
             },
-            new Resource( SeedConst.ModuleId,$"{SeedConst.SystemResourceId},{SeedConst.ResourceId},{SeedConst.ModuleId},",3 ) {
+            new Resource( SeedConst.ModuleId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},{SeedConst.ResourceId},{SeedConst.ModuleId},",4 ) {
                 ApplicationId = SeedConst.ApplicationId,
                 ParentId = SeedConst.ResourceId,
                 Name = "模块资源",
@@ -89,7 +138,7 @@ public static class ResourceSeed {
                 LastModifierId = SeedConst.UserId,
                 Version = "012C47E4-4612-4B6D-8A2D-0E6CB37BBF1F"u8.ToArray()
             },
-            new Resource( SeedConst.OperationId,$"{SeedConst.SystemResourceId},{SeedConst.ResourceId},{SeedConst.OperationId},",3 ) {
+            new Resource( SeedConst.OperationId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},{SeedConst.ResourceId},{SeedConst.OperationId},",4 ) {
                 ApplicationId = SeedConst.ApplicationId,
                 ParentId = SeedConst.ResourceId,
                 Name = "操作资源",
@@ -104,7 +153,7 @@ public static class ResourceSeed {
                 LastModifierId = SeedConst.UserId,
                 Version = "2BCAECC1-4D65-4BD7-8EB4-14C71E035CFA"u8.ToArray()
             },
-            new Resource( SeedConst.ApiResourceId,$"{SeedConst.SystemResourceId},{SeedConst.ResourceId},{SeedConst.ApiResourceId},",3 ) {
+            new Resource( SeedConst.ApiResourceId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},{SeedConst.ResourceId},{SeedConst.ApiResourceId},",4 ) {
                 ApplicationId = SeedConst.ApplicationId,
                 ParentId = SeedConst.ResourceId,
                 Name = "Api资源",
@@ -119,7 +168,7 @@ public static class ResourceSeed {
                 LastModifierId = SeedConst.UserId,
                 Version = "08A08C95-280E-48A4-A2A2-0490B371745C"u8.ToArray()
             },
-            new Resource( SeedConst.IdentityResourceId,$"{SeedConst.SystemResourceId},{SeedConst.ResourceId},{SeedConst.IdentityResourceId},",3 ) {
+            new Resource( SeedConst.IdentityResourceId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},{SeedConst.ResourceId},{SeedConst.IdentityResourceId},",4 ) {
                 ApplicationId = SeedConst.ApplicationId,
                 ParentId = SeedConst.ResourceId,
                 Name = "身份资源",
@@ -134,7 +183,7 @@ public static class ResourceSeed {
                 LastModifierId = SeedConst.UserId,
                 Version = "4F329202-D411-4FF6-B45B-0511BCA794A3"u8.ToArray()
             },
-            new Resource( SeedConst.CommonOperationId,$"{SeedConst.SystemResourceId},{SeedConst.ResourceId},{SeedConst.CommonOperationId},",3 ) {
+            new Resource( SeedConst.CommonOperationId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},{SeedConst.ResourceId},{SeedConst.CommonOperationId},",4 ) {
                 ApplicationId = SeedConst.ApplicationId,
                 ParentId = SeedConst.ResourceId,
                 Name = "常用操作管理",
@@ -149,7 +198,7 @@ public static class ResourceSeed {
                 LastModifierId = SeedConst.UserId,
                 Version = "575A91A2-FA77-4B60-8663-01ED7627C10B"u8.ToArray()
             },
-            new Resource( SeedConst.UserResourceId,$"{SeedConst.SystemResourceId},{SeedConst.UserResourceId},",2 ) {
+            new Resource( SeedConst.UserResourceId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},{SeedConst.UserResourceId},",3 ) {
                 ApplicationId = SeedConst.ApplicationId,
                 ParentId = SeedConst.SystemResourceId,
                 Name = "用户",
@@ -166,7 +215,7 @@ public static class ResourceSeed {
                 LastModifierId = SeedConst.UserId,
                 Version = "75d51762-d517-452f-bf46-67cf0de9cd26"u8.ToArray()
             },
-            new Resource( SeedConst.RoleResourceId,$"{SeedConst.SystemResourceId},{SeedConst.RoleResourceId},",2 ) {
+            new Resource( SeedConst.RoleResourceId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},{SeedConst.RoleResourceId},",3 ) {
                 ApplicationId = SeedConst.ApplicationId,
                 ParentId = SeedConst.SystemResourceId,
                 Name = "角色",
@@ -183,7 +232,7 @@ public static class ResourceSeed {
                 LastModifierId = SeedConst.UserId,
                 Version = "a4fa46b0-cad1-4862-9388-1bdd8efd607d"u8.ToArray()
             },
-            new Resource( SeedConst.PermissionResourceId,$"{SeedConst.SystemResourceId},{SeedConst.PermissionResourceId},",2 ) {
+            new Resource( SeedConst.PermissionResourceId,$"{SeedConst.MainResourceId},{SeedConst.SystemResourceId},{SeedConst.PermissionResourceId},",3 ) {
                 ApplicationId = SeedConst.ApplicationId,
                 ParentId = SeedConst.SystemResourceId,
                 Name = "权限",
@@ -205,7 +254,7 @@ public static class ResourceSeed {
                 Type = ResourceType.Identity,
                 SortId = 1,
                 Enabled = true,
-                Claims = new List<string>{"sub"},
+                Claims = ["sub"],
                 CreationTime = DateTime.UtcNow,
                 LastModificationTime = DateTime.UtcNow,
                 CreatorId = SeedConst.UserId,
@@ -219,7 +268,7 @@ public static class ResourceSeed {
                 Type = ResourceType.Identity,
                 SortId = 1,
                 Enabled = true,
-                Claims = new List<string>{"profile","name"},
+                Claims = ["profile","name"],
                 CreationTime = DateTime.UtcNow,
                 LastModificationTime = DateTime.UtcNow,
                 CreatorId = SeedConst.UserId,
@@ -926,6 +975,6 @@ public static class ResourceSeed {
                 LastModifierId = SeedConst.UserId,
                 Version = "6DEFD95E-433A-4212-A95D-16E2DACE63BB"u8.ToArray()
             },
-        };
+        ];
     }
 }

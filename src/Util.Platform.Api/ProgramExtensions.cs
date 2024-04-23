@@ -30,7 +30,7 @@ public static class ProgramExtensions {
                 t.Resolvers.Add( new IdentityTenantResolver { Priority = 99 } );
             } )
             .AddJsonLocalization( options => {
-                options.Cultures = new[] { "zh-CN", "en-US" };
+                options.Cultures = ["zh-CN", "en-US"];
             } )
             .AddAcl<PermissionManager>()
             .AddSerilog()
@@ -45,6 +45,9 @@ public static class ProgramExtensions {
     public static WebApplicationBuilder AddUnitOfWork( this WebApplicationBuilder builder ) {
         var dbType = builder.GetDatabaseType();
         builder.AsBuild()
+            .AddSqliteUnitOfWork<IPlatformUnitOfWork, Util.Platform.Data.Sqlite.PlatformUnitOfWork>(
+                builder.GetSqliteConnectionString(),
+                condition: dbType == DatabaseType.Sqlite )
             .AddSqlServerUnitOfWork<IPlatformUnitOfWork, Util.Platform.Data.SqlServer.PlatformUnitOfWork>(
                 builder.GetSqlServerConnectionString(),
                 condition: dbType == DatabaseType.SqlServer )
@@ -68,6 +71,13 @@ public static class ProgramExtensions {
         catch {
             return DatabaseType.SqlServer;
         }
+    }
+
+    /// <summary>
+    /// 获取Sqlite数据库连接字符串
+    /// </summary>
+    public static string GetSqliteConnectionString( this WebApplicationBuilder builder ) {
+        return builder.Configuration.GetConnectionString( "Sqlite" );
     }
 
     /// <summary>
@@ -316,9 +326,11 @@ public static class ProgramExtensions {
         var migrationService = scope.ServiceProvider.GetRequiredService<IMigrationService>();
         InstallEfTool( migrationService );
         app.Logger.LogInformation( "准备迁移数据..." );
-        Migrate( app, migrationService, migrationName, "Util.Platform.Data.SqlServer", GetDatabaseType( app ) == DatabaseType.SqlServer );
-        Migrate( app, migrationService, migrationName, "Util.Platform.Data.PgSql", GetDatabaseType( app ) == DatabaseType.PgSql );
-        Migrate( app, migrationService, migrationName, "Util.Platform.Data.MySql", GetDatabaseType( app ) == DatabaseType.MySql );
+
+        Migrate( app, migrationService, migrationName, "Util.Platform.Data.Sqlite", DatabaseType.Sqlite );
+        Migrate( app, migrationService, migrationName, "Util.Platform.Data.SqlServer", DatabaseType.SqlServer );
+        Migrate( app, migrationService, migrationName, "Util.Platform.Data.PgSql", DatabaseType.PgSql );
+        Migrate( app, migrationService, migrationName, "Util.Platform.Data.MySql", DatabaseType.MySql );
         var policy = scope.ServiceProvider.GetRequiredService<IPolicy>();
         await policy.Retry().HandleException<Exception>().Forever().Wait()
             .OnRetry( ( exception, retry ) => {
@@ -332,6 +344,31 @@ public static class ProgramExtensions {
     }
 
     /// <summary>
+    /// 安装 dotnet-ef 工具
+    /// </summary>
+    private static void InstallEfTool( IMigrationService migrationService ) {
+        //migrationService.UninstallEfTool().InstallEfTool( "8.0.4" );
+    }
+
+    /// <summary>
+    /// 迁移
+    /// </summary>
+    private static void Migrate( WebApplication app, IMigrationService migrationService, string migrationName, string dataProjectName, DatabaseType dbType ) {
+        try {
+            var isMigrate = GetDatabaseType( app ) == dbType;
+            var isAddAllMigration = app.Configuration.GetValue<bool>( "Migration:AddAllMigration" );
+            var path = Common.JoinPath( Common.GetParentDirectory(), dataProjectName );
+            if ( isAddAllMigration || isMigrate )
+                migrationService.AddMigration( migrationName, path );
+            if ( isMigrate )
+                migrationService.Migrate( path );
+        }
+        catch ( Exception exception ) {
+            app.Logger.LogError( exception, "迁移数据发生异常..." );
+        }
+    }
+
+    /// <summary>
     /// 获取数据库类型
     /// </summary>
     public static DatabaseType GetDatabaseType( this WebApplication app ) {
@@ -341,28 +378,6 @@ public static class ProgramExtensions {
         }
         catch {
             return DatabaseType.SqlServer;
-        }
-    }
-
-    /// <summary>
-    /// 安装 dotnet-ef 工具
-    /// </summary>
-    private static void InstallEfTool( IMigrationService migrationService ) {
-        migrationService.InstallEfTool( "8.0.0" );
-    }
-
-    /// <summary>
-    /// 迁移
-    /// </summary>
-    private static void Migrate( WebApplication app, IMigrationService migrationService, string migrationName, string dataProjectName, bool isMigrate ) {
-        try {
-            var path = Common.JoinPath( Common.GetParentDirectory(), dataProjectName );
-            migrationService.AddMigration( migrationName, path );
-            if ( isMigrate )
-                migrationService.Migrate( path );
-        }
-        catch ( Exception exception ) {
-            app.Logger.LogError( exception, "迁移数据发生异常..." );
         }
     }
 }
