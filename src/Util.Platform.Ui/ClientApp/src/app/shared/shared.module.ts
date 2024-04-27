@@ -10,7 +10,6 @@ import { Zorro_Modules } from './zorro.module';
 import { Platform_Modules } from './platform.module';
 import { UtilModule } from 'util-angular';
 
-
 /**
  * 模块
  */
@@ -38,9 +37,7 @@ const Directives: Array<Type<void>> = [];
         ...Delon_Modules,
         ...Zorro_Modules,
         ...Platform_Modules,
-        ...Modules
-    ],
-    declarations: [
+        ...Modules,
         ...Components,
         ...Directives
     ],

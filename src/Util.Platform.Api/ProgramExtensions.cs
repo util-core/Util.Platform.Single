@@ -23,7 +23,6 @@ public static class ProgramExtensions {
     /// <param name="builder">Web应用生成器</param>
     public static WebApplicationBuilder AddUtil( this WebApplicationBuilder builder ) {
         builder.AsBuild()
-            .AddAop()
             .AddUtc()
             .AddTenant( t => {
                 t.IsEnabled = false;

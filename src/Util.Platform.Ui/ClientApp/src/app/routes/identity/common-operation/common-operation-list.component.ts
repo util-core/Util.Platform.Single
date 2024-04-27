@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy, Injector, ViewEncapsulation } from '@angular/core';
-import { environment } from "@env/environment";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TableEditComponentBase } from "util-angular";
 import { CommonOperationQuery } from './model/common-operation-query';
 import { CommonOperationViewModel } from './model/common-operation-view-model';

@@ -1,5 +1,4 @@
 ﻿import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { environment } from "@env/environment";
 import { ComponentBase } from 'util-angular';
 import { ModuleListComponent } from '../module/module-list.component';
 

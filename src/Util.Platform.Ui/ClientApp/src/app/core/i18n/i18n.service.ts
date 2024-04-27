@@ -2,7 +2,7 @@ import { Platform } from '@angular/cdk/platform';
 import { registerLocaleData } from '@angular/common';
 import ngEn from '@angular/common/locales/en';
 import ngZh from '@angular/common/locales/zh';
-import { Injectable, inject, Injector } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { DelonLocaleService, en_US as delonEnUS, SettingsService, zh_CN as delonZhCn, _HttpClient, AlainI18nBaseService } from '@delon/theme';
 import { AlainConfigService } from '@delon/util/config';
 import { enUS as dfEn, zhCN as dfZhCn } from 'date-fns/locale';

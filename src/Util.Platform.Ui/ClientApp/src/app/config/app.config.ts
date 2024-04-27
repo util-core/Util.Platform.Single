@@ -7,6 +7,7 @@ import { languageInterceptorFn } from 'util-angular';
 import { routes } from '../routes/routes';
 import { provideNgZorro } from './zorro.config';
 import { provideNgAlain } from './alain.config';
+import { provideIcons } from './icon.config';
 import { provideAuth } from './auth.config';
 import { provideUtil } from './util.config';
 import { provideShared } from './shared.config';
@@ -33,7 +34,8 @@ export const appConfig: ApplicationConfig = {
         provideAnimations(),
         provideRouter(routes, ...routerFeatures),
         provideNgZorro(),
-        provideNgAlain(),        
+        provideNgAlain(),
+        provideIcons(),
         provideAuth(),
         provideUtil(),
         provideShared(),

@@ -11,8 +11,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Util.Logging.Serilog" Version="8.0.14" />
-		<PackageReference Include="Util.Platform.Share.Ui.TagHelper" Version="0.9.3" />
-		<PackageReference Include="Util.Ui.NgZorro" Version="8.0.14" />
+		<PackageReference Include="Util.Platform.Share.Ui.TagHelper" Version="0.9.4" />
 		<PackageReference Include="Util.Ui.NgAlain" Version="8.0.14" />
 	</ItemGroup>
 
@@ -37,7 +36,6 @@
 		<None Remove="ClientApp\yarn.lock" />
 		<None Remove="ClientApp\clear-node-modules.ps1" />
 		<None Remove="ClientApp\start.ps1" />
-		<None Remove="start.ps1" />
 	</ItemGroup>
 
 	<ItemGroup>

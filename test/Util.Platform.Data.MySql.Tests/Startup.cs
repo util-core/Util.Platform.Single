@@ -13,8 +13,9 @@ public class Startup {
         Environment.SetDevelopment();
         hostBuilder.ConfigureDefaults( null )
             .AsBuild()
-            .AddAop()
             .AddUtc()
+            .AddMemoryCache()
+            .AddJsonLocalization()
             .AddMySqlUnitOfWork<IPlatformUnitOfWork, PlatformUnitOfWork>( Config.GetConnectionString( "connection" ) )
             .AddUtil();
     }
@@ -24,6 +25,7 @@ public class Startup {
     /// </summary>
     public void ConfigureServices( IServiceCollection services ) {
         services.AddLogging( logBuilder => logBuilder.AddXunitOutput() );
+        services.AddIdentity();
         InitDatabase( services );
     }
 

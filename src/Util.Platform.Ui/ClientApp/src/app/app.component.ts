@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, Injector } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NavigationEnd, NavigationError, RouteConfigLoadStart, Router, RouterOutlet } from '@angular/router';
 import { TitleService, stepPreloader } from '@delon/theme';
 import { Util, ComponentBase } from 'util-angular';
@@ -29,6 +29,7 @@ export class AppComponent extends ComponentBase implements OnInit {
      * 初始化
      */
     ngOnInit() {
+        this.disableContextmenu();
         let configLoad = false;
         this.router.events.subscribe(event => {
             if (event instanceof RouteConfigLoadStart)
@@ -40,5 +41,12 @@ export class AppComponent extends ComponentBase implements OnInit {
                 this.titleService.setTitle();
             }
         });
+    }
+
+    /**
+     * 禁用全局上下文菜单
+     */
+    private disableContextmenu() {
+        document.oncontextmenu = () => false;
     }
 }

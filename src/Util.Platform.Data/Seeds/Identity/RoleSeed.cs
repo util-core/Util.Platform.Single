@@ -8,7 +8,7 @@ public static class RoleSeed {
     /// 创建默认角色
     /// </summary>
     public static IEnumerable<Role> CreateDefaultRoles() {
-        return new[] { CreateAdmin(), CreateTest() };
+        return [CreateAdmin(), CreateTest()];
     }
 
     /// <summary>

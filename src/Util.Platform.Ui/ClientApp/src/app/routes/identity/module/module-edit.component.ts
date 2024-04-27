@@ -1,5 +1,4 @@
-﻿import { Component, ChangeDetectionStrategy, Injector, Input } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { TreeEditComponentBase } from "util-angular";
 import { ModuleViewModel } from './model/module-view-model';
 import { ResourceQuery } from '../resource/model/resource-query';

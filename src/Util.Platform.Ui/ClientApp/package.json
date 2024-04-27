@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "yarn && ng serve --port 6003",
+    "start": "yarn && ng serve",
     "build": "npm run ng-high-memory build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -49,7 +49,7 @@
     "date-fns": "~2.30.0",
     "ng-event-bus": "~6.0.0",
     "uuid": "^9.0.1",
-    "util-angular": "^17.4.0",
+    "util-angular": "^17.4.1",
     "util-platform": "^0.3.2",
     "util-platform-identity": "^0.3.2"
   },

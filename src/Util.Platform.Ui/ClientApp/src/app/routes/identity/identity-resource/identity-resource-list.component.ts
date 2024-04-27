@@ -1,5 +1,4 @@
-﻿import { Component, ChangeDetectionStrategy, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TableQueryComponentBase } from 'util-angular';
 import { ResourceQuery } from '../resource/model/resource-query';
 import { IdentityResourceViewModel } from './model/identity-resource-view-model';

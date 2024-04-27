@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy, Injector, OnInit, OnDestroy } from '@angular/core';
-import { environment } from "@env/environment";
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import { QueryComponentBase, DataLoader } from "util-angular";
 import { ApplicationQuery } from './model/application-query';
 import { ApplicationViewModel } from './model/application-view-model';

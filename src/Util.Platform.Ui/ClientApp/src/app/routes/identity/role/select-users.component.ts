@@ -1,5 +1,4 @@
-﻿import { Component, ChangeDetectionStrategy, Injector, OnInit } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { TableQueryComponentBase } from 'util-angular';
 import { UserQuery } from '../user/model/user-query';
 import { UserViewModel } from '../user/model/user-view-model';

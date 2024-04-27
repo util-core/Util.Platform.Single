@@ -1,5 +1,4 @@
-﻿import { Component, ChangeDetectionStrategy, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TableEditComponentBase } from 'util-angular';
 import { ClaimQuery } from './model/claim-query';
 import { ClaimViewModel } from './model/claim-view-model';

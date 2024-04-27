@@ -5,7 +5,6 @@ import { LayoutDefaultModule, LayoutDefaultOptions } from '@delon/theme/layout-d
 import { ReuseTabModule } from '@delon/abc/reuse-tab';
 import { SettingDrawerModule } from '@delon/theme/setting-drawer';
 import { ThemeBtnComponent } from '@delon/theme/theme-btn';
-import { environment } from '@env/environment';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';

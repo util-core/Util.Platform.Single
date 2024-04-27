@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy, Injector, Input,ViewChild } from '@angular/core';
-import { environment } from "@env/environment";
+import { Component, ChangeDetectionStrategy, Input,ViewChild } from '@angular/core';
 import { ComponentBase } from "util-angular";
 import { RoleViewModel } from "../role/model/role-view-model";
 import { ApplicationViewModel } from "../application/model/application-view-model";

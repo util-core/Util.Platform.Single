@@ -1,5 +1,4 @@
-﻿import { Component, ChangeDetectionStrategy, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { EditComponentBase } from "util-angular";
 import { OperationViewModel } from './model/operation-view-model';
 import { OperationQuery } from './model/operation-query';

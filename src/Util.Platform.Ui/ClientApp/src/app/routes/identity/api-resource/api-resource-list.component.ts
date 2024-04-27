@@ -1,5 +1,4 @@
-﻿import { Component, ChangeDetectionStrategy, Injector, ViewChild } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { TreeTableQueryComponentBase } from "util-angular";
 import { ResourceQuery } from '../resource/model/resource-query';
 import { ApiResourceViewModel } from './model/api-resource-view-model';

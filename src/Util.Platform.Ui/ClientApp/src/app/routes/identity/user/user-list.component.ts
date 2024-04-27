@@ -1,5 +1,4 @@
-import { Component, ChangeDetectionStrategy, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TableQueryComponentBase } from "util-angular";
 import { UserQuery } from './model/user-query';
 import { UserViewModel } from './model/user-view-model';

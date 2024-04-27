@@ -23,7 +23,6 @@ public class Startup {
                     } );
             } )
             .AsBuild()
-            .AddAop()
             .AddUtc()
             .AddAcl( t => t.AllowAnonymous = true )
             .AddJsonLocalization()
@@ -49,6 +48,7 @@ public class Startup {
     public void ConfigureServices( IServiceCollection services ) {
         services.AddLogging( logBuilder => logBuilder.AddXunitOutput() );
         services.AddControllers();
+        services.AddIdentity();
         services.AddTransient<IHttpClient>( t => {
             var client = new HttpClientService();
             client.SetHttpClient( t.GetService<IHost>().GetTestClient() );

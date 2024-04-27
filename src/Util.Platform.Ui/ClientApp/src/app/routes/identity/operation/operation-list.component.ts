@@ -1,5 +1,4 @@
-﻿import { Component, ChangeDetectionStrategy, Input, Injector } from '@angular/core';
-import { environment } from "@env/environment";
+﻿import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { TableQueryComponentBase } from "util-angular";
 import { ResourceQuery } from '../resource/model/resource-query';
 import { OperationViewModel } from './model/operation-view-model';

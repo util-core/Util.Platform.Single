@@ -9,7 +9,6 @@ import { G2WaterWaveModule } from '@delon/chart/water-wave';
 import { _HttpClient } from '@delon/theme';
 import { SharedModule } from '@shared';
 import type { CountdownConfig } from 'ngx-countdown';
-import { zip } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-monitor',

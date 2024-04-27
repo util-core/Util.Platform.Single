@@ -1,4 +1,4 @@
-import { Injectable, inject, Injector, Provider, APP_INITIALIZER } from '@angular/core';
+import { Injectable, inject, Provider, APP_INITIALIZER } from '@angular/core';
 import { zip, lastValueFrom } from 'rxjs';
 import { catchError, map, } from 'rxjs/operators';
 import { ALAIN_I18N_TOKEN, MenuService, SettingsService, TitleService } from '@delon/theme';

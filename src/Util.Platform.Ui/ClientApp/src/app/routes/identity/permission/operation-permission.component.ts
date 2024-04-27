@@ -1,8 +1,7 @@
-import { Component, Injector, Input, ViewChild, AfterViewInit, ChangeDetectionStrategy, DestroyRef, inject } from '@angular/core';
+import { Component, Input, ViewChild, AfterViewInit, ChangeDetectionStrategy, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BehaviorSubject } from 'rxjs';
 import { map, filter, distinctUntilChanged } from 'rxjs/operators';
-import { environment } from "@env/environment";
 import { ComponentBase, TreeTableExtendDirective, I18nKeys } from "util-angular";
 import { RoleViewModel } from "../role/model/role-view-model";
 import { PermissionQuery } from '../permission/model/permission-query';

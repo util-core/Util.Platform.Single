@@ -3,11 +3,11 @@
     "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "hotReloadEnabled": false,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "launchBrowser": true,
-      "hotReloadEnabled": false,
       "applicationUrl": "https://localhost:16003"
     }
   }

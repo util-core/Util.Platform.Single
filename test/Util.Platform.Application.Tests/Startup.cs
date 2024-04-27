@@ -13,7 +13,6 @@ public class Startup {
         Util.Helpers.Environment.SetDevelopment();
         hostBuilder.ConfigureDefaults( null )
             .AsBuild()
-            .AddAop()
             .AddUtc()
             .AddJsonLocalization()
             .AddMemoryCache()

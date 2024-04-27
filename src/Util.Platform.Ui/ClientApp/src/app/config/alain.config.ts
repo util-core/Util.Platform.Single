@@ -2,8 +2,6 @@ import { default as ngLang } from '@angular/common/locales/zh';
 import { EnvironmentProviders } from '@angular/core';
 import { zhCN as dateLang } from 'date-fns/locale';
 import { zh_CN as zorroLang } from 'ng-zorro-antd/i18n';
-import { IconDefinition } from '@ant-design/icons-angular';
-import * as AllIcons from '@ant-design/icons-angular/icons';
 import { AlainConfig } from '@delon/util/config';
 import { AlainProvideLang, provideAlain, zh_CN as delonLang } from '@delon/theme';
 import { provideReuseTabConfig } from '@delon/abc/reuse-tab';
@@ -24,12 +22,6 @@ const alainConfig: AlainConfig = {
     }
 };
 
-//图标配置
-const antDesignIcons = AllIcons as {
-    [key: string]: IconDefinition;
-};
-const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
-
 //默认语言配置
 const defaultLang: AlainProvideLang = {
     abbr: 'zh-CN',
@@ -45,6 +37,6 @@ const defaultLang: AlainProvideLang = {
 export const provideNgAlain = (): EnvironmentProviders[] => {
     return [
         provideReuseTabConfig(),
-        provideAlain({ config: alainConfig, defaultLang, i18nClass: I18NService, icons: icons })
+        provideAlain({ config: alainConfig, defaultLang, i18nClass: I18NService })
     ];
 }

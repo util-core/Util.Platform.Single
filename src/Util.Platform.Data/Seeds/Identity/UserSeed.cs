@@ -8,7 +8,7 @@ public static class UserSeed {
     /// 创建默认用户
     /// </summary>
     public static IEnumerable<User> CreateDefaultUsers() {
-        return new[] { CreateAdmin(), CreateTest() };
+        return [CreateAdmin(), CreateTest()];
     }
 
     /// <summary>
@@ -55,9 +55,9 @@ public static class UserSeed {
     /// 创建默认用户角色
     /// </summary>
     public static IEnumerable<UserRole> CreateDefaultUserRoles() {
-        return new[] {
+        return [
             new UserRole( SeedConst.UserId, SeedConst.RoleId ),
             new UserRole( SeedConst.TestUserId, SeedConst.TestRoleId )
-        };
+        ];
     }
 }
