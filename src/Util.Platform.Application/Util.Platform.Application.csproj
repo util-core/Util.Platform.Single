@@ -5,10 +5,10 @@
 		<AssemblyName>Util.Platform.Application</AssemblyName>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Util.Localization" Version="8.0.14" />
-		<PackageReference Include="Util.Microservices.Polly" Version="8.0.14" />
+		<PackageReference Include="Util.Localization" Version="8.0.15" />
+		<PackageReference Include="Util.Microservices.Polly" Version="8.0.15" />
 		<PackageReference Include="Util.Platform.Share.Apps" Version="0.9.4" />
-		<PackageReference Include="Util.Tenants" Version="8.0.14" />
+		<PackageReference Include="Util.Tenants" Version="8.0.15" />
 		<PackageReference Include="Util.Platform.Share.Infrastructure" Version="0.9.4" />
 		<PackageReference Include="Util.Platform.Share.Identity.Application" Version="0.9.4" />
 	</ItemGroup>

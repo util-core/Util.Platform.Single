@@ -10,9 +10,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Util.Logging.Serilog" Version="8.0.14" />
+		<PackageReference Include="Util.Logging.Serilog" Version="8.0.15" />
 		<PackageReference Include="Util.Platform.Share.Ui.TagHelper" Version="0.9.4" />
-		<PackageReference Include="Util.Ui.NgAlain" Version="8.0.14" />
+		<PackageReference Include="Util.Ui.NgAlain" Version="8.0.15" />
 	</ItemGroup>
 
 	<ItemGroup>
