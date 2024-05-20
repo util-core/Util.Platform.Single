@@ -9,7 +9,7 @@
 	  <None Remove="Util.Platform.db-wal" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Util.Data.EntityFrameworkCore.Sqlite" Version="8.0.15" />
+		<PackageReference Include="Util.Data.EntityFrameworkCore.Sqlite" Version="8.0.16" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
