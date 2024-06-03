@@ -1,8 +1,8 @@
 
-<nz-card [nzBorderless]="true">
-    <nz-descriptions [nzBordered]="true" [nzColumn]="{xs:1,sm:1,md:1,lg:1,xl:2,xxl:2}">
+<nz-card [nzBordered]="false">
+    <nz-descriptions [nzBordered]="true">
         <nz-descriptions-item [nzTitle]="'identity.module.applicationName'|i18n">{{model.applicationName}}</nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'util.enabled'|i18n"><i *ngIf="model.enabled" nz-icon="" nzType="check"></i><i *ngIf="!(model.enabled)" nz-icon="" nzType="close"></i></nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'util.enabled'|i18n"><span *ngIf="model.enabled" nz-icon="" nzType="check"></span><span *ngIf="!(model.enabled)" nz-icon="" nzType="close"></span></nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'identity.module.name'|i18n">{{model.name}}</nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'identity.module.parentId'|i18n">{{model.parentName}}</nz-descriptions-item>
         <nz-descriptions-item nzSpan="2" [nzTitle]="'identity.module.uri'|i18n">{{model.uri}}</nz-descriptions-item>
@@ -12,15 +12,15 @@
         <nz-descriptions-item [nzTitle]="'util.lastModificationTime'|i18n">{{model.lastModificationTime|date:"yyyy-MM-dd HH:mm:ss"}}</nz-descriptions-item>
     </nz-descriptions>
 </nz-card>
-<nz-card [nzBorderless]="true" [nzTitle]="'identity.module.menuSettings'|i18n">
-    <nz-descriptions [nzBordered]="true" [nzColumn]="{xs:1,sm:1,md:1,lg:1,xl:2,xxl:2}">
+<nz-card [nzBordered]="false" [nzTitle]="'identity.module.menuSettings'|i18n">
+    <nz-descriptions [nzBordered]="true">
         <nz-descriptions-item [nzTitle]="'util.i18n'|i18n">{{model.i18n}}</nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'util.icon'|i18n">
-            <i nz-icon="" [nzType]="model.icon"></i>
+            <span nz-icon="" [nzType]="model.icon"></span>
         </nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'util.expanded'|i18n"><i *ngIf="model.isExpanded" nz-icon="" nzType="check"></i><i *ngIf="!(model.isExpanded)" nz-icon="" nzType="close"></i></nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'menu.group'|i18n"><i *ngIf="model.group" nz-icon="" nzType="check"></i><i *ngIf="!(model.group)" nz-icon="" nzType="close"></i></nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'util.isHide'|i18n"><i *ngIf="model.isHide" nz-icon="" nzType="check"></i><i *ngIf="!(model.isHide)" nz-icon="" nzType="close"></i></nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'menu.hideInBreadcrumb'|i18n"><i *ngIf="model.hideInBreadcrumb" nz-icon="" nzType="check"></i><i *ngIf="!(model.hideInBreadcrumb)" nz-icon="" nzType="close"></i></nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'util.expanded'|i18n"><span *ngIf="model.isExpanded" nz-icon="" nzType="check"></span><span *ngIf="!(model.isExpanded)" nz-icon="" nzType="close"></span></nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'menu.group'|i18n"><span *ngIf="model.group" nz-icon="" nzType="check"></span><span *ngIf="!(model.group)" nz-icon="" nzType="close"></span></nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'util.isHide'|i18n"><span *ngIf="model.isHide" nz-icon="" nzType="check"></span><span *ngIf="!(model.isHide)" nz-icon="" nzType="close"></span></nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'menu.hideInBreadcrumb'|i18n"><span *ngIf="model.hideInBreadcrumb" nz-icon="" nzType="check"></span><span *ngIf="!(model.hideInBreadcrumb)" nz-icon="" nzType="close"></span></nz-descriptions-item>
     </nz-descriptions>
 </nz-card>

@@ -2,20 +2,20 @@
 <page-header [title]="'identity.role'|i18n"></page-header>
 
 
-<nz-card class="searchForm" [nzBorderless]="true">
+<nz-card class="searchForm" [nzBordered]="false">
     <form nz-form="">
         <div nz-row="" [nzGutter]="24">
             <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
-                <nz-form-item><nz-form-label style="width:120px">{{'identity.role.code'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_code"><input #code="" #model_code="ngModel" name="code" nz-input="" [(ngModel)]="queryParam.code" /></nz-input-group><ng-template #tmp_code=""><i (click)="model_code.reset()" *ngIf="model_code.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+                <nz-form-item><nz-form-label style="width:120px">{{'identity.role.code'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_code"><ng-template #tmp_code=""><span (click)="model_code.reset()" *ngIf="model_code.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></span></ng-template><input #code="" #model_code="ngModel" name="code" nz-input="" [(ngModel)]="queryParam.code" /></nz-input-group></nz-form-control></nz-form-item>
             </div>
             <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
-                <nz-form-item><nz-form-label style="width:120px">{{'identity.role.name'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_name"><input #model_name="ngModel" #name="" name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-input-group><ng-template #tmp_name=""><i (click)="model_name.reset()" *ngIf="model_name.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+                <nz-form-item><nz-form-label style="width:120px">{{'identity.role.name'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_name"><ng-template #tmp_name=""><span (click)="model_name.reset()" *ngIf="model_name.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></span></ng-template><input #model_name="ngModel" #name="" name="name" nz-input="" [(ngModel)]="queryParam.name" /></nz-input-group></nz-form-control></nz-form-item>
             </div>
             <div nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
                 <nz-form-item><nz-form-label style="width:120px">{{'util.enabled'|i18n}}</nz-form-label><nz-form-control><nz-select #enabled="" #x_enabled="xSelectExtend" name="enabled" x-select-extend="" [(ngModel)]="queryParam.enabled" [data]="[{'text':'util.yes','value':true,'sortId':1},{'text':'util.no','value':false,'sortId':2}]"><nz-option [nzLabel]="'util.defaultOptionText'|i18n"></nz-option><ng-container *ngIf="!x_enabled.isGroup"><nz-option *ngFor="let item of x_enabled.options" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></ng-container><ng-container *ngIf="x_enabled.isGroup"><nz-option-group *ngFor="let group of x_enabled.optionGroups" [nzLabel]="group.text|i18n"><nz-option *ngFor="let item of group.value" [nzDisabled]="item.disabled" [nzLabel]="item.text|i18n" [nzValue]="item.value"></nz-option></nz-option-group></ng-container></nz-select></nz-form-control></nz-form-item>
             </div>
             <div *ngIf="expand" nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
-                <nz-form-item><nz-form-label style="width:120px">{{'identity.role.remark'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_remark"><input #model_remark="ngModel" #remark="" name="remark" nz-input="" [(ngModel)]="queryParam.remark" /></nz-input-group><ng-template #tmp_remark=""><i (click)="model_remark.reset()" *ngIf="model_remark.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></i></ng-template></nz-form-control></nz-form-item>
+                <nz-form-item><nz-form-label style="width:120px">{{'identity.role.remark'|i18n}}</nz-form-label><nz-form-control><nz-input-group [nzSuffix]="tmp_remark"><ng-template #tmp_remark=""><span (click)="model_remark.reset()" *ngIf="model_remark.value" class="ant-input-clear-icon" nz-icon="" nzTheme="fill" nzType="close-circle"></span></ng-template><input #model_remark="ngModel" #remark="" name="remark" nz-input="" [(ngModel)]="queryParam.remark" /></nz-input-group></nz-form-control></nz-form-item>
             </div>
             <div *ngIf="expand" nz-col="" [nzLg]="8" [nzMd]="12" [nzSm]="24" [nzXl]="8" [nzXs]="24" [nzXXl]="6">
                 <nz-form-item><nz-form-label style="width:120px">{{'util.beginCreationTime'|i18n}}</nz-form-label><nz-form-control><nz-range-picker #begin_creation_time="" #x_begin_creation_time="xRangePickerExtend" name="begin_creation_time" x-range-picker-extend="" [(beginDate)]="queryParam.beginCreationTime" [(endDate)]="queryParam.endCreationTime" [(ngModel)]="x_begin_creation_time.rangeDates"></nz-range-picker></nz-form-control></nz-form-item>
@@ -25,19 +25,19 @@
             </div>
             <div class="mb-md" nz-col="" [nzLg]="{span:expand?24:24}" [nzMd]="{span:expand?24:12}" [nzSm]="24" [nzXl]="{span:expand?24:24}" [nzXs]="24" [nzXXl]="{span:expand?12:6}">
                 <div nz-flex="" nzAlign="center" nzGap="small" nzJustify="flex-end">
-                    <button #btnRefresh="" (click)="refresh(btnRefresh)" nz-button="" type="button"><i nz-icon="" nzType="sync"></i>{{'util.reset'|i18n}}</button>
-                    <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><i nz-icon="" nzType="search"></i>{{'util.query'|i18n}}</button>
-                    <a (click)="expand=!expand" class="ml-sm">{{expand?('util.collapse'|i18n):('util.expand'|i18n)}}<i nz-icon="" [nzType]="expand?'up':'down'"></i></a>
+                    <button #btnRefresh="" (click)="refresh(btnRefresh)" nz-button="" type="button"><span nz-icon="" nzType="sync"></span>{{'util.reset'|i18n}}</button>
+                    <button #btnQuery="" (click)="query(btnQuery)" nz-button="" nzType="primary" type="button"><span nz-icon="" nzType="search"></span>{{'util.query'|i18n}}</button>
+                    <a (click)="expand=!expand" class="ml-sm">{{expand?('util.collapse'|i18n):('util.expand'|i18n)}}<span nz-icon="" [nzType]="expand?'up':'down'"></span></a>
                 </div>
             </div>
         </div>
     </form>
 </nz-card>
 
-<nz-card [nzBorderless]="true" [nzExtra]="tool" [nzTitle]="'identity.role'|i18n">
+<nz-card [nzBordered]="false" [nzExtra]="tool" [nzTitle]="'identity.role'|i18n">
     <ng-template #tool="">
-        <button (click)="openCreateDrawer()" *aclIf="'role.create'" nz-button="" nzType="primary"><i nz-icon="" nzType="plus"></i>{{'util.create'|i18n}}</button>
-        <a (click)="ts_tb.show()" class="ml-md card-tool-icon-btn" nz-tooltip="" [nzTooltipTitle]="'util.tableSettings'|i18n"><i nz-icon="" nzType="setting"></i></a>
+        <button (click)="openCreateDrawer()" *aclIf="'role.create'" nz-button="" nzType="primary"><span nz-icon="" nzType="plus"></span>{{'util.create'|i18n}}</button>
+        <a (click)="ts_tb.show()" class="ml-md card-tool-icon-btn" nz-tooltip="" [nzTooltipTitle]="'util.tableSettings'|i18n"><span nz-icon="" nzType="setting"></span></a>
     </ng-template>
 
     <nz-table #tb="" #x_tb="xTableExtend" (nzPageIndexChange)="x_tb.pageIndexChange($event)" (nzPageSizeChange)="x_tb.pageSizeChange($event)" order="CreationTime desc" url="role" x-table-extend="" [(nzPageIndex)]="x_tb.queryParam.page" [(nzPageSize)]="x_tb.queryParam.pageSize" [(queryParam)]="queryParam" [nzBordered]="ts_tb.bordered" [nzCustomColumn]="ts_tb.columns" [nzData]="x_tb.dataSource" [nzFrontPagination]="false" [nzLoading]="x_tb.loading" [nzPageSizeOptions]="x_tb.pageSizeOptions" [nzScroll]="ts_tb.scroll" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="total_tb" [nzSize]="ts_tb.size" [nzTotal]="x_tb.total"><thead><tr><th (nzCheckedChange)="x_tb.masterToggle()" nzCellControl="util.checkbox" [nzChecked]="x_tb.isMasterChecked()" [nzDisabled]="!x_tb.dataSource.length" [nzIndeterminate]="x_tb.isMasterIndeterminate()" [nzLeft]="ts_tb.isLeft('util.checkbox')" [nzRight]="ts_tb.isRight('util.checkbox')" [nzShowCheckbox]="true" [titleAlign]="ts_tb.getTitleAlign('util.checkbox')"></th><th nzCellControl="util.lineNumber" [nzLeft]="ts_tb.isLeft('util.lineNumber')" [nzRight]="ts_tb.isRight('util.lineNumber')" [titleAlign]="ts_tb.getTitleAlign('util.lineNumber')">{{'util.lineNumber'|i18n}}</th><th (nzResizeEnd)="ts_tb.handleResize($event,'identity.role.code')" (nzSortOrderChange)="x_tb.sortChange('code',$event)" nz-resizable="" nzBounds="window" nzCellControl="identity.role.code" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.role.code')" [nzRight]="ts_tb.isRight('identity.role.code')" [nzShowSort]="true" [nzSortFn]="true" [titleAlign]="ts_tb.getTitleAlign('identity.role.code')">{{'identity.role.code'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'identity.role.name')" (nzSortOrderChange)="x_tb.sortChange('name',$event)" nz-resizable="" nzBounds="window" nzCellControl="identity.role.name" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.role.name')" [nzRight]="ts_tb.isRight('identity.role.name')" [nzShowSort]="true" [nzSortFn]="true" [titleAlign]="ts_tb.getTitleAlign('identity.role.name')">{{'identity.role.name'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'identity.role.isAdmin')" (nzSortOrderChange)="x_tb.sortChange('isAdmin',$event)" nz-resizable="" nzBounds="window" nzCellControl="identity.role.isAdmin" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.role.isAdmin')" [nzRight]="ts_tb.isRight('identity.role.isAdmin')" [nzShowSort]="true" [nzSortFn]="true" [titleAlign]="ts_tb.getTitleAlign('identity.role.isAdmin')">{{'identity.role.isAdmin'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'util.enabled')" (nzSortOrderChange)="x_tb.sortChange('enabled',$event)" nz-resizable="" nzBounds="window" nzCellControl="util.enabled" nzPreview="" [nzLeft]="ts_tb.isLeft('util.enabled')" [nzRight]="ts_tb.isRight('util.enabled')" [nzShowSort]="true" [nzSortFn]="true" [titleAlign]="ts_tb.getTitleAlign('util.enabled')">{{'util.enabled'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'identity.role.remark')" (nzSortOrderChange)="x_tb.sortChange('remark',$event)" nz-resizable="" nzBounds="window" nzCellControl="identity.role.remark" nzPreview="" [nzLeft]="ts_tb.isLeft('identity.role.remark')" [nzRight]="ts_tb.isRight('identity.role.remark')" [nzShowSort]="true" [nzSortFn]="true" [titleAlign]="ts_tb.getTitleAlign('identity.role.remark')">{{'identity.role.remark'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th><th (nzResizeEnd)="ts_tb.handleResize($event,'util.operation')" nz-resizable="" nzBounds="window" nzCellControl="util.operation" nzPreview="" [nzLeft]="ts_tb.isLeft('util.operation')" [nzRight]="ts_tb.isRight('util.operation')" [titleAlign]="ts_tb.getTitleAlign('util.operation')">{{'util.operation'|i18n}}<nz-resize-handle nzDirection="right"></nz-resize-handle></th></tr></thead><tbody><tr *ngFor="let row of x_tb.dataSource;index as index">
@@ -59,12 +59,12 @@
             </ng-container>
             <nz-divider nzType="vertical"></nz-divider>
             <a nz-dropdown="" [nzDropdownMenu]="menu">
-                <i nz-icon="" nzTheme="outline" nzType="more"></i>
+                <span nz-icon="" nzTheme="outline" nzType="more"></span>
             </a>
             <nz-dropdown-menu #menu="nzDropdownMenu"><ul nz-menu="">
-                <li (click)="openDetailDialog(row)" nz-menu-item=""><i class="mr-sm" nz-icon="" nzType="info-circle"></i>{{'util.detail'|i18n}}</li>
-                <li (click)="openEditDrawer(row)" *aclIf="'role.update'" nz-menu-item=""><i class="mr-sm" nz-icon="" nzType="edit"></i>{{'util.update'|i18n}}</li>
-                <li (click)="delete(row.id)" *aclIf="'role.delete'" nz-menu-item="" [nzDanger]="true"><i class="mr-sm" nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</li>
+                <li (click)="openDetailDialog(row)" nz-menu-item=""><span class="mr-sm" nz-icon="" nzType="info-circle"></span><span>{{'util.detail'|i18n}}</span></li>
+                <li (click)="openEditDrawer(row)" *aclIf="'role.update'" nz-menu-item=""><span class="mr-sm" nz-icon="" nzType="edit"></span><span>{{'util.update'|i18n}}</span></li>
+                <li (click)="delete(row.id)" *aclIf="'role.delete'" nz-menu-item="" [nzDanger]="true"><span class="mr-sm" nz-icon="" nzType="delete"></span><span>{{'util.delete'|i18n}}</span></li>
             </ul></nz-dropdown-menu>
         </td>
     </tr></tbody></nz-table><ng-template #total_tb="" let-range="range" let-total="">{{ 'util.tableTotalTemplate'|i18n:{start:range[0],end:range[1],total:total} }}</ng-template><x-table-settings #ts_tb="" key="identity_role" [enableFixedColumn]="true" [initColumns]="[{'title':'util.checkbox','width':x_tb.config.table.checkboxWidth,'align':'left'},{'title':'util.lineNumber','width':x_tb.config.table.lineNumberWidth,'align':'left'},{'title':'identity.role.code'},{'title':'identity.role.name'},{'title':'identity.role.isAdmin'},{'title':'util.enabled'},{'title':'identity.role.remark'},{'title':'util.operation','width':'200'}]"></x-table-settings>
@@ -74,5 +74,5 @@
     <ng-template #footer_info="">
         <span [innerHTML]="'app.rowsSelected'|i18n:{length:getCheckedLength()}"></span>
     </ng-template>
-    <button (click)="delete()" *aclIf="'role.delete'" nz-button="" nzType="primary" [nzDanger]="true"><i nz-icon="" nzType="delete"></i>{{'util.delete'|i18n}}</button>
+    <button (click)="delete()" *aclIf="'role.delete'" nz-button="" nzType="primary" [nzDanger]="true"><span nz-icon="" nzType="delete"></span>{{'util.delete'|i18n}}</button>
 </footer-toolbar>

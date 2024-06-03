@@ -1,7 +1,7 @@
 ﻿@page
 @model OperationDto
 
-<util-card borderless="true" bind-title="card_title" extra="tool">
+<util-card bordered="false" bind-title="card_title" extra="tool">
     @*标题*@
     <util-template id="card_title">
         <util-i18n key="identity.operation.module" param="module:module?.name" />-<util-i18n key="identity.operation.title" />

@@ -93,8 +93,17 @@
     "action": "Action",
     "add": "Add",
     "init": "Initialize",
-    "fullscreen":"Fullscreen",
-    "fullscreenExit":"Fullscreen Exit"
+    "fullscreen": "Fullscreen",
+    "fullscreenExit": "Fullscreen Exit",
+    "open": "Open",
+    "close": "Close",
+    "remove": "Remove",
+    "download": "Download",
+    "start": "Start",
+    "stop": "Stop",
+    "publish": "Publish",
+    "run": "Run",
+    "send": "Send"
   },
   "app": {
     "totalTip": "total: <strong class='text-primary mx-xs'>{{total}}</strong>",

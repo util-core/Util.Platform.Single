@@ -2,15 +2,15 @@
 @model ApplicationDto
 
 @*表单*@
-<util-form label-span="6" control-span="18" gutter="24">
-    <util-card borderless="true">
+<util-form label-span="6" control-span="18" gutter="24" auto-nz-for="true" has-feedback="true">
+    <util-card bordered="false">
         <util-input for="Code" />
         <util-input for="Name" />
         <util-switch for="Enabled"></util-switch>
         <util-switch for="IsClient" on-model-change="toggleIsClient($event)" extra="identity.application.clientExplain"></util-switch>
         <util-textarea for="Remark"></util-textarea>
     </util-card>
-    <util-card title="identity.application.clientInfo" ng-if="isClient" borderless="true">
+    <util-card title="identity.application.clientInfo" ng-if="isClient" bordered="false">
         <util-select for="AllowedGrantType"></util-select>
         <util-input for="AllowedCorsOrigins" />
         <util-switch for="AllowOfflineAccess"></util-switch>

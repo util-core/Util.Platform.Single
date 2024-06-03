@@ -1,10 +1,10 @@
 
-<nz-card [nzBorderless]="true">
-    <nz-descriptions [nzBordered]="true" [nzColumn]="{xs:1,sm:1,md:1,lg:1,xl:2,xxl:2}">
+<nz-card [nzBordered]="false">
+    <nz-descriptions [nzBordered]="true">
         <nz-descriptions-item [nzTitle]="'identity.role.code'|i18n">{{model.code}}</nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'identity.role.name'|i18n">{{model.name}}</nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'identity.role.isAdmin'|i18n"><i *ngIf="model.isAdmin" nz-icon="" nzType="check"></i><i *ngIf="!(model.isAdmin)" nz-icon="" nzType="close"></i></nz-descriptions-item>
-        <nz-descriptions-item [nzTitle]="'util.enabled'|i18n"><i *ngIf="model.enabled" nz-icon="" nzType="check"></i><i *ngIf="!(model.enabled)" nz-icon="" nzType="close"></i></nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'identity.role.isAdmin'|i18n"><span *ngIf="model.isAdmin" nz-icon="" nzType="check"></span><span *ngIf="!(model.isAdmin)" nz-icon="" nzType="close"></span></nz-descriptions-item>
+        <nz-descriptions-item [nzTitle]="'util.enabled'|i18n"><span *ngIf="model.enabled" nz-icon="" nzType="check"></span><span *ngIf="!(model.enabled)" nz-icon="" nzType="close"></span></nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'util.creationTime'|i18n">{{model.creationTime|date:"yyyy-MM-dd HH:mm:ss"}}</nz-descriptions-item>
         <nz-descriptions-item [nzTitle]="'util.lastModificationTime'|i18n">{{model.lastModificationTime|date:"yyyy-MM-dd HH:mm:ss"}}</nz-descriptions-item>
         <nz-descriptions-item nzSpan="2" [nzTitle]="'identity.role.remark'|i18n">{{model.remark}}</nz-descriptions-item>

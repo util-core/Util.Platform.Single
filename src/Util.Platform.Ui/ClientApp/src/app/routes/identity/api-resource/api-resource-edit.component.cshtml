@@ -2,7 +2,7 @@
 @model ApiResourceDto
 
 @*表单*@
-<util-card borderless="true">
+<util-card bordered="false">
     <util-form label-span="6" control-span="18" gutter="24">
         <util-display for="ApplicationName" show-label="true" value="applicationName"></util-display>
         <util-tree-select for="ParentId" query-param="queryParam" load-mode="Sync" url="apiResource/tree" default-expand-all="true"
